@@ -5,12 +5,12 @@ export class AssemblerComponent {
     this.container = document.getElementById(containerId);
     this.currentActivity = 'Moderado';
     
-    // Estado de selección del plato (1 id por categoría)
+    // Estado de selección del plato (array de IDs por categoría para multi-selección)
     this.selected = {
-      Proteina: null,
-      Vegetal: null,
-      Carbohidrato: null,
-      Grasa: null
+      Proteina: [],
+      Vegetal: [],
+      Carbohidrato: [],
+      Grasa: []
     };
 
     // Micro-instrucciones editables
@@ -171,13 +171,28 @@ export class AssemblerComponent {
     }
   }
 
-  calculatePortion(comp) {
+  calculatePortion(comp, count = 1) {
     if (!comp) return '';
     const cat = comp.categoria;
+    let target = '';
     if (this.activityRules && this.activityRules[this.currentActivity] && this.activityRules[this.currentActivity][cat]) {
-      return this.activityRules[this.currentActivity][cat];
+      target = this.activityRules[this.currentActivity][cat];
+    } else {
+      target = comp.porcion_base || '1 porción';
     }
-    return comp.porcion_base || '1 porción';
+
+    if (count <= 1) return target;
+
+    // Si hay más de 1 ingrediente seleccionado en la misma columna, dividir la porción
+    const match = target.match(/^(\d+(?:\.\d+)?)\s*([a-zA-ZáéíóúÁÉÍÓÚcda/]+)?$/);
+    if (match) {
+      const totalNum = parseFloat(match[1]);
+      const unit = match[2] || '';
+      const splitNum = (totalNum / count).toFixed(totalNum / count % 1 === 0 ? 0 : 1);
+      return `${splitNum}${unit} (${splitNum}${unit} de ${target} total)`;
+    }
+
+    return `${target} (÷${count})`;
   }
 
   getPortionBadgeBg(category) {
@@ -219,7 +234,6 @@ export class AssemblerComponent {
   renderColumn(category, title, allComponents) {
     let categoryComponents = allComponents.filter(c => c.categoria === category);
     
-    // Si el filtro de Despensa está activo, filtrar solo los marcados en despensa
     if (this.showOnlyDespensa) {
       const despensaComponents = categoryComponents.filter(c => c.en_despensa !== false);
       if (despensaComponents.length > 0) {
@@ -227,10 +241,13 @@ export class AssemblerComponent {
       }
     }
 
-    // Auto-seleccionar el primero si no hay ninguno seleccionado
-    if (!this.selected[category] && categoryComponents.length > 0) {
-      this.selected[category] = categoryComponents[0].id;
+    // Auto-seleccionar el primero si no hay ninguno en la lista de seleccionados
+    if ((!this.selected[category] || this.selected[category].length === 0) && categoryComponents.length > 0) {
+      this.selected[category] = [categoryComponents[0].id];
     }
+
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [this.selected[category]];
+    const count = selectedIds.length || 1;
 
     let subBadge = category;
     if (category === 'Carbohidrato') {
@@ -239,9 +256,13 @@ export class AssemblerComponent {
       subBadge = '🥗 Extra Fibra';
     }
 
+    if (count > 1) {
+      subBadge += ` • ${count} sel. (÷${count})`;
+    }
+
     const cardsHtml = categoryComponents.map(comp => {
-      const isSelected = this.selected[category] === comp.id;
-      const portionText = this.calculatePortion(comp);
+      const isSelected = selectedIds.includes(comp.id);
+      const portionText = this.calculatePortion(comp, count);
 
       return `
         <div class="component-item-card ${isSelected ? 'selected' : ''}"
@@ -251,6 +272,7 @@ export class AssemblerComponent {
               <span>${comp.icono || '🥗'}</span>
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
+            ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
           </div>
 
           <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
@@ -280,55 +302,67 @@ export class AssemblerComponent {
   }
 
   renderStickyChips(allComponents) {
-    const selProt = allComponents.find(c => c.id === this.selected.Proteina);
-    const selVeg = allComponents.find(c => c.id === this.selected.Vegetal);
-    const selCarb = allComponents.find(c => c.id === this.selected.Carbohidrato);
-    const selFat = allComponents.find(c => c.id === this.selected.Grasa);
+    const formatBlockChip = (category, icon, defaultLabel, colorBg, colorText, colorBorder) => {
+      const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
+      const selComps = allComponents.filter(c => selectedIds.includes(c.id));
+
+      if (selComps.length === 0) {
+        return `
+          <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
+            ${icon} ${defaultLabel} (-)
+          </div>
+        `;
+      }
+
+      const names = selComps.map(c => c.nombre).join(' + ');
+      const portionText = this.calculatePortion(selComps[0], selComps.length);
+
+      return `
+        <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
+          ${icon} ${names} (${portionText})
+        </div>
+      `;
+    };
 
     return `
-      <div class="sticky-chip" style="background: var(--color-prot-bg); color: var(--color-prot); border: 1px solid var(--color-prot-border);">
-        🥩 ${selProt ? selProt.nombre : 'Proteína'} (${selProt ? this.calculatePortion(selProt) : '-'})
-      </div>
-      <div class="sticky-chip" style="background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);">
-        🥦 ${selVeg ? selVeg.nombre : 'Vegetal'} (${selVeg ? this.calculatePortion(selVeg) : '-'})
-      </div>
-      <div class="sticky-chip" style="background: var(--color-carb-bg); color: var(--color-carb); border: 1px solid var(--color-carb-border);">
-        🥔 ${selCarb ? selCarb.nombre : 'Carbohidrato'} (${selCarb ? this.calculatePortion(selCarb) : '-'})
-      </div>
-      <div class="sticky-chip" style="background: var(--color-fat-bg); color: var(--color-fat); border: 1px solid var(--color-fat-border);">
-        🥑 ${selFat ? selFat.nombre : 'Grasa'} (${selFat ? this.calculatePortion(selFat) : '-'})
-      </div>
+      ${formatBlockChip('Proteina', '🥩', 'Proteína', 'var(--color-prot-bg)', 'var(--color-prot)', 'var(--color-prot-border)')}
+      ${formatBlockChip('Vegetal', '🥦', 'Vegetal', 'var(--color-veg-bg)', 'var(--color-veg)', 'var(--color-veg-border)')}
+      ${formatBlockChip('Carbohidrato', '🥔', 'Carbohidrato', 'var(--color-carb-bg)', 'var(--color-carb)', 'var(--color-carb-border)')}
+      ${formatBlockChip('Grasa', '🥑', 'Grasa', 'var(--color-fat-bg)', 'var(--color-fat)', 'var(--color-fat-border)')}
     `;
   }
 
   async updateStepDefaults(components) {
-    const selectedComps = {
-      Proteina: components.find(c => c.id === this.selected.Proteina),
-      Vegetal: components.find(c => c.id === this.selected.Vegetal),
-      Carbohidrato: components.find(c => c.id === this.selected.Carbohidrato),
-      Grasa: components.find(c => c.id === this.selected.Grasa)
+    const getSelComps = (cat) => {
+      const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+      return components.filter(c => ids.includes(c.id));
     };
+
+    const selProt = getSelComps('Proteina');
+    const selVeg = getSelComps('Vegetal');
+    const selCarb = getSelComps('Carbohidrato');
+    const selFat = getSelComps('Grasa');
 
     // Auto-generar título si es el genérico
     if (!this.plateName || this.plateName.startsWith('Mi Plato') || this.plateName.includes('Bowl') || this.plateName.includes('Plato de')) {
-      const pName = selectedComps.Proteina ? selectedComps.Proteina.nombre : 'Proteína';
-      const cName = selectedComps.Carbohidrato ? selectedComps.Carbohidrato.nombre : 'Carbohidrato';
+      const pName = selProt.length > 0 ? selProt.map(c => c.nombre).join(' + ') : 'Proteína';
+      const cName = selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') : 'Carbohidrato';
       this.plateName = `Plato de ${pName} con ${cName} (${this.currentActivity})`;
       const nameInput = document.getElementById('plateNameInput');
       if (nameInput) nameInput.value = this.plateName;
     }
 
     // Auto-generar 3 pasos si el usuario no los ha editado manualmente de forma personalizada
-    const autoStep1 = selectedComps.Proteina 
-      ? `${selectedComps.Proteina.nombre} (${this.calculatePortion(selectedComps.Proteina)}): ${selectedComps.Proteina.metodo_coccion} (${selectedComps.Proteina.tiempo_preparacion_min} min).` 
+    const autoStep1 = selProt.length > 0
+      ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: ${selProt[0].metodo_coccion} (${selProt[0].tiempo_preparacion_min} min).`
       : 'Cocinar proteína a elección.';
 
-    const autoStep2 = selectedComps.Carbohidrato && selectedComps.Vegetal
-      ? `${selectedComps.Carbohidrato.nombre} [Porción ${this.calculatePortion(selectedComps.Carbohidrato)}] y ${selectedComps.Vegetal.nombre} (${this.calculatePortion(selectedComps.Vegetal)}).`
+    const autoStep2 = selCarb.length > 0 && selVeg.length > 0
+      ? `${selCarb.map(c => c.nombre).join(' + ')} [${this.calculatePortion(selCarb[0], selCarb.length)}] y ${selVeg.map(c => c.nombre).join(' + ')} [${this.calculatePortion(selVeg[0], selVeg.length)}].`
       : 'Preparar guarnición de carbohidratos y vegetales.';
 
-    const autoStep3 = selectedComps.Grasa
-      ? `Emplatar todo junto y aderezar con ${selectedComps.Grasa.nombre} (${selectedComps.Grasa.porcion_base || '1 cda'}).`
+    const autoStep3 = selFat.length > 0
+      ? `Emplatar todo junto y aderezar con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')}.`
       : 'Emplatar caliente y servir.';
 
     this.customSteps = [autoStep1, autoStep2, autoStep3];
@@ -490,25 +524,29 @@ export class AssemblerComponent {
       });
     });
 
-    // Selección de tarjetas en las 4 columnas
+    // Selección de tarjetas en las 4 columnas (Multi-selección)
     this.container.querySelectorAll('.component-item-card').forEach(card => {
       card.addEventListener('click', async (e) => {
         const id = e.currentTarget.getAttribute('data-id');
         const category = e.currentTarget.getAttribute('data-category');
-        this.selected[category] = id;
         
-        const components = await storage.getComponents();
-        this.container.querySelectorAll(`.component-item-card[data-category="${category}"]`).forEach(c => {
-          c.classList.remove('selected');
-        });
-        e.currentTarget.classList.add('selected');
-        
-        // Actualizar chips flotantes en tiempo real
-        const stickyContainer = this.container.querySelector('#stickyChipsSummary');
-        if (stickyContainer) {
-          stickyContainer.innerHTML = this.renderStickyChips(components);
+        if (!Array.isArray(this.selected[category])) {
+          this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
         }
-        this.updateStepDefaults(components);
+
+        const idx = this.selected[category].indexOf(id);
+        if (idx >= 0) {
+          // Des-seleccionar solo si hay más de 1 en la columna
+          if (this.selected[category].length > 1) {
+            this.selected[category].splice(idx, 1);
+          }
+        } else {
+          // Agregar a la selección
+          this.selected[category].push(id);
+        }
+        
+        await this.render();
+        this.bindEvents();
       });
     });
 
@@ -562,7 +600,7 @@ export class AssemblerComponent {
     // Botón Generar Imagen con IA
     const btnGenImg = this.container.querySelector('#btnGenerateImage');
     if (btnGenImg) {
-      const executeImageGeneration = async (mode = 'plate') => {
+      const executeImageGeneration = async (mode = 'grid') => {
         const apiKey = await storage.getApiKey();
         const stabilityKey = await storage.getStabilityApiKey();
 
@@ -574,16 +612,26 @@ export class AssemblerComponent {
         }
 
         const components = await storage.getComponents();
-        const selProt = components.find(c => c.id === this.selected.Proteina);
-        const selVeg = components.find(c => c.id === this.selected.Vegetal);
-        const selCarb = components.find(c => c.id === this.selected.Carbohidrato);
-        const selFat = components.find(c => c.id === this.selected.Grasa);
+        const getSelComps = (cat) => {
+          const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+          return components.filter(c => ids.includes(c.id));
+        };
+
+        const selProt = getSelComps('Proteina');
+        const selVeg = getSelComps('Vegetal');
+        const selCarb = getSelComps('Carbohidrato');
+        const selFat = getSelComps('Grasa');
+
+        const protStr = selProt.map(c => c.nombre).join(' + ') || 'Proteína';
+        const vegStr = selVeg.map(c => c.nombre).join(' + ') || 'Vegetales';
+        const carbStr = selCarb.map(c => c.nombre).join(' + ') || 'Carbohidratos';
+        const fatStr = selFat.map(c => c.nombre).join(' + ') || 'Grasas';
 
         let promptText = '';
         if (mode === 'grid') {
-          promptText = `A top-view 2x2 grid collage photography showing 4 separate food items in 4 distinct quadrants: top-left quadrant ${selProt ? selProt.nombre : 'Proteína'}, top-right quadrant ${selVeg ? selVeg.nombre : 'Vegetal'}, bottom-left quadrant ${selCarb ? selCarb.nombre : 'Carbohidrato'}, bottom-right quadrant ${selFat ? selFat.nombre : 'Grasa'}. High quality food photography, clean grid divider, studio lighting.`;
+          promptText = `A top-view 2x2 grid collage photography showing 4 separate food items in 4 distinct quadrants: top-left quadrant ${protStr}, top-right quadrant ${vegStr}, bottom-left quadrant ${carbStr}, bottom-right quadrant ${fatStr}. High quality food photography, clean grid divider, studio lighting.`;
         } else {
-          promptText = `Un plato saludable y delicioso compuesto por ${selProt ? selProt.nombre : ''}, ${selVeg ? selVeg.nombre : ''}, ${selCarb ? selCarb.nombre : ''} y ${selFat ? selFat.nombre : ''}. Presentación gourmet.`;
+          promptText = `Un plato saludable y delicioso compuesto por ${protStr}, ${vegStr}, ${carbStr} y ${fatStr}. Presentación gourmet.`;
         }
 
         // 1. Abrir Modal y mostrar Loader Animado en Vivo
