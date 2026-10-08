@@ -16,6 +16,7 @@ export class AssemblerComponent {
     // Micro-instrucciones editables
     this.customSteps = ['', '', ''];
     this.plateName = 'Mi Plato Modular Custom';
+    this.drawerOpen = false;
   }
 
   async init() {
@@ -56,44 +57,24 @@ export class AssemblerComponent {
       </div>
 
       <!-- Matriz de 4 Columnas -->
-      <div class="assembler-grid">
+      <div class="assembler-grid" style="margin-bottom: 5rem;">
         ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
         ${this.renderColumn('Vegetal', '🥦 Vegetales', components)}
         ${this.renderColumn('Carbohidrato', '🥔 Carbohidratos', components)}
         ${this.renderColumn('Grasa', '🥑 Grasas', components)}
       </div>
 
-      <!-- Panel del Plato Resultante y 3 Micro-Instrucciones -->
-      <div class="assembled-plate-panel glass-card">
-        <div class="plate-result-header">
+      <!-- Drawer Modal Desplegable de Micro-Instrucciones -->
+      <div id="microStepsDrawer" class="micro-steps-drawer ${this.drawerOpen ? 'open' : ''}">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
           <div>
-            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb); margin-bottom: 0.25rem;">
-              Plato Ensamble Rápido (${this.currentActivity})
-            </div>
-            <input type="text" id="plateNameInput" class="plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre del plato...">
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb);">Configurar Plato & Pasos</div>
+            <input type="text" id="plateNameInput" class="plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre del plato..." style="margin-top: 0.25rem;">
           </div>
-          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
-            <button id="btnGenerateImage" class="btn btn-secondary" style="opacity: 0.85;" title="Generar imagen con IA (Próximamente)">
-              🎨 Generar Imagen
-            </button>
-            <button id="btnSavePlate" class="btn btn-primary">
-              💾 Guardar Plato
-            </button>
-          </div>
+          <button id="btnCloseDrawer" style="background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer;">&times;</button>
         </div>
 
-        <!-- Resumen de Porciones de Macronutrientes en el Plato -->
-        <div style="margin-bottom: 1.25rem;">
-          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem;">
-            Desglose Calculado de Porciones para el Plato:
-          </div>
-          <div id="macroPortionSummary" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
-            ${this.renderMacroSummary(components)}
-          </div>
-        </div>
-
-        <!-- Micro-Instrucciones (3 Pasos) -->
-        <div class="micro-steps-container">
+        <div class="micro-steps-container" style="margin-top: 0;">
           <div class="micro-steps-title">
             <span>⚡ Micro-Instrucciones Express (Máximo 3 pasos)</span>
             <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">(Editables)</span>
@@ -111,6 +92,29 @@ export class AssemblerComponent {
               <div class="step-number">3</div>
               <input type="text" class="step-text-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3 de emplatado...">
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARRA FLOTANTE STICKY BOTTOM BAR (Siempre Visible) -->
+      <div class="sticky-plate-bar">
+        <div class="sticky-plate-bar-content">
+          <!-- Desglose de Chips de Alimentos en Vivo -->
+          <div class="sticky-chips-container" id="stickyChipsSummary">
+            ${this.renderStickyChips(components)}
+          </div>
+
+          <!-- Botones de Acción Rápida -->
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button id="btnToggleDrawer" class="btn btn-secondary btn-sm">
+              ⚡ 3 Pasos
+            </button>
+            <button id="btnGenerateImage" class="btn btn-secondary btn-sm" style="opacity: 0.85;" title="Generar imagen con IA (Próximamente)">
+              🎨 Imagen
+            </button>
+            <button id="btnSavePlate" class="btn btn-primary btn-sm">
+              💾 Guardar Plato
+            </button>
           </div>
         </div>
       </div>
@@ -144,12 +148,12 @@ export class AssemblerComponent {
   calculatePortion(comp) {
     if (!comp) return '';
     if (comp.categoria === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') return '🔥 200g (Doble Recarga 2x)';
-      if (this.currentActivity === 'Moderado') return '⚖️ 120g (Estándar 1x)';
-      return '🟢 60g (Reducida 0.5x)';
+      if (this.currentActivity === 'Intenso') return '🔥 200g (2x)';
+      if (this.currentActivity === 'Moderado') return '⚖️ 120g (1x)';
+      return '🟢 60g (0.5x)';
     }
     if (comp.categoria === 'Vegetal') {
-      if (this.currentActivity === 'Descanso') return '🥗 220g (Extra Fibra Rest)';
+      if (this.currentActivity === 'Descanso') return '🥗 220g (Extra Fibra)';
       return comp.porcion_base || '150g';
     }
     return comp.porcion_base || '1 porción';
@@ -248,24 +252,24 @@ export class AssemblerComponent {
     `;
   }
 
-  renderMacroSummary(allComponents) {
+  renderStickyChips(allComponents) {
     const selProt = allComponents.find(c => c.id === this.selected.Proteina);
     const selVeg = allComponents.find(c => c.id === this.selected.Vegetal);
     const selCarb = allComponents.find(c => c.id === this.selected.Carbohidrato);
     const selFat = allComponents.find(c => c.id === this.selected.Grasa);
 
     return `
-      <div style="background: var(--color-prot-bg); border: 1px solid var(--color-prot-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
-        <span style="color: var(--color-prot); font-weight: 700;">🥩 Proteína:</span> ${selProt ? selProt.nombre : 'Sin seleccionar'} (${selProt ? this.calculatePortion(selProt) : '-'})
+      <div class="sticky-chip" style="background: var(--color-prot-bg); color: var(--color-prot); border: 1px solid var(--color-prot-border);">
+        🥩 ${selProt ? selProt.nombre : 'Proteína'} (${selProt ? this.calculatePortion(selProt) : '-'})
       </div>
-      <div style="background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
-        <span style="color: var(--color-veg); font-weight: 700;">🥦 Vegetal:</span> ${selVeg ? selVeg.nombre : 'Sin seleccionar'} (${selVeg ? this.calculatePortion(selVeg) : '-'})
+      <div class="sticky-chip" style="background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);">
+        🥦 ${selVeg ? selVeg.nombre : 'Vegetal'} (${selVeg ? this.calculatePortion(selVeg) : '-'})
       </div>
-      <div style="background: var(--color-carb-bg); border: 1px solid var(--color-carb-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
-        <span style="color: var(--color-carb); font-weight: 700;">🥔 Carbohidrato:</span> ${selCarb ? selCarb.nombre : 'Sin seleccionar'} (${selCarb ? this.calculatePortion(selCarb) : '-'})
+      <div class="sticky-chip" style="background: var(--color-carb-bg); color: var(--color-carb); border: 1px solid var(--color-carb-border);">
+        🥔 ${selCarb ? selCarb.nombre : 'Carbohidrato'} (${selCarb ? this.calculatePortion(selCarb) : '-'})
       </div>
-      <div style="background: var(--color-fat-bg); border: 1px solid var(--color-fat-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
-        <span style="color: var(--color-fat); font-weight: 700;">🥑 Grasa:</span> ${selFat ? selFat.nombre : 'Sin seleccionar'} (${selFat ? this.calculatePortion(selFat) : '-'})
+      <div class="sticky-chip" style="background: var(--color-fat-bg); color: var(--color-fat); border: 1px solid var(--color-fat-border);">
+        🥑 ${selFat ? selFat.nombre : 'Grasa'} (${selFat ? this.calculatePortion(selFat) : '-'})
       </div>
     `;
   }
@@ -310,7 +314,7 @@ export class AssemblerComponent {
   }
 
   bindEvents() {
-    // Evento selector de actividad
+    // Selector de actividad
     this.container.querySelectorAll('.activity-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         this.currentActivity = e.currentTarget.getAttribute('data-level');
@@ -319,38 +323,47 @@ export class AssemblerComponent {
       });
     });
 
-    // Evento toggle heladera
-    const fridgeToggle = this.container.querySelector('#fridgeToggle');
-    if (fridgeToggle) {
-      fridgeToggle.addEventListener('change', async (e) => {
-        this.fridgeOnly = e.target.checked;
-        await this.render();
-        this.bindEvents();
-      });
-    }
-
-    // Evento selección de tarjetas en las 4 columnas
+    // Selección de tarjetas en las 4 columnas
     this.container.querySelectorAll('.component-item-card').forEach(card => {
       card.addEventListener('click', async (e) => {
         const id = e.currentTarget.getAttribute('data-id');
         const category = e.currentTarget.getAttribute('data-category');
         this.selected[category] = id;
         
-        // Re-render ligero para actualizar selección visual y desglose
         const components = await storage.getComponents();
         this.container.querySelectorAll(`.component-item-card[data-category="${category}"]`).forEach(c => {
           c.classList.remove('selected');
         });
         e.currentTarget.classList.add('selected');
         
-        // Actualizar resumen de macros y pasos
-        const macroSummaryContainer = this.container.querySelector('#macroPortionSummary');
-        if (macroSummaryContainer) {
-          macroSummaryContainer.innerHTML = this.renderMacroSummary(components);
+        // Actualizar chips flotantes en tiempo real
+        const stickyContainer = this.container.querySelector('#stickyChipsSummary');
+        if (stickyContainer) {
+          stickyContainer.innerHTML = this.renderStickyChips(components);
         }
         this.updateStepDefaults(components);
       });
     });
+
+    // Toggle Drawer de Pasos
+    const btnToggleDrawer = this.container.querySelector('#btnToggleDrawer');
+    const btnCloseDrawer = this.container.querySelector('#btnCloseDrawer');
+    const drawer = this.container.querySelector('#microStepsDrawer');
+
+    if (btnToggleDrawer) {
+      btnToggleDrawer.addEventListener('click', () => {
+        this.drawerOpen = !this.drawerOpen;
+        if (this.drawerOpen) drawer.classList.add('open');
+        else drawer.classList.remove('open');
+      });
+    }
+
+    if (btnCloseDrawer) {
+      btnCloseDrawer.addEventListener('click', () => {
+        this.drawerOpen = false;
+        drawer.classList.remove('open');
+      });
+    }
 
     // Inputs de texto de pasos
     this.container.querySelectorAll('.step-text-input').forEach(input => {
@@ -368,7 +381,7 @@ export class AssemblerComponent {
       });
     }
 
-    // Botón Generar Imagen (Sin funcionalidad activa por ahora)
+    // Botón Generar Imagen
     const btnGenImg = this.container.querySelector('#btnGenerateImage');
     if (btnGenImg) {
       btnGenImg.addEventListener('click', () => {
