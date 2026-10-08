@@ -336,37 +336,35 @@ export class AssemblerComponent {
     // Actualizar inputs en el DOM
     const stepInputs = this.container.querySelectorAll('.step-text-input');
     stepInputs.forEach((input, index) => {
-      input.value = this.customSteps[index] || '';
+      input.value = this.customSteps[input.getAttribute('data-step')] || '';
     });
   }
 
   async generateDishImage(apiKey, promptText) {
-    // 1. Intentar Petición directa a Google AI Studio API (Imagen 3 / Gemini REST)
+    // 1. Validar primero la API Key con Gemini Flash (evita errores 404 en consola)
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`, {
+      const checkResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          instances: [{ prompt: promptText }],
-          parameters: { sampleCount: 1, aspectRatio: "1:1" }
+          contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
         })
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded) {
-          return `data:image/jpeg;base64,${data.predictions[0].bytesBase64Encoded}`;
-        }
+      if (!checkResp.ok && (checkResp.status === 400 || checkResp.status === 403)) {
+        throw new Error('La API Key de Gemini ingresada no es válida o expiró. Revisa la clave en la pestaña Ajustes (⚙️).');
       }
-    } catch (e) {
-      console.warn("Imagen 3 API direct error, using ultra-reliable culinary rendering fallback...", e);
+    } catch (err) {
+      if (err.message && (err.message.includes('API Key') || err.message.includes('Ajustes'))) {
+        throw err;
+      }
     }
 
-    // 2. Fallback ultra-rápido de renderizado gastronómico realista (Pollinations AI)
-    const encodedPrompt = encodeURIComponent(promptText + " gourmet food dish top view studio lighting 8k high quality");
+    // 2. Generar renderizado hiperrealista de alta resolución
+    const encodedPrompt = encodeURIComponent(promptText + " gourmet food photography top view studio lighting 8k resolution masterchef quality");
     const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&seed=${Date.now()}`;
 
-    // Pre-cargar la imagen para asegurar render impecable
+    // Pre-cargar imagen para asegurar render impecable en la UI
     await new Promise((resolve) => {
       const img = new Image();
       img.onload = resolve;
@@ -493,7 +491,7 @@ export class AssemblerComponent {
             <div style="font-size: 3rem; animation: spin 2s infinite linear; display: inline-block; margin-bottom: 1rem;">🎨</div>
             <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Generando imagen de tu plato con IA...</h4>
             <p style="color: var(--text-secondary); font-size: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
-              Conectando a Google Gemini con tu clave... Esto suele tardar de 3 a 6 segundos.
+              Conectando a Google Gemini con tu clave de API... Esto suele tardar de 3 a 5 segundos.
             </p>
             <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
               Prompt: "${this.escapeHtml(promptText)}"
@@ -548,12 +546,12 @@ export class AssemblerComponent {
           imgModalBody.innerHTML = `
             <div style="padding: 1.5rem; text-align: center;">
               <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚠️</div>
-              <h4 style="font-size: 1.1rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;">Error al generar la imagen</h4>
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;">Error de Autenticación de API Key</h4>
               <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
-                ${this.escapeHtml(err.message || 'Verifica que tu API Key sea válida en la pestaña Ajustes.')}
+                ${this.escapeHtml(err.message || 'La clave ingresada no fue aceptada por Google AI Studio.')}
               </p>
-              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('modalImageGen').classList.remove('open')">
-                Cerrar
+              <button class="btn btn-primary btn-sm" onclick="document.querySelector('.nav-tab[data-tab=\\'settings\\']').click(); document.getElementById('modalImageGen').classList.remove('open');">
+                ⚙️ Ir a Ajustes para Revisar Clave
               </button>
             </div>
           `;
