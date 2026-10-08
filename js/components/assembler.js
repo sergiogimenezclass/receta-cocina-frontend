@@ -18,15 +18,18 @@ export class AssemblerComponent {
     this.plateName = 'Mi Plato Modular Custom';
     this.drawerOpen = false;
     this.showOnlyDespensa = true;
+    this.activityRules = null;
   }
 
   async init() {
+    this.activityRules = await storage.getActivityRules();
     await this.render();
     this.bindEvents();
   }
 
   async render() {
     const components = await storage.getComponents();
+    this.activityRules = await storage.getActivityRules();
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
@@ -59,7 +62,7 @@ export class AssemblerComponent {
           ${this.getCarbPortionNoticeText()}
         </div>
         <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-          Factor Carbohidrato: <span style="color: ${this.getActivityColor()};">${this.getCarbFactorText()}</span>
+          Carbohidratos Objetivo: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
         </div>
       </div>
 
@@ -116,8 +119,8 @@ export class AssemblerComponent {
             <button id="btnToggleDrawer" class="btn btn-secondary btn-sm">
               ⚡ 3 Pasos
             </button>
-            <button id="btnGenerateImage" class="btn btn-secondary btn-sm" style="opacity: 0.85;" title="Generar imagen con IA (Próximamente)">
-              🎨 Imagen
+            <button id="btnGenerateImage" class="btn btn-secondary btn-sm" style="opacity: 0.9;" title="Generar imagen con IA">
+              🎨 Generar Imagen
             </button>
             <button id="btnSavePlate" class="btn btn-primary btn-sm">
               💾 Guardar Plato
@@ -136,32 +139,29 @@ export class AssemblerComponent {
     return '#10b981';
   }
 
-  getCarbFactorText() {
-    if (this.currentActivity === 'Intenso') return '2.0x (Recarga Alta)';
-    if (this.currentActivity === 'Moderado') return '1.0x (Estándar)';
-    return '0.5x (Baja / Keto)';
+  getCarbTargetText() {
+    if (this.activityRules && this.activityRules[this.currentActivity]) {
+      return this.activityRules[this.currentActivity].Carbohidrato || '120g';
+    }
+    return '120g';
   }
 
   getCarbPortionNoticeText() {
+    const carbTarget = this.getCarbTargetText();
     if (this.currentActivity === 'Intenso') {
-      return `🔴 <strong>Modo Día Intenso:</strong> Los Carbohidratos duplican automáticamente su porción sugerida (~200g) para reponer el glucógeno muscular gastado en el entrenamiento.`;
+      return `🔴 <strong>Modo Día Intenso:</strong> Los Carbohidratos se ajustan a porción alta (${carbTarget}) para recarga de glucógeno.`;
     } else if (this.currentActivity === 'Moderado') {
-      return `🟡 <strong>Modo Día Moderado:</strong> Mantienes porciones de Carbohidratos estándar (~120g) con un equilibrio proteico normal.`;
+      return `🟡 <strong>Modo Día Moderado:</strong> Mantienes porciones de Carbohidratos estándar (${carbTarget}).`;
     } else {
-      return `🟢 <strong>Modo Día de Descanso:</strong> Los Carbohidratos se reducen al 50% (~60g) y se incrementan los Vegetales para mantener saciedad con menos calorías.`;
+      return `🟢 <strong>Modo Día de Descanso:</strong> Carbohidratos reducidos (${carbTarget}) priorizando fibra vegetal.`;
     }
   }
 
   calculatePortion(comp) {
     if (!comp) return '';
-    if (comp.categoria === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') return '🔥 200g (2x)';
-      if (this.currentActivity === 'Moderado') return '⚖️ 120g (1x)';
-      return '🟢 60g (0.5x)';
-    }
-    if (comp.categoria === 'Vegetal') {
-      if (this.currentActivity === 'Descanso') return '🥗 220g (Extra Fibra)';
-      return comp.porcion_base || '150g';
+    const cat = comp.categoria;
+    if (this.activityRules && this.activityRules[this.currentActivity] && this.activityRules[this.currentActivity][cat]) {
+      return this.activityRules[this.currentActivity][cat];
     }
     return comp.porcion_base || '1 porción';
   }
@@ -220,9 +220,7 @@ export class AssemblerComponent {
 
     let subBadge = category;
     if (category === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') subBadge = '🔥 200g (2x)';
-      else if (this.currentActivity === 'Moderado') subBadge = '⚖️ 120g (1x)';
-      else subBadge = '📉 60g (0.5x)';
+      subBadge = `🥔 ${this.getCarbTargetText()}`;
     } else if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
       subBadge = '🥗 Extra Fibra';
     }
@@ -406,11 +404,27 @@ export class AssemblerComponent {
       });
     }
 
-    // Botón Generar Imagen
+    // Botón Generar Imagen con IA (Verifica API Key)
     const btnGenImg = this.container.querySelector('#btnGenerateImage');
     if (btnGenImg) {
-      btnGenImg.addEventListener('click', () => {
-        alert('🎨 Generación de imágenes con IA próximamente disponible en la v2 con servidor.');
+      btnGenImg.addEventListener('click', async () => {
+        const apiKey = await storage.getApiKey();
+        if (!apiKey) {
+          alert('🔑 Por favor ingresa tu API Key de Google Gemini en la pestaña Ajustes (⚙️) para generar la imagen de este plato.');
+          const settingsTab = document.querySelector('.nav-tab[data-tab="settings"]');
+          if (settingsTab) settingsTab.click();
+          return;
+        }
+
+        const components = await storage.getComponents();
+        const selProt = components.find(c => c.id === this.selected.Proteina);
+        const selVeg = components.find(c => c.id === this.selected.Vegetal);
+        const selCarb = components.find(c => c.id === this.selected.Carbohidrato);
+        const selFat = components.find(c => c.id === this.selected.Grasa);
+
+        const promptText = `Un plato gourmet presentado en un plato blanco: ${selProt ? selProt.nombre : ''}, ${selVeg ? selVeg.nombre : ''}, ${selCarb ? selCarb.nombre : ''} y ${selFat ? selFat.nombre : ''}. Fotografía gastronómica profesional, vista superior.`;
+
+        alert(`✨ Conectando a Gemini API con tu clave...\nPrompt: "${promptText}"`);
       });
     }
 

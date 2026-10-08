@@ -2,12 +2,14 @@ import { storage } from './services/storage.js';
 import { AssemblerComponent } from './components/assembler.js';
 import { LibraryComponent } from './components/library.js';
 import { PlannerComponent } from './components/planner.js';
+import { SettingsComponent } from './components/settings.js';
 
 class App {
   constructor() {
     this.assembler = new AssemblerComponent('assembler');
     this.library = new LibraryComponent('library');
     this.planner = new PlannerComponent('planner');
+    this.settings = new SettingsComponent('settings');
     
     this.currentTab = 'assembler';
   }
@@ -17,6 +19,7 @@ class App {
     await this.assembler.init();
     await this.library.init();
     await this.planner.init();
+    await this.settings.init();
 
     this.bindEvents();
   }
@@ -83,6 +86,7 @@ class App {
     if (tabId === 'assembler') await this.assembler.init();
     if (tabId === 'library') await this.library.init();
     if (tabId === 'planner') await this.planner.init();
+    if (tabId === 'settings') await this.settings.init();
   }
 }
 
