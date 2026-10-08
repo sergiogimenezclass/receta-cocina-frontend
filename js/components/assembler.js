@@ -342,33 +342,46 @@ export class AssemblerComponent {
 
   async generateDishImage(apiKey, promptText) {
     const cleanKey = (apiKey || '').trim();
-    if (!cleanKey) {
-      throw new Error('No has configurado ninguna API Key. Ve a Ajustes (⚙️) para ingresar tu clave gratuita de Google AI Studio.');
-    }
-    if (!cleanKey.startsWith('AIzaSy')) {
-      throw new Error(`La clave de API guardada ("${cleanKey.substring(0, 6)}...") no es válida. Las API Keys gratuitas de Google AI Studio deben comenzar con "AIzaSy...". Por favor corrígela en la pestaña Ajustes (⚙️).`);
+    if (!cleanKey || cleanKey.length < 5) {
+      throw new Error('No has configurado ninguna API Key. Ve a Ajustes (⚙️) para ingresar tu clave de Google AI Studio.');
     }
 
-    // 1. Validar la API Key con Gemini Flash
-    try {
-      const checkResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
-        })
-      });
+    // 1. Validar la API Key con Gemini Flash usando header x-goog-api-key y URL param
+    const endpoints = [
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${cleanKey}`
+    ];
 
-      if (!checkResp.ok) {
-        const errJson = await checkResp.json().catch(() => ({}));
-        const errMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
-        throw new Error(`La API Key de Gemini devolvió un error (${errMsg}). Revisa la clave en la pestaña Ajustes (⚙️).`);
+    let validated = false;
+    let lastErrorMsg = '';
+
+    for (const url of endpoints) {
+      try {
+        const checkResp = await fetch(url, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-goog-api-key': cleanKey
+          },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
+          })
+        });
+
+        if (checkResp.ok) {
+          validated = true;
+          break;
+        } else {
+          const errJson = await checkResp.json().catch(() => ({}));
+          lastErrorMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
+        }
+      } catch (err) {
+        lastErrorMsg = err.message;
       }
-    } catch (err) {
-      if (err.message && (err.message.includes('API Key') || err.message.includes('Ajustes') || err.message.includes('Google AI Studio'))) {
-        throw err;
-      }
-      throw new Error(`No se pudo validar la clave con Google Gemini: ${err.message}. Revisa la configuración en Ajustes (⚙️).`);
+    }
+
+    if (!validated && lastErrorMsg) {
+      throw new Error(`La API Key devolvió un error (${lastErrorMsg}). Revisa tu clave en la pestaña Ajustes (⚙️).`);
     }
 
     // 2. Generar renderizado de alta resolución del plato

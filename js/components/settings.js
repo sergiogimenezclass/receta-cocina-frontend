@@ -25,8 +25,8 @@ export class SettingsComponent {
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
           <h3 style="font-size: 1.15rem; font-weight: 700;">🔑 Clave de API de Google Gemini</h3>
           <div id="apiKeyBadgeContainer">
-            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${apiKey && apiKey.startsWith('AIzaSy') ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
-              ${apiKey ? (apiKey.startsWith('AIzaSy') ? '✅ Clave Configurada' : '⚠️ Formato Inválido (Debe empezar con AIzaSy...)') : '⚠️ Clave No Configurada'}
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${apiKey ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
+              ${apiKey ? '✅ Clave Guardada' : '⚠️ Clave No Configurada'}
             </span>
           </div>
         </div>
@@ -35,7 +35,7 @@ export class SettingsComponent {
           <div class="form-group">
             <label>API Key de Google Gemini (Google AI Studio)</label>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <input type="password" id="inputApiKey" class="form-control" value="${this.escapeHtml(apiKey)}" placeholder="AIzaSy..." required style="flex: 1; min-width: 260px;">
+              <input type="password" id="inputApiKey" class="form-control" value="${this.escapeHtml(apiKey)}" placeholder="AQ.Ab8... o AIzaSy..." required style="flex: 1; min-width: 260px;">
               <button type="submit" class="btn btn-primary">
                 💾 Guardar Clave
               </button>
@@ -48,15 +48,12 @@ export class SettingsComponent {
         </form>
 
         <div style="background: rgba(0, 0, 0, 0.25); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
-          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo de 3 Pasos (Obtener Clave Gratuita):</div>
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo para obtener tu Clave Gratuita:</div>
           <ol style="margin-left: 1.25rem; line-height: 1.6;">
             <li>Ingresa gratis a <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--color-fat); text-decoration: underline;">Google AI Studio (aistudio.google.com)</a> con tu cuenta de Google.</li>
             <li>Haz click en el botón <strong>"Create API Key"</strong>.</li>
-            <li>Copia la clave generada (empieza siempre con <code>AIzaSy...</code>) y pégala arriba.</li>
+            <li>Copia la clave generada (formato <code>AQ...</code> o <code>AIza...</code>) y pégala en el campo superior.</li>
           </ol>
-          <div style="margin-top: 0.5rem; font-size: 0.78rem; color: #f87171; background: rgba(239, 68, 68, 0.1); padding: 0.5rem 0.75rem; border-radius: 4px;">
-            ⚠️ <strong>Importante:</strong> Las claves de Google AI Studio siempre comienzan con <code>AIzaSy...</code>. No pégues tokens de autenticación tipo <code>AQ...</code> o de Google Cloud Console.
-          </div>
         </div>
       </div>
 
@@ -158,36 +155,44 @@ export class SettingsComponent {
     // Helper para probar conexión con Gemini API
     const testKeyConnection = async (key) => {
       const trimmed = (key || '').trim();
-      if (!trimmed) {
-        return { success: false, message: '⚠️ Ingresa una clave de API antes de probar.' };
-      }
-      if (!trimmed.startsWith('AIzaSy')) {
-        return { 
-          success: false, 
-          message: '❌ La clave ingresada no es válida. Las API Keys de Google AI Studio siempre empiezan con "AIzaSy..." (la tuya empieza con "' + trimmed.substring(0, 5) + '...").' 
-        };
+      if (!trimmed || trimmed.length < 5) {
+        return { success: false, message: '⚠️ Ingresa una clave de API válida antes de probar.' };
       }
 
-      // Probar petición liviana a Gemini 1.5 Flash
-      try {
-        const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${trimmed}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: "Responde únicamente OK" }] }]
-          })
-        });
+      // Probar petición liviana a Gemini API (Google AI Studio)
+      const endpoints = [
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${trimmed}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${trimmed}`
+      ];
 
-        if (!resp.ok) {
-          const errData = await resp.json().catch(() => ({}));
-          const detail = errData.error?.message || `HTTP ${resp.status}`;
-          return { success: false, message: `❌ Error al conectar con Google Gemini (${detail}). Verifica la clave en AI Studio.` };
+      for (const url of endpoints) {
+        try {
+          const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+              'x-goog-api-key': trimmed
+            },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: "Hola, responde OK" }] }]
+            })
+          });
+
+          if (resp.ok) {
+            return { success: true, message: '✅ ¡Conexión Exitosa! Tu API Key de Google AI Studio es válida y responde correctamente.' };
+          } else {
+            const errData = await resp.json().catch(() => ({}));
+            const detail = errData.error?.message || `HTTP ${resp.status}`;
+            if (resp.status === 400 || resp.status === 403 || resp.status === 404) {
+              return { success: false, message: `❌ Error de Google Gemini API (${detail}). Verifica que la clave esté habilitada en Google AI Studio.` };
+            }
+          }
+        } catch (err) {
+          // Continuar al siguiente endpoint si hay error de red
         }
-
-        return { success: true, message: '✅ ¡Conexión Exitosa! Tu API Key de Gemini funciona correctamente.' };
-      } catch (err) {
-        return { success: false, message: `❌ Error de red al probar la clave: ${err.message}` };
       }
+
+      return { success: false, message: '❌ No se pudo conectar con el servidor de Google Gemini. Verifica tu clave o conexión.' };
     };
 
     // Guardar API Key
@@ -197,8 +202,8 @@ export class SettingsComponent {
         e.preventDefault();
         const key = inputApiKey.value.trim();
 
-        if (!key.startsWith('AIzaSy')) {
-          apiKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Error: Las API Keys de Google AI Studio deben comenzar con "AIzaSy...". No guardado.</span>`;
+        if (!key || key.length < 5) {
+          apiKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Ingresa una clave válida de Google AI Studio.</span>`;
           return;
         }
 
@@ -208,7 +213,7 @@ export class SettingsComponent {
         if (apiKeyBadgeContainer) {
           apiKeyBadgeContainer.innerHTML = `
             <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
-              ✅ Clave Configurada
+              ✅ Clave Guardada
             </span>
           `;
         }
