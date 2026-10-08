@@ -28,9 +28,7 @@ export class AssemblerComponent {
     this.bindEvents();
   }
 
-  async render() {
-    const components = await storage.getComponents();
-    this.activityRules = await storage.getActivityRules();
+    const calInfo = this.calculatePlateCalories(components);
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
@@ -57,13 +55,19 @@ export class AssemblerComponent {
         </div>
       </div>
 
-      <!-- Banner Informativo del Modulador de Actividad -->
-      <div id="activityPortionNotice" style="font-size: 0.9rem; background: rgba(255, 255, 255, 0.04); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+      <!-- Banner Informativo del Modulador de Actividad y Balance Calórico -->
+      <div id="activityPortionNotice" style="font-size: 0.9rem; background: ${calInfo.isExcess ? 'rgba(239, 68, 68, 0.12)' : 'rgba(255, 255, 255, 0.04)'}; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${calInfo.isExcess ? '#ef4444' : this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
         <div>
           ${this.getCarbPortionNoticeText()}
+          ${calInfo.isExcess ? `<div style="color: #f87171; font-weight: 700; margin-top: 0.35rem; font-size: 0.85rem;">⚠️ Alerta de Calorías: La selección actual excede el objetivo del día por +${calInfo.diffKcal} kcal.</div>` : ''}
         </div>
-        <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-          Carbohidratos Objetivo: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
+            Calorías: <span style="color: ${calInfo.isExcess ? '#f87171' : '#34d399'};">${calInfo.totalKcal} / ${calInfo.targetKcal} kcal</span>
+          </div>
+          <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
+            Carbohidratos: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
+          </div>
         </div>
       </div>
 
@@ -145,6 +149,38 @@ export class AssemblerComponent {
     `;
 
     this.updateStepDefaults(components);
+  }
+
+  calculatePlateCalories(allComponents = []) {
+    let totalKcal = 0;
+    
+    const getGrams = (cat) => {
+      const targetStr = (this.activityRules && this.activityRules[this.currentActivity])
+        ? this.activityRules[this.currentActivity][cat]
+        : '100g';
+      const match = (targetStr || '').match(/(\d+(?:\.\d+)?)/);
+      return match ? parseFloat(match[1]) : 100;
+    };
+
+    const protGrams = getGrams('Proteina');
+    const vegGrams = getGrams('Vegetal');
+    const carbGrams = getGrams('Carbohidrato');
+    const fatGrams = getGrams('Grasa');
+
+    // Estimación nutricional por gramo cocido
+    totalKcal += protGrams * 1.35; // Pechuga/carne magra (~1.35 kcal/g)
+    totalKcal += vegGrams * 0.35;  // Vegetales (~0.35 kcal/g)
+    totalKcal += carbGrams * 1.30; // Arroz/papas cocidas (~1.30 kcal/g)
+    totalKcal += fatGrams * 8.5;   // Grasas saludables (~8.5 kcal/g)
+
+    const targetKcal = this.currentActivity === 'Intenso' ? 720 : (this.currentActivity === 'Moderado' ? 520 : 400);
+
+    return {
+      totalKcal: Math.round(totalKcal),
+      targetKcal,
+      isExcess: totalKcal > targetKcal + 60,
+      diffKcal: Math.round(totalKcal - targetKcal)
+    };
   }
 
   getActivityColor() {
