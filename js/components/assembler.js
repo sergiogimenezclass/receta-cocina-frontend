@@ -562,7 +562,7 @@ export class AssemblerComponent {
     // Botón Generar Imagen con IA
     const btnGenImg = this.container.querySelector('#btnGenerateImage');
     if (btnGenImg) {
-      btnGenImg.addEventListener('click', async () => {
+      const executeImageGeneration = async (mode = 'plate') => {
         const apiKey = await storage.getApiKey();
         const stabilityKey = await storage.getStabilityApiKey();
 
@@ -579,18 +579,26 @@ export class AssemblerComponent {
         const selCarb = components.find(c => c.id === this.selected.Carbohidrato);
         const selFat = components.find(c => c.id === this.selected.Grasa);
 
-        const promptText = `Un plato saludable y delicioso compuesto por ${selProt ? selProt.nombre : ''}, ${selVeg ? selVeg.nombre : ''}, ${selCarb ? selCarb.nombre : ''} y ${selFat ? selFat.nombre : ''}. Presentación gourmet.`;
+        let promptText = '';
+        if (mode === 'grid') {
+          promptText = `A top-view 2x2 grid collage photography showing 4 separate food items in 4 distinct quadrants: top-left quadrant ${selProt ? selProt.nombre : 'Proteína'}, top-right quadrant ${selVeg ? selVeg.nombre : 'Vegetal'}, bottom-left quadrant ${selCarb ? selCarb.nombre : 'Carbohidrato'}, bottom-right quadrant ${selFat ? selFat.nombre : 'Grasa'}. High quality food photography, clean grid divider, studio lighting.`;
+        } else {
+          promptText = `Un plato saludable y delicioso compuesto por ${selProt ? selProt.nombre : ''}, ${selVeg ? selVeg.nombre : ''}, ${selCarb ? selCarb.nombre : ''} y ${selFat ? selFat.nombre : ''}. Presentación gourmet.`;
+        }
 
         // 1. Abrir Modal y mostrar Loader Animado en Vivo
         modalImg.classList.add('open');
         imgModalBody.innerHTML = `
           <div style="padding: 2rem 1rem; text-align: center;">
             <div style="font-size: 3rem; animation: spin 2s infinite linear; display: inline-block; margin-bottom: 1rem;">🎨</div>
-            <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Generando imagen de tu plato con IA...</h4>
+            <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">
+              ${mode === 'grid' ? 'Generando Grilla 2x2 por IA (4 Bloques)...' : 'Generando Plato Emplatado con IA...'}
+            </h4>
             <p style="color: var(--text-secondary); font-size: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
               ${stabilityKey ? 'Sintetizando imagen única por IA con Stability AI (Stable Diffusion Core)...' : 'Conectando con Google Gemini...'}
             </p>
             <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
+              Modo: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong><br>
               Prompt: "${this.escapeHtml(promptText)}"
             </div>
           </div>
@@ -609,32 +617,43 @@ export class AssemblerComponent {
           }
           this.generatedImageSrc = imgSrc;
 
-          // 3. Renderizar resultado en el Modal de la Interfaz
+          // 3. Renderizar resultado en el Modal con selector de modos
           imgModalBody.innerHTML = `
             <div style="text-align: center;">
               <div style="margin-bottom: 1rem; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--border-glow); box-shadow: var(--shadow-md);">
                 <img src="${imgSrc}" alt="Plato generado por IA" style="width: 100%; max-height: 380px; object-fit: cover; display: block;">
               </div>
               <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">${this.escapeHtml(this.plateName)}</h4>
-              <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1.25rem;">
-                Vista previa generada con IA (${this.currentActivity}).
+              <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1rem;">
+                Modo actual: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong> (${this.currentActivity}).
               </p>
-              <div style="display: flex; gap: 0.75rem; justify-content: center;">
-                <button id="btnRetryGenImg" class="btn btn-secondary btn-sm">
-                  🔄 Volver a Generar
+
+              <!-- Botones de Alternancia de Modos -->
+              <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+                <button id="btnGenPlateMode" class="btn ${mode === 'plate' ? 'btn-primary' : 'btn-secondary'} btn-sm">
+                  🍲 Vista Emplatado
                 </button>
-                <button id="btnCloseImgSuccess" class="btn btn-primary btn-sm">
-                  👍 Excelente
+                <button id="btnGenGridMode" class="btn ${mode === 'grid' ? 'btn-primary' : 'btn-secondary'} btn-sm">
+                  🧩 Vista Grilla 2x2
+                </button>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; justify-content: center;">
+                <button id="btnCloseImgSuccess" class="btn btn-secondary btn-sm">
+                  👍 Listo / Cerrar
                 </button>
               </div>
             </div>
           `;
 
-          const btnRetry = imgModalBody.querySelector('#btnRetryGenImg');
-          if (btnRetry) {
-            btnRetry.addEventListener('click', () => {
-              btnGenImg.click();
-            });
+          const btnPlate = imgModalBody.querySelector('#btnGenPlateMode');
+          if (btnPlate) {
+            btnPlate.addEventListener('click', () => executeImageGeneration('plate'));
+          }
+
+          const btnGrid = imgModalBody.querySelector('#btnGenGridMode');
+          if (btnGrid) {
+            btnGrid.addEventListener('click', () => executeImageGeneration('grid'));
           }
 
           const btnSuccess = imgModalBody.querySelector('#btnCloseImgSuccess');
@@ -648,17 +667,19 @@ export class AssemblerComponent {
           imgModalBody.innerHTML = `
             <div style="padding: 1.5rem; text-align: center;">
               <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚠️</div>
-              <h4 style="font-size: 1.1rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;">Error de Autenticación de API Key</h4>
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;">Error al Generar Imagen</h4>
               <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
-                ${this.escapeHtml(err.message || 'La clave ingresada no fue aceptada por Google AI Studio.')}
+                ${this.escapeHtml(err.message || 'Error al conectar con el servicio de IA.')}
               </p>
               <button class="btn btn-primary btn-sm" onclick="document.querySelector('.nav-tab[data-tab=\\'settings\\']').click(); document.getElementById('modalImageGen').classList.remove('open');">
-                ⚙️ Ir a Ajustes para Revisar Clave
+                ⚙️ Ir a Ajustes para Revisar Claves
               </button>
             </div>
           `;
         }
-      });
+      };
+
+      btnGenImg.addEventListener('click', () => executeImageGeneration('plate'));
     }
 
     // Botón Guardar Plato
