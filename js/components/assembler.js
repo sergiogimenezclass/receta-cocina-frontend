@@ -679,7 +679,7 @@ export class AssemblerComponent {
         }
       };
 
-      btnGenImg.addEventListener('click', () => executeImageGeneration('plate'));
+      btnGenImg.addEventListener('click', () => executeImageGeneration('grid'));
     }
 
     // Botón Guardar Plato
