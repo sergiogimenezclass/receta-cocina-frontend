@@ -346,8 +346,8 @@ export class AssemblerComponent {
       throw new Error('No has configurado ninguna API Key. Ve a Ajustes (⚙️) para ingresar tu clave de Google AI Studio.');
     }
 
-    // 1. Obtener dinámicamente el modelo habilitado para la API Key desde Google
-    let selectedModel = 'gemini-3.8-flash';
+    // 1. Obtener dinámicamente los modelos habilitados para la API Key desde Google
+    let candidates = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-3.8-flash'];
     try {
       const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${cleanKey}`, {
         headers: { 'x-goog-api-key': cleanKey }
@@ -359,44 +359,56 @@ export class AssemblerComponent {
           .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
           .map(m => m.name.replace('models/', ''));
 
-        if (availableModels.includes('gemini-3.8-flash')) {
-          selectedModel = 'gemini-3.8-flash';
-        } else {
-          const flashModels = availableModels.filter(m => m.includes('flash')).sort((a, b) => b.localeCompare(a));
-          if (flashModels.length > 0) {
-            selectedModel = flashModels[0];
-          } else if (availableModels.length > 0) {
-            selectedModel = [...availableModels].sort((a, b) => b.localeCompare(a))[0];
-          }
+        if (availableModels.length > 0) {
+          const ordered = [];
+          if (availableModels.includes('gemini-2.0-flash')) ordered.push('gemini-2.0-flash');
+          if (availableModels.includes('gemini-1.5-flash')) ordered.push('gemini-1.5-flash');
+          if (availableModels.includes('gemini-3.8-flash')) ordered.push('gemini-3.8-flash');
+          
+          const remainingFlash = availableModels.filter(m => m.includes('flash') && !ordered.includes(m)).sort((a, b) => b.localeCompare(a));
+          ordered.push(...remainingFlash);
+
+          const remainingOthers = availableModels.filter(m => !ordered.includes(m));
+          ordered.push(...remainingOthers);
+
+          candidates = ordered;
         }
       }
     } catch (e) {
-      // Fallback a modelo estándar
+      // Fallback
     }
 
-    // 2. Realizar petición de generación con el modelo dinámico descubierto
-    try {
-      const checkResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${cleanKey}`, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'x-goog-api-key': cleanKey
-        },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
-        })
-      });
+    // 2. Intentar generación recorriendo candidatos en caso de alta demanda (429) o fallos
+    let validated = false;
+    let lastErrorMsg = '';
 
-      if (!checkResp.ok) {
-        const errJson = await checkResp.json().catch(() => ({}));
-        const errMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
-        throw new Error(`Google Gemini API (${selectedModel}): ${errMsg}. Revisa la clave en la pestaña Ajustes (⚙️).`);
+    for (const modelName of candidates) {
+      try {
+        const checkResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${cleanKey}`, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-goog-api-key': cleanKey
+          },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
+          })
+        });
+
+        if (checkResp.ok) {
+          validated = true;
+          break;
+        } else {
+          const errJson = await checkResp.json().catch(() => ({}));
+          lastErrorMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
+        }
+      } catch (err) {
+        lastErrorMsg = err.message;
       }
-    } catch (err) {
-      if (err.message && (err.message.includes('API Key') || err.message.includes('Ajustes') || err.message.includes('Google Gemini API'))) {
-        throw err;
-      }
-      throw new Error(`Error al conectar con Google Gemini: ${err.message}. Revisa la configuración en Ajustes (⚙️).`);
+    }
+
+    if (!validated) {
+      throw new Error(`Google Gemini API: ${lastErrorMsg || 'Servidores con alta demanda.'}. Revisa tu clave en Ajustes (⚙️) o reintenta en unos instantes.`);
     }
 
     // 3. Generar renderizado de alta resolución del plato

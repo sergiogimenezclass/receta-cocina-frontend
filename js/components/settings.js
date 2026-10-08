@@ -180,38 +180,48 @@ export class SettingsComponent {
           return { success: false, message: '⚠️ La API Key es válida, pero no tiene modelos asignados para generar contenido.' };
         }
 
-        // Seleccionar preferentemente gemini-3.8-flash o la versión flash más reciente
-        let selectedModel = 'gemini-3.8-flash';
-        if (availableModels.includes('gemini-3.8-flash')) {
-          selectedModel = 'gemini-3.8-flash';
-        } else {
-          const flashModels = availableModels.filter(m => m.includes('flash')).sort((a, b) => b.localeCompare(a));
-          if (flashModels.length > 0) {
-            selectedModel = flashModels[0];
-          } else if (availableModels.length > 0) {
-            selectedModel = [...availableModels].sort((a, b) => b.localeCompare(a))[0];
+        // Construir lista de candidatos ordenados por preferencia
+        const candidates = [];
+        if (availableModels.includes('gemini-2.0-flash')) candidates.push('gemini-2.0-flash');
+        if (availableModels.includes('gemini-1.5-flash')) candidates.push('gemini-1.5-flash');
+        if (availableModels.includes('gemini-3.8-flash')) candidates.push('gemini-3.8-flash');
+        
+        // Agregar los demás modelos flash disponibles
+        const otherFlash = availableModels.filter(m => m.includes('flash') && !candidates.includes(m)).sort((a, b) => b.localeCompare(a));
+        candidates.push(...otherFlash);
+
+        // Agregar el resto
+        const others = availableModels.filter(m => !candidates.includes(m));
+        candidates.push(...others);
+
+        let lastDetail = '';
+
+        // Step 2: Probar petición de generación en la cadena de fallback
+        for (const modelName of candidates) {
+          try {
+            const genResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${trimmed}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-goog-api-key': trimmed
+              },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: "Responde únicamente OK" }] }]
+              })
+            });
+
+            if (genResp.ok) {
+              return { success: true, message: `✅ ¡Conexión Exitosa! Tu API Key es válida y está conectada activamente con '${modelName}'.` };
+            } else {
+              const errData = await genResp.json().catch(() => ({}));
+              lastDetail = errData.error?.message || `HTTP ${genResp.status}`;
+            }
+          } catch (e) {
+            lastDetail = e.message;
           }
         }
 
-        // Step 2: Probar petición de generación
-        const genResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${trimmed}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': trimmed
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: "Responde únicamente OK" }] }]
-          })
-        });
-
-        if (genResp.ok) {
-          return { success: true, message: `✅ ¡Conexión Exitosa! Tu API Key es válida y está conectada con el modelo '${selectedModel}'.` };
-        } else {
-          const errData = await genResp.json().catch(() => ({}));
-          const detail = errData.error?.message || `HTTP ${genResp.status}`;
-          return { success: false, message: `❌ Clave válida, pero error al invocar '${selectedModel}': ${detail}` };
-        }
+        return { success: false, message: `❌ Clave válida, pero los modelos están experimentando alta demanda en Google: ${lastDetail}` };
       } catch (err) {
         return { success: false, message: `❌ Error de red al probar la clave: ${err.message}` };
       }
