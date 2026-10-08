@@ -17,6 +17,7 @@ export class AssemblerComponent {
     this.customSteps = ['', '', ''];
     this.plateName = 'Mi Plato Modular Custom';
     this.drawerOpen = false;
+    this.showOnlyDespensa = true;
   }
 
   async init() {
@@ -43,6 +44,12 @@ export class AssemblerComponent {
               🟢 Descanso (Rest)
             </button>
           </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <button id="btnToggleDespensaFilter" class="btn btn-secondary btn-sm">
+            ${this.showOnlyDespensa ? '⭐ Solo mi Despensa' : '🌐 Todo el Catálogo'}
+          </button>
         </div>
       </div>
 
@@ -196,8 +203,16 @@ export class AssemblerComponent {
   }
 
   renderColumn(category, title, allComponents) {
-    const categoryComponents = allComponents.filter(c => c.categoria === category);
+    let categoryComponents = allComponents.filter(c => c.categoria === category);
     
+    // Si el filtro de Despensa está activo, filtrar solo los marcados en despensa
+    if (this.showOnlyDespensa) {
+      const despensaComponents = categoryComponents.filter(c => c.en_despensa !== false);
+      if (despensaComponents.length > 0) {
+        categoryComponents = despensaComponents;
+      }
+    }
+
     // Auto-seleccionar el primero si no hay ninguno seleccionado
     if (!this.selected[category] && categoryComponents.length > 0) {
       this.selected[category] = categoryComponents[0].id;
@@ -314,6 +329,16 @@ export class AssemblerComponent {
   }
 
   bindEvents() {
+    // Toggle Filtro Despensa ⭐
+    const btnToggleDespensa = this.container.querySelector('#btnToggleDespensaFilter');
+    if (btnToggleDespensa) {
+      btnToggleDespensa.addEventListener('click', async () => {
+        this.showOnlyDespensa = !this.showOnlyDespensa;
+        await this.render();
+        this.bindEvents();
+      });
+    }
+
     // Selector de actividad
     this.container.querySelectorAll('.activity-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
