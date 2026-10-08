@@ -154,35 +154,70 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
+  calculateCategoryStats(category, allComponents = []) {
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
+    const selComps = allComponents.filter(c => selectedIds.includes(c.id));
+    
+    const targetStr = (this.activityRules && this.activityRules[this.currentActivity])
+      ? this.activityRules[this.currentActivity][category]
+      : '100g';
+    
+    const targetMatch = (targetStr || '').match(/(\d+(?:\.\d+)?)/);
+    const targetNum = targetMatch ? parseFloat(targetMatch[1]) : 100;
+    const unit = (targetStr || '').replace(/[\d\.]/g, '').trim() || 'g';
+
+    let totalGrams = 0;
+    if (selComps.length > 0) {
+      selComps.forEach(comp => {
+        const compMatch = (comp.porcion_base || '').match(/(\d+(?:\.\d+)?)/);
+        const compVal = compMatch ? parseFloat(compMatch[1]) : targetNum;
+        totalGrams += compVal;
+      });
+    }
+
+    const isExcess = totalGrams > targetNum + 2;
+    const diffGrams = Math.round(totalGrams - targetNum);
+
+    return {
+      category,
+      selectedCount: selComps.length,
+      totalGrams: Math.round(totalGrams),
+      targetNum,
+      unit,
+      isExcess,
+      diffGrams
+    };
+  }
+
   calculatePlateCalories(allComponents = []) {
     let totalKcal = 0;
-    
-    const getGrams = (cat) => {
-      const targetStr = (this.activityRules && this.activityRules[this.currentActivity])
-        ? this.activityRules[this.currentActivity][cat]
-        : '100g';
-      const match = (targetStr || '').match(/(\d+(?:\.\d+)?)/);
-      return match ? parseFloat(match[1]) : 100;
-    };
+    const blockExcesses = [];
+    const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
 
-    const protGrams = getGrams('Proteina');
-    const vegGrams = getGrams('Vegetal');
-    const carbGrams = getGrams('Carbohidrato');
-    const fatGrams = getGrams('Grasa');
+    categories.forEach(cat => {
+      const stats = this.calculateCategoryStats(cat, allComponents);
+      
+      let kcalMultiplier = 1.35;
+      if (cat === 'Vegetal') kcalMultiplier = 0.35;
+      if (cat === 'Carbohidrato') kcalMultiplier = 1.30;
+      if (cat === 'Grasa') kcalMultiplier = 8.5;
 
-    // Estimación nutricional por gramo cocido
-    totalKcal += protGrams * 1.35; // Pechuga/carne magra (~1.35 kcal/g)
-    totalKcal += vegGrams * 0.35;  // Vegetales (~0.35 kcal/g)
-    totalKcal += carbGrams * 1.30; // Arroz/papas cocidas (~1.30 kcal/g)
-    totalKcal += fatGrams * 8.5;   // Grasas saludables (~8.5 kcal/g)
+      totalKcal += stats.totalGrams * kcalMultiplier;
+
+      if (stats.isExcess) {
+        blockExcesses.push(`${cat}: ${stats.totalGrams}${stats.unit} (Meta: ${stats.targetNum}${stats.unit}, +${stats.diffGrams}${stats.unit} exceso)`);
+      }
+    });
 
     const targetKcal = this.currentActivity === 'Intenso' ? 720 : (this.currentActivity === 'Moderado' ? 520 : 400);
+    const isExcess = blockExcesses.length > 0 || totalKcal > targetKcal + 50;
 
     return {
       totalKcal: Math.round(totalKcal),
       targetKcal,
-      isExcess: totalKcal > targetKcal + 60,
-      diffKcal: Math.round(totalKcal - targetKcal)
+      isExcess,
+      diffKcal: Math.round(totalKcal - targetKcal),
+      blockExcesses
     };
   }
 
@@ -287,16 +322,19 @@ export class AssemblerComponent {
 
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [this.selected[category]];
     const count = selectedIds.length || 1;
+    const stats = this.calculateCategoryStats(category, allComponents);
 
     let subBadge = category;
-    if (category === 'Carbohidrato') {
+    if (stats.isExcess) {
+      subBadge = `🚨 EXCESO: ${stats.totalGrams}${stats.unit} (+${stats.diffGrams}${stats.unit})`;
+    } else if (category === 'Carbohidrato') {
       subBadge = `🥔 ${this.getCarbTargetText()}`;
     } else if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
       subBadge = '🥗 Extra Fibra';
     }
 
-    if (count > 1) {
-      subBadge += ` • ${count} sel. (÷${count})`;
+    if (!stats.isExcess && count > 1) {
+      subBadge += ` • ${count} sel.`;
     }
 
     const cardsHtml = categoryComponents.map(comp => {
@@ -305,17 +343,17 @@ export class AssemblerComponent {
 
       return `
         <div class="component-item-card ${isSelected ? 'selected' : ''}"
-             data-id="${comp.id}" data-category="${category}">
+             data-id="${comp.id}" data-category="${category}" style="${stats.isExcess && isSelected ? 'border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.08);' : ''}">
           <div class="card-header-row">
             <div class="card-title-group">
               <span>${comp.icono || '🥗'}</span>
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
-            ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
+            ${isSelected ? `<span style="color: ${stats.isExcess ? '#ef4444' : '#34d399'}; font-weight: 700; font-size: 0.85rem;">${stats.isExcess ? '⚠️ Exceso' : '✓'}</span>` : ''}
           </div>
 
           <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
-          <div style="background: ${this.getPortionBadgeBg(category)}; border: 1px solid ${this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
+          <div style="background: ${stats.isExcess && isSelected ? 'rgba(239, 68, 68, 0.25)' : this.getPortionBadgeBg(category)}; border: 1px solid ${stats.isExcess && isSelected ? '#ef4444' : this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${stats.isExcess && isSelected ? '#fca5a5' : this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
             Porción: ${portionText}
           </div>
 
@@ -328,10 +366,10 @@ export class AssemblerComponent {
     }).join('');
 
     return `
-      <div class="block-column" data-category="${category}">
+      <div class="block-column" data-category="${category}" style="${stats.isExcess ? 'border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-lg); padding: 0.5rem;' : ''}">
         <div class="block-column-header">
           <div class="block-title">${title}</div>
-          <span class="block-badge">${subBadge}</span>
+          <span class="block-badge" style="${stats.isExcess ? 'background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; font-weight: 700;' : ''}">${subBadge}</span>
         </div>
         <div class="components-list">
           ${cardsHtml.length > 0 ? cardsHtml : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay componentes cargados.</div>'}
@@ -341,9 +379,12 @@ export class AssemblerComponent {
   }
 
   renderStickyChips(allComponents) {
+    const calInfo = this.calculatePlateCalories(allComponents);
+
     const formatBlockChip = (category, icon, defaultLabel, colorBg, colorText, colorBorder) => {
       const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
       const selComps = allComponents.filter(c => selectedIds.includes(c.id));
+      const stats = this.calculateCategoryStats(category, allComponents);
 
       if (selComps.length === 0) {
         return `
@@ -354,6 +395,15 @@ export class AssemblerComponent {
       }
 
       const names = selComps.map(c => c.nombre).join(' + ');
+
+      if (stats.isExcess) {
+        return `
+          <div class="sticky-chip" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid #ef4444; font-weight: 700;">
+            ⚠️ ${icon} ${names} (${stats.totalGrams}${stats.unit} / ${stats.targetNum}${stats.unit})
+          </div>
+        `;
+      }
+
       const portionText = this.calculatePortion(selComps[0], selComps.length);
 
       return `
@@ -363,7 +413,14 @@ export class AssemblerComponent {
       `;
     };
 
+    const statusChip = `
+      <div class="sticky-chip" style="background: ${calInfo.isExcess ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.15)'}; color: ${calInfo.isExcess ? '#f87171' : '#34d399'}; border: 1px solid ${calInfo.isExcess ? '#ef4444' : 'rgba(16, 185, 129, 0.3)'}; font-weight: 700;">
+        🔥 ${calInfo.totalKcal} / ${calInfo.targetKcal} kcal ${calInfo.isExcess ? '(⚠️ Exceso)' : '(✅ OK)'}
+      </div>
+    `;
+
     return `
+      ${statusChip}
       ${formatBlockChip('Proteina', '🥩', 'Proteína', 'var(--color-prot-bg)', 'var(--color-prot)', 'var(--color-prot-border)')}
       ${formatBlockChip('Vegetal', '🥦', 'Vegetal', 'var(--color-veg-bg)', 'var(--color-veg)', 'var(--color-veg-border)')}
       ${formatBlockChip('Carbohidrato', '🥔', 'Carbohidrato', 'var(--color-carb-bg)', 'var(--color-carb)', 'var(--color-carb-border)')}
