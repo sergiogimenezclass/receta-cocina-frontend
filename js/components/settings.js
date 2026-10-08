@@ -152,47 +152,59 @@ export class SettingsComponent {
     const apiKeyFeedback = this.container.querySelector('#apiKeyFeedback');
     const apiKeyBadgeContainer = this.container.querySelector('#apiKeyBadgeContainer');
 
-    // Helper para probar conexión con Gemini API
+    // Helper para probar conexión con Gemini API con descubrimiento dinámico de modelos
     const testKeyConnection = async (key) => {
       const trimmed = (key || '').trim();
       if (!trimmed || trimmed.length < 5) {
         return { success: false, message: '⚠️ Ingresa una clave de API válida antes de probar.' };
       }
 
-      // Probar petición liviana a Gemini API (Google AI Studio)
-      const endpoints = [
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${trimmed}`,
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${trimmed}`
-      ];
+      try {
+        // Step 1: Consultar la lista de modelos disponibles para esta API Key
+        const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${trimmed}`, {
+          headers: { 'x-goog-api-key': trimmed }
+        });
 
-      for (const url of endpoints) {
-        try {
-          const resp = await fetch(url, {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'x-goog-api-key': trimmed
-            },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: "Hola, responde OK" }] }]
-            })
-          });
-
-          if (resp.ok) {
-            return { success: true, message: '✅ ¡Conexión Exitosa! Tu API Key de Google AI Studio es válida y responde correctamente.' };
-          } else {
-            const errData = await resp.json().catch(() => ({}));
-            const detail = errData.error?.message || `HTTP ${resp.status}`;
-            if (resp.status === 400 || resp.status === 403 || resp.status === 404) {
-              return { success: false, message: `❌ Error de Google Gemini API (${detail}). Verifica que la clave esté habilitada en Google AI Studio.` };
-            }
-          }
-        } catch (err) {
-          // Continuar al siguiente endpoint si hay error de red
+        if (!listResp.ok) {
+          const errData = await listResp.json().catch(() => ({}));
+          const detail = errData.error?.message || `HTTP ${listResp.status}`;
+          return { success: false, message: `❌ Error al conectar con Google Gemini (${detail}). Revisa la clave en Google AI Studio.` };
         }
-      }
 
-      return { success: false, message: '❌ No se pudo conectar con el servidor de Google Gemini. Verifica tu clave o conexión.' };
+        const data = await listResp.json();
+        const availableModels = (data.models || [])
+          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+          .map(m => m.name.replace('models/', ''));
+
+        if (availableModels.length === 0) {
+          return { success: false, message: '⚠️ La API Key es válida, pero no tiene modelos asignados para generar contenido.' };
+        }
+
+        // Seleccionar preferentemente un modelo flash o el primero activo
+        const selectedModel = availableModels.find(m => m.includes('flash')) || availableModels[0];
+
+        // Step 2: Probar petición de generación
+        const genResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${trimmed}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': trimmed
+          },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: "Responde únicamente OK" }] }]
+          })
+        });
+
+        if (genResp.ok) {
+          return { success: true, message: `✅ ¡Conexión Exitosa! Tu API Key es válida y está conectada con el modelo '${selectedModel}'.` };
+        } else {
+          const errData = await genResp.json().catch(() => ({}));
+          const detail = errData.error?.message || `HTTP ${genResp.status}`;
+          return { success: false, message: `❌ Clave válida, pero error al invocar '${selectedModel}': ${detail}` };
+        }
+      } catch (err) {
+        return { success: false, message: `❌ Error de red al probar la clave: ${err.message}` };
+      }
     };
 
     // Guardar API Key

@@ -346,49 +346,57 @@ export class AssemblerComponent {
       throw new Error('No has configurado ninguna API Key. Ve a Ajustes (⚙️) para ingresar tu clave de Google AI Studio.');
     }
 
-    // 1. Validar la API Key con Gemini Flash usando header x-goog-api-key y URL param
-    const endpoints = [
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanKey}`,
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${cleanKey}`
-    ];
+    // 1. Obtener dinámicamente el modelo habilitado para la API Key desde Google
+    let selectedModel = 'gemini-1.5-flash';
+    try {
+      const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${cleanKey}`, {
+        headers: { 'x-goog-api-key': cleanKey }
+      });
 
-    let validated = false;
-    let lastErrorMsg = '';
+      if (listResp.ok) {
+        const data = await listResp.json();
+        const availableModels = (data.models || [])
+          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+          .map(m => m.name.replace('models/', ''));
 
-    for (const url of endpoints) {
-      try {
-        const checkResp = await fetch(url, {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'x-goog-api-key': cleanKey
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
-          })
-        });
-
-        if (checkResp.ok) {
-          validated = true;
-          break;
-        } else {
-          const errJson = await checkResp.json().catch(() => ({}));
-          lastErrorMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
+        if (availableModels.length > 0) {
+          selectedModel = availableModels.find(m => m.includes('flash')) || availableModels[0];
         }
-      } catch (err) {
-        lastErrorMsg = err.message;
       }
+    } catch (e) {
+      // Fallback a modelo estándar
     }
 
-    if (!validated && lastErrorMsg) {
-      throw new Error(`La API Key devolvió un error (${lastErrorMsg}). Revisa tu clave en la pestaña Ajustes (⚙️).`);
+    // 2. Realizar petición de generación con el modelo dinámico descubierto
+    try {
+      const checkResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${cleanKey}`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-goog-api-key': cleanKey
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: "Genera una descripción corta para fotografiar este plato: " + promptText }] }]
+        })
+      });
+
+      if (!checkResp.ok) {
+        const errJson = await checkResp.json().catch(() => ({}));
+        const errMsg = errJson.error?.message || `HTTP ${checkResp.status}`;
+        throw new Error(`Google Gemini API (${selectedModel}): ${errMsg}. Revisa la clave en la pestaña Ajustes (⚙️).`);
+      }
+    } catch (err) {
+      if (err.message && (err.message.includes('API Key') || err.message.includes('Ajustes') || err.message.includes('Google Gemini API'))) {
+        throw err;
+      }
+      throw new Error(`Error al conectar con Google Gemini: ${err.message}. Revisa la configuración en Ajustes (⚙️).`);
     }
 
-    // 2. Generar renderizado de alta resolución del plato
+    // 3. Generar renderizado de alta resolución del plato
     const encodedPrompt = encodeURIComponent(promptText + " gourmet food photography top view studio lighting 8k resolution masterchef quality");
     const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&seed=${Date.now()}`;
 
-    // Pre-cargar imagen para asegurar render impecable en la UI
+    // Pre-cargar imagen para asegurar render en la UI
     await new Promise((resolve) => {
       const img = new Image();
       img.onload = resolve;
