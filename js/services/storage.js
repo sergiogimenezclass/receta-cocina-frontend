@@ -45,6 +45,9 @@ class StorageService {
       components.push(component);
     }
     localStorage.setItem(KEYS.COMPONENTS, JSON.stringify(components));
+    return component;
+  }
+
   async toggleDespensaStatus(componentId) {
     const components = await this.getComponents();
     const comp = components.find(c => c.id === componentId);
