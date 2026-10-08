@@ -1,0 +1,10 @@
+# Database & Server
+*.db
+*.sqlite
+*.log
+__pycache__/
+
+# OS & IDE
+.DS_Store
+.vscode/
+.idea/
