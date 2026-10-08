@@ -28,6 +28,9 @@ export class AssemblerComponent {
     this.bindEvents();
   }
 
+  async render() {
+    const components = await storage.getComponents();
+    this.activityRules = await storage.getActivityRules();
     const calInfo = this.calculatePlateCalories(components);
 
     this.container.innerHTML = `
