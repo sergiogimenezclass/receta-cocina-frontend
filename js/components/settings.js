@@ -12,18 +12,19 @@ export class SettingsComponent {
 
   async render() {
     const apiKey = await storage.getApiKey();
+    const stabilityApiKey = await storage.getStabilityApiKey();
     const rules = await storage.getActivityRules();
 
     this.container.innerHTML = `
       <div style="margin-bottom: 2rem;">
         <h2 style="font-size: 1.4rem; font-weight: 700;">⚙️ Configuración y Ajustes</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">Configura tu API Key para la generación de imágenes con IA y personaliza las porciones sugeridas por bloque.</p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Configura tus API Keys para la inteligencia de recetas y la generación de imágenes reales con IA.</p>
       </div>
 
       <!-- SECCIÓN 1: GEMINI API KEY -->
       <div class="glass-card" style="padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h3 style="font-size: 1.15rem; font-weight: 700;">🔑 Clave de API de Google Gemini</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 700;">🔑 Clave de API de Google Gemini (Inteligencia & Texto)</h3>
           <div id="apiKeyBadgeContainer">
             <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${apiKey ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
               ${apiKey ? '✅ Clave Guardada' : '⚠️ Clave No Configurada'}
@@ -48,11 +49,50 @@ export class SettingsComponent {
         </form>
 
         <div style="background: rgba(0, 0, 0, 0.25); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
-          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo para obtener tu Clave Gratuita:</div>
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo para obtener tu Clave de Gemini:</div>
           <ol style="margin-left: 1.25rem; line-height: 1.6;">
-            <li>Ingresa gratis a <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--color-fat); text-decoration: underline;">Google AI Studio (aistudio.google.com)</a> con tu cuenta de Google.</li>
+            <li>Ingresa gratis a <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--color-fat); text-decoration: underline;">Google AI Studio (aistudio.google.com)</a>.</li>
             <li>Haz click en el botón <strong>"Create API Key"</strong>.</li>
             <li>Copia la clave generada (formato <code>AQ...</code> o <code>AIza...</code>) y pégala en el campo superior.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- SECCIÓN STABILITY AI -->
+      <div class="glass-card" style="padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;">🎨 Clave de API de Stability AI (Generación de Imágenes IA Real)</h3>
+          <div id="stabilityBadgeContainer">
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${stabilityApiKey ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
+              ${stabilityApiKey ? '✅ Clave Configurada' : '⚠️ No Configurada'}
+            </span>
+          </div>
+        </div>
+
+        <form id="formStabilityKey" style="margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label>API Key de Stability AI (sk-...)</label>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <input type="password" id="inputStabilityApiKey" class="form-control" value="${this.escapeHtml(stabilityApiKey)}" placeholder="sk-..." required style="flex: 1; min-width: 260px;">
+              <button type="submit" class="btn btn-primary">
+                💾 Guardar Clave Stability
+              </button>
+              <button type="button" id="btnTestStabilityKey" class="btn btn-secondary">
+                🧪 Probar Stability
+              </button>
+            </div>
+            <div id="stabilityKeyFeedback" style="margin-top: 0.5rem; font-size: 0.85rem;"></div>
+          </div>
+        </form>
+
+        <div style="background: rgba(0, 0, 0, 0.25); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo Paso a Paso para obtener tu Clave de Stability AI:</div>
+          <ol style="margin-left: 1.25rem; line-height: 1.6;">
+            <li>Ingresa a <a href="https://platform.stability.ai" target="_blank" style="color: var(--color-fat); text-decoration: underline;">platform.stability.ai</a> con tu cuenta.</li>
+            <li>Haz click en tu <strong>icono de perfil / usuario</strong> en la esquina superior derecha.</li>
+            <li>Haz click en la opción <strong>"API Keys"</strong>.</li>
+            <li>Haz click en el botón <strong>"+ Create API Key"</strong>.</li>
+            <li>Copia la clave generada (comienza con <code>sk-...</code>) y pégala arriba.</li>
           </ol>
         </div>
       </div>
@@ -252,7 +292,7 @@ export class SettingsComponent {
       });
     }
 
-    // Botón Probar Clave
+    // Botón Probar Clave Gemini
     const btnTestApiKey = this.container.querySelector('#btnTestApiKey');
     if (btnTestApiKey) {
       btnTestApiKey.addEventListener('click', async () => {
@@ -270,6 +310,69 @@ export class SettingsComponent {
           apiKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">${res.message}</span>`;
         } else {
           apiKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">${res.message}</span>`;
+        }
+      });
+    }
+
+    // Guardar y Probar API Key de Stability AI
+    const formStabilityKey = this.container.querySelector('#formStabilityKey');
+    const inputStabilityApiKey = this.container.querySelector('#inputStabilityApiKey');
+    const stabilityKeyFeedback = this.container.querySelector('#stabilityKeyFeedback');
+    const stabilityBadgeContainer = this.container.querySelector('#stabilityBadgeContainer');
+    const btnTestStabilityKey = this.container.querySelector('#btnTestStabilityKey');
+
+    if (formStabilityKey) {
+      formStabilityKey.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const key = inputStabilityApiKey.value.trim();
+        if (!key || key.length < 5) {
+          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Ingresa una API Key válida de Stability AI (sk-...).</span>`;
+          return;
+        }
+        await storage.saveStabilityApiKey(key);
+        stabilityKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">💾 ¡API Key de Stability AI guardada con éxito!</span>`;
+        if (stabilityBadgeContainer) {
+          stabilityBadgeContainer.innerHTML = `
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+              ✅ Clave Configurada
+            </span>
+          `;
+        }
+      });
+    }
+
+    if (btnTestStabilityKey) {
+      btnTestStabilityKey.addEventListener('click', async () => {
+        const key = inputStabilityApiKey.value.trim();
+        if (!key || !key.startsWith('sk-')) {
+          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Las claves de Stability AI comienzan con "sk-...".</span>`;
+          return;
+        }
+
+        btnTestStabilityKey.disabled = true;
+        btnTestStabilityKey.textContent = '⌛ Probando...';
+        stabilityKeyFeedback.innerHTML = `<span style="color: var(--text-secondary);">Verificando clave con Stability AI API...</span>`;
+
+        try {
+          const resp = await fetch('https://api.stability.ai/v1/user/account', {
+            headers: { 'Authorization': `Bearer ${key}` }
+          });
+
+          btnTestStabilityKey.disabled = false;
+          btnTestStabilityKey.textContent = '🧪 Probar Stability';
+
+          if (resp.ok) {
+            const data = await resp.json().catch(() => ({}));
+            const credits = data.credits !== undefined ? ` (Saldo: ${Math.round(data.credits)} créditos)` : '';
+            stabilityKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">✅ ¡Conexión Exitosa con Stability AI!${credits}</span>`;
+          } else {
+            const errData = await resp.json().catch(() => ({}));
+            stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Error al conectar con Stability AI: ${errData.message || `HTTP ${resp.status}`}</span>`;
+          }
+        } catch (err) {
+          btnTestStabilityKey.disabled = false;
+          btnTestStabilityKey.textContent = '🧪 Probar Stability';
+          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Error de red: ${err.message}</span>`;
         }
       });
     }

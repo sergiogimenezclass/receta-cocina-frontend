@@ -441,6 +441,35 @@ export class AssemblerComponent {
     return imageUrl;
   }
 
+  async generateDishImageWithStability(stabilityKey, promptText) {
+    const formData = new FormData();
+    formData.append('prompt', promptText + ', top view studio lighting gourmet food photography, 8k resolution masterchef quality');
+    formData.append('output_format', 'png');
+    formData.append('aspect_ratio', '1:1');
+
+    const resp = await fetch('https://api.stability.ai/v2beta/stable-image/generate/core', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${stabilityKey.trim()}`,
+        'Accept': 'application/json'
+      },
+      body: formData
+    });
+
+    if (!resp.ok) {
+      const errData = await resp.json().catch(() => ({}));
+      const msg = errData.errors?.[0] || errData.message || `HTTP ${resp.status}`;
+      throw new Error(`Error de Stability AI API: ${msg}`);
+    }
+
+    const data = await resp.json();
+    if (!data.image) {
+      throw new Error('No se recibió la imagen sintetizada de Stability AI.');
+    }
+
+    return `data:image/png;base64,${data.image}`;
+  }
+
   bindEvents() {
     // Toggle Filtro Despensa ⭐
     const btnToggleDespensa = this.container.querySelector('#btnToggleDespensaFilter');
@@ -535,8 +564,10 @@ export class AssemblerComponent {
     if (btnGenImg) {
       btnGenImg.addEventListener('click', async () => {
         const apiKey = await storage.getApiKey();
-        if (!apiKey) {
-          alert('🔑 Por favor ingresa tu API Key de Google Gemini en la pestaña Ajustes (⚙️) para habilitar la generación de imágenes con IA.');
+        const stabilityKey = await storage.getStabilityApiKey();
+
+        if (!apiKey && !stabilityKey) {
+          alert('🔑 Por favor ingresa tu API Key en la pestaña Ajustes (⚙️) para habilitar la generación de imágenes con IA.');
           const settingsTab = document.querySelector('.nav-tab[data-tab="settings"]');
           if (settingsTab) settingsTab.click();
           return;
@@ -557,7 +588,7 @@ export class AssemblerComponent {
             <div style="font-size: 3rem; animation: spin 2s infinite linear; display: inline-block; margin-bottom: 1rem;">🎨</div>
             <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Generando imagen de tu plato con IA...</h4>
             <p style="color: var(--text-secondary); font-size: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
-              Conectando a Google Gemini con tu clave de API... Esto suele tardar de 3 a 5 segundos.
+              ${stabilityKey ? 'Sintetizando imagen única por IA con Stability AI (Stable Diffusion Core)...' : 'Conectando con Google Gemini...'}
             </p>
             <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
               Prompt: "${this.escapeHtml(promptText)}"
@@ -568,9 +599,14 @@ export class AssemblerComponent {
           </style>
         `;
 
-        // 2. Ejecutar llamada a la API
+        // 2. Ejecutar generación con la API configurada
         try {
-          const imgSrc = await this.generateDishImage(apiKey, promptText);
+          let imgSrc = '';
+          if (stabilityKey) {
+            imgSrc = await this.generateDishImageWithStability(stabilityKey, promptText);
+          } else {
+            imgSrc = await this.generateDishImage(apiKey, promptText);
+          }
           this.generatedImageSrc = imgSrc;
 
           // 3. Renderizar resultado en el Modal de la Interfaz

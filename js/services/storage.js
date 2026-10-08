@@ -5,6 +5,7 @@ const KEYS = {
   PLATES: 'mpb_plates_v1',
   WEEKLY_PLAN: 'mpb_weekly_plan_v1',
   API_KEY: 'mpb_gemini_api_key_v1',
+  STABILITY_API_KEY: 'mpb_stability_api_key_v1',
   ACTIVITY_RULES: 'mpb_activity_rules_v1'
 };
 
@@ -38,13 +39,22 @@ class StorageService {
     }
   }
 
-  // --- CONFIGURACIÓN & API KEY ---
+  // --- CONFIGURACIÓN & API KEYS ---
   async getApiKey() {
     return localStorage.getItem(KEYS.API_KEY) || '';
   }
 
   async saveApiKey(key) {
     localStorage.setItem(KEYS.API_KEY, key.trim());
+    return key.trim();
+  }
+
+  async getStabilityApiKey() {
+    return localStorage.getItem(KEYS.STABILITY_API_KEY) || '';
+  }
+
+  async saveStabilityApiKey(key) {
+    localStorage.setItem(KEYS.STABILITY_API_KEY, key.trim());
     return key.trim();
   }
 
