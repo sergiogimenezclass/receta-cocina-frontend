@@ -11,7 +11,6 @@ export const INITIAL_SEED = {
       categoria: "Proteina",
       tiempo_preparacion_min: 12,
       metodo_coccion: "Plancha a fuego medio con sal y pimienta",
-      en_heladera: true,
       icono: "🍗",
       porcion_base: "150g"
     },
@@ -21,7 +20,6 @@ export const INITIAL_SEED = {
       categoria: "Proteina",
       tiempo_preparacion_min: 10,
       metodo_coccion: "Plancha muy caliente 4 min por lado",
-      en_heladera: true,
       icono: "🥩",
       porcion_base: "180g"
     },
@@ -31,7 +29,6 @@ export const INITIAL_SEED = {
       categoria: "Proteina",
       tiempo_preparacion_min: 5,
       metodo_coccion: "Sartén antiadherente a fuego bajo",
-      en_heladera: true,
       icono: "🥚",
       porcion_base: "3 unidades"
     },
@@ -41,7 +38,6 @@ export const INITIAL_SEED = {
       categoria: "Proteina",
       tiempo_preparacion_min: 8,
       metodo_coccion: "Dorar en cubos con salsa de soya",
-      en_heladera: false,
       icono: "🧈",
       porcion_base: "160g"
     },
@@ -51,7 +47,6 @@ export const INITIAL_SEED = {
       categoria: "Proteina",
       tiempo_preparacion_min: 9,
       metodo_coccion: "Sellado rápido a la plancha",
-      en_heladera: false,
       icono: "🐟",
       porcion_base: "150g"
     },
@@ -63,7 +58,6 @@ export const INITIAL_SEED = {
       categoria: "Vegetal",
       tiempo_preparacion_min: 8,
       metodo_coccion: "Cocinar al vapor o hervir 6 min",
-      en_heladera: true,
       icono: "🥦",
       porcion_base: "150g"
     },
@@ -73,7 +67,6 @@ export const INITIAL_SEED = {
       categoria: "Vegetal",
       tiempo_preparacion_min: 3,
       metodo_coccion: "Crudo en ensalada fresca",
-      en_heladera: true,
       icono: "🥗",
       porcion_base: "1 bowl"
     },
@@ -83,7 +76,6 @@ export const INITIAL_SEED = {
       categoria: "Vegetal",
       tiempo_preparacion_min: 6,
       metodo_coccion: "Rodajas a la plancha con orégano",
-      en_heladera: true,
       icono: "🥒",
       porcion_base: "1 unidad grande"
     },
@@ -93,7 +85,6 @@ export const INITIAL_SEED = {
       categoria: "Vegetal",
       tiempo_preparacion_min: 4,
       metodo_coccion: "Saltear rápido con ajo en sartén",
-      en_heladera: false,
       icono: "🥬",
       porcion_base: "150g"
     },
@@ -105,7 +96,6 @@ export const INITIAL_SEED = {
       categoria: "Carbohidrato",
       tiempo_preparacion_min: 18,
       metodo_coccion: "Hervir en cubos o al horno con romero",
-      en_heladera: true,
       icono: "🥔",
       porcion_base: "150g (Ajustable por actividad)"
     },
@@ -115,7 +105,6 @@ export const INITIAL_SEED = {
       categoria: "Carbohidrato",
       tiempo_preparacion_min: 15,
       metodo_coccion: "Hervir a fuego lento 2x1 agua",
-      en_heladera: true,
       icono: "🍚",
       porcion_base: "120g cocido (Ajustable)"
     },
@@ -125,7 +114,6 @@ export const INITIAL_SEED = {
       categoria: "Carbohidrato",
       tiempo_preparacion_min: 20,
       metodo_coccion: "Horno a 200°C en gajos dorados",
-      en_heladera: false,
       icono: "🍠",
       porcion_base: "160g (Ajustable)"
     },
@@ -135,7 +123,6 @@ export const INITIAL_SEED = {
       categoria: "Carbohidrato",
       tiempo_preparacion_min: 12,
       metodo_coccion: "Lavar y hervir 10 min",
-      en_heladera: false,
       icono: "🌾",
       porcion_base: "110g (Ajustable)"
     },
@@ -147,7 +134,6 @@ export const INITIAL_SEED = {
       categoria: "Grasa",
       tiempo_preparacion_min: 1,
       metodo_coccion: "Agregar crudo al emplatar",
-      en_heladera: true,
       icono: "🫒",
       porcion_base: "1 cucharada (15ml)"
     },
@@ -157,7 +143,6 @@ export const INITIAL_SEED = {
       categoria: "Grasa",
       tiempo_preparacion_min: 2,
       metodo_coccion: "Cortar en láminas o pisado",
-      en_heladera: true,
       icono: "🥑",
       porcion_base: "1/2 unidad"
     },
@@ -167,7 +152,6 @@ export const INITIAL_SEED = {
       categoria: "Grasa",
       tiempo_preparacion_min: 2,
       metodo_coccion: "Tostar suavemente 2 min o servir directo",
-      en_heladera: false,
       icono: "🥜",
       porcion_base: "30g (Nueces/Almendras)"
     },
@@ -177,7 +161,6 @@ export const INITIAL_SEED = {
       categoria: "Grasa",
       tiempo_preparacion_min: 1,
       metodo_coccion: "Espolvorear sobre el plato terminado",
-      en_heladera: true,
       icono: "🌻",
       porcion_base: "1 cucharada"
     }

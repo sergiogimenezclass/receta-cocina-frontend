@@ -3,8 +3,7 @@ import { INITIAL_SEED } from '../data/seed.js';
 const KEYS = {
   COMPONENTS: 'mpb_components_v1',
   PLATES: 'mpb_plates_v1',
-  WEEKLY_PLAN: 'mpb_weekly_plan_v1',
-  FRIDGE_FILTER: 'mpb_fridge_filter_v1'
+  WEEKLY_PLAN: 'mpb_weekly_plan_v1'
 };
 
 /**
@@ -49,15 +48,6 @@ class StorageService {
     return component;
   }
 
-  async toggleFridgeStatus(componentId) {
-    const components = await this.getComponents();
-    const comp = components.find(c => c.id === componentId);
-    if (comp) {
-      comp.en_heladera = !comp.en_heladera;
-      localStorage.setItem(KEYS.COMPONENTS, JSON.stringify(components));
-    }
-    return comp;
-  }
 
   async deleteComponent(componentId) {
     let components = await this.getComponents();
