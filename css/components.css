@@ -392,6 +392,38 @@
   transform: translateX(-50%) translateY(0);
 }
 
+@media (max-width: 768px) {
+  .sticky-plate-bar {
+    padding: 0.4rem 0.75rem;
+  }
+  .sticky-plate-bar-content {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .sticky-chips-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 58%;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .sticky-chips-container::-webkit-scrollbar {
+    display: none;
+  }
+  .sticky-chip {
+    white-space: nowrap;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.45rem;
+    flex-shrink: 0;
+  }
+  .micro-steps-drawer {
+    bottom: 58px;
+    padding: 1rem;
+    width: 95%;
+  }
+}
+
 /* ==========================================================================
    PLANIFICADOR SEMANAL (PARRILLA)
    ========================================================================== */
