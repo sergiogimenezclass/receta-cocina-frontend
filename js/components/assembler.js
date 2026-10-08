@@ -1,0 +1,412 @@
+import { storage } from '../services/storage.js';
+
+export class AssemblerComponent {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.currentActivity = 'Moderado';
+    
+    // Estado de selección del plato (1 id por categoría)
+    this.selected = {
+      Proteina: null,
+      Vegetal: null,
+      Carbohidrato: null,
+      Grasa: null
+    };
+
+    // Micro-instrucciones editables
+    this.customSteps = ['', '', ''];
+    this.plateName = 'Mi Plato Modular Custom';
+  }
+
+  async init() {
+    await this.render();
+    this.bindEvents();
+  }
+
+  async render() {
+    const components = await storage.getComponents();
+
+    this.container.innerHTML = `
+      <!-- Header de Configuración del Ensamblador -->
+      <div class="assembler-header glass-card">
+        <div class="activity-selector-container">
+          <span class="label">Nivel de Actividad del Día:</span>
+          <div class="activity-selector">
+            <button class="activity-btn ${this.currentActivity === 'Intenso' ? 'active' : ''}" data-level="Intenso">
+              🔴 Intenso (Entreno)
+            </button>
+            <button class="activity-btn ${this.currentActivity === 'Moderado' ? 'active' : ''}" data-level="Moderado">
+              🟡 Moderado
+            </button>
+            <button class="activity-btn ${this.currentActivity === 'Descanso' ? 'active' : ''}" data-level="Descanso">
+              🟢 Descanso (Rest)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Informativo del Modulador de Actividad -->
+      <div id="activityPortionNotice" style="font-size: 0.9rem; background: rgba(255, 255, 255, 0.04); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          ${this.getCarbPortionNoticeText()}
+        </div>
+        <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
+          Factor Carbohidrato: <span style="color: ${this.getActivityColor()};">${this.getCarbFactorText()}</span>
+        </div>
+      </div>
+
+      <!-- Matriz de 4 Columnas -->
+      <div class="assembler-grid">
+        ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
+        ${this.renderColumn('Vegetal', '🥦 Vegetales', components)}
+        ${this.renderColumn('Carbohidrato', '🥔 Carbohidratos', components)}
+        ${this.renderColumn('Grasa', '🥑 Grasas', components)}
+      </div>
+
+      <!-- Panel del Plato Resultante y 3 Micro-Instrucciones -->
+      <div class="assembled-plate-panel glass-card">
+        <div class="plate-result-header">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb); margin-bottom: 0.25rem;">
+              Plato Ensamble Rápido (${this.currentActivity})
+            </div>
+            <input type="text" id="plateNameInput" class="plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre del plato...">
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+            <button id="btnGenerateImage" class="btn btn-secondary" style="opacity: 0.85;" title="Generar imagen con IA (Próximamente)">
+              🎨 Generar Imagen
+            </button>
+            <button id="btnSavePlate" class="btn btn-primary">
+              💾 Guardar Plato
+            </button>
+          </div>
+        </div>
+
+        <!-- Resumen de Porciones de Macronutrientes en el Plato -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Desglose Calculado de Porciones para el Plato:
+          </div>
+          <div id="macroPortionSummary" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+            ${this.renderMacroSummary(components)}
+          </div>
+        </div>
+
+        <!-- Micro-Instrucciones (3 Pasos) -->
+        <div class="micro-steps-container">
+          <div class="micro-steps-title">
+            <span>⚡ Micro-Instrucciones Express (Máximo 3 pasos)</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">(Editables)</span>
+          </div>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-number">1</div>
+              <input type="text" class="step-text-input" data-step="0" value="${this.escapeHtml(this.customSteps[0])}" placeholder="Paso 1 de preparación...">
+            </div>
+            <div class="step-item">
+              <div class="step-number">2</div>
+              <input type="text" class="step-text-input" data-step="1" value="${this.escapeHtml(this.customSteps[1])}" placeholder="Paso 2 de cocción...">
+            </div>
+            <div class="step-item">
+              <div class="step-number">3</div>
+              <input type="text" class="step-text-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3 de emplatado...">
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    this.updateStepDefaults(components);
+  }
+
+  getActivityColor() {
+    if (this.currentActivity === 'Intenso') return '#ef4444';
+    if (this.currentActivity === 'Moderado') return '#f59e0b';
+    return '#10b981';
+  }
+
+  getCarbFactorText() {
+    if (this.currentActivity === 'Intenso') return '2.0x (Recarga Alta)';
+    if (this.currentActivity === 'Moderado') return '1.0x (Estándar)';
+    return '0.5x (Baja / Keto)';
+  }
+
+  getCarbPortionNoticeText() {
+    if (this.currentActivity === 'Intenso') {
+      return `🔴 <strong>Modo Día Intenso:</strong> Los Carbohidratos duplican automáticamente su porción sugerida (~200g) para reponer el glucógeno muscular gastado en el entrenamiento.`;
+    } else if (this.currentActivity === 'Moderado') {
+      return `🟡 <strong>Modo Día Moderado:</strong> Mantienes porciones de Carbohidratos estándar (~120g) con un equilibrio proteico normal.`;
+    } else {
+      return `🟢 <strong>Modo Día de Descanso:</strong> Los Carbohidratos se reducen al 50% (~60g) y se incrementan los Vegetales para mantener saciedad con menos calorías.`;
+    }
+  }
+
+  calculatePortion(comp) {
+    if (!comp) return '';
+    if (comp.categoria === 'Carbohidrato') {
+      if (this.currentActivity === 'Intenso') return '🔥 200g (Doble Recarga 2x)';
+      if (this.currentActivity === 'Moderado') return '⚖️ 120g (Estándar 1x)';
+      return '🟢 60g (Reducida 0.5x)';
+    }
+    if (comp.categoria === 'Vegetal') {
+      if (this.currentActivity === 'Descanso') return '🥗 220g (Extra Fibra Rest)';
+      return comp.porcion_base || '150g';
+    }
+    return comp.porcion_base || '1 porción';
+  }
+
+  getPortionBadgeBg(category) {
+    if (category === 'Carbohidrato') {
+      if (this.currentActivity === 'Intenso') return 'rgba(239, 68, 68, 0.2)';
+      if (this.currentActivity === 'Moderado') return 'rgba(245, 158, 11, 0.2)';
+      return 'rgba(16, 185, 129, 0.2)';
+    }
+    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
+      return 'rgba(16, 185, 129, 0.25)';
+    }
+    return 'rgba(255, 255, 255, 0.06)';
+  }
+
+  getPortionBadgeBorder(category) {
+    if (category === 'Carbohidrato') {
+      if (this.currentActivity === 'Intenso') return '#ef4444';
+      if (this.currentActivity === 'Moderado') return '#f59e0b';
+      return '#10b981';
+    }
+    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
+      return '#10b981';
+    }
+    return 'rgba(255, 255, 255, 0.12)';
+  }
+
+  getPortionBadgeColor(category) {
+    if (category === 'Carbohidrato') {
+      if (this.currentActivity === 'Intenso') return '#fca5a5';
+      if (this.currentActivity === 'Moderado') return '#fde047';
+      return '#6ee7b7';
+    }
+    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
+      return '#6ee7b7';
+    }
+    return 'var(--text-primary)';
+  }
+
+  renderColumn(category, title, allComponents) {
+    const categoryComponents = allComponents.filter(c => c.categoria === category);
+    
+    // Auto-seleccionar el primero si no hay ninguno seleccionado
+    if (!this.selected[category] && categoryComponents.length > 0) {
+      this.selected[category] = categoryComponents[0].id;
+    }
+
+    let subBadge = category;
+    if (category === 'Carbohidrato') {
+      if (this.currentActivity === 'Intenso') subBadge = '🔥 200g (2x)';
+      else if (this.currentActivity === 'Moderado') subBadge = '⚖️ 120g (1x)';
+      else subBadge = '📉 60g (0.5x)';
+    } else if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
+      subBadge = '🥗 Extra Fibra';
+    }
+
+    const cardsHtml = categoryComponents.map(comp => {
+      const isSelected = this.selected[category] === comp.id;
+      const portionText = this.calculatePortion(comp);
+
+      return `
+        <div class="component-item-card ${isSelected ? 'selected' : ''}"
+             data-id="${comp.id}" data-category="${category}">
+          <div class="card-header-row">
+            <div class="card-title-group">
+              <span>${comp.icono || '🥗'}</span>
+              <span>${this.escapeHtml(comp.nombre)}</span>
+            </div>
+          </div>
+
+          <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
+          <div style="background: ${this.getPortionBadgeBg(category)}; border: 1px solid ${this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
+            Porción: ${portionText}
+          </div>
+
+          <div class="card-details-row">
+            <span>⏱️ ${comp.tiempo_preparacion_min} min</span>
+            <span style="font-style: italic;">${this.escapeHtml(comp.metodo_coccion)}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="block-column" data-category="${category}">
+        <div class="block-column-header">
+          <div class="block-title">${title}</div>
+          <span class="block-badge">${subBadge}</span>
+        </div>
+        <div class="components-list">
+          ${cardsHtml.length > 0 ? cardsHtml : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay componentes cargados.</div>'}
+        </div>
+      </div>
+    `;
+  }
+
+  renderMacroSummary(allComponents) {
+    const selProt = allComponents.find(c => c.id === this.selected.Proteina);
+    const selVeg = allComponents.find(c => c.id === this.selected.Vegetal);
+    const selCarb = allComponents.find(c => c.id === this.selected.Carbohidrato);
+    const selFat = allComponents.find(c => c.id === this.selected.Grasa);
+
+    return `
+      <div style="background: var(--color-prot-bg); border: 1px solid var(--color-prot-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
+        <span style="color: var(--color-prot); font-weight: 700;">🥩 Proteína:</span> ${selProt ? selProt.nombre : 'Sin seleccionar'} (${selProt ? this.calculatePortion(selProt) : '-'})
+      </div>
+      <div style="background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
+        <span style="color: var(--color-veg); font-weight: 700;">🥦 Vegetal:</span> ${selVeg ? selVeg.nombre : 'Sin seleccionar'} (${selVeg ? this.calculatePortion(selVeg) : '-'})
+      </div>
+      <div style="background: var(--color-carb-bg); border: 1px solid var(--color-carb-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
+        <span style="color: var(--color-carb); font-weight: 700;">🥔 Carbohidrato:</span> ${selCarb ? selCarb.nombre : 'Sin seleccionar'} (${selCarb ? this.calculatePortion(selCarb) : '-'})
+      </div>
+      <div style="background: var(--color-fat-bg); border: 1px solid var(--color-fat-border); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem;">
+        <span style="color: var(--color-fat); font-weight: 700;">🥑 Grasa:</span> ${selFat ? selFat.nombre : 'Sin seleccionar'} (${selFat ? this.calculatePortion(selFat) : '-'})
+      </div>
+    `;
+  }
+
+  async updateStepDefaults(components) {
+    const selectedComps = {
+      Proteina: components.find(c => c.id === this.selected.Proteina),
+      Vegetal: components.find(c => c.id === this.selected.Vegetal),
+      Carbohidrato: components.find(c => c.id === this.selected.Carbohidrato),
+      Grasa: components.find(c => c.id === this.selected.Grasa)
+    };
+
+    // Auto-generar título si es el genérico
+    if (!this.plateName || this.plateName.startsWith('Mi Plato') || this.plateName.includes('Bowl') || this.plateName.includes('Plato de')) {
+      const pName = selectedComps.Proteina ? selectedComps.Proteina.nombre : 'Proteína';
+      const cName = selectedComps.Carbohidrato ? selectedComps.Carbohidrato.nombre : 'Carbohidrato';
+      this.plateName = `Plato de ${pName} con ${cName} (${this.currentActivity})`;
+      const nameInput = document.getElementById('plateNameInput');
+      if (nameInput) nameInput.value = this.plateName;
+    }
+
+    // Auto-generar 3 pasos si el usuario no los ha editado manualmente de forma personalizada
+    const autoStep1 = selectedComps.Proteina 
+      ? `${selectedComps.Proteina.nombre} (${this.calculatePortion(selectedComps.Proteina)}): ${selectedComps.Proteina.metodo_coccion} (${selectedComps.Proteina.tiempo_preparacion_min} min).` 
+      : 'Cocinar proteína a elección.';
+
+    const autoStep2 = selectedComps.Carbohidrato && selectedComps.Vegetal
+      ? `${selectedComps.Carbohidrato.nombre} [Porción ${this.calculatePortion(selectedComps.Carbohidrato)}] y ${selectedComps.Vegetal.nombre} (${this.calculatePortion(selectedComps.Vegetal)}).`
+      : 'Preparar guarnición de carbohidratos y vegetales.';
+
+    const autoStep3 = selectedComps.Grasa
+      ? `Emplatar todo junto y aderezar con ${selectedComps.Grasa.nombre} (${selectedComps.Grasa.porcion_base || '1 cda'}).`
+      : 'Emplatar caliente y servir.';
+
+    this.customSteps = [autoStep1, autoStep2, autoStep3];
+
+    // Actualizar inputs en el DOM
+    const stepInputs = this.container.querySelectorAll('.step-text-input');
+    stepInputs.forEach((input, index) => {
+      input.value = this.customSteps[index] || '';
+    });
+  }
+
+  bindEvents() {
+    // Evento selector de actividad
+    this.container.querySelectorAll('.activity-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        this.currentActivity = e.currentTarget.getAttribute('data-level');
+        await this.render();
+        this.bindEvents();
+      });
+    });
+
+    // Evento toggle heladera
+    const fridgeToggle = this.container.querySelector('#fridgeToggle');
+    if (fridgeToggle) {
+      fridgeToggle.addEventListener('change', async (e) => {
+        this.fridgeOnly = e.target.checked;
+        await this.render();
+        this.bindEvents();
+      });
+    }
+
+    // Evento selección de tarjetas en las 4 columnas
+    this.container.querySelectorAll('.component-item-card').forEach(card => {
+      card.addEventListener('click', async (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        const category = e.currentTarget.getAttribute('data-category');
+        this.selected[category] = id;
+        
+        // Re-render ligero para actualizar selección visual y desglose
+        const components = await storage.getComponents();
+        this.container.querySelectorAll(`.component-item-card[data-category="${category}"]`).forEach(c => {
+          c.classList.remove('selected');
+        });
+        e.currentTarget.classList.add('selected');
+        
+        // Actualizar resumen de macros y pasos
+        const macroSummaryContainer = this.container.querySelector('#macroPortionSummary');
+        if (macroSummaryContainer) {
+          macroSummaryContainer.innerHTML = this.renderMacroSummary(components);
+        }
+        this.updateStepDefaults(components);
+      });
+    });
+
+    // Inputs de texto de pasos
+    this.container.querySelectorAll('.step-text-input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
+        this.customSteps[stepIdx] = e.target.value;
+      });
+    });
+
+    // Input nombre de plato
+    const nameInput = this.container.querySelector('#plateNameInput');
+    if (nameInput) {
+      nameInput.addEventListener('input', (e) => {
+        this.plateName = e.target.value;
+      });
+    }
+
+    // Botón Generar Imagen (Sin funcionalidad activa por ahora)
+    const btnGenImg = this.container.querySelector('#btnGenerateImage');
+    if (btnGenImg) {
+      btnGenImg.addEventListener('click', () => {
+        alert('🎨 Generación de imágenes con IA próximamente disponible en la v2 con servidor.');
+      });
+    }
+
+    // Botón Guardar Plato
+    const btnSave = this.container.querySelector('#btnSavePlate');
+    if (btnSave) {
+      btnSave.addEventListener('click', async () => {
+        await this.saveCurrentPlate();
+      });
+    }
+  }
+
+  async saveCurrentPlate() {
+    if (!this.selected.Proteina || !this.selected.Vegetal || !this.selected.Carbohidrato || !this.selected.Grasa) {
+      alert('Por favor selecciona 1 ingrediente en cada uno de los 4 bloques.');
+      return;
+    }
+
+    const newPlate = {
+      nombre: this.plateName || 'Plato Modular',
+      actividad_recomendada: this.currentActivity,
+      proteina_id: this.selected.Proteina,
+      vegetal_id: this.selected.Vegetal,
+      carbo_id: this.selected.Carbohidrato,
+      grasa_id: this.selected.Grasa,
+      pasos: this.customSteps
+    };
+
+    await storage.savePlate(newPlate);
+    alert(`¡Plato "${newPlate.nombre}" guardado con éxito en tu biblioteca de platos!`);
+  }
+
+  escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+}
