@@ -180,8 +180,18 @@ export class SettingsComponent {
           return { success: false, message: '⚠️ La API Key es válida, pero no tiene modelos asignados para generar contenido.' };
         }
 
-        // Seleccionar preferentemente un modelo flash o el primero activo
-        const selectedModel = availableModels.find(m => m.includes('flash')) || availableModels[0];
+        // Seleccionar preferentemente gemini-3.8-flash o la versión flash más reciente
+        let selectedModel = 'gemini-3.8-flash';
+        if (availableModels.includes('gemini-3.8-flash')) {
+          selectedModel = 'gemini-3.8-flash';
+        } else {
+          const flashModels = availableModels.filter(m => m.includes('flash')).sort((a, b) => b.localeCompare(a));
+          if (flashModels.length > 0) {
+            selectedModel = flashModels[0];
+          } else if (availableModels.length > 0) {
+            selectedModel = [...availableModels].sort((a, b) => b.localeCompare(a))[0];
+          }
+        }
 
         // Step 2: Probar petición de generación
         const genResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${trimmed}`, {

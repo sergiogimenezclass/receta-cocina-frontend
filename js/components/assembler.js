@@ -347,7 +347,7 @@ export class AssemblerComponent {
     }
 
     // 1. Obtener dinámicamente el modelo habilitado para la API Key desde Google
-    let selectedModel = 'gemini-1.5-flash';
+    let selectedModel = 'gemini-3.8-flash';
     try {
       const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${cleanKey}`, {
         headers: { 'x-goog-api-key': cleanKey }
@@ -359,8 +359,15 @@ export class AssemblerComponent {
           .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
           .map(m => m.name.replace('models/', ''));
 
-        if (availableModels.length > 0) {
-          selectedModel = availableModels.find(m => m.includes('flash')) || availableModels[0];
+        if (availableModels.includes('gemini-3.8-flash')) {
+          selectedModel = 'gemini-3.8-flash';
+        } else {
+          const flashModels = availableModels.filter(m => m.includes('flash')).sort((a, b) => b.localeCompare(a));
+          if (flashModels.length > 0) {
+            selectedModel = flashModels[0];
+          } else if (availableModels.length > 0) {
+            selectedModel = [...availableModels].sort((a, b) => b.localeCompare(a))[0];
+          }
         }
       }
     } catch (e) {
