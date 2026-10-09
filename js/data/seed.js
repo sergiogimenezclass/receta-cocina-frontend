@@ -137,7 +137,7 @@ export const INITIAL_SEED = {
       metodo_coccion: "Horno a 200°C en gajos dorados",
       icono: "🍠",
       porcion_base: "160g (Ajustable)",
-      en_despensa: false
+      en_despensa: true
     },
     {
       id: "comp_carb_4",

@@ -378,17 +378,17 @@ export class AssemblerComponent {
   }
 
   renderColumn(category, title, allComponents) {
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
     let categoryComponents = allComponents.filter(c => c.categoria === category);
     
     if (this.showOnlyDespensa) {
-      const despensaComponents = categoryComponents.filter(c => c.en_despensa !== false);
+      const despensaComponents = categoryComponents.filter(c => c.en_despensa !== false || selectedIds.includes(c.id));
       if (despensaComponents.length > 0) {
         categoryComponents = despensaComponents;
       }
     }
 
     const stats = this.calculateCategoryStats(category, allComponents);
-    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
     const count = selectedIds.length;
 
     let subBadge = category;
@@ -787,6 +787,10 @@ export class AssemblerComponent {
 
       if (bestComp && maxScore >= 8) {
         this.selected[cat] = [bestComp.id];
+        if (bestComp.en_despensa === false) {
+          bestComp.en_despensa = true;
+          storage.saveComponent(bestComp);
+        }
         matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
       }
     });
