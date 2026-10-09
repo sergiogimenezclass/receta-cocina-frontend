@@ -695,23 +695,80 @@ export class AssemblerComponent {
         .replace(/[^a-z0-9\s]/g, " ");
     };
 
-    // Función de lematización / extracción de raíz para español
+    // 1. Limpieza de erratas tipográficas (ej: ceboolla -> cebolla)
+    const collapseDuplicates = (str) => {
+      return str.replace(/(.)\1+/g, '$1');
+    };
+
+    // 2. Lematización / Extracción de raíz en español
     const getStem = (w) => {
       if (!w || w.length <= 3) return w;
-      return w.replace(/(es|as|os|s|a|o|es)$/, '');
+      return w.replace(/(es|as|os|s|a|o)$/, '');
+    };
+
+    // 3. Distancia Levenshtein para erratas de tipeo
+    const levDistance = (a, b) => {
+      if (a === b) return 0;
+      if (!a.length) return b.length;
+      if (!b.length) return a.length;
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
     };
 
     const rawNormalized = normalize(queryText);
-    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'cinco', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'medianas', 'mediano', 'grandes', 'grande', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las']);
+    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'cinco', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'medianas', 'mediano', 'grandes', 'grande', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las', 'especies', 'especias', 'arabes', '7']);
 
-    const tokens = rawNormalized.split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
+    const tokens = rawNormalized.split(/\s+/).filter(w => w.length >= 2 && !stopWords.has(w));
 
     if (tokens.length === 0) {
-      this.autoMatchNotification = '⚠️ Por favor ingresa ingredientes válidos en el campo (ej: pollo, batatas, cebolla, palta).';
+      this.autoMatchNotification = '⚠️ Por favor ingresa ingredientes válidos en el campo (ej: carne picada, cebolla, papa, palta).';
       return;
     }
 
-    const tokenStems = tokens.map(t => ({ original: t, stem: getStem(t) }));
+    // Diccionario de grupos gastronómicos (hiperónimos y sinónimos)
+    const SYNONYM_GROUPS = {
+      Proteina: {
+        carne: ['bife', 'magro', 'carne', 'picada', 'molida', 'vacuno', 'res', 'ternera', 'asado', 'lomo', 'corte', 'milanesa', 'hamburguesa'],
+        pollo: ['pollo', 'pechuga', 'muslo', 'pata', 'pavo', 'ave'],
+        huevo: ['huevo', 'huevos', 'pasado', 'revuelto', 'omelette', 'clara', 'yema'],
+        pescado: ['salmon', 'atun', 'pescado', 'merluza', 'filete', 'lomo'],
+        tofu: ['tofu', 'soya', 'soja', 'seitan']
+      },
+      Vegetal: {
+        cebolla: ['cebolla', 'cebollas', 'wok', 'salteado', 'salteada'],
+        morron: ['morron', 'morrones', 'pimiento', 'pimientos', 'aji', 'ajies', 'wok'],
+        brocoli: ['brocoli', 'vapor'],
+        rucula: ['rucula', 'tomate', 'cherry', 'ensalada'],
+        zucchini: ['zucchini', 'zapallito', 'calabacin'],
+        espinaca: ['espinaca', 'hojas']
+      },
+      Carbohidrato: {
+        papa: ['papa', 'papas', 'patata', 'patatas', 'hervida', 'horno'],
+        batata: ['batata', 'batatas', 'camote', 'camotes', 'boniato'],
+        arroz: ['arroz', 'blanco', 'integral'],
+        quinoa: ['quinoa', 'graneada']
+      },
+      Grasa: {
+        palta: ['palta', 'paltas', 'aguacate'],
+        aceite: ['aceite', 'oliva', 'extra'],
+        frutos: ['frutos', 'secos', 'nueces', 'almendras', 'mani'],
+        semillas: ['semillas', 'chia', 'girasol']
+      }
+    };
 
     const matchesFound = [];
     const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
@@ -725,43 +782,49 @@ export class AssemblerComponent {
         const compNameNorm = normalize(comp.nombre);
         const compDescNorm = normalize((comp.metodo_coccion || '') + ' ' + (comp.descripcion || ''));
         const compFullText = `${compNameNorm} ${compDescNorm}`;
-        
-        const compWords = compFullText.split(/\s+/).filter(w => w.length > 2);
+        const compWords = compFullText.split(/\s+/).filter(w => w.length >= 2);
         const compStems = compWords.map(w => getStem(w));
 
         let score = 0;
 
-        tokenStems.forEach(({ original, stem }) => {
-          // 1. Coincidencia exacta de substring
-          if (compNameNorm.includes(original)) {
-            score += 15;
-          } else if (compDescNorm.includes(original)) {
-            score += 8;
-          }
+        tokens.forEach(rawToken => {
+          const token = collapseDuplicates(rawToken);
+          const stem = getStem(token);
 
-          // 2. Coincidencia de raíz / stem (elimina problema de plurales como batatas -> batata)
-          if (compStems.includes(stem)) {
-            score += 12;
-          } else if (compStems.some(cs => cs.length >= 3 && stem.length >= 3 && (cs.startsWith(stem) || stem.startsWith(cs)))) {
+          // A. Coincidencia exacta o parcial
+          if (compNameNorm.includes(token) || compNameNorm.includes(rawToken)) {
+            score += 20;
+          } else if (compDescNorm.includes(token) || compDescNorm.includes(rawToken)) {
             score += 10;
           }
 
-          // 3. Mapa de sinónimos y variantes comunes
-          if ((stem === 'batat' || stem === 'camot' || original === 'batata' || original === 'batatas' || original === 'camote') && (compFullText.includes('batata') || compFullText.includes('camote'))) {
-            score += 20;
-          }
-          if ((stem === 'pap' || original === 'papa' || original === 'papas' || original === 'patata') && compFullText.includes('papa')) {
-            score += 20;
-          }
-          if ((stem === 'ceboll' || original === 'cebolla' || original === 'cebollas' || original === 'morron' || original === 'morrones' || original === 'wok' || original === 'brocoli' || original === 'rucula' || original === 'tomate' || original === 'zucchini') && (compFullText.includes(original) || compStems.includes(stem))) {
+          // B. Coincidencia por lematización / stem (plurales / singulares)
+          if (compStems.includes(stem)) {
             score += 15;
           }
-          if ((stem === 'poll' || original === 'pollo' || original === 'pechuga') && compFullText.includes('pollo')) {
-            score += 20;
-          }
-          if ((stem === 'palt' || original === 'palta' || original === 'paltas' || original === 'aguacate') && compFullText.includes('palta')) {
-            score += 20;
-          }
+
+          // C. Distancia fuzzy (erratas de tipeo como ceboolla -> cebolla)
+          compWords.forEach(cw => {
+            const cwClean = collapseDuplicates(cw);
+            if (cwClean.length >= 4 && token.length >= 4) {
+              const dist = levDistance(token, cwClean);
+              if (dist <= 2) {
+                score += 18;
+              }
+            }
+          });
+
+          // D. Búsqueda en mapa de sinónimos y grupos gastronómicos de la categoría
+          const catSynonyms = SYNONYM_GROUPS[cat] || {};
+          Object.values(catSynonyms).forEach(groupKeywords => {
+            const tokenMatchesGroup = groupKeywords.some(kw => kw === token || kw === rawToken || getStem(kw) === stem || (kw.length >= 4 && levDistance(token, kw) <= 2));
+            if (tokenMatchesGroup) {
+              const compMatchesGroup = groupKeywords.some(kw => compFullText.includes(kw));
+              if (compMatchesGroup) {
+                score += 25;
+              }
+            }
+          });
         });
 
         if (score > maxScore) {
@@ -770,7 +833,7 @@ export class AssemblerComponent {
         }
       });
 
-      if (bestComp && maxScore >= 8) {
+      if (bestComp && maxScore >= 12) {
         this.selected[cat] = [bestComp.id];
         matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
       }
