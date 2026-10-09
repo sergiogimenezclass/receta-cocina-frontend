@@ -56,10 +56,10 @@ export class AssemblerComponent {
           <div class="activity-selector-container">
             <span class="label">Estilo de Servido:</span>
             <div class="activity-selector">
-              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" style="border-radius: var(--radius-sm); padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" style="border-radius: var(--radius-sm); padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${this.plateMode === 'caliente' ? 'background: rgba(249, 115, 22, 0.25); color: #fb923c; border: 1.5px solid #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);' : 'background: transparent; color: var(--text-secondary); border: 1px solid transparent;'}">
                 🍲 Caliente (Wok / Sopa)
               </button>
-              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" style="border-radius: var(--radius-sm); padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" style="border-radius: var(--radius-sm); padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${this.plateMode === 'frio' ? 'background: rgba(14, 165, 233, 0.25); color: #38bdf8; border: 1.5px solid #0ea5e9; box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);' : 'background: transparent; color: var(--text-secondary); border: 1px solid transparent;'}">
                 🥗 Frío (Ensalada / Bowl)
               </button>
             </div>

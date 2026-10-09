@@ -75,6 +75,36 @@
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
 }
 
+.mode-temp-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.mode-temp-btn[data-mode="caliente"].active {
+  background: rgba(249, 115, 22, 0.25) !important;
+  color: #fb923c !important;
+  border: 1.5px solid #f97316 !important;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4) !important;
+}
+
+.mode-temp-btn[data-mode="frio"].active {
+  background: rgba(14, 165, 233, 0.25) !important;
+  color: #38bdf8 !important;
+  border: 1.5px solid #0ea5e9 !important;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.4) !important;
+}
+
 
 /* Layout de 4 Columnas + Resumen */
 .assembler-grid {
