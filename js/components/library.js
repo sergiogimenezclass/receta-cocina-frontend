@@ -79,7 +79,11 @@ export class LibraryComponent {
             </div>
             <div class="form-group">
               <label>Método de Cocción</label>
-              <input type="text" id="compMetodo" class="form-control" placeholder="Ej: Plancha a fuego medio" required>
+              <input type="text" id="compMetodo" class="form-control" placeholder="Ej: Salteado al wok a fuego fuerte" required>
+            </div>
+            <div class="form-group">
+              <label>Descripción / Ingredientes Detallados</label>
+              <input type="text" id="compDescripcion" class="form-control" placeholder="Ej: Zucchini, morrón, cebolla, berenjena y salsa de soya">
             </div>
             <div class="form-group">
               <label>Ícono / Emoji</label>
@@ -114,6 +118,7 @@ export class LibraryComponent {
           </div>
           <div style="font-size: 0.825rem; color: var(--text-secondary); margin-top: 0.5rem;">
             <div>⏱️ <strong>${c.tiempo_preparacion_min} min</strong> (${this.escapeHtml(c.metodo_coccion)})</div>
+            ${c.descripcion ? `<div style="margin-top: 0.25rem; color: var(--text-muted); font-size: 0.78rem;">📝 ${this.escapeHtml(c.descripcion)}</div>` : ''}
           </div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.65rem; gap: 0.5rem;">
@@ -223,6 +228,7 @@ export class LibraryComponent {
           categoria: document.getElementById('compCategoria').value,
           tiempo_preparacion_min: parseInt(document.getElementById('compTiempo').value, 10),
           metodo_coccion: document.getElementById('compMetodo').value,
+          descripcion: document.getElementById('compDescripcion')?.value || '',
           icono: document.getElementById('compIcono').value || '🥗',
           en_despensa: document.getElementById('compEnDespensa').checked
         };
