@@ -59,17 +59,16 @@ export class AssemblerComponent {
       </div>
 
       <!-- Banner Informativo del Modulador de Actividad y Balance Calórico -->
-      <div id="activityPortionNotice" style="font-size: 0.9rem; background: ${calInfo.isExcess ? 'rgba(239, 68, 68, 0.12)' : 'rgba(255, 255, 255, 0.04)'}; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${calInfo.isExcess ? '#ef4444' : this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+      <div id="activityPortionNotice" style="font-size: 0.9rem; background: rgba(255, 255, 255, 0.04); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
         <div>
           ${this.getCarbPortionNoticeText()}
-          ${calInfo.isExcess ? `<div style="color: #f87171; font-weight: 700; margin-top: 0.35rem; font-size: 0.85rem;">⚠️ Alerta de Calorías: La selección actual excede el objetivo del día por +${calInfo.diffKcal} kcal.</div>` : ''}
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
           <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-            Calorías: <span style="color: ${calInfo.isExcess ? '#f87171' : '#34d399'};">${calInfo.totalKcal} / ${calInfo.targetKcal} kcal</span>
+            Calorías Totales: <span style="color: #34d399;">${calInfo.totalKcal} / ${calInfo.targetKcal} kcal</span>
           </div>
           <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-            Carbohidratos: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
+            Carbohidratos Meta: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
           </div>
         </div>
       </div>
@@ -175,17 +174,43 @@ export class AssemblerComponent {
       });
     }
 
+    const isExcess = category !== 'Vegetal' && (totalGrams > targetNum + 2);
+    const diffGrams = Math.round(totalGrams - targetNum);
+
+    let kcalMultiplier = 1.35;
+    if (category === 'Vegetal') kcalMultiplier = 0.35;
+    if (category === 'Carbohidrato') kcalMultiplier = 1.30;
+    if (category === 'Grasa') kcalMultiplier = 8.5;
+
+    const blockKcal = Math.round(totalGrams * kcalMultiplier);
+    const targetKcal = Math.round(targetNum * kcalMultiplier);
+    const diffKcal = Math.round((totalGrams - targetNum) * kcalMultiplier);
+
+    const labels = {
+      Proteina: 'Proteínas',
+      Vegetal: 'Vegetales',
+      Carbohidrato: 'Carbohidratos',
+      Grasa: 'Grasas'
+    };
+
     return {
       category,
+      categoryLabel: labels[category] || category,
       selectedCount: selComps.length,
       totalGrams: Math.round(totalGrams),
       targetNum,
-      unit
+      unit,
+      isExcess,
+      diffGrams,
+      blockKcal,
+      targetKcal,
+      diffKcal
     };
   }
 
   calculatePlateCalories(allComponents = []) {
     let totalKcal = 0;
+    const blockExcesses = [];
     const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
 
     categories.forEach(cat => {
@@ -197,16 +222,20 @@ export class AssemblerComponent {
       if (cat === 'Grasa') kcalMultiplier = 8.5;
 
       totalKcal += stats.totalGrams * kcalMultiplier;
+
+      if (stats.isExcess) {
+        blockExcesses.push(stats);
+      }
     });
 
     const targetKcal = this.currentActivity === 'Intenso' ? 720 : (this.currentActivity === 'Moderado' ? 520 : 400);
-    const isExcess = totalKcal > targetKcal + 40;
 
     return {
       totalKcal: Math.round(totalKcal),
       targetKcal,
-      isExcess,
-      diffKcal: Math.round(totalKcal - targetKcal)
+      isExcess: blockExcesses.length > 0,
+      diffKcal: Math.round(totalKcal - targetKcal),
+      blockExcesses
     };
   }
 
@@ -294,6 +323,20 @@ export class AssemblerComponent {
     return 'var(--text-primary)';
   }
 
+  getMissingCategories() {
+    const categories = [
+      { key: 'Proteina', label: 'Proteína', icon: '🥩' },
+      { key: 'Vegetal', label: 'Vegetales', icon: '🥦' },
+      { key: 'Carbohidrato', label: 'Carbohidratos', icon: '🥔' },
+      { key: 'Grasa', label: 'Grasas', icon: '🥑' }
+    ];
+
+    return categories.filter(cat => {
+      const selectedIds = Array.isArray(this.selected[cat.key]) ? this.selected[cat.key] : [];
+      return selectedIds.length === 0;
+    });
+  }
+
   renderColumn(category, title, allComponents) {
     let categoryComponents = allComponents.filter(c => c.categoria === category);
     
@@ -304,16 +347,14 @@ export class AssemblerComponent {
       }
     }
 
-    // Auto-seleccionar el primero si no hay ninguno en la lista de seleccionados
-    if ((!this.selected[category] || this.selected[category].length === 0) && categoryComponents.length > 0) {
-      this.selected[category] = [categoryComponents[0].id];
-    }
-
-    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [this.selected[category]];
-    const count = selectedIds.length || 1;
+    const stats = this.calculateCategoryStats(category, allComponents);
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
+    const count = selectedIds.length;
 
     let subBadge = category;
-    if (category === 'Carbohidrato') {
+    if (count === 0) {
+      subBadge = `⚪ Sin selección`;
+    } else if (category === 'Carbohidrato') {
       subBadge = `🥔 ${this.getCarbTargetText()}`;
     } else if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
       subBadge = '🥗 Extra Fibra';
@@ -323,23 +364,39 @@ export class AssemblerComponent {
       subBadge += ` • ${count} sel.`;
     }
 
+    let headerBadgeStyle = count === 0 ? 'background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px dashed #f59e0b;' : '';
+    if (stats.isExcess) {
+      subBadge = `🚨 EXCESO: ${stats.totalGrams}${stats.unit} / ${stats.targetNum}${stats.unit} (+${stats.diffGrams}${stats.unit})`;
+      headerBadgeStyle = 'background: #ef4444; color: #ffffff; font-weight: 800; border: 1px solid #dc2626; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);';
+    }
+
+    const columnWarningBanner = stats.isExcess ? `
+      <div style="background: rgba(239, 68, 68, 0.18); border: 1px solid #ef4444; color: #f87171; padding: 0.45rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.65rem; text-align: center; line-height: 1.3;">
+        🚨 Exceso en ${stats.categoryLabel}: Acumulado ${stats.totalGrams}${stats.unit} (${stats.blockKcal} kcal) • Excede la meta de ${stats.targetNum}${stats.unit} por +${stats.diffGrams}${stats.unit} (+${stats.diffKcal} kcal extra)
+      </div>
+    ` : '';
+
     const cardsHtml = categoryComponents.map(comp => {
       const isSelected = selectedIds.includes(comp.id);
-      const portionText = this.calculatePortion(comp, count);
+      const portionText = this.calculatePortion(comp, count || 1);
+
+      const cardStyle = (isSelected && stats.isExcess)
+        ? 'border: 2px solid #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.05);'
+        : '';
 
       return `
         <div class="component-item-card ${isSelected ? 'selected' : ''}"
-             data-id="${comp.id}" data-category="${category}">
+             data-id="${comp.id}" data-category="${category}" style="${cardStyle}">
           <div class="card-header-row">
             <div class="card-title-group">
               <span>${comp.icono || '🥗'}</span>
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
-            ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
+            ${isSelected ? (stats.isExcess ? '<span style="color: #ef4444; font-weight: 800; font-size: 0.9rem;">⚠️ Exceso</span>' : '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>') : ''}
           </div>
 
           <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
-          <div style="background: ${this.getPortionBadgeBg(category)}; border: 1px solid ${this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
+          <div style="background: ${stats.isExcess && isSelected ? 'rgba(239, 68, 68, 0.2)' : this.getPortionBadgeBg(category)}; border: 1px solid ${stats.isExcess && isSelected ? '#ef4444' : this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${stats.isExcess && isSelected ? '#f87171' : this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
             Porción: ${portionText}
           </div>
 
@@ -352,11 +409,12 @@ export class AssemblerComponent {
     }).join('');
 
     return `
-      <div class="block-column" data-category="${category}">
+      <div class="block-column ${stats.isExcess ? 'column-excess' : ''}" data-category="${category}" style="${stats.isExcess ? 'border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-lg); padding: 0.5rem;' : ''}">
         <div class="block-column-header">
           <div class="block-title">${title}</div>
-          <span class="block-badge">${subBadge}</span>
+          <span class="block-badge" style="${headerBadgeStyle}">${subBadge}</span>
         </div>
+        ${columnWarningBanner}
         <div class="components-list">
           ${cardsHtml.length > 0 ? cardsHtml : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay componentes cargados.</div>'}
         </div>
@@ -365,22 +423,29 @@ export class AssemblerComponent {
   }
 
   renderStickyChips(allComponents) {
-    const calInfo = this.calculatePlateCalories(allComponents);
-
     const formatBlockChip = (category, icon, defaultLabel, colorBg, colorText, colorBorder) => {
+      const stats = this.calculateCategoryStats(category, allComponents);
       const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
       const selComps = allComponents.filter(c => selectedIds.includes(c.id));
 
       if (selComps.length === 0) {
         return `
-          <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
-            ${icon} ${defaultLabel} (-)
+          <div class="sticky-chip" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px dashed #f59e0b;">
+            ${icon} ${defaultLabel} (Sin selección)
           </div>
         `;
       }
 
       const names = selComps.map(c => c.nombre).join(' + ');
       const portionText = this.calculatePortion(selComps[0], selComps.length);
+
+      if (stats.isExcess) {
+        return `
+          <div class="sticky-chip" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1.5px solid #ef4444; font-weight: 700;" title="Exceso en ${stats.categoryLabel}: ${stats.totalGrams}${stats.unit} de ${stats.targetNum}${stats.unit}">
+            🚨 ${names} (${portionText} ⚠️ Exceso)
+          </div>
+        `;
+      }
 
       return `
         <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
@@ -389,14 +454,7 @@ export class AssemblerComponent {
       `;
     };
 
-    const statusChip = `
-      <div class="sticky-chip" style="background: ${calInfo.isExcess ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.15)'}; color: ${calInfo.isExcess ? '#f87171' : '#34d399'}; border: 1px solid ${calInfo.isExcess ? '#ef4444' : 'rgba(16, 185, 129, 0.3)'}; font-weight: 700;">
-        🔥 ${calInfo.totalKcal} / ${calInfo.targetKcal} kcal ${calInfo.isExcess ? '(⚠️ Exceso Calórico)' : '(✅ Balance OK)'}
-      </div>
-    `;
-
     return `
-      ${statusChip}
       ${formatBlockChip('Proteina', '🥩', 'Proteína', 'var(--color-prot-bg)', 'var(--color-prot)', 'var(--color-prot-border)')}
       ${formatBlockChip('Vegetal', '🥦', 'Vegetal', 'var(--color-veg-bg)', 'var(--color-veg)', 'var(--color-veg-border)')}
       ${formatBlockChip('Carbohidrato', '🥔', 'Carbohidrato', 'var(--color-carb-bg)', 'var(--color-carb)', 'var(--color-carb-border)')}
@@ -608,10 +666,8 @@ export class AssemblerComponent {
 
         const idx = this.selected[category].indexOf(id);
         if (idx >= 0) {
-          // Des-seleccionar solo si hay más de 1 en la columna
-          if (this.selected[category].length > 1) {
-            this.selected[category].splice(idx, 1);
-          }
+          // Des-seleccionar libremente (puede quedar en 0 seleccionados)
+          this.selected[category].splice(idx, 1);
         } else {
           // Agregar a la selección
           this.selected[category].push(id);
