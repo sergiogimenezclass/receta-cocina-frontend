@@ -730,7 +730,11 @@ export class AssemblerComponent {
     };
 
     const rawNormalized = normalize(queryText);
-    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'cinco', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'medianas', 'mediano', 'grandes', 'grande', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las', 'especies', 'especias', 'arabes', '7']);
+    // Palabras vacías, cantidades, condimentos y técnicas de cocción que no son ingredientes principales
+    const stopWords = new Set([
+      'tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'cinco', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'medianas', 'mediano', 'grandes', 'grande', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las',
+      'especies', 'especias', 'arabes', 'italianas', 'fresco', 'fresca', 'frescos', 'frescas', 'seco', 'secas', 'secos', 'molido', 'molida', 'picado', 'picada', 'caliente', 'frio', 'fria', 'gusto', 'sal', 'pimienta', 'cucharada', 'cucharadas', 'cda', 'cdas', 'gramos', 'gr', 'g', 'kg', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'servir', 'directo', 'tostar', 'tostados', 'tostado', 'suavemente', 'min', 'minutos', 'fuego', 'plancha', 'horno'
+    ]);
 
     const tokens = rawNormalized.split(/\s+/).filter(w => w.length >= 2 && !stopWords.has(w));
 
@@ -780,10 +784,10 @@ export class AssemblerComponent {
 
       categoryComps.forEach(comp => {
         const compNameNorm = normalize(comp.nombre);
+        const compNameWords = compNameNorm.split(/\s+/).filter(w => w.length >= 2);
         const compDescNorm = normalize((comp.metodo_coccion || '') + ' ' + (comp.descripcion || ''));
         const compFullText = `${compNameNorm} ${compDescNorm}`;
-        const compWords = compFullText.split(/\s+/).filter(w => w.length >= 2);
-        const compStems = compWords.map(w => getStem(w));
+        const compStems = compNameWords.map(w => getStem(w));
 
         let score = 0;
 
@@ -791,25 +795,25 @@ export class AssemblerComponent {
           const token = collapseDuplicates(rawToken);
           const stem = getStem(token);
 
-          // A. Coincidencia exacta o parcial
+          // A. Coincidencia exacta o parcial en el NOMBRE del alimento
           if (compNameNorm.includes(token) || compNameNorm.includes(rawToken)) {
-            score += 20;
+            score += 25;
           } else if (compDescNorm.includes(token) || compDescNorm.includes(rawToken)) {
-            score += 10;
+            score += 8;
           }
 
-          // B. Coincidencia por lematización / stem (plurales / singulares)
+          // B. Coincidencia por lematización / stem en el NOMBRE del alimento
           if (compStems.includes(stem)) {
-            score += 15;
+            score += 18;
           }
 
-          // C. Distancia fuzzy (erratas de tipeo como ceboolla -> cebolla)
-          compWords.forEach(cw => {
+          // C. Distancia fuzzy (erratas de tipeo como ceboolla -> cebolla) solo contra las palabras del NOMBRE
+          compNameWords.forEach(cw => {
             const cwClean = collapseDuplicates(cw);
             if (cwClean.length >= 4 && token.length >= 4) {
               const dist = levDistance(token, cwClean);
               if (dist <= 2) {
-                score += 18;
+                score += 20;
               }
             }
           });
@@ -821,7 +825,7 @@ export class AssemblerComponent {
             if (tokenMatchesGroup) {
               const compMatchesGroup = groupKeywords.some(kw => compFullText.includes(kw));
               if (compMatchesGroup) {
-                score += 25;
+                score += 30;
               }
             }
           });
@@ -833,7 +837,7 @@ export class AssemblerComponent {
         }
       });
 
-      if (bestComp && maxScore >= 12) {
+      if (bestComp && maxScore >= 18) {
         this.selected[cat] = [bestComp.id];
         matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
       }
