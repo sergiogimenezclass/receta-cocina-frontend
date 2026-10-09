@@ -97,6 +97,16 @@ export const INITIAL_SEED = {
       porcion_base: "150g",
       en_despensa: false
     },
+    {
+      id: "comp_veg_5",
+      nombre: "Wok de Vegetales Mixtos",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 10,
+      metodo_coccion: "Salteado a fuego fuerte (zucchini, morrón, cebolla y berenjena con soya)",
+      icono: "🥘",
+      porcion_base: "1 bowl (200g)",
+      en_despensa: true
+    },
 
     // CARBOHIDRATOS
     {
