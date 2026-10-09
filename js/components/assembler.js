@@ -21,6 +21,10 @@ export class AssemblerComponent {
     this.showOnlyDespensa = true;
     this.activityRules = null;
     this.generatedImageSrc = null;
+
+    // Estado del buscador de Auto-Ensamblado determinista por ingredientes
+    this.autoQueryText = '';
+    this.autoMatchNotification = '';
   }
 
   async init() {
@@ -71,6 +75,27 @@ export class AssemblerComponent {
             ${this.showOnlyDespensa ? '⭐ Solo mi Despensa' : '🌐 Todo el Catálogo'}
           </button>
         </div>
+      </div>
+
+      <!-- Tarjeta de Auto-Ensamblado por Ingredientes Disponibles -->
+      <div class="glass-card" style="padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glow);">
+        <div style="font-size: 0.825rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span>⚡ Auto-Ensamblar Plato por Ingredientes Disponibles</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; font-style: italic;">Algoritmo determinista instantáneo</span>
+        </div>
+        <form id="formAutoSelectIngredients" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+          <input type="text" id="autoIngredientsInput" class="form-control" placeholder="Escribe lo que tienes (ej: pollo, 2 papas, morrón y palta)..." value="${this.escapeHtml(this.autoQueryText)}" style="flex: 1; min-width: 260px; font-size: 0.9rem;">
+          <button type="submit" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.1rem; white-space: nowrap;">
+            🧩 Seleccionar Bloques
+          </button>
+        </form>
+        ${this.autoMatchNotification ? `
+          <div style="margin-top: 0.65rem; padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: var(--radius-sm); font-size: 0.825rem; color: #34d399; font-weight: 600;">
+            ${this.autoMatchNotification}
+          </div>
+        ` : ''}
       </div>
 
       <!-- Banner Informativo del Modulador de Actividad y Balance Calórico -->
@@ -671,7 +696,91 @@ export class AssemblerComponent {
     return `data:image/png;base64,${data.image}`;
   }
 
+  async autoSelectByIngredientsText(queryText) {
+    if (!queryText || !queryText.trim()) return;
+
+    this.autoQueryText = queryText;
+    const allComponents = await storage.getComponents();
+
+    const normalize = (str) => {
+      return (str || '')
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s]/g, " ");
+    };
+
+    const rawNormalized = normalize(queryText);
+    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las']);
+
+    const tokens = rawNormalized.split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
+
+    if (tokens.length === 0) {
+      this.autoMatchNotification = '⚠️ Por favor ingresa ingredientes válidos en el campo (ej: pollo, papa, brócoli).';
+      return;
+    }
+
+    const matchesFound = [];
+    const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
+
+    categories.forEach(cat => {
+      const categoryComps = allComponents.filter(c => c.categoria === cat);
+      let bestComp = null;
+      let maxScore = 0;
+
+      categoryComps.forEach(comp => {
+        const compNameNorm = normalize(comp.nombre);
+        const compDescNorm = normalize((comp.metodo_coccion || '') + ' ' + (comp.descripcion || ''));
+
+        let score = 0;
+
+        tokens.forEach(token => {
+          if (compNameNorm.includes(token)) {
+            score += 10;
+          } else if (compDescNorm.includes(token)) {
+            score += 4;
+          }
+
+          if (token.startsWith('poll') && compNameNorm.includes('pollo')) score += 15;
+          if ((token.startsWith('pap') || token === 'patata') && compNameNorm.includes('papa')) score += 15;
+          if ((token === 'morron' || token === 'wok' || token === 'brocoli' || token === 'rucula' || token === 'tomate' || token === 'zucchini' || token === 'espinaca') && (compNameNorm.includes(token) || compDescNorm.includes(token))) score += 12;
+          if ((token === 'palta' || token === 'aguacate' || token === 'aceite' || token === 'oliva' || token === 'nueces' || token === 'semillas') && (compNameNorm.includes(token) || compDescNorm.includes(token))) score += 12;
+          if ((token.startsWith('carne') || token === 'bife' || token.startsWith('huevo') || token === 'tofu' || token === 'salmon' || token === 'atun') && compNameNorm.includes(token)) score += 15;
+        });
+
+        if (score > maxScore) {
+          maxScore = score;
+          bestComp = comp;
+        }
+      });
+
+      if (bestComp && maxScore > 0) {
+        this.selected[cat] = [bestComp.id];
+        matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
+      }
+    });
+
+    if (matchesFound.length > 0) {
+      this.plateName = '';
+      this.autoMatchNotification = `✓ Bloques seleccionados automáticamente: ${matchesFound.join(' • ')}`;
+    } else {
+      this.autoMatchNotification = `⚠️ No se encontraron coincidencias exactas en la biblioteca para "${queryText}". Revisa los nombres de tu Biblioteca.`;
+    }
+  }
+
   bindEvents() {
+    // Formulario de Auto-Ensamblado por Ingredientes ⚡
+    const formAuto = this.container.querySelector('#formAutoSelectIngredients');
+    if (formAuto) {
+      formAuto.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inputVal = document.getElementById('autoIngredientsInput')?.value || '';
+        await this.autoSelectByIngredientsText(inputVal);
+        await this.render();
+        this.bindEvents();
+      });
+    }
+
     // Toggle Filtro Despensa ⭐
     const btnToggleDespensa = this.container.querySelector('#btnToggleDespensaFilter');
     if (btnToggleDespensa) {
