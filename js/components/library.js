@@ -89,10 +89,6 @@ export class LibraryComponent {
               <label>Ícono / Emoji</label>
               <input type="text" id="compIcono" class="form-control" value="🥗" required>
             </div>
-            <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
-              <input type="checkbox" id="compEnDespensa" checked style="width: 18px; height: 18px;">
-              <label for="compEnDespensa" style="margin: 0; cursor: pointer;">⭐ Mostrar en mi Despensa (Ensamblador)</label>
-            </div>
             <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
               <button type="button" class="btn btn-secondary" id="btnCancelModal">Cancelar</button>
               <button type="submit" class="btn btn-primary">Guardar Alimento</button>
@@ -104,8 +100,6 @@ export class LibraryComponent {
   }
 
   renderComponentCard(c) {
-    const isDespensa = c.en_despensa !== false;
-
     return `
       <div class="glass-card" style="padding: 1rem; border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
         <div>
@@ -121,11 +115,8 @@ export class LibraryComponent {
             ${c.descripcion ? `<div style="margin-top: 0.25rem; color: var(--text-muted); font-size: 0.78rem;">📝 ${this.escapeHtml(c.descripcion)}</div>` : ''}
           </div>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.65rem; gap: 0.5rem;">
-          <button class="btn btn-sm ${isDespensa ? 'btn-primary' : 'btn-secondary'} btn-toggle-despensa" data-id="${c.id}" style="font-size: 0.75rem;">
-            ${isDespensa ? '⭐ En Despensa' : '⚪ Añadir a Despensa'}
-          </button>
-          <button class="btn btn-sm btn-danger btn-delete-comp" data-id="${c.id}" title="Eliminar">🗑️</button>
+        <div style="display: flex; justify-content: flex-end; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.65rem; gap: 0.5rem;">
+          <button class="btn btn-sm btn-danger btn-delete-comp" data-id="${c.id}" title="Eliminar">🗑️ Eliminar</button>
         </div>
       </div>
     `;
@@ -176,15 +167,6 @@ export class LibraryComponent {
     });
 
     // Toggle Despensa ⭐
-    this.container.querySelectorAll('.btn-toggle-despensa').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        const id = e.currentTarget.getAttribute('data-id');
-        await storage.toggleDespensaStatus(id);
-        await this.render();
-        this.bindEvents();
-      });
-    });
-
     // Eliminar Componente
     this.container.querySelectorAll('.btn-delete-comp').forEach(btn => {
       btn.addEventListener('click', async (e) => {
@@ -229,8 +211,7 @@ export class LibraryComponent {
           tiempo_preparacion_min: parseInt(document.getElementById('compTiempo').value, 10),
           metodo_coccion: document.getElementById('compMetodo').value,
           descripcion: document.getElementById('compDescripcion')?.value || '',
-          icono: document.getElementById('compIcono').value || '🥗',
-          en_despensa: document.getElementById('compEnDespensa').checked
+          icono: document.getElementById('compIcono').value || '🥗'
         };
         await storage.saveComponent(newComp);
         modal.classList.remove('open');

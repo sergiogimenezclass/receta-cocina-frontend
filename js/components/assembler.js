@@ -18,7 +18,6 @@ export class AssemblerComponent {
     this.customSteps = ['', '', ''];
     this.plateName = 'Mi Plato Modular Custom';
     this.drawerOpen = false;
-    this.showOnlyDespensa = true;
     this.activityRules = null;
     this.generatedImageSrc = null;
 
@@ -68,12 +67,6 @@ export class AssemblerComponent {
               </button>
             </div>
           </div>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <button id="btnToggleDespensaFilter" class="btn btn-secondary btn-sm">
-            ${this.showOnlyDespensa ? '⭐ Solo mi Despensa' : '🌐 Todo el Catálogo'}
-          </button>
         </div>
       </div>
 
@@ -379,15 +372,7 @@ export class AssemblerComponent {
 
   renderColumn(category, title, allComponents) {
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
-    let categoryComponents = allComponents.filter(c => c.categoria === category);
-    
-    if (this.showOnlyDespensa) {
-      const despensaComponents = categoryComponents.filter(c => c.en_despensa !== false || selectedIds.includes(c.id));
-      if (despensaComponents.length > 0) {
-        categoryComponents = despensaComponents;
-      }
-    }
-
+    const categoryComponents = allComponents.filter(c => c.categoria === category);
     const stats = this.calculateCategoryStats(category, allComponents);
     const count = selectedIds.length;
 
@@ -787,10 +772,6 @@ export class AssemblerComponent {
 
       if (bestComp && maxScore >= 8) {
         this.selected[cat] = [bestComp.id];
-        if (bestComp.en_despensa === false) {
-          bestComp.en_despensa = true;
-          storage.saveComponent(bestComp);
-        }
         matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
       }
     });
@@ -811,16 +792,6 @@ export class AssemblerComponent {
         e.preventDefault();
         const inputVal = document.getElementById('autoIngredientsInput')?.value || '';
         await this.autoSelectByIngredientsText(inputVal);
-        await this.render();
-        this.bindEvents();
-      });
-    }
-
-    // Toggle Filtro Despensa ⭐
-    const btnToggleDespensa = this.container.querySelector('#btnToggleDespensaFilter');
-    if (btnToggleDespensa) {
-      btnToggleDespensa.addEventListener('click', async () => {
-        this.showOnlyDespensa = !this.showOnlyDespensa;
         await this.render();
         this.bindEvents();
       });
