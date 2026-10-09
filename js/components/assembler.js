@@ -710,15 +710,23 @@ export class AssemblerComponent {
         .replace(/[^a-z0-9\s]/g, " ");
     };
 
+    // Función de lematización / extracción de raíz para español
+    const getStem = (w) => {
+      if (!w || w.length <= 3) return w;
+      return w.replace(/(es|as|os|s|a|o|es)$/, '');
+    };
+
     const rawNormalized = normalize(queryText);
-    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las']);
+    const stopWords = new Set(['tengo', 'un', 'una', 'unos', 'unas', 'dos', 'tres', 'cuatro', 'cinco', 'de', 'del', 'y', 'e', 'con', 'para', 'poco', 'mucho', 'medio', 'medianas', 'mediano', 'grandes', 'grande', 'paquete', 'sobre', 'sobras', 'algunos', 'algunas', 'que', 'en', 'el', 'la', 'los', 'las']);
 
     const tokens = rawNormalized.split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
 
     if (tokens.length === 0) {
-      this.autoMatchNotification = '⚠️ Por favor ingresa ingredientes válidos en el campo (ej: pollo, papa, brócoli).';
+      this.autoMatchNotification = '⚠️ Por favor ingresa ingredientes válidos en el campo (ej: pollo, batatas, cebolla, palta).';
       return;
     }
+
+    const tokenStems = tokens.map(t => ({ original: t, stem: getStem(t) }));
 
     const matchesFound = [];
     const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
@@ -731,21 +739,44 @@ export class AssemblerComponent {
       categoryComps.forEach(comp => {
         const compNameNorm = normalize(comp.nombre);
         const compDescNorm = normalize((comp.metodo_coccion || '') + ' ' + (comp.descripcion || ''));
+        const compFullText = `${compNameNorm} ${compDescNorm}`;
+        
+        const compWords = compFullText.split(/\s+/).filter(w => w.length > 2);
+        const compStems = compWords.map(w => getStem(w));
 
         let score = 0;
 
-        tokens.forEach(token => {
-          if (compNameNorm.includes(token)) {
-            score += 10;
-          } else if (compDescNorm.includes(token)) {
-            score += 4;
+        tokenStems.forEach(({ original, stem }) => {
+          // 1. Coincidencia exacta de substring
+          if (compNameNorm.includes(original)) {
+            score += 15;
+          } else if (compDescNorm.includes(original)) {
+            score += 8;
           }
 
-          if (token.startsWith('poll') && compNameNorm.includes('pollo')) score += 15;
-          if ((token.startsWith('pap') || token === 'patata') && compNameNorm.includes('papa')) score += 15;
-          if ((token === 'morron' || token === 'wok' || token === 'brocoli' || token === 'rucula' || token === 'tomate' || token === 'zucchini' || token === 'espinaca') && (compNameNorm.includes(token) || compDescNorm.includes(token))) score += 12;
-          if ((token === 'palta' || token === 'aguacate' || token === 'aceite' || token === 'oliva' || token === 'nueces' || token === 'semillas') && (compNameNorm.includes(token) || compDescNorm.includes(token))) score += 12;
-          if ((token.startsWith('carne') || token === 'bife' || token.startsWith('huevo') || token === 'tofu' || token === 'salmon' || token === 'atun') && compNameNorm.includes(token)) score += 15;
+          // 2. Coincidencia de raíz / stem (elimina problema de plurales como batatas -> batata)
+          if (compStems.includes(stem)) {
+            score += 12;
+          } else if (compStems.some(cs => cs.length >= 3 && stem.length >= 3 && (cs.startsWith(stem) || stem.startsWith(cs)))) {
+            score += 10;
+          }
+
+          // 3. Mapa de sinónimos y variantes comunes
+          if ((stem === 'batat' || stem === 'camot' || original === 'batata' || original === 'batatas' || original === 'camote') && (compFullText.includes('batata') || compFullText.includes('camote'))) {
+            score += 20;
+          }
+          if ((stem === 'pap' || original === 'papa' || original === 'papas' || original === 'patata') && compFullText.includes('papa')) {
+            score += 20;
+          }
+          if ((stem === 'ceboll' || original === 'cebolla' || original === 'cebollas' || original === 'morron' || original === 'morrones' || original === 'wok' || original === 'brocoli' || original === 'rucula' || original === 'tomate' || original === 'zucchini') && (compFullText.includes(original) || compStems.includes(stem))) {
+            score += 15;
+          }
+          if ((stem === 'poll' || original === 'pollo' || original === 'pechuga') && compFullText.includes('pollo')) {
+            score += 20;
+          }
+          if ((stem === 'palt' || original === 'palta' || original === 'paltas' || original === 'aguacate') && compFullText.includes('palta')) {
+            score += 20;
+          }
         });
 
         if (score > maxScore) {
@@ -754,7 +785,7 @@ export class AssemblerComponent {
         }
       });
 
-      if (bestComp && maxScore > 0) {
+      if (bestComp && maxScore >= 8) {
         this.selected[cat] = [bestComp.id];
         matchesFound.push(`${bestComp.icono || '🥗'} <strong>${bestComp.nombre}</strong> (${cat})`);
       }
@@ -764,7 +795,7 @@ export class AssemblerComponent {
       this.plateName = '';
       this.autoMatchNotification = `✓ Bloques seleccionados automáticamente: ${matchesFound.join(' • ')}`;
     } else {
-      this.autoMatchNotification = `⚠️ No se encontraron coincidencias exactas en la biblioteca para "${queryText}". Revisa los nombres de tu Biblioteca.`;
+      this.autoMatchNotification = `⚠️ No se encontraron coincidencias en la biblioteca para "${queryText}". Revisa que los nombres estén cargados en la Biblioteca.`;
     }
   }
 
