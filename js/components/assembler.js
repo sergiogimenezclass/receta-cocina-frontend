@@ -4,6 +4,7 @@ export class AssemblerComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.currentActivity = 'Moderado';
+    this.plateMode = 'caliente'; // 'caliente' | 'frio'
     
     // Estado de selección del plato (array de IDs por categoría para multi-selección)
     this.selected = {
@@ -35,19 +36,33 @@ export class AssemblerComponent {
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
-      <div class="assembler-header glass-card">
-        <div class="activity-selector-container">
-          <span class="label">Nivel de Actividad del Día:</span>
-          <div class="activity-selector">
-            <button class="activity-btn ${this.currentActivity === 'Intenso' ? 'active' : ''}" data-level="Intenso">
-              🔴 Intenso (Entreno)
-            </button>
-            <button class="activity-btn ${this.currentActivity === 'Moderado' ? 'active' : ''}" data-level="Moderado">
-              🟡 Moderado
-            </button>
-            <button class="activity-btn ${this.currentActivity === 'Descanso' ? 'active' : ''}" data-level="Descanso">
-              🟢 Descanso (Rest)
-            </button>
+      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
+          <div class="activity-selector-container">
+            <span class="label">Nivel de Actividad:</span>
+            <div class="activity-selector">
+              <button class="activity-btn ${this.currentActivity === 'Intenso' ? 'active' : ''}" data-level="Intenso">
+                🔴 Intenso
+              </button>
+              <button class="activity-btn ${this.currentActivity === 'Moderado' ? 'active' : ''}" data-level="Moderado">
+                🟡 Moderado
+              </button>
+              <button class="activity-btn ${this.currentActivity === 'Descanso' ? 'active' : ''}" data-level="Descanso">
+                🟢 Descanso
+              </button>
+            </div>
+          </div>
+
+          <div class="activity-selector-container">
+            <span class="label">Estilo de Servido:</span>
+            <div class="activity-selector">
+              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" style="border-radius: var(--radius-sm); padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+                🍲 Caliente (Wok / Sopa)
+              </button>
+              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" style="border-radius: var(--radius-sm); padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s;">
+                🥗 Frío (Ensalada / Bowl)
+              </button>
+            </div>
           </div>
         </div>
 
@@ -473,27 +488,49 @@ export class AssemblerComponent {
     const selCarb = getSelComps('Carbohidrato');
     const selFat = getSelComps('Grasa');
 
-    // Auto-generar título si es el genérico
-    if (!this.plateName || this.plateName.startsWith('Mi Plato') || this.plateName.includes('Bowl') || this.plateName.includes('Plato de')) {
-      const pName = selProt.length > 0 ? selProt.map(c => c.nombre).join(' + ') : 'Proteína';
-      const cName = selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') : 'Carbohidrato';
-      this.plateName = `Plato de ${pName} con ${cName} (${this.currentActivity})`;
+    // Auto-generar título según estilo
+    const isFrio = this.plateMode === 'frio';
+    const pName = selProt.length > 0 ? selProt.map(c => c.nombre).join(' + ') : 'Proteína';
+    const cName = selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') : 'Carbohidrato';
+
+    if (!this.plateName || this.plateName.startsWith('Mi Plato') || this.plateName.includes('Bowl') || this.plateName.includes('Plato')) {
+      this.plateName = isFrio
+        ? `Bowl Frío de ${pName} con ${cName}`
+        : `Plato Caliente de ${pName} con ${cName}`;
       const nameInput = document.getElementById('plateNameInput');
       if (nameInput) nameInput.value = this.plateName;
     }
 
-    // Auto-generar 3 pasos si el usuario no los ha editado manualmente de forma personalizada
-    const autoStep1 = selProt.length > 0
-      ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: ${selProt[0].metodo_coccion} (${selProt[0].tiempo_preparacion_min} min).`
-      : 'Cocinar proteína a elección.';
+    // Auto-generar 3 pasos deterministas adaptados a Frío vs Caliente
+    let autoStep1 = '';
+    let autoStep2 = '';
+    let autoStep3 = '';
 
-    const autoStep2 = selCarb.length > 0 && selVeg.length > 0
-      ? `${selCarb.map(c => c.nombre).join(' + ')} [${this.calculatePortion(selCarb[0], selCarb.length)}] y ${selVeg.map(c => c.nombre).join(' + ')} [${this.calculatePortion(selVeg[0], selVeg.length)}].`
-      : 'Preparar guarnición de carbohidratos y vegetales.';
+    if (isFrio) {
+      autoStep1 = selProt.length > 0
+        ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: Porcionar o trocear la proteína lista/fría para ensalada.`
+        : 'Porcionar proteína lista o fría para ensalada.';
 
-    const autoStep3 = selFat.length > 0
-      ? `Emplatar todo junto y aderezar con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')}.`
-      : 'Emplatar caliente y servir.';
+      autoStep2 = (selVeg.length > 0 || selCarb.length > 0)
+        ? `Trocear ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selVeg[0], selVeg.length)}]` : 'vegetales'} y mezclar con ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selCarb[0], selCarb.length)}]` : 'base de carbos'} en un bowl amplio.`
+        : 'Mezclar vegetales frescos y carbohidratos en bowl frío.';
+
+      autoStep3 = selFat.length > 0
+        ? `Aderezar la ensalada fresca con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')} y servir frío.`
+        : 'Aderezar la ensalada y servir fresco.';
+    } else {
+      autoStep1 = selProt.length > 0
+        ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: ${selProt[0].metodo_coccion} (${selProt[0].tiempo_preparacion_min} min).`
+        : 'Cocinar proteína a elección a fuego medio.';
+
+      autoStep2 = (selVeg.length > 0 || selCarb.length > 0)
+        ? `Cocinar/saltear caliente ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selVeg[0], selVeg.length)}]` : ''} junto a ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selCarb[0], selCarb.length)}]` : ''} (al wok, vapor o sopa).`
+        : 'Preparar guarnición de carbohidratos y vegetales calientes.';
+
+      autoStep3 = selFat.length > 0
+        ? `Emplatar todo caliente y aderezar con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')}.`
+        : 'Emplatar caliente y servir.';
+    }
 
     this.customSteps = [autoStep1, autoStep2, autoStep3];
 
@@ -649,6 +686,16 @@ export class AssemblerComponent {
     this.container.querySelectorAll('.activity-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         this.currentActivity = e.currentTarget.getAttribute('data-level');
+        await this.render();
+        this.bindEvents();
+      });
+    });
+
+    // Selector de Estilo de Servido (Caliente / Frío)
+    this.container.querySelectorAll('.mode-temp-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        this.plateMode = e.currentTarget.getAttribute('data-mode');
+        this.plateName = ''; // Resetear título genérico para regenerar con el nuevo estilo
         await this.render();
         this.bindEvents();
       });
