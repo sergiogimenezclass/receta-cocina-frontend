@@ -1,5 +1,5 @@
 /**
- * Seed inicial de datos para Modular Plate Builder
+ * Seed inicial de datos para Antirecetario
  * Clasificados por las 4 categorías clave de macronutrientes.
  */
 export const INITIAL_SEED = {
