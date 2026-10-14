@@ -351,7 +351,7 @@ export class AssemblerComponent {
 
     const columnWarningBanner = stats.isExcess ? `
       <div style="background: rgba(239, 68, 68, 0.18); border: 1px solid #ef4444; color: #f87171; padding: 0.45rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.65rem; text-align: center; line-height: 1.3;">
-        🚨 Exceso en ${stats.categoryLabel}: Acumulado ${stats.totalGrams}${stats.unit} (${stats.blockKcal} kcal) • Excede la meta de ${stats.targetNum}${stats.unit} por +${stats.diffGrams}${stats.unit} (+${stats.diffKcal} kcal extra)
+        🚨 Exceso en ${stats.categoryLabel}: Acumulado ${stats.totalGrams}${stats.unit} • Excede la meta de ${stats.targetNum}${stats.unit} por +${stats.diffGrams}${stats.unit}
       </div>
     ` : '';
 
