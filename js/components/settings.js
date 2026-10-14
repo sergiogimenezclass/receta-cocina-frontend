@@ -26,7 +26,7 @@ export class SettingsComponent {
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
           <h3 style="font-size: 1.15rem; font-weight: 700;">🔑 Clave de API de Google Gemini (Inteligencia & Texto)</h3>
           <div id="apiKeyBadgeContainer">
-            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${apiKey ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${apiKey ? 'background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);' : 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px solid var(--color-carb-border);'}">
               ${apiKey ? '✅ Clave Guardada' : '⚠️ Clave No Configurada'}
             </span>
           </div>
@@ -48,7 +48,7 @@ export class SettingsComponent {
           </div>
         </form>
 
-        <div style="background: rgba(0, 0, 0, 0.25); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+        <div style="background: #f7f9fc; border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
           <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo para obtener tu Clave de Gemini:</div>
           <ol style="margin-left: 1.25rem; line-height: 1.6;">
             <li>Ingresa gratis a <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--color-fat); text-decoration: underline;">Google AI Studio (aistudio.google.com)</a>.</li>
@@ -63,7 +63,7 @@ export class SettingsComponent {
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
           <h3 style="font-size: 1.15rem; font-weight: 700;">🎨 Clave de API de Stability AI (Generación de Imágenes IA Real)</h3>
           <div id="stabilityBadgeContainer">
-            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${stabilityApiKey ? 'background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);' : 'background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);'}">
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); ${stabilityApiKey ? 'background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);' : 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px solid var(--color-carb-border);'}">
               ${stabilityApiKey ? '✅ Clave Configurada' : '⚠️ No Configurada'}
             </span>
           </div>
@@ -85,7 +85,7 @@ export class SettingsComponent {
           </div>
         </form>
 
-        <div style="background: rgba(0, 0, 0, 0.25); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+        <div style="background: #f7f9fc; border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
           <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">📖 Instructivo Paso a Paso para obtener tu Clave de Stability AI:</div>
           <ol style="margin-left: 1.25rem; line-height: 1.6;">
             <li>Ingresa a <a href="https://platform.stability.ai" target="_blank" style="color: var(--color-fat); text-decoration: underline;">platform.stability.ai</a> con tu cuenta.</li>
@@ -188,16 +188,16 @@ export class SettingsComponent {
         const key = inputApiKey.value.trim();
 
         if (!key || key.length < 5) {
-          apiKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Ingresa una clave válida de Google AI Studio.</span>`;
+          apiKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">❌ Ingresa una clave válida de Google AI Studio.</span>`;
           return;
         }
 
         await storage.saveApiKey(key);
-        apiKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">💾 ¡Clave guardada con éxito en tu navegador!</span>`;
+        apiKeyFeedback.innerHTML = `<span style="color: var(--color-veg); font-weight: 600;">💾 ¡Clave guardada con éxito en tu navegador!</span>`;
         
         if (apiKeyBadgeContainer) {
           apiKeyBadgeContainer.innerHTML = `
-            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);">
               ✅ Clave Guardada
             </span>
           `;
@@ -220,9 +220,9 @@ export class SettingsComponent {
         btnTestApiKey.textContent = '🧪 Probar Clave';
 
         if (res.success) {
-          apiKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">${res.message}</span>`;
+          apiKeyFeedback.innerHTML = `<span style="color: var(--color-veg); font-weight: 600;">${res.message}</span>`;
         } else {
-          apiKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">${res.message}</span>`;
+          apiKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">${res.message}</span>`;
         }
       });
     }
@@ -239,14 +239,14 @@ export class SettingsComponent {
         e.preventDefault();
         const key = inputStabilityApiKey.value.trim();
         if (!key || key.length < 5) {
-          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Ingresa una API Key válida de Stability AI (sk-...).</span>`;
+          stabilityKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">❌ Ingresa una API Key válida de Stability AI (sk-...).</span>`;
           return;
         }
         await storage.saveStabilityApiKey(key);
-        stabilityKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">💾 ¡API Key de Stability AI guardada con éxito!</span>`;
+        stabilityKeyFeedback.innerHTML = `<span style="color: var(--color-veg); font-weight: 600;">💾 ¡API Key de Stability AI guardada con éxito!</span>`;
         if (stabilityBadgeContainer) {
           stabilityBadgeContainer.innerHTML = `
-            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+            <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);">
               ✅ Clave Configurada
             </span>
           `;
@@ -258,7 +258,7 @@ export class SettingsComponent {
       btnTestStabilityKey.addEventListener('click', async () => {
         const key = inputStabilityApiKey.value.trim();
         if (!key || !key.startsWith('sk-')) {
-          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Las claves de Stability AI comienzan con "sk-...".</span>`;
+          stabilityKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">❌ Las claves de Stability AI comienzan con "sk-...".</span>`;
           return;
         }
 
@@ -277,15 +277,15 @@ export class SettingsComponent {
           if (resp.ok) {
             const data = await resp.json().catch(() => ({}));
             const credits = data.credits !== undefined ? ` (Saldo: ${Math.round(data.credits)} créditos)` : '';
-            stabilityKeyFeedback.innerHTML = `<span style="color: #34d399; font-weight: 600;">✅ ¡Conexión Exitosa con Stability AI!${credits}</span>`;
+            stabilityKeyFeedback.innerHTML = `<span style="color: var(--color-veg); font-weight: 600;">✅ ¡Conexión Exitosa con Stability AI!${credits}</span>`;
           } else {
             const errData = await resp.json().catch(() => ({}));
-            stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Error al conectar con Stability AI: ${errData.message || `HTTP ${resp.status}`}</span>`;
+            stabilityKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">❌ Error al conectar con Stability AI: ${errData.message || `HTTP ${resp.status}`}</span>`;
           }
         } catch (err) {
           btnTestStabilityKey.disabled = false;
           btnTestStabilityKey.textContent = '🧪 Probar Stability';
-          stabilityKeyFeedback.innerHTML = `<span style="color: #f87171; font-weight: 600;">❌ Error de red: ${err.message}</span>`;
+          stabilityKeyFeedback.innerHTML = `<span style="color: #b83c37; font-weight: 600;">❌ Error de red: ${err.message}</span>`;
         }
       });
     }

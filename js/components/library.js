@@ -142,7 +142,7 @@ export class LibraryComponent {
             <span style="font-size: 0.78rem; background: var(--color-fat-bg); color: var(--color-fat); padding: 0.15rem 0.45rem; border-radius: var(--radius-sm);">🥑 ${fat ? fat.nombre : 'Grasa'}</span>
           </div>
 
-          <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--radius-md); padding: 0.75rem; font-size: 0.825rem;">
+          <div style="background: #f7f9fc; border-radius: var(--radius-md); padding: 0.75rem; font-size: 0.825rem;">
             <div style="font-weight: 700; color: var(--text-secondary); margin-bottom: 0.35rem;">⚡ 3 Pasos de Cocción:</div>
             ${(plate.pasos || []).map((step, i) => `<div style="margin-bottom: 0.2rem;"><strong>${i + 1}.</strong> ${this.escapeHtml(step)}</div>`).join('')}
           </div>
