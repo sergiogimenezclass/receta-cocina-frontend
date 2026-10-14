@@ -171,12 +171,6 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
-  getActivityColor() {
-    if (this.currentActivity === 'Intenso') return '#ef4444';
-    if (this.currentActivity === 'Moderado') return '#f59e0b';
-    return '#10b981';
-  }
-
   getCarbTargetText() {
     if (this.activityRules && this.activityRules[this.currentActivity]) {
       return this.activityRules[this.currentActivity].Carbohidrato || '120g';
