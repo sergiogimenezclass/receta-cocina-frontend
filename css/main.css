@@ -1,48 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Dark Modern Theme Palette */
-  --bg-primary: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-card: rgba(17, 24, 39, 0.75);
-  --bg-card-hover: rgba(31, 41, 55, 0.85);
+  /* Mercado Vivo: light, calm surfaces with a clear blue action color */
+  --bg-primary: #f2f6fb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f7faff;
 
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
+  --text-primary: #20324a;
+  --text-secondary: #5d7086;
+  --text-muted: #718096;
 
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(255, 255, 255, 0.18);
+  --border-color: #e0e8f1;
+  --border-glow: #b7c9df;
+
+  --color-primary: #3367c8;
+  --color-primary-soft: #e8efff;
 
   /* Macronutrient Colors */
-  --color-prot: #ff4d6d;
-  --color-prot-bg: rgba(255, 77, 109, 0.12);
-  --color-prot-border: rgba(255, 77, 109, 0.35);
+  --color-prot: #b34d5b;
+  --color-prot-bg: #faedf0;
+  --color-prot-border: #ebcbd1;
 
-  --color-veg: #10b981;
-  --color-veg-bg: rgba(16, 185, 129, 0.12);
-  --color-veg-border: rgba(16, 185, 129, 0.35);
+  --color-veg: #357a63;
+  --color-veg-bg: #eaf4ef;
+  --color-veg-border: #c5e1d3;
 
-  --color-carb: #f59e0b;
-  --color-carb-bg: rgba(245, 158, 11, 0.12);
-  --color-carb-border: rgba(245, 158, 11, 0.35);
+  --color-carb: #a76312;
+  --color-carb-bg: #fbf1e3;
+  --color-carb-border: #efd7b6;
 
-  --color-fat: #06b6d4;
-  --color-fat-bg: rgba(6, 182, 212, 0.12);
-  --color-fat-border: rgba(6, 182, 212, 0.35);
+  --color-fat: #277fa5;
+  --color-fat-bg: #e8f3f8;
+  --color-fat-border: #c0dce9;
 
   /* Glassmorphism */
-  --glass-blur: blur(16px);
+  --glass-blur: blur(12px);
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.15);
+  --shadow-sm: 0 1px 3px rgba(32, 50, 74, 0.06);
+  --shadow-md: 0 12px 30px rgba(32, 50, 74, 0.12);
+  --shadow-glow: 0 6px 18px rgba(51, 103, 200, 0.1);
 
-  --font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: 'DM Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -54,10 +57,7 @@
 body {
   font-family: var(--font-family);
   background-color: var(--bg-primary);
-  background-image: 
-    radial-gradient(at 15% 15%, rgba(255, 77, 109, 0.08) 0px, transparent 50%),
-    radial-gradient(at 85% 20%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
-    radial-gradient(at 50% 85%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
+  background-image: none;
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
@@ -72,11 +72,11 @@ header.app-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,27 +90,28 @@ header.app-header {
 }
 
 .brand-icon {
-  font-size: 1.8rem;
-  background: linear-gradient(135deg, var(--color-prot), var(--color-carb));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(255, 77, 109, 0.3));
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
 }
 
 .brand h1 {
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff, #9ca3af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .brand span.tag {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: rgba(255, 255, 255, 0.08);
+  background: #f2f6fb;
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
@@ -120,10 +121,10 @@ header.app-header {
 /* Main Nav Tabs */
 nav.app-nav {
   display: flex;
-  background: rgba(255, 255, 255, 0.03);
+  background: transparent;
   border: 1px solid var(--border-color);
   padding: 0.25rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   gap: 0.25rem;
 }
 
@@ -145,14 +146,14 @@ nav.app-nav {
 
 .nav-tab:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: #f3f6fa;
 }
 
 .nav-tab.active {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border: 1px solid #c6d6fa;
+  box-shadow: none;
   font-weight: 600;
 }
 
@@ -197,37 +198,37 @@ main.app-main {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-carb), #d97706);
-  color: #000000;
-  border-color: rgba(245, 158, 11, 0.4);
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 3px 8px rgba(51, 103, 200, 0.18);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 5px 12px rgba(51, 103, 200, 0.22);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
+  background: #ffffff;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #f7faff;
   border-color: var(--border-glow);
 }
 
 .btn-danger {
-  background: rgba(239, 68, 68, 0.15);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: #fff0ee;
+  color: #b83c37;
+  border: 1px solid #f3c4bf;
 }
 
 .btn-danger:hover {
-  background: rgba(239, 68, 68, 0.25);
-  color: #ffffff;
+  background: #ffe4e0;
+  color: #a42f2a;
 }
 
 .btn-sm {
