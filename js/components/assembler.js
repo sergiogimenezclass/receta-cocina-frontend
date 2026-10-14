@@ -386,7 +386,6 @@ export class AssemblerComponent {
 
   renderStickyChips(allComponents) {
     const formatBlockChip = (category, icon, defaultLabel, colorBg, colorText, colorBorder) => {
-      const stats = this.calculateCategoryStats(category, allComponents);
       const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
       const selComps = allComponents.filter(c => selectedIds.includes(c.id));
 
@@ -400,14 +399,6 @@ export class AssemblerComponent {
 
       const names = selComps.map(c => c.nombre).join(' + ');
       const portionText = this.calculatePortion(selComps[0], selComps.length);
-
-      if (stats.isExcess) {
-        return `
-          <div class="sticky-chip" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1.5px solid #ef4444; font-weight: 700;" title="Exceso en ${stats.categoryLabel}: ${stats.totalGrams}${stats.unit} de ${stats.targetNum}${stats.unit}">
-            🚨 ${names} (${portionText} ⚠️ Exceso)
-          </div>
-        `;
-      }
 
       return `
         <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
