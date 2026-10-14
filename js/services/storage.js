@@ -6,13 +6,6 @@ const KEYS = {
   WEEKLY_PLAN: 'mpb_weekly_plan_v1',
   API_KEY: 'mpb_gemini_api_key_v1',
   STABILITY_API_KEY: 'mpb_stability_api_key_v1',
-  ACTIVITY_RULES: 'mpb_activity_rules_v1'
-};
-
-const DEFAULT_ACTIVITY_RULES = {
-  Intenso: { Proteina: '180g', Vegetal: '150g', Carbohidrato: '200g', Grasa: '15g' },
-  Moderado: { Proteina: '150g', Vegetal: '150g', Carbohidrato: '120g', Grasa: '15g' },
-  Descanso: { Proteina: '150g', Vegetal: '220g', Carbohidrato: '60g', Grasa: '20g' }
 };
 
 /**
@@ -34,8 +27,33 @@ class StorageService {
     if (!localStorage.getItem(KEYS.WEEKLY_PLAN)) {
       localStorage.setItem(KEYS.WEEKLY_PLAN, JSON.stringify(INITIAL_SEED.weeklyPlan));
     }
-    if (!localStorage.getItem(KEYS.ACTIVITY_RULES)) {
-      localStorage.setItem(KEYS.ACTIVITY_RULES, JSON.stringify(DEFAULT_ACTIVITY_RULES));
+    localStorage.removeItem('mpb_activity_rules_v1');
+    this._removeLegacyPortionMetadata();
+  }
+
+  _removeLegacyPortionMetadata() {
+    const components = JSON.parse(localStorage.getItem(KEYS.COMPONENTS) || '[]');
+    let componentsChanged = false;
+    components.forEach(component => {
+      if (Object.hasOwn(component, 'porcion_base')) {
+        delete component.porcion_base;
+        componentsChanged = true;
+      }
+    });
+    if (componentsChanged) {
+      localStorage.setItem(KEYS.COMPONENTS, JSON.stringify(components));
+    }
+
+    const plates = JSON.parse(localStorage.getItem(KEYS.PLATES) || '[]');
+    let platesChanged = false;
+    plates.forEach(plate => {
+      if (Object.hasOwn(plate, 'actividad_recomendada')) {
+        delete plate.actividad_recomendada;
+        platesChanged = true;
+      }
+    });
+    if (platesChanged) {
+      localStorage.setItem(KEYS.PLATES, JSON.stringify(plates));
     }
   }
 
@@ -56,16 +74,6 @@ class StorageService {
   async saveStabilityApiKey(key) {
     localStorage.setItem(KEYS.STABILITY_API_KEY, key.trim());
     return key.trim();
-  }
-
-  async getActivityRules() {
-    const data = localStorage.getItem(KEYS.ACTIVITY_RULES);
-    return data ? JSON.parse(data) : DEFAULT_ACTIVITY_RULES;
-  }
-
-  async saveActivityRules(rules) {
-    localStorage.setItem(KEYS.ACTIVITY_RULES, JSON.stringify(rules));
-    return rules;
   }
 
   // --- COMPONENTES ---
