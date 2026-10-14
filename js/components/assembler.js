@@ -4,7 +4,6 @@ import { showToast } from '../utils/toast.js';
 export class AssemblerComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
-    this.currentActivity = 'Moderado';
     this.plateMode = 'caliente'; // 'caliente' | 'frio'
     
     // Estado de selección del plato (array de IDs por categoría para multi-selección)
@@ -19,7 +18,6 @@ export class AssemblerComponent {
     this.customSteps = ['', '', ''];
     this.plateName = 'Mi Plato Modular Custom';
     this.drawerOpen = false;
-    this.activityRules = null;
     this.generatedImageSrc = null;
 
     // Estado del buscador de Auto-Ensamblado determinista por ingredientes
@@ -28,34 +26,17 @@ export class AssemblerComponent {
   }
 
   async init() {
-    this.activityRules = await storage.getActivityRules();
     await this.render();
     this.bindEvents();
   }
 
   async render() {
     const components = await storage.getComponents();
-    this.activityRules = await storage.getActivityRules();
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
       <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
         <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
-          <div class="activity-selector-container">
-            <span class="label">Nivel de Actividad:</span>
-            <div class="activity-selector">
-              <button class="activity-btn ${this.currentActivity === 'Intenso' ? 'active' : ''}" data-level="Intenso">
-                🔴 Intenso
-              </button>
-              <button class="activity-btn ${this.currentActivity === 'Moderado' ? 'active' : ''}" data-level="Moderado">
-                🟡 Moderado
-              </button>
-              <button class="activity-btn ${this.currentActivity === 'Descanso' ? 'active' : ''}" data-level="Descanso">
-                🟢 Descanso
-              </button>
-            </div>
-          </div>
-
           <div class="activity-selector-container">
             <span class="label">Estilo de Servido:</span>
             <div class="activity-selector">
@@ -171,73 +152,6 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
-  getCarbTargetText() {
-    if (this.activityRules && this.activityRules[this.currentActivity]) {
-      return this.activityRules[this.currentActivity].Carbohidrato || '120g';
-    }
-    return '120g';
-  }
-
-  calculatePortion(comp, count = 1) {
-    if (!comp) return '';
-    const cat = comp.categoria;
-    let target = '';
-    if (this.activityRules && this.activityRules[this.currentActivity] && this.activityRules[this.currentActivity][cat]) {
-      target = this.activityRules[this.currentActivity][cat];
-    } else {
-      target = comp.porcion_base || '1 porción';
-    }
-
-    if (count <= 1) return target;
-
-    // Si hay más de 1 ingrediente seleccionado en la misma columna, dividir la porción
-    const match = target.match(/^(\d+(?:\.\d+)?)\s*([a-zA-ZáéíóúÁÉÍÓÚcda/]+)?$/);
-    if (match) {
-      const totalNum = parseFloat(match[1]);
-      const unit = match[2] || '';
-      const splitNum = (totalNum / count).toFixed(totalNum / count % 1 === 0 ? 0 : 1);
-      return `${splitNum}${unit} (${splitNum}${unit} de ${target} total)`;
-    }
-
-    return `${target} (÷${count})`;
-  }
-
-  getPortionBadgeBg(category) {
-    if (category === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') return 'rgba(239, 68, 68, 0.2)';
-      if (this.currentActivity === 'Moderado') return 'rgba(245, 158, 11, 0.2)';
-      return 'rgba(16, 185, 129, 0.2)';
-    }
-    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
-      return 'rgba(16, 185, 129, 0.25)';
-    }
-    return 'rgba(255, 255, 255, 0.06)';
-  }
-
-  getPortionBadgeBorder(category) {
-    if (category === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') return '#ef4444';
-      if (this.currentActivity === 'Moderado') return '#f59e0b';
-      return '#10b981';
-    }
-    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
-      return '#10b981';
-    }
-    return 'rgba(255, 255, 255, 0.12)';
-  }
-
-  getPortionBadgeColor(category) {
-    if (category === 'Carbohidrato') {
-      if (this.currentActivity === 'Intenso') return '#fca5a5';
-      if (this.currentActivity === 'Moderado') return '#fde047';
-      return '#6ee7b7';
-    }
-    if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
-      return '#6ee7b7';
-    }
-    return 'var(--text-primary)';
-  }
-
   getMissingCategories() {
     const categories = [
       { key: 'Proteina', label: 'Proteína', icon: '🥩' },
@@ -260,10 +174,6 @@ export class AssemblerComponent {
     let subBadge = category;
     if (count === 0) {
       subBadge = `⚪ Sin selección`;
-    } else if (category === 'Carbohidrato') {
-      subBadge = `🥔 ${this.getCarbTargetText()}`;
-    } else if (category === 'Vegetal' && this.currentActivity === 'Descanso') {
-      subBadge = '🥗 Extra Fibra';
     }
 
     if (count > 1) {
@@ -273,8 +183,6 @@ export class AssemblerComponent {
     let headerBadgeStyle = count === 0 ? 'background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px dashed #f59e0b;' : '';
     const cardsHtml = categoryComponents.map(comp => {
       const isSelected = selectedIds.includes(comp.id);
-      const portionText = this.calculatePortion(comp, count || 1);
-
       return `
         <div class="component-item-card ${isSelected ? 'selected' : ''}"
              data-id="${comp.id}" data-category="${category}">
@@ -284,11 +192,6 @@ export class AssemblerComponent {
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
             ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
-          </div>
-
-          <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
-          <div style="background: ${this.getPortionBadgeBg(category)}; border: 1px solid ${this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
-            Porción: ${portionText}
           </div>
 
           <div class="card-details-row">
@@ -326,11 +229,9 @@ export class AssemblerComponent {
       }
 
       const names = selComps.map(c => c.nombre).join(' + ');
-      const portionText = this.calculatePortion(selComps[0], selComps.length);
-
       return `
         <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
-          ${icon} ${names} (${portionText})
+          ${icon} ${names}
         </div>
       `;
     };
@@ -374,27 +275,27 @@ export class AssemblerComponent {
 
     if (isFrio) {
       autoStep1 = selProt.length > 0
-        ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: Porcionar o trocear la proteína lista/fría para ensalada.`
-        : 'Porcionar proteína lista o fría para ensalada.';
+        ? `Preparar ${selProt.map(c => c.nombre).join(' y ')} para la ensalada.`
+        : 'Preparar la proteína para la ensalada.';
 
       autoStep2 = (selVeg.length > 0 || selCarb.length > 0)
-        ? `Trocear ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selVeg[0], selVeg.length)}]` : 'vegetales'} y mezclar con ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selCarb[0], selCarb.length)}]` : 'base de carbos'} en un bowl amplio.`
+        ? `Trocear ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') : 'vegetales'} y mezclar con ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') : 'base de carbos'} en un bowl amplio.`
         : 'Mezclar vegetales frescos y carbohidratos en bowl frío.';
 
       autoStep3 = selFat.length > 0
-        ? `Aderezar la ensalada fresca con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')} y servir frío.`
+        ? `Aderezar la ensalada fresca con ${selFat.map(c => c.nombre).join(' + ')} y servir frío.`
         : 'Aderezar la ensalada y servir fresco.';
     } else {
       autoStep1 = selProt.length > 0
-        ? `${selProt.map(c => `${c.nombre} [${this.calculatePortion(c, selProt.length)}]`).join(' y ')}: ${selProt[0].metodo_coccion} (${selProt[0].tiempo_preparacion_min} min).`
+        ? `${selProt.map(c => c.nombre).join(' y ')}: ${selProt[0].metodo_coccion} (${selProt[0].tiempo_preparacion_min} min).`
         : 'Cocinar proteína a elección a fuego medio.';
 
       autoStep2 = (selVeg.length > 0 || selCarb.length > 0)
-        ? `Cocinar/saltear caliente ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selVeg[0], selVeg.length)}]` : ''} junto a ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') + ` [${this.calculatePortion(selCarb[0], selCarb.length)}]` : ''} (al wok, vapor o sopa).`
+        ? `Cocinar/saltear caliente ${selVeg.length > 0 ? selVeg.map(c => c.nombre).join(' + ') : ''} junto a ${selCarb.length > 0 ? selCarb.map(c => c.nombre).join(' + ') : ''} (al wok, vapor o sopa).`
         : 'Preparar guarnición de carbohidratos y vegetales calientes.';
 
       autoStep3 = selFat.length > 0
-        ? `Emplatar todo caliente y aderezar con ${selFat.map(c => `${c.nombre} (${this.calculatePortion(c, selFat.length)})`).join(' + ')}.`
+        ? `Emplatar todo caliente y aderezar con ${selFat.map(c => c.nombre).join(' + ')}.`
         : 'Emplatar caliente y servir.';
     }
 
@@ -720,15 +621,6 @@ export class AssemblerComponent {
       });
     }
 
-    // Selector de actividad
-    this.container.querySelectorAll('.activity-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        this.currentActivity = e.currentTarget.getAttribute('data-level');
-        await this.render();
-        this.bindEvents();
-      });
-    });
-
     // Selector de Estilo de Servido (Caliente / Frío)
     this.container.querySelectorAll('.mode-temp-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
@@ -886,7 +778,7 @@ export class AssemblerComponent {
               </div>
               <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">${this.escapeHtml(this.plateName)}</h4>
               <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1rem;">
-                Modo actual: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong> (${this.currentActivity}).
+                Modo actual: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong>.
               </p>
 
               <!-- Botones de Alternancia de Modos -->
@@ -979,7 +871,6 @@ export class AssemblerComponent {
 
     const newPlate = {
       nombre: this.plateName || 'Plato Modular',
-      actividad_recomendada: this.currentActivity,
       proteina_id: this.selected.Proteina,
       vegetal_id: this.selected.Vegetal,
       carbo_id: this.selected.Carbohidrato,
