@@ -327,7 +327,6 @@ export class AssemblerComponent {
   renderColumn(category, title, allComponents) {
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
     const categoryComponents = allComponents.filter(c => c.categoria === category);
-    const stats = this.calculateCategoryStats(category, allComponents);
     const count = selectedIds.length;
 
     let subBadge = category;
@@ -344,38 +343,23 @@ export class AssemblerComponent {
     }
 
     let headerBadgeStyle = count === 0 ? 'background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px dashed #f59e0b;' : '';
-    if (stats.isExcess) {
-      subBadge = `🚨 EXCESO: ${stats.totalGrams}${stats.unit} / ${stats.targetNum}${stats.unit} (+${stats.diffGrams}${stats.unit})`;
-      headerBadgeStyle = 'background: #ef4444; color: #ffffff; font-weight: 800; border: 1px solid #dc2626; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);';
-    }
-
-    const columnWarningBanner = stats.isExcess ? `
-      <div style="background: rgba(239, 68, 68, 0.18); border: 1px solid #ef4444; color: #f87171; padding: 0.45rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.65rem; text-align: center; line-height: 1.3;">
-        🚨 Exceso en ${stats.categoryLabel}: Acumulado ${stats.totalGrams}${stats.unit} • Excede la meta de ${stats.targetNum}${stats.unit} por +${stats.diffGrams}${stats.unit}
-      </div>
-    ` : '';
-
     const cardsHtml = categoryComponents.map(comp => {
       const isSelected = selectedIds.includes(comp.id);
       const portionText = this.calculatePortion(comp, count || 1);
 
-      const cardStyle = (isSelected && stats.isExcess)
-        ? 'border: 2px solid #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.05);'
-        : '';
-
       return `
         <div class="component-item-card ${isSelected ? 'selected' : ''}"
-             data-id="${comp.id}" data-category="${category}" style="${cardStyle}">
+             data-id="${comp.id}" data-category="${category}">
           <div class="card-header-row">
             <div class="card-title-group">
               <span>${comp.icono || '🥗'}</span>
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
-            ${isSelected ? (stats.isExcess ? '<span style="color: #ef4444; font-weight: 800; font-size: 0.9rem;">⚠️ Exceso</span>' : '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>') : ''}
+            ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
           </div>
 
           <!-- BADGE DE PORCIÓN DESTACADO EN LA TARJETA -->
-          <div style="background: ${stats.isExcess && isSelected ? 'rgba(239, 68, 68, 0.2)' : this.getPortionBadgeBg(category)}; border: 1px solid ${stats.isExcess && isSelected ? '#ef4444' : this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${stats.isExcess && isSelected ? '#f87171' : this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
+          <div style="background: ${this.getPortionBadgeBg(category)}; border: 1px solid ${this.getPortionBadgeBorder(category)}; padding: 0.35rem 0.65rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; color: ${this.getPortionBadgeColor(category)}; margin: 0.4rem 0;">
             Porción: ${portionText}
           </div>
 
@@ -388,12 +372,11 @@ export class AssemblerComponent {
     }).join('');
 
     return `
-      <div class="block-column ${stats.isExcess ? 'column-excess' : ''}" data-category="${category}" style="${stats.isExcess ? 'border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-lg); padding: 0.5rem;' : ''}">
+      <div class="block-column" data-category="${category}">
         <div class="block-column-header">
           <div class="block-title">${title}</div>
           <span class="block-badge" style="${headerBadgeStyle}">${subBadge}</span>
         </div>
-        ${columnWarningBanner}
         <div class="components-list">
           ${cardsHtml.length > 0 ? cardsHtml : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay componentes cargados.</div>'}
         </div>
