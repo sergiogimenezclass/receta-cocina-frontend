@@ -133,7 +133,6 @@ export class LibraryComponent {
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">${this.escapeHtml(plate.nombre)}</h4>
-            <span class="block-badge" style="background: rgba(255, 255, 255, 0.08);">${plate.actividad_recomendada || 'Moderado'}</span>
           </div>
 
           <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem;">
