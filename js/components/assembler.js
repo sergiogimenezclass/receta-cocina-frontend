@@ -36,7 +36,6 @@ export class AssemblerComponent {
   async render() {
     const components = await storage.getComponents();
     this.activityRules = await storage.getActivityRules();
-    const calInfo = this.calculatePlateCalories(components);
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
@@ -92,15 +91,12 @@ export class AssemblerComponent {
         ` : ''}
       </div>
 
-      <!-- Banner Informativo del Modulador de Actividad y Balance Calórico -->
+      <!-- Banner Informativo del Modulador de Actividad -->
       <div id="activityPortionNotice" style="font-size: 0.9rem; background: rgba(255, 255, 255, 0.04); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
         <div>
           ${this.getCarbPortionNoticeText()}
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
-          <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-            Calorías Totales: <span style="color: #34d399;">${calInfo.totalKcal} / ${calInfo.targetKcal} kcal</span>
-          </div>
           <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
             Carbohidratos Meta: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
           </div>
@@ -211,15 +207,6 @@ export class AssemblerComponent {
     const isExcess = category !== 'Vegetal' && (totalGrams > targetNum + 2);
     const diffGrams = Math.round(totalGrams - targetNum);
 
-    let kcalMultiplier = 1.35;
-    if (category === 'Vegetal') kcalMultiplier = 0.35;
-    if (category === 'Carbohidrato') kcalMultiplier = 1.30;
-    if (category === 'Grasa') kcalMultiplier = 8.5;
-
-    const blockKcal = Math.round(totalGrams * kcalMultiplier);
-    const targetKcal = Math.round(targetNum * kcalMultiplier);
-    const diffKcal = Math.round((totalGrams - targetNum) * kcalMultiplier);
-
     const labels = {
       Proteina: 'Proteínas',
       Vegetal: 'Vegetales',
@@ -235,41 +222,7 @@ export class AssemblerComponent {
       targetNum,
       unit,
       isExcess,
-      diffGrams,
-      blockKcal,
-      targetKcal,
-      diffKcal
-    };
-  }
-
-  calculatePlateCalories(allComponents = []) {
-    let totalKcal = 0;
-    const blockExcesses = [];
-    const categories = ['Proteina', 'Vegetal', 'Carbohidrato', 'Grasa'];
-
-    categories.forEach(cat => {
-      const stats = this.calculateCategoryStats(cat, allComponents);
-      
-      let kcalMultiplier = 1.35;
-      if (cat === 'Vegetal') kcalMultiplier = 0.35;
-      if (cat === 'Carbohidrato') kcalMultiplier = 1.30;
-      if (cat === 'Grasa') kcalMultiplier = 8.5;
-
-      totalKcal += stats.totalGrams * kcalMultiplier;
-
-      if (stats.isExcess) {
-        blockExcesses.push(stats);
-      }
-    });
-
-    const targetKcal = this.currentActivity === 'Intenso' ? 720 : (this.currentActivity === 'Moderado' ? 520 : 400);
-
-    return {
-      totalKcal: Math.round(totalKcal),
-      targetKcal,
-      isExcess: blockExcesses.length > 0,
-      diffKcal: Math.round(totalKcal - targetKcal),
-      blockExcesses
+      diffGrams
     };
   }
 
