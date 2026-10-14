@@ -12,7 +12,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 12,
       metodo_coccion: "Plancha a fuego medio con sal y pimienta",
       icono: "🍗",
-      porcion_base: "150g",
       en_despensa: true
     },
     {
@@ -22,7 +21,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 10,
       metodo_coccion: "Plancha muy caliente 4 min por lado",
       icono: "🥩",
-      porcion_base: "180g",
       en_despensa: true
     },
     {
@@ -32,7 +30,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 5,
       metodo_coccion: "Sartén antiadherente a fuego bajo",
       icono: "🥚",
-      porcion_base: "3 unidades",
       en_despensa: true
     },
     {
@@ -42,7 +39,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 8,
       metodo_coccion: "Dorar en cubos con salsa de soya",
       icono: "🧈",
-      porcion_base: "160g",
       en_despensa: false
     },
     {
@@ -52,7 +48,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 9,
       metodo_coccion: "Sellado rápido a la plancha",
       icono: "🐟",
-      porcion_base: "150g",
       en_despensa: false
     },
 
@@ -64,7 +59,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 8,
       metodo_coccion: "Cocinar al vapor o hervir 6 min",
       icono: "🥦",
-      porcion_base: "150g",
       en_despensa: true
     },
     {
@@ -74,7 +68,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 3,
       metodo_coccion: "Crudo en ensalada fresca",
       icono: "🥗",
-      porcion_base: "1 bowl",
       en_despensa: true
     },
     {
@@ -84,7 +77,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 6,
       metodo_coccion: "Rodajas a la plancha con orégano",
       icono: "🥒",
-      porcion_base: "1 unidad grande",
       en_despensa: true
     },
     {
@@ -94,7 +86,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 4,
       metodo_coccion: "Saltear rápido con ajo en sartén",
       icono: "🥬",
-      porcion_base: "150g",
       en_despensa: false
     },
     {
@@ -104,7 +95,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 10,
       metodo_coccion: "Salteado a fuego fuerte (zucchini, morrón, cebolla y berenjena con soya)",
       icono: "🥘",
-      porcion_base: "1 bowl (200g)",
       en_despensa: true
     },
 
@@ -116,7 +106,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 18,
       metodo_coccion: "Hervir en cubos o al horno con romero",
       icono: "🥔",
-      porcion_base: "150g (Ajustable por actividad)",
       en_despensa: true
     },
     {
@@ -126,7 +115,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 15,
       metodo_coccion: "Hervir a fuego lento 2x1 agua",
       icono: "🍚",
-      porcion_base: "120g cocido (Ajustable)",
       en_despensa: true
     },
     {
@@ -136,7 +124,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 20,
       metodo_coccion: "Horno a 200°C en gajos dorados",
       icono: "🍠",
-      porcion_base: "160g (Ajustable)",
       en_despensa: true
     },
     {
@@ -146,7 +133,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 12,
       metodo_coccion: "Lavar y hervir 10 min",
       icono: "🌾",
-      porcion_base: "110g (Ajustable)",
       en_despensa: false
     },
 
@@ -158,7 +144,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 1,
       metodo_coccion: "Agregar crudo al emplatar",
       icono: "🫒",
-      porcion_base: "1 cucharada (15ml)",
       en_despensa: true
     },
     {
@@ -168,7 +153,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 2,
       metodo_coccion: "Cortar en láminas o pisado",
       icono: "🥑",
-      porcion_base: "1/2 unidad",
       en_despensa: true
     },
     {
@@ -178,7 +162,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 2,
       metodo_coccion: "Tostar suavemente 2 min o servir directo",
       icono: "🥜",
-      porcion_base: "30g (Nueces/Almendras)",
       en_despensa: false
     },
     {
@@ -188,7 +171,6 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 1,
       metodo_coccion: "Espolvorear sobre el plato terminado",
       icono: "🌻",
-      porcion_base: "1 cucharada",
       en_despensa: true
     }
   ],
@@ -197,7 +179,6 @@ export const INITIAL_SEED = {
     {
       id: "plate_demo_1",
       nombre: "Bowl Potencia Post-Entreno",
-      "actividad_recomendada": "Intenso",
       proteina_id: "comp_prot_1",
       vegetal_id: "comp_veg_1",
       carbo_id: "comp_carb_1",
@@ -212,7 +193,6 @@ export const INITIAL_SEED = {
     {
       id: "plate_demo_2",
       nombre: "Ensalada Proteica Keto / Rest Day",
-      "actividad_recomendada": "Descanso",
       proteina_id: "comp_prot_3",
       vegetal_id: "comp_veg_2",
       carbo_id: "comp_carb_4",
