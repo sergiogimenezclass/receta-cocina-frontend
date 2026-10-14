@@ -1,4 +1,5 @@
 import { storage } from '../services/storage.js';
+import { showToast } from '../utils/toast.js';
 
 export class AssemblerComponent {
   constructor(containerId) {
@@ -962,7 +963,7 @@ export class AssemblerComponent {
         const stabilityKey = await storage.getStabilityApiKey();
 
         if (!apiKey && !stabilityKey) {
-          alert('🔑 Por favor ingresa tu API Key en la pestaña Ajustes (⚙️) para habilitar la generación de imágenes con IA.');
+          showToast('Por favor ingresá tu API Key en la pestaña Ajustes (⚙️) para habilitar la generación de imágenes con IA.', 'warning', 5000);
           const settingsTab = document.querySelector('.nav-tab[data-tab="settings"]');
           if (settingsTab) settingsTab.click();
           return;
@@ -1117,7 +1118,7 @@ export class AssemblerComponent {
 
   async saveCurrentPlate() {
     if (!this.selected.Proteina || !this.selected.Vegetal || !this.selected.Carbohidrato || !this.selected.Grasa) {
-      alert('Por favor selecciona 1 ingrediente en cada uno de los 4 bloques.');
+      showToast('Seleccioná al menos 1 ingrediente en cada uno de los 4 bloques.', 'warning');
       return;
     }
 
@@ -1133,7 +1134,7 @@ export class AssemblerComponent {
     };
 
     await storage.savePlate(newPlate);
-    alert(`¡Plato "${newPlate.nombre}" guardado con éxito en tu biblioteca de platos!`);
+    showToast(`Plato "${newPlate.nombre}" guardado con éxito en tu biblioteca de platos.`, 'success');
   }
 
   escapeHtml(str) {

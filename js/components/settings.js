@@ -1,4 +1,5 @@
 import { storage } from '../services/storage.js';
+import { showToast, showConfirm } from '../utils/toast.js';
 
 export class SettingsComponent {
   constructor(containerId) {
@@ -392,7 +393,7 @@ export class SettingsComponent {
         });
 
         await storage.saveActivityRules(currentRules);
-        alert('¡Reglas de porciones por actividad actualizadas!');
+        showToast('Reglas de porciones por actividad actualizadas.', 'success');
         await this.render();
         this.bindEvents();
       });
@@ -402,7 +403,8 @@ export class SettingsComponent {
     const btnResetRules = this.container.querySelector('#btnResetRules');
     if (btnResetRules) {
       btnResetRules.addEventListener('click', async () => {
-        if (confirm('¿Restablecer las porciones por defecto?')) {
+        const ok = await showConfirm('¿Restablecer las porciones por defecto?');
+        if (ok) {
           localStorage.removeItem('mpb_activity_rules_v1');
           await storage.getActivityRules();
           await this.render();
