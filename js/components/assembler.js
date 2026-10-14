@@ -91,18 +91,6 @@ export class AssemblerComponent {
         ` : ''}
       </div>
 
-      <!-- Banner Informativo del Modulador de Actividad -->
-      <div id="activityPortionNotice" style="font-size: 0.9rem; background: rgba(255, 255, 255, 0.04); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid ${this.getActivityColor()}; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-        <div>
-          ${this.getCarbPortionNoticeText()}
-        </div>
-        <div style="display: flex; gap: 0.5rem; align-items: center;">
-          <div style="font-weight: 700; font-size: 0.85rem; background: rgba(255, 255, 255, 0.08); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);">
-            Carbohidratos Meta: <span style="color: ${this.getActivityColor()};">${this.getCarbTargetText()}</span>
-          </div>
-        </div>
-      </div>
-
       <!-- Matriz de 4 Columnas -->
       <div class="assembler-grid" style="margin-bottom: 5rem;">
         ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
