@@ -31,16 +31,6 @@
   --color-fat-bg: rgba(6, 182, 212, 0.12);
   --color-fat-border: rgba(6, 182, 212, 0.35);
 
-  /* Activity Level Colors */
-  --act-intense: #ef4444;
-  --act-intense-bg: rgba(239, 68, 68, 0.15);
-  
-  --act-moderate: #f59e0b;
-  --act-moderate-bg: rgba(245, 158, 11, 0.15);
-  
-  --act-rest: #10b981;
-  --act-rest-bg: rgba(16, 185, 129, 0.15);
-
   /* Glassmorphism */
   --glass-blur: blur(16px);
   --radius-sm: 8px;
