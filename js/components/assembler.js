@@ -1084,7 +1084,26 @@ export class AssemblerComponent {
         }
       };
 
-      btnGenImg.addEventListener('click', () => executeImageGeneration('grid'));
+      btnGenImg.addEventListener('click', () => {
+        // Muestra la imagen estática local en lugar de llamar a la IA
+        modalImg.classList.add('open');
+        imgModalBody.innerHTML = `
+          <div style="text-align: center;">
+            <div style="margin-bottom: 1rem; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--border-glow); box-shadow: var(--shadow-md);">
+              <img src="img/plato-ejemplo.png" alt="Plato de ejemplo" style="width: 100%; max-height: 380px; object-fit: cover; display: block;">
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">${this.escapeHtml(this.plateName) || 'Plato Modular'}</h4>
+            <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1rem;">
+              Vista de referencia del plato.
+            </p>
+            <div style="display: flex; gap: 0.75rem; justify-content: center;">
+              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('modalImageGen').classList.remove('open');">
+                👍 Cerrar
+              </button>
+            </div>
+          </div>
+        `;
+      });
     }
 
     // Botón Guardar Plato
