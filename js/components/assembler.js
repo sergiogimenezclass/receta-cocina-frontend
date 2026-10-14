@@ -40,10 +40,10 @@ export class AssemblerComponent {
           <div class="activity-selector-container">
             <span class="label">Estilo de Servido:</span>
             <div class="activity-selector">
-              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" style="border-radius: var(--radius-sm); padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${this.plateMode === 'caliente' ? 'background: rgba(249, 115, 22, 0.25); color: #fb923c; border: 1.5px solid #f97316; box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);' : 'background: transparent; color: var(--text-secondary); border: 1px solid transparent;'}">
+              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente">
                 🍲 Caliente (Wok / Sopa)
               </button>
-              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" style="border-radius: var(--radius-sm); padding: 0.4rem 0.85rem; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${this.plateMode === 'frio' ? 'background: rgba(14, 165, 233, 0.25); color: #38bdf8; border: 1.5px solid #0ea5e9; box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);' : 'background: transparent; color: var(--text-secondary); border: 1px solid transparent;'}">
+              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio">
                 🥗 Frío (Ensalada / Bowl)
               </button>
             </div>
@@ -52,7 +52,7 @@ export class AssemblerComponent {
       </div>
 
       <!-- Tarjeta de Auto-Ensamblado por Ingredientes Disponibles -->
-      <div class="glass-card" style="padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glow);">
+      <div class="glass-card" style="padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; background: #ffffff; border: 1px solid var(--border-color);">
         <div style="font-size: 0.825rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
           <div style="display: flex; align-items: center; gap: 0.4rem;">
             <span>⚡ Auto-Ensamblar Plato por Ingredientes Disponibles</span>
@@ -66,7 +66,7 @@ export class AssemblerComponent {
           </button>
         </form>
         ${this.autoMatchNotification ? `
-          <div style="margin-top: 0.65rem; padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: var(--radius-sm); font-size: 0.825rem; color: #34d399; font-weight: 600;">
+          <div style="margin-top: 0.65rem; padding: 0.5rem 0.75rem; background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-veg); font-weight: 600;">
             ${this.autoMatchNotification}
           </div>
         ` : ''}
@@ -180,7 +180,7 @@ export class AssemblerComponent {
       subBadge += ` • ${count} sel.`;
     }
 
-    let headerBadgeStyle = count === 0 ? 'background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px dashed #f59e0b;' : '';
+    let headerBadgeStyle = count === 0 ? 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);' : '';
     const cardsHtml = categoryComponents.map(comp => {
       const isSelected = selectedIds.includes(comp.id);
       return `
@@ -191,7 +191,7 @@ export class AssemblerComponent {
               <span>${comp.icono || '🥗'}</span>
               <span>${this.escapeHtml(comp.nombre)}</span>
             </div>
-            ${isSelected ? '<span style="color: #34d399; font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
+            ${isSelected ? '<span style="color: var(--color-veg); font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
           </div>
 
           <div class="card-details-row">
@@ -222,7 +222,7 @@ export class AssemblerComponent {
 
       if (selComps.length === 0) {
         return `
-          <div class="sticky-chip" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px dashed #f59e0b;">
+          <div class="sticky-chip" style="background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);">
             ${icon} ${defaultLabel} (Sin selección)
           </div>
         `;
@@ -750,7 +750,7 @@ export class AssemblerComponent {
             <p style="color: var(--text-secondary); font-size: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
               ${stabilityKey ? 'Sintetizando imagen única por IA con Stability AI (Stable Diffusion Core)...' : 'Conectando con Google Gemini...'}
             </p>
-            <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
+            <div style="background: #f7f9fc; padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
               Modo: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong><br>
               Prompt: "${this.escapeHtml(promptText)}"
             </div>
