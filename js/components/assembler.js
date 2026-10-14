@@ -184,17 +184,6 @@ export class AssemblerComponent {
     return '120g';
   }
 
-  getCarbPortionNoticeText() {
-    const carbTarget = this.getCarbTargetText();
-    if (this.currentActivity === 'Intenso') {
-      return `🔴 <strong>Modo Día Intenso:</strong> Los Carbohidratos se ajustan a porción alta (${carbTarget}) para recarga de glucógeno.`;
-    } else if (this.currentActivity === 'Moderado') {
-      return `🟡 <strong>Modo Día Moderado:</strong> Mantienes porciones de Carbohidratos estándar (${carbTarget}).`;
-    } else {
-      return `🟢 <strong>Modo Día de Descanso:</strong> Carbohidratos reducidos (${carbTarget}) priorizando fibra vegetal.`;
-    }
-  }
-
   calculatePortion(comp, count = 1) {
     if (!comp) return '';
     const cat = comp.categoria;
