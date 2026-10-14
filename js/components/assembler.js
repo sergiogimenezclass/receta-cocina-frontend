@@ -183,49 +183,6 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
-  calculateCategoryStats(category, allComponents = []) {
-    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
-    const selComps = allComponents.filter(c => selectedIds.includes(c.id));
-    
-    const targetStr = (this.activityRules && this.activityRules[this.currentActivity])
-      ? this.activityRules[this.currentActivity][category]
-      : '100g';
-    
-    const targetMatch = (targetStr || '').match(/(\d+(?:\.\d+)?)/);
-    const targetNum = targetMatch ? parseFloat(targetMatch[1]) : 100;
-    const unit = (targetStr || '').replace(/[\d\.]/g, '').trim() || 'g';
-
-    let totalGrams = 0;
-    if (selComps.length > 0) {
-      selComps.forEach(comp => {
-        const compMatch = (comp.porcion_base || '').match(/(\d+(?:\.\d+)?)/);
-        const compVal = compMatch ? parseFloat(compMatch[1]) : targetNum;
-        totalGrams += compVal;
-      });
-    }
-
-    const isExcess = category !== 'Vegetal' && (totalGrams > targetNum + 2);
-    const diffGrams = Math.round(totalGrams - targetNum);
-
-    const labels = {
-      Proteina: 'Proteínas',
-      Vegetal: 'Vegetales',
-      Carbohidrato: 'Carbohidratos',
-      Grasa: 'Grasas'
-    };
-
-    return {
-      category,
-      categoryLabel: labels[category] || category,
-      selectedCount: selComps.length,
-      totalGrams: Math.round(totalGrams),
-      targetNum,
-      unit,
-      isExcess,
-      diffGrams
-    };
-  }
-
   getActivityColor() {
     if (this.currentActivity === 'Intenso') return '#ef4444';
     if (this.currentActivity === 'Moderado') return '#f59e0b';
