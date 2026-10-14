@@ -1,5 +1,5 @@
 import { storage } from '../services/storage.js';
-import { showToast, showConfirm } from '../utils/toast.js';
+import { showToast } from '../utils/toast.js';
 
 export class SettingsComponent {
   constructor(containerId) {
@@ -14,7 +14,6 @@ export class SettingsComponent {
   async render() {
     const apiKey = await storage.getApiKey();
     const stabilityApiKey = await storage.getStabilityApiKey();
-    const rules = await storage.getActivityRules();
 
     this.container.innerHTML = `
       <div style="margin-bottom: 2rem;">
@@ -98,93 +97,6 @@ export class SettingsComponent {
         </div>
       </div>
 
-      <!-- SECCIÓN 2: MODULADOR DE PORCIONES POR ACTIVIDAD -->
-      <div class="glass-card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-          <div>
-            <h3 style="font-size: 1.15rem; font-weight: 700;">🎛️ Personalización de Porciones por Bloque y Actividad</h3>
-            <p style="font-size: 0.825rem; color: var(--text-secondary);">Ajusta las cantidades sugeridas para los días Intenso, Moderado y Descanso.</p>
-          </div>
-          <button id="btnResetRules" class="btn btn-secondary btn-sm">
-            🔄 Valores por Defecto
-          </button>
-        </div>
-
-        <form id="formActivityRules">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
-            
-            <!-- REGION INTENSO -->
-            <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="color: #f87171; font-weight: 700; margin-bottom: 1rem;">🔴 Día Intenso (Entrenamiento)</h4>
-              <div class="form-group">
-                <label>🥩 Proteína</label>
-                <input type="text" class="form-control rule-input" data-level="Intenso" data-category="Proteina" value="${this.escapeHtml(rules.Intenso.Proteina)}">
-              </div>
-              <div class="form-group">
-                <label>🥦 Vegetal</label>
-                <input type="text" class="form-control rule-input" data-level="Intenso" data-category="Vegetal" value="${this.escapeHtml(rules.Intenso.Vegetal)}">
-              </div>
-              <div class="form-group">
-                <label>🥔 Carbohidrato (Recarga)</label>
-                <input type="text" class="form-control rule-input" data-level="Intenso" data-category="Carbohidrato" value="${this.escapeHtml(rules.Intenso.Carbohidrato)}">
-              </div>
-              <div class="form-group">
-                <label>🥑 Grasa</label>
-                <input type="text" class="form-control rule-input" data-level="Intenso" data-category="Grasa" value="${this.escapeHtml(rules.Intenso.Grasa)}">
-              </div>
-            </div>
-
-            <!-- REGION MODERADO -->
-            <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="color: #fbbf24; font-weight: 700; margin-bottom: 1rem;">🟡 Día Moderado (Habitual)</h4>
-              <div class="form-group">
-                <label>🥩 Proteína</label>
-                <input type="text" class="form-control rule-input" data-level="Moderado" data-category="Proteina" value="${this.escapeHtml(rules.Moderado.Proteina)}">
-              </div>
-              <div class="form-group">
-                <label>🥦 Vegetal</label>
-                <input type="text" class="form-control rule-input" data-level="Moderado" data-category="Vegetal" value="${this.escapeHtml(rules.Moderado.Vegetal)}">
-              </div>
-              <div class="form-group">
-                <label>🥔 Carbohidrato</label>
-                <input type="text" class="form-control rule-input" data-level="Moderado" data-category="Carbohidrato" value="${this.escapeHtml(rules.Moderado.Carbohidrato)}">
-              </div>
-              <div class="form-group">
-                <label>🥑 Grasa</label>
-                <input type="text" class="form-control rule-input" data-level="Moderado" data-category="Grasa" value="${this.escapeHtml(rules.Moderado.Grasa)}">
-              </div>
-            </div>
-
-            <!-- REGION DESCANSO -->
-            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="color: #34d399; font-weight: 700; margin-bottom: 1rem;">🟢 Día de Descanso (Rest)</h4>
-              <div class="form-group">
-                <label>🥩 Proteína</label>
-                <input type="text" class="form-control rule-input" data-level="Descanso" data-category="Proteina" value="${this.escapeHtml(rules.Descanso.Proteina)}">
-              </div>
-              <div class="form-group">
-                <label>🥦 Vegetal (Extra Fibra)</label>
-                <input type="text" class="form-control rule-input" data-level="Descanso" data-category="Vegetal" value="${this.escapeHtml(rules.Descanso.Vegetal)}">
-              </div>
-              <div class="form-group">
-                <label>🥔 Carbohidrato (Reducido)</label>
-                <input type="text" class="form-control rule-input" data-level="Descanso" data-category="Carbohidrato" value="${this.escapeHtml(rules.Descanso.Carbohidrato)}">
-              </div>
-              <div class="form-group">
-                <label>🥑 Grasa</label>
-                <input type="text" class="form-control rule-input" data-level="Descanso" data-category="Grasa" value="${this.escapeHtml(rules.Descanso.Grasa)}">
-              </div>
-            </div>
-
-          </div>
-
-          <div style="display: flex; justify-content: flex-end;">
-            <button type="submit" class="btn btn-primary">
-              💾 Guardar Reglas de Porciones
-            </button>
-          </div>
-        </form>
-      </div>
     `;
   }
 
@@ -378,40 +290,7 @@ export class SettingsComponent {
       });
     }
 
-    // Guardar Reglas de Porciones
-    const formRules = this.container.querySelector('#formActivityRules');
-    if (formRules) {
-      formRules.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const currentRules = await storage.getActivityRules();
-        
-        this.container.querySelectorAll('.rule-input').forEach(input => {
-          const level = input.getAttribute('data-level');
-          const category = input.getAttribute('data-category');
-          if (!currentRules[level]) currentRules[level] = {};
-          currentRules[level][category] = input.value;
-        });
 
-        await storage.saveActivityRules(currentRules);
-        showToast('Reglas de porciones por actividad actualizadas.', 'success');
-        await this.render();
-        this.bindEvents();
-      });
-    }
-
-    // Restablecer reglas por defecto
-    const btnResetRules = this.container.querySelector('#btnResetRules');
-    if (btnResetRules) {
-      btnResetRules.addEventListener('click', async () => {
-        const ok = await showConfirm('¿Restablecer las porciones por defecto?');
-        if (ok) {
-          localStorage.removeItem('mpb_activity_rules_v1');
-          await storage.getActivityRules();
-          await this.render();
-          this.bindEvents();
-        }
-      });
-    }
   }
 
   escapeHtml(str) {
