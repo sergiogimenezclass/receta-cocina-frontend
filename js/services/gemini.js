@@ -6,7 +6,7 @@ import { storage } from './storage.js';
  */
 class GeminiService {
   constructor() {
-    this._activeModel = null;
+    this._activeModel = localStorage.getItem('mpb_verified_gemini_model') || null;
   }
 
   /**
@@ -28,12 +28,14 @@ class GeminiService {
 
         if (available.length > 0) {
           const sorted = [];
-          ['gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-2.5-flash'].forEach(m => {
+          // Modelos estables comprobados primero
+          ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash-8b'].forEach(m => {
             if (available.includes(m) && !sorted.includes(m)) sorted.push(m);
           });
-          const otherFlash = available.filter(m => m.includes('flash') && !sorted.includes(m));
+          // Otros modelos flash excluyendo versiones experimentales no soportadas
+          const otherFlash = available.filter(m => m.includes('flash') && !m.includes('2.5') && !sorted.includes(m));
           sorted.push(...otherFlash);
-          const others = available.filter(m => !sorted.includes(m));
+          const others = available.filter(m => !m.includes('2.5') && !sorted.includes(m));
           sorted.push(...others);
 
           return sorted;
@@ -43,7 +45,7 @@ class GeminiService {
       console.warn('Error al listar modelos disponibles en Gemini:', e);
     }
 
-    return ['gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-pro'];
+    return ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
   }
 
   /**
@@ -92,9 +94,17 @@ class GeminiService {
 
         const parsed = this._extractJSON(rawText);
         this._activeModel = model; // Cachear el modelo que funcionó
+        try {
+          localStorage.setItem('mpb_verified_gemini_model', model);
+        } catch (_) {}
         return parsed;
       } catch (err) {
         lastError = err;
+        // Si el modelo guardado previamente falló, limpiar para re-evaluar candidatos
+        if (this._activeModel === model) {
+          this._activeModel = null;
+          try { localStorage.removeItem('mpb_verified_gemini_model'); } catch (_) {}
+        }
       }
     }
 
