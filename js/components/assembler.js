@@ -503,31 +503,45 @@ export class AssemblerComponent {
     // Diccionario de grupos gastronómicos (hiperónimos y sinónimos)
     const SYNONYM_GROUPS = {
       Proteina: {
-        carne: ['bife', 'magro', 'carne', 'picada', 'molida', 'vacuno', 'res', 'ternera', 'asado', 'lomo', 'corte', 'milanesa', 'hamburguesa'],
-        pollo: ['pollo', 'pechuga', 'muslo', 'pata', 'pavo', 'ave'],
-        huevo: ['huevo', 'huevos', 'pasado', 'revuelto', 'omelette', 'clara', 'yema'],
-        pescado: ['salmon', 'atun', 'pescado', 'merluza', 'filete', 'lomo'],
+        carne: ['bife', 'magro', 'carne', 'picada', 'molida', 'vacuno', 'res', 'ternera', 'corte', 'milanesa', 'hamburguesa'],
+        asado: ['asado', 'tira', 'costillar', 'parrilla'],
+        tortuguita: ['tortuguita', 'tortuga'],
+        palomita: ['palomita', 'paloma'],
+        pollo: ['pollo', 'pechuga', 'suprema', 'muslo', 'pata', 'pavo', 'ave'],
+        huevo: ['huevo', 'huevos', 'pasado', 'revuelto', 'duro', 'cocido', 'omelette', 'clara', 'yema'],
+        pescado: ['atun', 'pescado', 'merluza', 'tilapia', 'filete', 'lomo', 'salmon'],
+        cerdo: ['cerdo', 'costilla', 'costillita', 'chancho', 'puerco'],
         tofu: ['tofu', 'soya', 'soja', 'seitan']
       },
       Vegetal: {
         cebolla: ['cebolla', 'cebollas', 'wok', 'salteado', 'salteada'],
         morron: ['morron', 'morrones', 'pimiento', 'pimientos', 'aji', 'ajies', 'wok'],
+        hongos: ['hongos', 'hongo', 'champinon', 'champinones', 'portobello', 'setas'],
         brocoli: ['brocoli', 'vapor'],
-        rucula: ['rucula', 'tomate', 'cherry', 'ensalada'],
+        hojas: ['lechuga', 'rucula', 'hojas', 'verdes'],
+        tomate: ['tomate', 'tomates', 'cherry'],
+        zanahoria: ['zanahoria', 'zanahorias'],
+        zapallo: ['zapallo', 'calabaza', 'anco', 'auyama'],
         zucchini: ['zucchini', 'zapallito', 'calabacin'],
-        espinaca: ['espinaca', 'hojas']
+        espinaca: ['espinaca', 'acelga']
       },
       Carbohidrato: {
         papa: ['papa', 'papas', 'patata', 'patatas', 'hervida', 'horno'],
         batata: ['batata', 'batatas', 'camote', 'camotes', 'boniato'],
+        mandioca: ['mandioca', 'yuca'],
         arroz: ['arroz', 'blanco', 'integral'],
+        pasta: ['fideos', 'fideo', 'pasta', 'pastas', 'tallarines', 'spaghetti'],
+        choclo: ['choclo', 'choclos', 'maiz', 'elote'],
+        legumbres: ['lenteja', 'lentejas', 'poroto', 'porotos', 'frijol', 'frijoles', 'garbanzo', 'garbanzos'],
         quinoa: ['quinoa', 'graneada']
       },
       Grasa: {
         palta: ['palta', 'paltas', 'aguacate'],
         aceite: ['aceite', 'oliva', 'extra'],
-        frutos: ['frutos', 'secos', 'nueces', 'almendras', 'mani'],
-        semillas: ['semillas', 'chia', 'girasol']
+        aceitunas: ['aceituna', 'aceitunas', 'olivas'],
+        frutos: ['frutos', 'secos', 'nueces', 'almendras'],
+        semillas: ['semillas', 'chia', 'girasol', 'sesamo'],
+        queso: ['queso', 'parmesano', 'sardo', 'rallado', 'reggianito']
       }
     };
 
