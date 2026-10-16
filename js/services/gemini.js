@@ -5,8 +5,49 @@ import { storage } from './storage.js';
  * Enfocado en cocina rápida, práctica y sin rodeos.
  */
 class GeminiService {
+  constructor() {
+    this._activeModel = null;
+  }
+
   /**
-   * Intenta consultar modelos disponibles o usa gemini-2.0-flash / gemini-1.5-flash por defecto.
+   * Consulta dinámicamente los modelos autorizados para la clave actual y prioriza los más rápidos.
+   */
+  async _getAvailableModels(apiKey) {
+    if (this._activeModel) return [this._activeModel];
+
+    try {
+      const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`, {
+        headers: { 'x-goog-api-key': apiKey }
+      });
+
+      if (listResp.ok) {
+        const data = await listResp.json();
+        const available = (data.models || [])
+          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+          .map(m => m.name.replace('models/', ''));
+
+        if (available.length > 0) {
+          const sorted = [];
+          ['gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-2.0-flash-exp', 'gemini-2.5-flash'].forEach(m => {
+            if (available.includes(m) && !sorted.includes(m)) sorted.push(m);
+          });
+          const otherFlash = available.filter(m => m.includes('flash') && !sorted.includes(m));
+          sorted.push(...otherFlash);
+          const others = available.filter(m => !sorted.includes(m));
+          sorted.push(...others);
+
+          return sorted;
+        }
+      }
+    } catch (e) {
+      console.warn('Error al listar modelos disponibles en Gemini:', e);
+    }
+
+    return ['gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-pro'];
+  }
+
+  /**
+   * Ejecuta la llamada a Gemini recorriendo los modelos disponibles con parseo JSON seguro.
    */
   async _callGemini(promptText, systemInstruction = '') {
     const apiKey = await storage.getApiKey();
@@ -15,25 +56,19 @@ class GeminiService {
     }
 
     const trimmedKey = apiKey.trim();
-    const candidateModels = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+    const candidateModels = await this._getAvailableModels(trimmedKey);
 
     let lastError = null;
 
     for (const model of candidateModels) {
       try {
+        const fullPrompt = systemInstruction ? `${systemInstruction}\n\n${promptText}` : promptText;
         const bodyPayload = {
-          contents: [{ parts: [{ text: promptText }] }],
+          contents: [{ parts: [{ text: fullPrompt }] }],
           generationConfig: {
-            temperature: 0.2,
-            responseMimeType: "application/json"
+            temperature: 0.2
           }
         };
-
-        if (systemInstruction) {
-          bodyPayload.systemInstruction = {
-            parts: [{ text: systemInstruction }]
-          };
-        }
 
         const resp = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${trimmedKey}`,
@@ -55,13 +90,29 @@ class GeminiService {
           throw new Error('Respuesta vacía de la IA');
         }
 
-        return JSON.parse(rawText);
+        const parsed = this._extractJSON(rawText);
+        this._activeModel = model; // Cachear el modelo que funcionó
+        return parsed;
       } catch (err) {
         lastError = err;
       }
     }
 
     throw lastError || new Error('No se pudo conectar con Gemini');
+  }
+
+  _extractJSON(text) {
+    if (!text) throw new Error('Texto vacío');
+    const clean = text.replace(/```(?:json)?/gi, '').replace(/```/g, '').trim();
+    try {
+      return JSON.parse(clean);
+    } catch {
+      const match = clean.match(/\{[\s\S]*\}/);
+      if (match) {
+        return JSON.parse(match[0]);
+      }
+      throw new Error('No se pudo interpretar el formato JSON de la respuesta');
+    }
   }
 
   /**
