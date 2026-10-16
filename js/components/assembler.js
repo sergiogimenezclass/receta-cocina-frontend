@@ -65,20 +65,12 @@ export class AssemblerComponent {
         </div>
       </div>
 
-      <!-- Consola Conversacional Unificada con Chips de Atajo Rápido -->
+      <!-- Consola Conversacional Unificada -->
       <div class="conversational-console">
         <div class="console-header-row">
           <div class="console-title">
             <span>💬</span>
             <span>Asistente de Cocina Rápida</span>
-          </div>
-          <div class="quick-prompt-chips">
-            <span style="font-size: 0.75rem; color: var(--text-secondary); margin-right: 0.2rem; font-weight: 500;">Atajos rápidos:</span>
-            <button type="button" class="prompt-chip" data-prompt="⚡ Menos de 10 min">⚡ &lt; 10 min</button>
-            <button type="button" class="prompt-chip" data-prompt="🥗 Opción fría">🥗 Opción fría</button>
-            <button type="button" class="prompt-chip" data-prompt="🥩 Con carne">🥩 Con carne</button>
-            <button type="button" class="prompt-chip" data-prompt="🥔 Sumar carbohidrato">🥔 Sumar carbohidrato</button>
-            <button type="button" class="prompt-chip" data-prompt="🥑 Liviano con palta">🥑 Con palta</button>
           </div>
         </div>
 
@@ -775,33 +767,6 @@ export class AssemblerComponent {
   }
 
   bindEvents() {
-    // Chips de Atajos Rápidos en la Consola Conversacional
-    this.container.querySelectorAll('.prompt-chip').forEach(chip => {
-      chip.addEventListener('click', async (e) => {
-        const prompt = e.currentTarget.getAttribute('data-prompt') || '';
-        const input = document.getElementById('autoIngredientsInput');
-        if (input) {
-          if (prompt.includes('fría')) {
-            this.plateMode = 'frio';
-          } else if (prompt.includes('caliente')) {
-            this.plateMode = 'caliente';
-          }
-
-          const cleanPrompt = prompt.replace(/^[^\wáéíóúÁÉÍÓÚ]+/, '').trim();
-          if (!input.value.trim()) {
-            input.value = cleanPrompt;
-          } else {
-            input.value = `${input.value.trim()}, ${cleanPrompt.toLowerCase()}`;
-          }
-
-          const formAuto = this.container.querySelector('#formAutoSelectIngredients');
-          if (formAuto) {
-            formAuto.requestSubmit();
-          }
-        }
-      });
-    });
-
     // Formulario de Auto-Ensamblado por Ingredientes ⚡
     const formAuto = this.container.querySelector('#formAutoSelectIngredients');
     if (formAuto) {
