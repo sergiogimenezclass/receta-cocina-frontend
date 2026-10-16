@@ -34,16 +34,28 @@ export class AssemblerComponent {
 
   async render() {
     const components = await storage.getComponents();
+    this.updateStepDefaults(components);
+
+    const selectedIds = [
+      ...(Array.isArray(this.selected.Proteina) ? this.selected.Proteina : []),
+      ...(Array.isArray(this.selected.Vegetal) ? this.selected.Vegetal : []),
+      ...(Array.isArray(this.selected.Carbohidrato) ? this.selected.Carbohidrato : []),
+      ...(Array.isArray(this.selected.Grasa) ? this.selected.Grasa : [])
+    ];
+    const selComps = components.filter(c => selectedIds.includes(c.id));
+    const estimatedTime = selComps.length > 0 
+      ? Math.max(...selComps.map(c => c.tiempo_preparacion_min || 10))
+      : 15;
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
-      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
         <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
           <div class="activity-selector-container">
             <span class="label">Estilo de Servido:</span>
             <div class="activity-selector">
               <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente">
-                🍲 Caliente (Wok / Sopa)
+                🍲 Caliente (Wok / Salteado / Sopa)
               </button>
               <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio">
                 🥗 Frío (Ensalada / Bowl)
@@ -53,28 +65,77 @@ export class AssemblerComponent {
         </div>
       </div>
 
-      <!-- Tarjeta de Auto-Ensamblado por Ingredientes Disponibles -->
-      <div class="glass-card" style="padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; background: #ffffff; border: 1px solid var(--border-color);">
-        <div style="font-size: 0.825rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-          <div style="display: flex; align-items: center; gap: 0.4rem;">
-            <span>⚡ Auto-Ensamblar Plato por Ingredientes Disponibles</span>
+      <!-- Consola Conversacional Unificada con Chips de Atajo Rápido -->
+      <div class="conversational-console">
+        <div class="console-header-row">
+          <div class="console-title">
+            <span>💬</span>
+            <span>Asistente de Cocina Rápida</span>
           </div>
-          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; font-style: italic;">Algoritmo determinista instantáneo</span>
+          <div class="quick-prompt-chips">
+            <span style="font-size: 0.75rem; color: var(--text-secondary); margin-right: 0.2rem; font-weight: 500;">Atajos rápidos:</span>
+            <button type="button" class="prompt-chip" data-prompt="⚡ Menos de 10 min">⚡ &lt; 10 min</button>
+            <button type="button" class="prompt-chip" data-prompt="🥗 Opción fría">🥗 Opción fría</button>
+            <button type="button" class="prompt-chip" data-prompt="🥩 Con carne">🥩 Con carne</button>
+            <button type="button" class="prompt-chip" data-prompt="🥔 Sumar carbohidrato">🥔 Sumar carbohidrato</button>
+            <button type="button" class="prompt-chip" data-prompt="🥑 Liviano con palta">🥑 Con palta</button>
+          </div>
         </div>
+
         <form id="formAutoSelectIngredients" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-          <input type="text" id="autoIngredientsInput" class="form-control" placeholder="Escribe lo que tienes (ej: pollo, 2 papas, morrón y palta)..." value="${this.escapeHtml(this.autoQueryText)}" style="flex: 1; min-width: 260px; font-size: 0.9rem;">
-          <button type="submit" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.1rem; white-space: nowrap;">
-            🧩 Seleccionar Bloques
+          <input type="text" id="autoIngredientsInput" class="form-control" placeholder="Escribí lo que tenés en la heladera o cómo ajustar el plato..." value="${this.escapeHtml(this.autoQueryText)}" style="flex: 1; min-width: 260px; font-size: 0.9rem;">
+          <button type="submit" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.25rem; white-space: nowrap;">
+            ✨ Armar Plato
           </button>
         </form>
+
         ${this.autoMatchNotification ? `
-          <div style="margin-top: 0.65rem; padding: 0.5rem 0.75rem; background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-veg); font-weight: 600;">
+          <div style="padding: 0.65rem 0.85rem; background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-veg); font-weight: 500;">
             ${this.autoMatchNotification}
           </div>
         ` : ''}
       </div>
 
-      <!-- Matriz de 4 Columnas -->
+      <!-- Tarjeta de Resumen Ejecutivo y 3 Pasos en Pantalla Única -->
+      <div class="live-plate-summary-card">
+        <div class="live-plate-header">
+          <div class="live-plate-title-group" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <span style="font-size: 1.35rem;">🍽️</span>
+            <input type="text" id="livePlateNameInput" class="live-plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre de tu plato...">
+            <div class="live-plate-meta">
+              <span>${this.plateMode === 'frio' ? '🥗 Frío' : '🍲 Caliente'}</span>
+              <span>•</span>
+              <span>⏱️ ~${estimatedTime} min</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
+              ✨ Reoptimizar Pasos
+            </button>
+            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm">
+              💾 Guardar Plato
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Pasos Ejecutivos Directos -->
+        <div class="live-steps-grid">
+          <div class="live-step-box">
+            <div class="live-step-num">1</div>
+            <input type="text" class="live-step-input" data-step="0" value="${this.escapeHtml(this.customSteps[0])}" placeholder="Paso 1: Preparación...">
+          </div>
+          <div class="live-step-box">
+            <div class="live-step-num">2</div>
+            <input type="text" class="live-step-input" data-step="1" value="${this.escapeHtml(this.customSteps[1])}" placeholder="Paso 2: Cocción o ensamblado...">
+          </div>
+          <div class="live-step-box">
+            <div class="live-step-num">3</div>
+            <input type="text" class="live-step-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3: Emplatado y aderezo...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Matriz de 4 Columnas (Inventario Vivo) -->
       <div class="assembler-grid" style="margin-bottom: 5rem;">
         ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
         ${this.renderColumn('Vegetal', '🥦 Vegetales', components)}
@@ -82,7 +143,7 @@ export class AssemblerComponent {
         ${this.renderColumn('Grasa', '🥑 Grasas', components)}
       </div>
 
-      <!-- Drawer Modal Desplegable de Micro-Instrucciones -->
+      <!-- Drawer Desplegable Opcional de Configuración -->
       <div id="microStepsDrawer" class="micro-steps-drawer ${this.drawerOpen ? 'open' : ''}">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
           <div>
@@ -261,7 +322,7 @@ export class AssemblerComponent {
 
     // Si los pasos ya fueron generados o personalizados por la IA, preservarlos
     if (this.hasCustomAiSteps && this.customSteps && this.customSteps.filter(Boolean).length === 3) {
-      const stepInputs = this.container.querySelectorAll('.step-text-input');
+      const stepInputs = this.container.querySelectorAll('.step-text-input, .live-step-input');
       stepInputs.forEach((input) => {
         input.value = this.customSteps[input.getAttribute('data-step')] || '';
       });
@@ -279,6 +340,8 @@ export class AssemblerComponent {
         : `Plato Caliente de ${pName} con ${cName}`;
       const nameInput = document.getElementById('plateNameInput');
       if (nameInput) nameInput.value = this.plateName;
+      const liveName = document.getElementById('livePlateNameInput');
+      if (liveName) liveName.value = this.plateName;
     }
 
     // Auto-generar 3 pasos deterministas adaptados a Frío vs Caliente
@@ -315,8 +378,8 @@ export class AssemblerComponent {
     this.customSteps = [autoStep1, autoStep2, autoStep3];
 
     // Actualizar inputs en el DOM
-    const stepInputs = this.container.querySelectorAll('.step-text-input');
-    stepInputs.forEach((input, index) => {
+    const stepInputs = this.container.querySelectorAll('.step-text-input, .live-step-input');
+    stepInputs.forEach((input) => {
       input.value = this.customSteps[input.getAttribute('data-step')] || '';
     });
   }
@@ -459,7 +522,20 @@ export class AssemblerComponent {
 
     // 1. Intentar ensamblado con IA (Gemini) si hay API key y conexión
     try {
-      const aiResult = await geminiService.assembleFromText(queryText, allComponents);
+      const getSelNames = (cat) => {
+        const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+        return allComponents.filter(c => ids.includes(c.id)).map(c => c.nombre).join(', ');
+      };
+
+      const currentContext = {
+        proteina: getSelNames('Proteina'),
+        vegetal: getSelNames('Vegetal'),
+        carbohidrato: getSelNames('Carbohidrato'),
+        grasa: getSelNames('Grasa'),
+        modo: this.plateMode
+      };
+
+      const aiResult = await geminiService.assembleFromText(queryText, allComponents, currentContext);
       if (aiResult) {
         const validProt = allComponents.find(c => c.id === aiResult.proteina_id);
         const validVeg = allComponents.find(c => c.id === aiResult.vegetal_id);
@@ -699,6 +775,33 @@ export class AssemblerComponent {
   }
 
   bindEvents() {
+    // Chips de Atajos Rápidos en la Consola Conversacional
+    this.container.querySelectorAll('.prompt-chip').forEach(chip => {
+      chip.addEventListener('click', async (e) => {
+        const prompt = e.currentTarget.getAttribute('data-prompt') || '';
+        const input = document.getElementById('autoIngredientsInput');
+        if (input) {
+          if (prompt.includes('fría')) {
+            this.plateMode = 'frio';
+          } else if (prompt.includes('caliente')) {
+            this.plateMode = 'caliente';
+          }
+
+          const cleanPrompt = prompt.replace(/^[^\wáéíóúÁÉÍÓÚ]+/, '').trim();
+          if (!input.value.trim()) {
+            input.value = cleanPrompt;
+          } else {
+            input.value = `${input.value.trim()}, ${cleanPrompt.toLowerCase()}`;
+          }
+
+          const formAuto = this.container.querySelector('#formAutoSelectIngredients');
+          if (formAuto) {
+            formAuto.requestSubmit();
+          }
+        }
+      });
+    });
+
     // Formulario de Auto-Ensamblado por Ingredientes ⚡
     const formAuto = this.container.querySelector('#formAutoSelectIngredients');
     if (formAuto) {
@@ -845,20 +948,57 @@ export class AssemblerComponent {
       });
     }
 
-    // Inputs de texto de pasos
+    // Inputs de texto de pasos en vivo (pantalla principal) y drawer
+    this.container.querySelectorAll('.live-step-input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
+        this.customSteps[stepIdx] = e.target.value;
+        this.hasCustomAiSteps = true;
+        const drawerInput = this.container.querySelector(`.step-text-input[data-step="${stepIdx}"]`);
+        if (drawerInput) drawerInput.value = e.target.value;
+      });
+    });
+
     this.container.querySelectorAll('.step-text-input').forEach(input => {
       input.addEventListener('input', (e) => {
         const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
         this.customSteps[stepIdx] = e.target.value;
         this.hasCustomAiSteps = true;
+        const liveInput = this.container.querySelector(`.live-step-input[data-step="${stepIdx}"]`);
+        if (liveInput) liveInput.value = e.target.value;
       });
     });
 
-    // Input nombre de plato
-    const nameInput = this.container.querySelector('#plateNameInput');
-    if (nameInput) {
-      nameInput.addEventListener('input', (e) => {
+    // Inputs de nombre de plato (pantalla principal y drawer)
+    const liveNameInput = this.container.querySelector('#livePlateNameInput');
+    const drawerNameInput = this.container.querySelector('#plateNameInput');
+
+    if (liveNameInput) {
+      liveNameInput.addEventListener('input', (e) => {
         this.plateName = e.target.value;
+        if (drawerNameInput) drawerNameInput.value = this.plateName;
+      });
+    }
+
+    if (drawerNameInput) {
+      drawerNameInput.addEventListener('input', (e) => {
+        this.plateName = e.target.value;
+        if (liveNameInput) liveNameInput.value = this.plateName;
+      });
+    }
+
+    // Botones de acción directa en la tarjeta en vivo
+    const btnAiRefineLive = this.container.querySelector('#btnAiRefineStepsLive');
+    if (btnAiRefineLive && btnAiRefine) {
+      btnAiRefineLive.addEventListener('click', () => {
+        btnAiRefine.click();
+      });
+    }
+
+    const btnSavePlateLive = this.container.querySelector('#btnSavePlateLive');
+    if (btnSavePlateLive) {
+      btnSavePlateLive.addEventListener('click', async () => {
+        await this.saveCurrentPlate();
       });
     }
 
