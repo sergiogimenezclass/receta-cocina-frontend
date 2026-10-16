@@ -1,5 +1,6 @@
 import { storage } from '../services/storage.js';
 import { showToast } from '../utils/toast.js';
+import { geminiService } from '../services/gemini.js';
 
 export class AssemblerComponent {
   constructor(containerId) {
@@ -18,6 +19,7 @@ export class AssemblerComponent {
     this.customSteps = ['', '', ''];
     this.plateName = 'Mi Plato Modular Custom';
     this.drawerOpen = false;
+    this.hasCustomAiSteps = false;
     this.generatedImageSrc = null;
 
     // Estado del buscador de Auto-Ensamblado determinista por ingredientes
@@ -91,9 +93,11 @@ export class AssemblerComponent {
         </div>
 
         <div class="micro-steps-container" style="margin-top: 0;">
-          <div class="micro-steps-title">
-            <span>⚡ Micro-Instrucciones Express (Máximo 3 pasos)</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">(Editables)</span>
+          <div class="micro-steps-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>⚡ Micro-Instrucciones Express</span>
+            <button id="btnAiRefineSteps" type="button" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.65rem; font-size: 0.75rem; border-color: rgba(96, 165, 250, 0.4); color: #93c5fd;" title="Optimizar pasos con IA">
+              ✨ Optimizar con IA
+            </button>
           </div>
           <div class="step-list">
             <div class="step-item">
@@ -254,6 +258,15 @@ export class AssemblerComponent {
     const selVeg = getSelComps('Vegetal');
     const selCarb = getSelComps('Carbohidrato');
     const selFat = getSelComps('Grasa');
+
+    // Si los pasos ya fueron generados o personalizados por la IA, preservarlos
+    if (this.hasCustomAiSteps && this.customSteps && this.customSteps.filter(Boolean).length === 3) {
+      const stepInputs = this.container.querySelectorAll('.step-text-input');
+      stepInputs.forEach((input) => {
+        input.value = this.customSteps[input.getAttribute('data-step')] || '';
+      });
+      return;
+    }
 
     // Auto-generar título según estilo
     const isFrio = this.plateMode === 'frio';
@@ -444,6 +457,49 @@ export class AssemblerComponent {
     this.autoQueryText = queryText;
     const allComponents = await storage.getComponents();
 
+    // 1. Intentar ensamblado con IA (Gemini) si hay API key y conexión
+    try {
+      const aiResult = await geminiService.assembleFromText(queryText, allComponents);
+      if (aiResult && aiResult.proteina_id && aiResult.vegetal_id && aiResult.carbo_id && aiResult.grasa_id) {
+        const validProt = allComponents.find(c => c.id === aiResult.proteina_id);
+        const validVeg = allComponents.find(c => c.id === aiResult.vegetal_id);
+        const validCarb = allComponents.find(c => c.id === aiResult.carbo_id);
+        const validFat = allComponents.find(c => c.id === aiResult.grasa_id);
+
+        if (validProt && validVeg && validCarb && validFat) {
+          this.selected.Proteina = [validProt.id];
+          this.selected.Vegetal = [validVeg.id];
+          this.selected.Carbohidrato = [validCarb.id];
+          this.selected.Grasa = [validFat.id];
+
+          if (aiResult.modo === 'frio' || aiResult.modo === 'caliente') {
+            this.plateMode = aiResult.modo;
+          }
+
+          if (aiResult.titulo) {
+            this.plateName = aiResult.titulo;
+          }
+
+          if (Array.isArray(aiResult.pasos) && aiResult.pasos.length >= 3) {
+            this.customSteps = aiResult.pasos.slice(0, 3);
+            this.hasCustomAiSteps = true;
+          }
+
+          this.autoMatchNotification = `✨ Plato armado con IA: ${validProt.nombre} + ${validVeg.nombre} + ${validCarb.nombre} + ${validFat.nombre}`;
+          showToast('Plato armado con IA', 'success');
+          return;
+        }
+      }
+    } catch (err) {
+      console.log('Gemini AI fallback activado:', err.message);
+    }
+
+    // 2. Fallback determinista local (algoritmo sin IA)
+    this.hasCustomAiSteps = false;
+    this.deterministicAutoSelect(queryText, allComponents);
+  }
+
+  deterministicAutoSelect(queryText, allComponents) {
     const normalize = (str) => {
       return (str || '')
         .toLowerCase()
@@ -629,7 +685,20 @@ export class AssemblerComponent {
       formAuto.addEventListener('submit', async (e) => {
         e.preventDefault();
         const inputVal = document.getElementById('autoIngredientsInput')?.value || '';
-        await this.autoSelectByIngredientsText(inputVal);
+        const submitBtn = formAuto.querySelector('button[type="submit"]');
+        const prevText = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '⌛ Armando...';
+        }
+        try {
+          await this.autoSelectByIngredientsText(inputVal);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = prevText;
+          }
+        }
         await this.render();
         this.bindEvents();
       });
@@ -639,6 +708,7 @@ export class AssemblerComponent {
     this.container.querySelectorAll('.mode-temp-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         this.plateMode = e.currentTarget.getAttribute('data-mode');
+        this.hasCustomAiSteps = false;
         this.plateName = ''; // Resetear título genérico para regenerar con el nuevo estilo
         await this.render();
         this.bindEvents();
@@ -664,6 +734,7 @@ export class AssemblerComponent {
           this.selected[category].push(id);
         }
         
+        this.hasCustomAiSteps = false;
         await this.render();
         this.bindEvents();
       });
@@ -689,6 +760,60 @@ export class AssemblerComponent {
       });
     }
 
+    // Botón Optimizar Pasos con IA
+    const btnAiRefine = this.container.querySelector('#btnAiRefineSteps');
+    if (btnAiRefine) {
+      btnAiRefine.addEventListener('click', async () => {
+        const components = await storage.getComponents();
+        const getSelComps = (cat) => {
+          const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+          return components.filter(c => ids.includes(c.id));
+        };
+
+        const selProt = getSelComps('Proteina');
+        const selVeg = getSelComps('Vegetal');
+        const selCarb = getSelComps('Carbohidrato');
+        const selFat = getSelComps('Grasa');
+
+        if (!selProt.length || !selVeg.length || !selCarb.length || !selFat.length) {
+          showToast('Seleccioná al menos 1 ingrediente en cada bloque primero', 'warning');
+          return;
+        }
+
+        const prevText = btnAiRefine.innerHTML;
+        btnAiRefine.disabled = true;
+        btnAiRefine.innerHTML = '⌛ Optimizando...';
+
+        try {
+          const selectedComps = [...selProt, ...selVeg, ...selCarb, ...selFat];
+          const result = await geminiService.refineSteps(selectedComps, this.plateMode);
+          if (result && Array.isArray(result.pasos) && result.pasos.length >= 3) {
+            this.customSteps = result.pasos.slice(0, 3);
+            this.hasCustomAiSteps = true;
+            if (result.titulo) {
+              this.plateName = result.titulo;
+              const nameInput = this.container.querySelector('#plateNameInput');
+              if (nameInput) nameInput.value = this.plateName;
+            }
+            this.container.querySelectorAll('.step-text-input').forEach((input) => {
+              const stepIdx = parseInt(input.getAttribute('data-step'), 10);
+              input.value = this.customSteps[stepIdx] || '';
+            });
+            showToast('✨ Pasos optimizados con IA', 'success');
+          }
+        } catch (err) {
+          if (err.message === 'API_KEY_MISSING') {
+            showToast('Ingresá tu API Key de Gemini en Ajustes (⚙️) para usar la IA', 'warning');
+          } else {
+            showToast('No se pudo conectar con la IA. Usando pasos locales.', 'info');
+          }
+        } finally {
+          btnAiRefine.disabled = false;
+          btnAiRefine.innerHTML = prevText;
+        }
+      });
+    }
+
     // Control Modal Generador de Imagen
     const modalImg = this.container.querySelector('#modalImageGen');
     const btnCloseImgModal = this.container.querySelector('#btnCloseImgModal');
@@ -705,6 +830,7 @@ export class AssemblerComponent {
       input.addEventListener('input', (e) => {
         const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
         this.customSteps[stepIdx] = e.target.value;
+        this.hasCustomAiSteps = true;
       });
     });
 
