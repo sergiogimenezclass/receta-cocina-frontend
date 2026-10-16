@@ -460,17 +460,19 @@ export class AssemblerComponent {
     // 1. Intentar ensamblado con IA (Gemini) si hay API key y conexión
     try {
       const aiResult = await geminiService.assembleFromText(queryText, allComponents);
-      if (aiResult && aiResult.proteina_id && aiResult.vegetal_id && aiResult.carbo_id && aiResult.grasa_id) {
+      if (aiResult) {
         const validProt = allComponents.find(c => c.id === aiResult.proteina_id);
         const validVeg = allComponents.find(c => c.id === aiResult.vegetal_id);
         const validCarb = allComponents.find(c => c.id === aiResult.carbo_id);
         const validFat = allComponents.find(c => c.id === aiResult.grasa_id);
 
-        if (validProt && validVeg && validCarb && validFat) {
-          this.selected.Proteina = [validProt.id];
-          this.selected.Vegetal = [validVeg.id];
-          this.selected.Carbohidrato = [validCarb.id];
-          this.selected.Grasa = [validFat.id];
+        const foundAny = validProt || validVeg || validCarb || validFat;
+
+        if (foundAny) {
+          this.selected.Proteina = validProt ? [validProt.id] : [];
+          this.selected.Vegetal = validVeg ? [validVeg.id] : [];
+          this.selected.Carbohidrato = validCarb ? [validCarb.id] : [];
+          this.selected.Grasa = validFat ? [validFat.id] : [];
 
           if (aiResult.modo === 'frio' || aiResult.modo === 'caliente') {
             this.plateMode = aiResult.modo;
@@ -485,7 +487,17 @@ export class AssemblerComponent {
             this.hasCustomAiSteps = true;
           }
 
-          this.autoMatchNotification = `✨ Plato armado con IA: ${validProt.nombre} + ${validVeg.nombre} + ${validCarb.nombre} + ${validFat.nombre}`;
+          const chosenNames = [validProt, validVeg, validCarb, validFat]
+            .filter(Boolean)
+            .map(c => `<strong>${c.nombre}</strong>`);
+
+          let notifHtml = `✨ Plato armado con IA: ${chosenNames.join(' + ')}`;
+          if (aiResult.sugerencia_opcional) {
+            notifHtml += `<div style="margin-top: 0.45rem; padding-top: 0.35rem; border-top: 1px dashed rgba(245, 158, 11, 0.4); color: #fbbf24; font-size: 0.825rem;">${this.escapeHtml(aiResult.sugerencia_opcional)}</div>`;
+          }
+
+          this.drawerOpen = true;
+          this.autoMatchNotification = notifHtml;
           showToast('Plato armado con IA', 'success');
           return;
         }
@@ -570,6 +582,7 @@ export class AssemblerComponent {
         tofu: ['tofu', 'soya', 'soja', 'seitan']
       },
       Vegetal: {
+        wok: ['wok', 'bandejita', 'bandejitas', 'salteado', 'salteada', 'verduras', 'mixto', 'mixtos'],
         cebolla: ['cebolla', 'cebollas', 'wok', 'salteado', 'salteada'],
         morron: ['morron', 'morrones', 'pimiento', 'pimientos', 'aji', 'ajies', 'wok'],
         hongos: ['hongos', 'hongo', 'champinon', 'champinones', 'portobello', 'setas'],
@@ -592,7 +605,7 @@ export class AssemblerComponent {
         quinoa: ['quinoa', 'graneada']
       },
       Grasa: {
-        palta: ['palta', 'paltas', 'aguacate'],
+        palta: ['palta', 'paltas', 'aguacate', 'panca', 'panta', 'palte'],
         aceite: ['aceite', 'oliva', 'extra'],
         aceitunas: ['aceituna', 'aceitunas', 'olivas'],
         frutos: ['frutos', 'secos', 'nueces', 'almendras'],
@@ -672,7 +685,14 @@ export class AssemblerComponent {
 
     if (matchesFound.length > 0) {
       this.plateName = '';
-      this.autoMatchNotification = `✓ Bloques seleccionados automáticamente: ${matchesFound.join(' • ')}`;
+      this.drawerOpen = true;
+      const missingCats = categories.filter(cat => !this.selected[cat] || this.selected[cat].length === 0);
+      let notifHtml = `✓ Bloques seleccionados (Modo Local): ${matchesFound.join(' • ')}`;
+      if (missingCats.length > 0) {
+        notifHtml += `<div style="margin-top: 0.45rem; padding-top: 0.35rem; border-top: 1px dashed rgba(245, 158, 11, 0.4); color: #fbbf24; font-size: 0.825rem;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+      }
+      this.autoMatchNotification = notifHtml;
+      showToast('Ensamblado con algoritmo local', 'info');
     } else {
       this.autoMatchNotification = `⚠️ No se encontraron coincidencias en la biblioteca para "${queryText}". Revisa que los nombres estén cargados en la Biblioteca.`;
     }
