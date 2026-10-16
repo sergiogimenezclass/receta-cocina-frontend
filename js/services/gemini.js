@@ -129,12 +129,23 @@ class GeminiService {
    * Ensambla un plato minimalista a partir de lo que el usuario tiene disponible.
    * Selecciona 1 id de cada bloque de la biblioteca y genera 3 pasos rápidos.
    */
-  async assembleFromText(queryText, allComponents) {
+  async assembleFromText(queryText, allComponents, currentContext = null) {
     const componentsSummary = allComponents.map(c => ({
       id: c.id,
       nombre: c.nombre,
       categoria: c.categoria
     }));
+
+    let contextSnippet = '';
+    if (currentContext && (currentContext.proteina || currentContext.vegetal || currentContext.carbohidrato || currentContext.grasa)) {
+      contextSnippet = `\nPlato actualmente armado en la pantalla:
+- Proteína: ${currentContext.proteina || 'Sin selección'}
+- Vegetal: ${currentContext.vegetal || 'Sin selección'}
+- Carbohidrato: ${currentContext.carbohidrato || 'Sin selección'}
+- Grasa: ${currentContext.grasa || 'Sin selección'}
+- Modo actual: ${currentContext.modo || 'caliente'}
+NOTA DE AJUSTE INCREMENTAL: Si el usuario pide modificar algo (ej: "cambiame X por Y", "sumale Z", "hacelo frío"), conserva los demás bloques seleccionados y aplica únicamente el cambio solicitado.`;
+    }
 
     const systemInstruction = `Sos el motor inteligente de "Antirecetario", una aplicación de cocina minimalista, ultra práctica y rápida para el día a día.
 Tu objetivo es ayudar a alguien que tiene hambre, poco tiempo y cero ganas de complicarse la vida.
@@ -148,7 +159,7 @@ REGLAS ESTRICTAS DE INTERPRETACIÓN:
 3. RESPETO DE INGREDIENTES REALES (CATEGORÍAS NULAS):
    - Asigná el id correspondiente de la biblioteca para cada una de las 4 categorías: "Proteina", "Vegetal", "Carbohidrato", "Grasa".
    - SI EL USUARIO NO TIENE NI MENCIONA INGREDIENTES PARA ALGUNA CATEGORÍA (por ejemplo, no tiene carbohidratos): NO inventes ingredientes que el usuario no tiene. Dejá ese campo en null (ej: "carbo_id": null).
-   - Debe haber al menos 1 categoría identificada con ingredientes reales del usuario.
+   - Si hay un plato actual y el usuario solo cambia un ingrediente, mantén los otros intactos.
 4. SUGERENCIA NUTRICIONAL OPCIONAL:
    - Si falta alguna categoría clave (como Carbohidrato, Proteína o Vegetal), incluí en el campo "sugerencia_opcional" un consejo breve, amable y no invasivo explicando qué podría sumar si lo encuentra en su alacena (ej: "💡 Te faltó un carbohidrato (como papa o arroz). Si encontrás algo en la alacena, sumalo para mayor energía y saciedad"). Si no falta ninguna categoría, devolvé null.
 5. FORMATO DE PASOS:
@@ -171,6 +182,7 @@ FORMATO DE RESPUESTA EXCLUSIVO EN JSON:
 
     const promptText = `Ingredientes disponibles en la biblioteca:
 ${JSON.stringify(componentsSummary)}
+${contextSnippet}
 
 Lo que el usuario tiene en casa / pide:
 "${queryText}"`;
