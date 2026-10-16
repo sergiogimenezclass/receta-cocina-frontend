@@ -1,4 +1,16 @@
 import { storage } from '../services/storage.js';
+import { showToast, showConfirm } from '../utils/toast.js';
+
+const FOOD_EMOJIS = [
+  // Proteínas
+  '🍗', '🥩', '🍳', '🥚', '🐟', '🥫', '🧈', '🥓', '🦐', '🧀',
+  // Vegetales
+  '🥗', '🥦', '🍅', '🥒', '🥬', '🥕', '🎃', '🍄', '🫑', '🧅', '🧄', '🍆', '🥘',
+  // Carbohidratos
+  '🍚', '🥔', '🍠', '🍝', '🌽', '🫘', '🪵', '🌾', '🍞', '🫓',
+  // Grasas
+  '🥑', '🫒', '🌰', '🌻', '🥜'
+];
 
 export class LibraryComponent {
   constructor(containerId) {
@@ -86,8 +98,17 @@ export class LibraryComponent {
               <input type="text" id="compDescripcion" class="form-control" placeholder="Ej: Zucchini, morrón, cebolla, berenjena y salsa de soya">
             </div>
             <div class="form-group">
-              <label>Ícono / Emoji</label>
-              <input type="text" id="compIcono" class="form-control" value="🥗" required>
+              <label>Ícono / Emoji del Alimento</label>
+              <div class="emoji-picker-container">
+                <div class="emoji-picker-preview-row">
+                  <div class="emoji-preview-box" id="emojiPreview">🍗</div>
+                  <input type="text" id="compIcono" class="form-control" value="🍗" required style="width: 75px; text-align: center; font-size: 1.25rem;">
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">Tocá uno de la lista o escribí el que quieras:</span>
+                </div>
+                <div class="emoji-grid" id="emojiGrid">
+                  ${this.renderEmojiButtons('🍗')}
+                </div>
+              </div>
             </div>
             <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
               <button type="button" class="btn btn-secondary" id="btnCancelModal">Cancelar</button>
@@ -97,6 +118,14 @@ export class LibraryComponent {
         </div>
       </div>
     `;
+  }
+
+  renderEmojiButtons(selectedEmoji = '🍗') {
+    return FOOD_EMOJIS.map(emoji => `
+      <button type="button" class="emoji-btn ${emoji === selectedEmoji ? 'active' : ''}" data-emoji="${emoji}" title="${emoji}">
+        ${emoji}
+      </button>
+    `).join('');
   }
 
   renderComponentCard(c) {
@@ -170,8 +199,10 @@ export class LibraryComponent {
     this.container.querySelectorAll('.btn-delete-comp').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const id = e.currentTarget.getAttribute('data-id');
-        if (confirm('¿Deseas eliminar este alimento de tu biblioteca?')) {
+        const ok = await showConfirm('¿Deseas eliminar este alimento de tu biblioteca?');
+        if (ok) {
           await storage.deleteComponent(id);
+          showToast('Alimento eliminado', 'info');
           await this.render();
           this.bindEvents();
         }
@@ -182,8 +213,10 @@ export class LibraryComponent {
     this.container.querySelectorAll('.btn-delete-plate').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const id = e.currentTarget.getAttribute('data-id');
-        if (confirm('¿Deseas eliminar este plato guardado?')) {
+        const ok = await showConfirm('¿Deseas eliminar este plato guardado?');
+        if (ok) {
           await storage.deletePlate(id);
+          showToast('Plato eliminado', 'info');
           await this.render();
           this.bindEvents();
         }
@@ -196,6 +229,52 @@ export class LibraryComponent {
     const btnCloseModal = this.container.querySelector('#btnCloseModal');
     const btnCancelModal = this.container.querySelector('#btnCancelModal');
     const formNewComp = this.container.querySelector('#formNewComponent');
+
+    // Selector interactivo de emojis
+    const compIcono = this.container.querySelector('#compIcono');
+    const emojiPreview = this.container.querySelector('#emojiPreview');
+    const emojiGrid = this.container.querySelector('#emojiGrid');
+    const compCategoria = this.container.querySelector('#compCategoria');
+
+    const CATEGORY_DEFAULT_EMOJI = {
+      Proteina: '🍗',
+      Vegetal: '🥦',
+      Carbohidrato: '🍚',
+      Grasa: '🥑'
+    };
+
+    if (emojiGrid && compIcono && emojiPreview) {
+      emojiGrid.querySelectorAll('.emoji-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const emoji = e.currentTarget.getAttribute('data-emoji');
+          compIcono.value = emoji;
+          emojiPreview.textContent = emoji;
+          emojiGrid.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('active'));
+          e.currentTarget.classList.add('active');
+        });
+      });
+
+      compIcono.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        emojiPreview.textContent = val || '🥗';
+        emojiGrid.querySelectorAll('.emoji-btn').forEach(b => {
+          if (b.getAttribute('data-emoji') === val) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+      });
+
+      if (compCategoria) {
+        compCategoria.addEventListener('change', (e) => {
+          const defEmoji = CATEGORY_DEFAULT_EMOJI[e.target.value] || '🥗';
+          compIcono.value = defEmoji;
+          emojiPreview.textContent = defEmoji;
+          emojiGrid.querySelectorAll('.emoji-btn').forEach(b => {
+            if (b.getAttribute('data-emoji') === defEmoji) b.classList.add('active');
+            else b.classList.remove('active');
+          });
+        });
+      }
+    }
 
     if (btnOpenModal) btnOpenModal.addEventListener('click', () => modal.classList.add('open'));
     if (btnCloseModal) btnCloseModal.addEventListener('click', () => modal.classList.remove('open'));
@@ -213,6 +292,7 @@ export class LibraryComponent {
           icono: document.getElementById('compIcono').value || '🥗'
         };
         await storage.saveComponent(newComp);
+        showToast(`Alimento "${newComp.nombre}" agregado con éxito`, 'success');
         modal.classList.remove('open');
         await this.render();
         this.bindEvents();
