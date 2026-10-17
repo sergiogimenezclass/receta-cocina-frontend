@@ -81,11 +81,7 @@ export class AssemblerComponent {
           </button>
         </form>
 
-        ${this.autoMatchNotification ? `
-          <div style="padding: 0.65rem 0.85rem; background: var(--color-veg-bg); border: 1px solid var(--color-veg-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-veg); font-weight: 500;">
-            ${this.autoMatchNotification}
-          </div>
-        ` : ''}
+        ${this.autoMatchNotification || ''}
       </div>
 
       <!-- Tarjeta de Resumen Ejecutivo y 3 Pasos en Pantalla Única -->
@@ -135,40 +131,6 @@ export class AssemblerComponent {
         ${this.renderColumn('Grasa', '🥑 Grasas', components)}
       </div>
 
-      <!-- Drawer Desplegable Opcional de Configuración -->
-      <div id="microStepsDrawer" class="micro-steps-drawer ${this.drawerOpen ? 'open' : ''}">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
-          <div>
-            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-carb);">Configurar Plato & Pasos</div>
-            <input type="text" id="plateNameInput" class="plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre del plato..." style="margin-top: 0.25rem;">
-          </div>
-          <button id="btnCloseDrawer" style="background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer;">&times;</button>
-        </div>
-
-        <div class="micro-steps-container" style="margin-top: 0;">
-          <div class="micro-steps-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-            <span>⚡ Micro-Instrucciones Express</span>
-            <button id="btnAiRefineSteps" type="button" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.65rem; font-size: 0.75rem; border-color: rgba(96, 165, 250, 0.4); color: #93c5fd;" title="Optimizar pasos con IA">
-              ✨ Optimizar con IA
-            </button>
-          </div>
-          <div class="step-list">
-            <div class="step-item">
-              <div class="step-number">1</div>
-              <input type="text" class="step-text-input" data-step="0" value="${this.escapeHtml(this.customSteps[0])}" placeholder="Paso 1 de preparación...">
-            </div>
-            <div class="step-item">
-              <div class="step-number">2</div>
-              <input type="text" class="step-text-input" data-step="1" value="${this.escapeHtml(this.customSteps[1])}" placeholder="Paso 2 de cocción...">
-            </div>
-            <div class="step-item">
-              <div class="step-number">3</div>
-              <input type="text" class="step-text-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3 de emplatado...">
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- BARRA FLOTANTE STICKY BOTTOM BAR (Siempre Visible) -->
       <div class="sticky-plate-bar">
         <div class="sticky-plate-bar-content">
@@ -179,9 +141,6 @@ export class AssemblerComponent {
 
           <!-- Botones de Acción Rápida -->
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-            <button id="btnToggleDrawer" class="btn btn-secondary btn-sm">
-              ⚡ 3 Pasos
-            </button>
             <button id="btnGenerateImage" class="btn btn-secondary btn-sm" style="opacity: 0.9;" title="Generar imagen con IA">
               🎨 Generar Imagen
             </button>
@@ -330,8 +289,6 @@ export class AssemblerComponent {
       this.plateName = isFrio
         ? `Bowl Frío de ${pName} con ${cName}`
         : `Plato Caliente de ${pName} con ${cName}`;
-      const nameInput = document.getElementById('plateNameInput');
-      if (nameInput) nameInput.value = this.plateName;
       const liveName = document.getElementById('livePlateNameInput');
       if (liveName) liveName.value = this.plateName;
     }
@@ -370,7 +327,7 @@ export class AssemblerComponent {
     this.customSteps = [autoStep1, autoStep2, autoStep3];
 
     // Actualizar inputs en el DOM
-    const stepInputs = this.container.querySelectorAll('.step-text-input, .live-step-input');
+    const stepInputs = this.container.querySelectorAll('.live-step-input');
     stepInputs.forEach((input) => {
       input.value = this.customSteps[input.getAttribute('data-step')] || '';
     });
@@ -555,18 +512,13 @@ export class AssemblerComponent {
             this.hasCustomAiSteps = true;
           }
 
-          const chosenNames = [validProt, validVeg, validCarb, validFat]
-            .filter(Boolean)
-            .map(c => `<strong>${c.nombre}</strong>`);
-
-          let notifHtml = `✨ Plato armado con IA: ${chosenNames.join(' + ')}`;
           if (aiResult.sugerencia_opcional) {
-            notifHtml += `<div style="margin-top: 0.45rem; padding-top: 0.35rem; border-top: 1px dashed rgba(245, 158, 11, 0.4); color: #fbbf24; font-size: 0.825rem;">${this.escapeHtml(aiResult.sugerencia_opcional)}</div>`;
+            this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">${this.escapeHtml(aiResult.sugerencia_opcional)}</div>`;
+          } else {
+            this.autoMatchNotification = '';
           }
 
-          this.drawerOpen = true;
-          this.autoMatchNotification = notifHtml;
-          showToast('Plato armado con IA', 'success');
+          showToast('Plato armado con éxito', 'success');
           return;
         }
       }
@@ -753,16 +705,15 @@ export class AssemblerComponent {
 
     if (matchesFound.length > 0) {
       this.plateName = '';
-      this.drawerOpen = true;
       const missingCats = categories.filter(cat => !this.selected[cat] || this.selected[cat].length === 0);
-      let notifHtml = `✓ Bloques seleccionados (Modo Local): ${matchesFound.join(' • ')}`;
       if (missingCats.length > 0) {
-        notifHtml += `<div style="margin-top: 0.45rem; padding-top: 0.35rem; border-top: 1px dashed rgba(245, 158, 11, 0.4); color: #fbbf24; font-size: 0.825rem;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+        this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+      } else {
+        this.autoMatchNotification = '';
       }
-      this.autoMatchNotification = notifHtml;
-      showToast('Ensamblado con algoritmo local', 'info');
+      showToast('Plato armado con éxito', 'info');
     } else {
-      this.autoMatchNotification = `⚠️ No se encontraron coincidencias en la biblioteca para "${queryText}". Revisa que los nombres estén cargados en la Biblioteca.`;
+      this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 500;">⚠️ No se encontraron coincidencias en la biblioteca para "${this.escapeHtml(queryText)}". Revisá que los nombres estén cargados en la Biblioteca.</div>`;
     }
   }
 
@@ -828,30 +779,10 @@ export class AssemblerComponent {
       });
     });
 
-    // Toggle Drawer de Pasos
-    const btnToggleDrawer = this.container.querySelector('#btnToggleDrawer');
-    const btnCloseDrawer = this.container.querySelector('#btnCloseDrawer');
-    const drawer = this.container.querySelector('#microStepsDrawer');
-
-    if (btnToggleDrawer) {
-      btnToggleDrawer.addEventListener('click', () => {
-        this.drawerOpen = !this.drawerOpen;
-        if (this.drawerOpen) drawer.classList.add('open');
-        else drawer.classList.remove('open');
-      });
-    }
-
-    if (btnCloseDrawer) {
-      btnCloseDrawer.addEventListener('click', () => {
-        this.drawerOpen = false;
-        drawer.classList.remove('open');
-      });
-    }
-
-    // Botón Optimizar Pasos con IA
-    const btnAiRefine = this.container.querySelector('#btnAiRefineSteps');
-    if (btnAiRefine) {
-      btnAiRefine.addEventListener('click', async () => {
+    // Botón Optimizar Pasos con IA (directo en la tarjeta principal)
+    const btnAiRefineLive = this.container.querySelector('#btnAiRefineStepsLive');
+    if (btnAiRefineLive) {
+      btnAiRefineLive.addEventListener('click', async () => {
         const components = await storage.getComponents();
         const getSelComps = (cat) => {
           const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
@@ -868,9 +799,9 @@ export class AssemblerComponent {
           return;
         }
 
-        const prevText = btnAiRefine.innerHTML;
-        btnAiRefine.disabled = true;
-        btnAiRefine.innerHTML = '⌛ Optimizando...';
+        const prevText = btnAiRefineLive.innerHTML;
+        btnAiRefineLive.disabled = true;
+        btnAiRefineLive.innerHTML = '⌛ Optimizando...';
 
         try {
           const selectedComps = [...selProt, ...selVeg, ...selCarb, ...selFat];
@@ -880,10 +811,10 @@ export class AssemblerComponent {
             this.hasCustomAiSteps = true;
             if (result.titulo) {
               this.plateName = result.titulo;
-              const nameInput = this.container.querySelector('#plateNameInput');
+              const nameInput = this.container.querySelector('#livePlateNameInput');
               if (nameInput) nameInput.value = this.plateName;
             }
-            this.container.querySelectorAll('.step-text-input').forEach((input) => {
+            this.container.querySelectorAll('.live-step-input').forEach((input) => {
               const stepIdx = parseInt(input.getAttribute('data-step'), 10);
               input.value = this.customSteps[stepIdx] || '';
             });
@@ -896,9 +827,34 @@ export class AssemblerComponent {
             showToast('No se pudo conectar con la IA. Usando pasos locales.', 'info');
           }
         } finally {
-          btnAiRefine.disabled = false;
-          btnAiRefine.innerHTML = prevText;
+          btnAiRefineLive.disabled = false;
+          btnAiRefineLive.innerHTML = prevText;
         }
+      });
+    }
+
+    // Inputs de texto de pasos en vivo (pantalla principal)
+    this.container.querySelectorAll('.live-step-input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
+        this.customSteps[stepIdx] = e.target.value;
+        this.hasCustomAiSteps = true;
+      });
+    });
+
+    // Input nombre de plato (pantalla principal)
+    const liveNameInput = this.container.querySelector('#livePlateNameInput');
+    if (liveNameInput) {
+      liveNameInput.addEventListener('input', (e) => {
+        this.plateName = e.target.value;
+      });
+    }
+
+    // Botones Guardar Plato (pantalla principal y sticky bar)
+    const btnSavePlateLive = this.container.querySelector('#btnSavePlateLive');
+    if (btnSavePlateLive) {
+      btnSavePlateLive.addEventListener('click', async () => {
+        await this.saveCurrentPlate();
       });
     }
 
@@ -910,60 +866,6 @@ export class AssemblerComponent {
     if (btnCloseImgModal) {
       btnCloseImgModal.addEventListener('click', () => {
         modalImg.classList.remove('open');
-      });
-    }
-
-    // Inputs de texto de pasos en vivo (pantalla principal) y drawer
-    this.container.querySelectorAll('.live-step-input').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
-        this.customSteps[stepIdx] = e.target.value;
-        this.hasCustomAiSteps = true;
-        const drawerInput = this.container.querySelector(`.step-text-input[data-step="${stepIdx}"]`);
-        if (drawerInput) drawerInput.value = e.target.value;
-      });
-    });
-
-    this.container.querySelectorAll('.step-text-input').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
-        this.customSteps[stepIdx] = e.target.value;
-        this.hasCustomAiSteps = true;
-        const liveInput = this.container.querySelector(`.live-step-input[data-step="${stepIdx}"]`);
-        if (liveInput) liveInput.value = e.target.value;
-      });
-    });
-
-    // Inputs de nombre de plato (pantalla principal y drawer)
-    const liveNameInput = this.container.querySelector('#livePlateNameInput');
-    const drawerNameInput = this.container.querySelector('#plateNameInput');
-
-    if (liveNameInput) {
-      liveNameInput.addEventListener('input', (e) => {
-        this.plateName = e.target.value;
-        if (drawerNameInput) drawerNameInput.value = this.plateName;
-      });
-    }
-
-    if (drawerNameInput) {
-      drawerNameInput.addEventListener('input', (e) => {
-        this.plateName = e.target.value;
-        if (liveNameInput) liveNameInput.value = this.plateName;
-      });
-    }
-
-    // Botones de acción directa en la tarjeta en vivo
-    const btnAiRefineLive = this.container.querySelector('#btnAiRefineStepsLive');
-    if (btnAiRefineLive && btnAiRefine) {
-      btnAiRefineLive.addEventListener('click', () => {
-        btnAiRefine.click();
-      });
-    }
-
-    const btnSavePlateLive = this.container.querySelector('#btnSavePlateLive');
-    if (btnSavePlateLive) {
-      btnSavePlateLive.addEventListener('click', async () => {
-        await this.saveCurrentPlate();
       });
     }
 
