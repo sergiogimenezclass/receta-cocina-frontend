@@ -218,7 +218,7 @@ export class AssemblerComponent {
     }).join('');
 
     return `
-      <div class="block-column" data-category="${category}" style="${columnStyle}">
+      <div class="block-column" data-category="${category}">
         <div class="block-column-header">
           <div class="block-title">${title}</div>
           <span class="block-badge" style="${headerBadgeStyle}">${subBadge}</span>
