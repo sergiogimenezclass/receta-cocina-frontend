@@ -47,6 +47,8 @@ export class AssemblerComponent {
       ? Math.max(...selComps.map(c => c.tiempo_preparacion_min || 10))
       : 15;
 
+    const hasProtein = Array.isArray(this.selected.Proteina) && this.selected.Proteina.length > 0;
+
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
       <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
@@ -85,7 +87,14 @@ export class AssemblerComponent {
       </div>
 
       <!-- Tarjeta de Resumen Ejecutivo y 3 Pasos en Pantalla Única -->
-      <div class="live-plate-summary-card">
+      <div class="live-plate-summary-card" style="${!hasProtein ? 'border-color: #fca5a5;' : ''}">
+        ${!hasProtein ? `
+          <div style="margin-bottom: 0.85rem; padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚠️</span>
+            <span><strong>Plato incompleto:</strong> Falta la proteína. Es el bloque fundamental del plato. Elegí al menos una opción en la primera columna para completar la preparación.</span>
+          </div>
+        ` : ''}
+
         <div class="live-plate-header">
           <div class="live-plate-title-group" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
             <span style="font-size: 1.35rem;">🍽️</span>
@@ -100,7 +109,7 @@ export class AssemblerComponent {
             <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
               ✨ Reoptimizar Pasos
             </button>
-            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm">
+            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm" style="${!hasProtein ? 'opacity: 0.6;' : ''}">
               💾 Guardar Plato
             </button>
           </div>
@@ -188,15 +197,22 @@ export class AssemblerComponent {
     const count = selectedIds.length;
 
     let subBadge = category;
-    if (count === 0) {
-      subBadge = `⚪ Sin selección`;
-    }
+    let headerBadgeStyle = '';
+    let columnStyle = '';
 
-    if (count > 1) {
+    if (count === 0) {
+      if (category === 'Proteina') {
+        subBadge = `⚠️ Requerida (Falta)`;
+        headerBadgeStyle = 'background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; font-weight: 700;';
+        columnStyle = 'border: 2px dashed #f87171;';
+      } else {
+        subBadge = `⚪ Sin selección`;
+        headerBadgeStyle = 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);';
+      }
+    } else if (count > 1) {
       subBadge += ` • ${count} sel.`;
     }
 
-    let headerBadgeStyle = count === 0 ? 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);' : '';
     const cardsHtml = categoryComponents.map(comp => {
       const isSelected = selectedIds.includes(comp.id);
       return `
@@ -219,7 +235,7 @@ export class AssemblerComponent {
     }).join('');
 
     return `
-      <div class="block-column" data-category="${category}">
+      <div class="block-column" data-category="${category}" style="${columnStyle}">
         <div class="block-column-header">
           <div class="block-title">${title}</div>
           <span class="block-badge" style="${headerBadgeStyle}">${subBadge}</span>
@@ -522,13 +538,16 @@ export class AssemblerComponent {
             this.hasCustomAiSteps = true;
           }
 
-          if (aiResult.sugerencia_opcional) {
+          if (validProts.length === 0) {
+            this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 600;">⚠️ <strong>Falta la proteína:</strong> No detectamos ninguna proteína en tu lista. Es el bloque fundamental del plato. Elegí al menos una opción en la primera columna para completar el plato.</div>`;
+            showToast('Falta la proteína en el plato', 'warning');
+          } else if (aiResult.sugerencia_opcional) {
             this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">${this.escapeHtml(aiResult.sugerencia_opcional)}</div>`;
+            showToast('Plato armado con éxito', 'success');
           } else {
             this.autoMatchNotification = '';
+            showToast('Plato armado con éxito', 'success');
           }
-
-          showToast('Plato armado con éxito', 'success');
           return;
         }
       }
@@ -715,13 +734,19 @@ export class AssemblerComponent {
 
     if (matchesFound.length > 0) {
       this.plateName = '';
-      const missingCats = categories.filter(cat => !this.selected[cat] || this.selected[cat].length === 0);
-      if (missingCats.length > 0) {
-        this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+      const hasProt = Array.isArray(this.selected.Proteina) && this.selected.Proteina.length > 0;
+      if (!hasProt) {
+        this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 600;">⚠️ <strong>Falta la proteína:</strong> No detectamos ninguna proteína en tu selección. Es el bloque fundamental del plato. Elegí al menos una opción en la primera columna para completar el plato.</div>`;
+        showToast('Falta la proteína en el plato', 'warning');
       } else {
-        this.autoMatchNotification = '';
+        const missingCats = categories.filter(cat => cat !== 'Proteina' && (!this.selected[cat] || this.selected[cat].length === 0));
+        if (missingCats.length > 0) {
+          this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+        } else {
+          this.autoMatchNotification = '';
+        }
+        showToast('Plato armado con éxito', 'info');
       }
-      showToast('Plato armado con éxito', 'info');
     } else {
       this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 500;">⚠️ No se encontraron coincidencias en la biblioteca para "${this.escapeHtml(queryText)}". Revisá que los nombres estén cargados en la Biblioteca.</div>`;
     }
@@ -1041,8 +1066,8 @@ export class AssemblerComponent {
   }
 
   async saveCurrentPlate() {
-    if (!this.selected.Proteina || !this.selected.Vegetal || !this.selected.Carbohidrato || !this.selected.Grasa) {
-      showToast('Seleccioná al menos 1 ingrediente en cada uno de los 4 bloques.', 'warning');
+    if (!this.selected.Proteina || this.selected.Proteina.length === 0) {
+      showToast('⚠️ Falta la proteína: es obligatoria para poder guardar el plato.', 'warning');
       return;
     }
 
