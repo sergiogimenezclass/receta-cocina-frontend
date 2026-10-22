@@ -48,6 +48,8 @@ export class AssemblerComponent {
       : 15;
 
     const hasProtein = Array.isArray(this.selected.Proteina) && this.selected.Proteina.length > 0;
+    const hasAnySelection = selectedIds.length > 0;
+    const showProteinWarning = hasAnySelection && !hasProtein;
 
     this.container.innerHTML = `
       <!-- Header de Configuración del Ensamblador -->
@@ -87,8 +89,8 @@ export class AssemblerComponent {
       </div>
 
       <!-- Tarjeta de Resumen Ejecutivo y 3 Pasos en Pantalla Única -->
-      <div class="live-plate-summary-card" style="${!hasProtein ? 'border-color: #fca5a5;' : ''}">
-        ${!hasProtein ? `
+      <div class="live-plate-summary-card" style="${showProteinWarning ? 'border-color: #fca5a5;' : ''}">
+        ${showProteinWarning ? `
           <div style="margin-bottom: 0.85rem; padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
             <span>⚠️</span>
             <span><strong>Plato incompleto:</strong> Falta la proteína. Es el bloque fundamental del plato. Elegí al menos una opción en la primera columna para completar la preparación.</span>
@@ -109,7 +111,7 @@ export class AssemblerComponent {
             <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
               ✨ Reoptimizar Pasos
             </button>
-            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm" style="${!hasProtein ? 'opacity: 0.6;' : ''}">
+            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm" style="${showProteinWarning ? 'opacity: 0.6;' : ''}">
               💾 Guardar Plato
             </button>
           </div>
@@ -134,10 +136,10 @@ export class AssemblerComponent {
 
       <!-- Matriz de 4 Columnas (Inventario Vivo) -->
       <div class="assembler-grid" style="margin-bottom: 5rem;">
-        ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
-        ${this.renderColumn('Vegetal', '🥦 Vegetales', components)}
-        ${this.renderColumn('Carbohidrato', '🥔 Carbohidratos', components)}
-        ${this.renderColumn('Grasa', '🥑 Grasas', components)}
+        ${this.renderColumn('Proteina', '🥩 Proteínas', components, hasAnySelection)}
+        ${this.renderColumn('Vegetal', '🥦 Vegetales', components, hasAnySelection)}
+        ${this.renderColumn('Carbohidrato', '🥔 Carbohidratos', components, hasAnySelection)}
+        ${this.renderColumn('Grasa', '🥑 Grasas', components, hasAnySelection)}
       </div>
 
       <!-- BARRA FLOTANTE STICKY BOTTOM BAR (Siempre Visible) -->
@@ -191,7 +193,7 @@ export class AssemblerComponent {
     });
   }
 
-  renderColumn(category, title, allComponents) {
+  renderColumn(category, title, allComponents, hasAnySelection = false) {
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
     const categoryComponents = allComponents.filter(c => c.categoria === category);
     const count = selectedIds.length;
@@ -202,9 +204,14 @@ export class AssemblerComponent {
 
     if (count === 0) {
       if (category === 'Proteina') {
-        subBadge = `⚠️ Requerida (Falta)`;
-        headerBadgeStyle = 'background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; font-weight: 700;';
-        columnStyle = 'border: 2px dashed #f87171;';
+        if (hasAnySelection) {
+          subBadge = `⚠️ Requerida (Falta)`;
+          headerBadgeStyle = 'background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; font-weight: 700;';
+          columnStyle = 'border: 2px dashed #f87171;';
+        } else {
+          subBadge = `🥩 Requerida`;
+          headerBadgeStyle = 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);';
+        }
       } else {
         subBadge = `⚪ Sin selección`;
         headerBadgeStyle = 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);';
