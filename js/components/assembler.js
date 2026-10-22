@@ -48,26 +48,6 @@ export class AssemblerComponent {
       : 15;
 
     this.container.innerHTML = `
-      <!-- Selector de Estilo de Servido -->
-      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
-        <div class="activity-selector-container">
-          <span class="label">Estilo de Servido:</span>
-          <div class="activity-selector">
-            <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente">
-              🍲 Caliente (Wok / Sopa)
-            </button>
-            <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio">
-              🥗 Frío (Ensalada / Bowl)
-            </button>
-          </div>
-        </div>
-
-        <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
-          <span>⏱️ Tiempo estimado:</span>
-          <strong style="color: var(--text-primary);">~${estimatedTime} min</strong>
-        </div>
-      </div>
-
       <!-- Contenedor Principal Versión B (Lienzo Protagónico + Split Desktop) -->
       <div class="assembler-v2-container">
 
@@ -75,6 +55,22 @@ export class AssemblerComponent {
         <div class="v2-left-col">
 
           <div class="plate-canvas-card">
+            <!-- Barra superior ultra-compacta: Estilo de Servido + Tiempo estimado -->
+            <div class="plate-top-controls">
+              <div class="activity-selector compact">
+                <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" title="Estilo Caliente (Wok / Sopa)">
+                  🍲 Caliente
+                </button>
+                <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" title="Estilo Frío (Ensalada / Bowl)">
+                  🥗 Frío
+                </button>
+              </div>
+
+              <div class="plate-meta-time">
+                ⏱️ ~${estimatedTime} min
+              </div>
+            </div>
+
             <!-- Barra Colapsada Reactiva (cuando el input de chat tiene foco) -->
             <div class="plate-compact-bar" id="plateCompactBar">
               ${this.renderCompactChips(components)}
@@ -82,13 +78,10 @@ export class AssemblerComponent {
 
             <!-- Gráfico Protagónico del Plato Circular -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
-              <div style="text-align: center; margin-bottom: 0.25rem;">
-                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;" id="plateTitleDisplay">
+              <div style="text-align: center; margin-bottom: 0.15rem;">
+                <h2 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0;" id="plateTitleDisplay">
                   ${this.escapeHtml(this.plateName)}
                 </h2>
-                <div style="font-size: 0.8rem; color: var(--text-secondary);">
-                  Toca cualquier cuadrante para sumar o cambiar ingredientes
-                </div>
               </div>
 
               <div class="visual-plate-circle">
