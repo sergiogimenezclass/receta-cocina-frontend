@@ -48,110 +48,227 @@ export class AssemblerComponent {
       : 15;
 
     this.container.innerHTML = `
-      <!-- Header de Configuración del Ensamblador -->
-      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
-          <div class="activity-selector-container">
-            <span class="label">Estilo de Servido:</span>
-            <div class="activity-selector">
-              <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente">
-                🍲 Caliente (Wok / Salteado / Sopa)
+      <!-- Selector de Estilo de Servido -->
+      <div class="assembler-header glass-card" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+        <div class="activity-selector-container">
+          <span class="label">Estilo de Servido:</span>
+          <div class="activity-selector">
+            <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente">
+              🍲 Caliente (Wok / Sopa)
+            </button>
+            <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio">
+              🥗 Frío (Ensalada / Bowl)
+            </button>
+          </div>
+        </div>
+
+        <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
+          <span>⏱️ Tiempo estimado:</span>
+          <strong style="color: var(--text-primary);">~${estimatedTime} min</strong>
+        </div>
+      </div>
+
+      <!-- Contenedor Principal Versión B (Lienzo Protagónico + Split Desktop) -->
+      <div class="assembler-v2-container">
+
+        <!-- COLUMNA IZQUIERDA: Plato Protagónico + Chat -->
+        <div class="v2-left-col">
+
+          <div class="plate-canvas-card">
+            <!-- Barra Colapsada Reactiva (cuando el input de chat tiene foco) -->
+            <div class="plate-compact-bar" id="plateCompactBar">
+              ${this.renderCompactChips(components)}
+            </div>
+
+            <!-- Gráfico Protagónico del Plato Circular -->
+            <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
+              <div style="text-align: center; margin-bottom: 0.25rem;">
+                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;" id="plateTitleDisplay">
+                  ${this.escapeHtml(this.plateName)}
+                </h2>
+                <div style="font-size: 0.8rem; color: var(--text-secondary);">
+                  Toca cualquier cuadrante para sumar o cambiar ingredientes
+                </div>
+              </div>
+
+              <div class="visual-plate-circle">
+                <!-- Cuadrante 1: Proteína (25% arriba-izquierda) -->
+                <div class="plate-quadrant quad-protein" data-category="Proteina" title="Tocar para editar Proteínas">
+                  <div class="quadrant-badge-title">🥩 Proteína (25%)</div>
+                  <div class="quadrant-content" id="quadContentProtein">
+                    ${this.renderQuadrantContent('Proteina', components, '+ Elegir')}
+                  </div>
+                </div>
+
+                <!-- Cuadrante 2: Vegetales (50% mitad derecha) -->
+                <div class="plate-quadrant quad-veg" data-category="Vegetal" title="Tocar para editar Vegetales">
+                  <div class="quadrant-badge-title">🥦 Vegetales (50%)</div>
+                  <div class="quadrant-content" id="quadContentVeg">
+                    ${this.renderQuadrantContent('Vegetal', components, '+ Elegir')}
+                  </div>
+                </div>
+
+                <!-- Cuadrante 3: Carbohidrato (25% abajo-izquierda) -->
+                <div class="plate-quadrant quad-carb" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
+                  <div class="quadrant-badge-title">🥔 Carbohidrato (25%)</div>
+                  <div class="quadrant-content" id="quadContentCarb">
+                    ${this.renderQuadrantContent('Carbohidrato', components, '+ Elegir')}
+                  </div>
+                </div>
+
+                <!-- Cuadrante 4: Grasas Saludables (núcleo central) -->
+                <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
+                  <div class="quadrant-badge-title" style="font-size: 0.65rem;">🥑 Grasas</div>
+                  <div class="quadrant-content" id="quadContentFat">
+                    ${this.renderQuadrantContent('Grasa', components, '+')}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón Móvil: Abrir Modo Cocina Desplegable -->
+              <button type="button" id="btnOpenCookingMode" class="btn-open-cooking-mode">
+                🍳 Ver 3 Pasos de Cocinado (${estimatedTime} min) ➔
               </button>
-              <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio">
-                🥗 Frío (Ensalada / Bowl)
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA: Panel de Cocina en Vivo (Visible en Desktop ≥ 1024px) -->
+        <div class="v2-right-col">
+          <div class="live-plate-summary-card">
+            <div class="live-plate-header">
+              <div class="live-plate-title-group" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; width: 100%;">
+                <span style="font-size: 1.35rem;">🍽️</span>
+                <input type="text" id="livePlateNameInput" class="live-plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre de tu plato...">
+                <div class="live-plate-meta" style="margin-left: auto;">
+                  <span>${this.plateMode === 'frio' ? '🥗 Frío' : '🍲 Caliente'}</span>
+                  <span>•</span>
+                  <span>⏱️ ~${estimatedTime} min</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Pasos Ejecutivos Directos -->
+            <div class="live-steps-grid" style="grid-template-columns: 1fr; margin-bottom: 1.25rem;">
+              <div class="live-step-box">
+                <div class="live-step-num">1</div>
+                <input type="text" class="live-step-input" data-step="0" value="${this.escapeHtml(this.customSteps[0])}" placeholder="Paso 1: Preparación...">
+              </div>
+              <div class="live-step-box">
+                <div class="live-step-num">2</div>
+                <input type="text" class="live-step-input" data-step="1" value="${this.escapeHtml(this.customSteps[1])}" placeholder="Paso 2: Cocción o ensamblado...">
+              </div>
+              <div class="live-step-box">
+                <div class="live-step-num">3</div>
+                <input type="text" class="live-step-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3: Emplatado y aderezo...">
+              </div>
+            </div>
+
+            <!-- Botones de Acción en Desktop -->
+            <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+              <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
+                ✨ Reoptimizar Pasos
+              </button>
+              <button id="btnGenerateImage" type="button" class="btn btn-secondary btn-sm" title="Generar imagen con IA">
+                🎨 Generar Imagen
+              </button>
+              <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm">
+                💾 Guardar Plato
               </button>
             </div>
           </div>
         </div>
+
       </div>
 
-      <!-- Consola Conversacional Unificada -->
-      <div class="conversational-console">
-        <div class="console-header-row">
-          <div class="console-title">
-            <span>💬</span>
-            <span>Asistente de Cocina Rápida</span>
-          </div>
+      <!-- BARRA DE CHAT INFERIOR CON MICRÓFONO Y TIP DEL CHEF -->
+      <div class="v2-bottom-chat-bar">
+        <div class="v2-bottom-chat-inner">
+          ${this.autoMatchNotification ? `
+            <div class="chef-callout-pill" id="chefCalloutPill">
+              <span>${this.autoMatchNotification}</span>
+              <button type="button" class="chef-callout-close" id="btnCloseChefCallout" title="Descartar">&times;</button>
+            </div>
+          ` : ''}
+
+          <form id="formAutoSelectIngredients" class="v2-chat-form">
+            <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
+              🎙️
+            </button>
+            <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Escribí o dictá lo que tenés en la heladera..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
+            <button type="submit" class="btn btn-primary btn-chat-submit">
+              ✨ Armar
+            </button>
+          </form>
         </div>
-
-        <form id="formAutoSelectIngredients" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-          <input type="text" id="autoIngredientsInput" class="form-control" placeholder="Escribí lo que tenés en la heladera o cómo ajustar el plato..." value="${this.escapeHtml(this.autoQueryText)}" style="flex: 1; min-width: 260px; font-size: 0.9rem;">
-          <button type="submit" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.25rem; white-space: nowrap;">
-            ✨ Armar Plato
-          </button>
-        </form>
-
-        ${this.autoMatchNotification || ''}
       </div>
 
-      <!-- Tarjeta de Resumen Ejecutivo y 3 Pasos en Pantalla Única -->
-      <div class="live-plate-summary-card">
-        <div class="live-plate-header">
-          <div class="live-plate-title-group" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-            <span style="font-size: 1.35rem;">🍽️</span>
-            <input type="text" id="livePlateNameInput" class="live-plate-title-input" value="${this.escapeHtml(this.plateName)}" placeholder="Nombre de tu plato...">
-            <div class="live-plate-meta">
-              <span>${this.plateMode === 'frio' ? '🥗 Frío' : '🍲 Caliente'}</span>
-              <span>•</span>
-              <span>⏱️ ~${estimatedTime} min</span>
+      <!-- MODAL HTML5 NATIVO: MODO COCINA (DESPLEGABLE MÓVIL) -->
+      <dialog id="modalCookingMode" closedby="any" class="cooking-mode-modal">
+        <div class="modal-dialog-inner">
+          <div class="modal-dialog-header">
+            <div class="modal-dialog-title">
+              <span>🍳</span>
+              <span>Modo Cocina</span>
+            </div>
+            <button class="modal-dialog-close" id="btnCloseCookingMode">&times;</button>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;" id="cookingModalTitle">
+              ${this.escapeHtml(this.plateName)}
+            </h3>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              ${this.plateMode === 'frio' ? '🥗 Estilo Frío' : '🍲 Estilo Caliente'} • ⏱️ Tiempo estimado: ~${estimatedTime} min
+            </div>
+
+            <div class="cooking-steps-list">
+              <div class="cooking-step-card">
+                <div class="cooking-step-badge">1</div>
+                <div class="cooking-step-content" id="cookingStep0">${this.escapeHtml(this.customSteps[0] || 'Preparar ingredientes.')}</div>
+              </div>
+              <div class="cooking-step-card">
+                <div class="cooking-step-badge">2</div>
+                <div class="cooking-step-content" id="cookingStep1">${this.escapeHtml(this.customSteps[1] || 'Cocción o ensamblado.')}</div>
+              </div>
+              <div class="cooking-step-card">
+                <div class="cooking-step-badge">3</div>
+                <div class="cooking-step-content" id="cookingStep2">${this.escapeHtml(this.customSteps[2] || 'Emplatado y aderezo.')}</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-            <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
+
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem; flex-wrap: wrap;">
+            <button id="btnAiRefineInModal" type="button" class="btn btn-secondary btn-sm">
               ✨ Reoptimizar Pasos
             </button>
-            <button id="btnSavePlateLive" type="button" class="btn btn-primary btn-sm">
+            <button id="btnSavePlateInModal" type="button" class="btn btn-primary btn-sm">
               💾 Guardar Plato
             </button>
           </div>
         </div>
+      </dialog>
 
-        <!-- 3 Pasos Ejecutivos Directos -->
-        <div class="live-steps-grid">
-          <div class="live-step-box">
-            <div class="live-step-num">1</div>
-            <input type="text" class="live-step-input" data-step="0" value="${this.escapeHtml(this.customSteps[0])}" placeholder="Paso 1: Preparación...">
+      <!-- MODAL HTML5 NATIVO: SELECTOR TÁCTIL DE CATEGORÍA -->
+      <dialog id="modalCategoryPicker" closedby="any" class="category-picker-modal">
+        <div class="modal-dialog-inner">
+          <div class="modal-dialog-header">
+            <div class="modal-dialog-title" id="categoryPickerTitle">
+              <span>🥗</span> <span>Elegir Ingredientes</span>
+            </div>
+            <button class="modal-dialog-close" id="btnCloseCategoryPicker">&times;</button>
           </div>
-          <div class="live-step-box">
-            <div class="live-step-num">2</div>
-            <input type="text" class="live-step-input" data-step="1" value="${this.escapeHtml(this.customSteps[1])}" placeholder="Paso 2: Cocción o ensamblado...">
+          <div class="category-picker-grid" id="categoryPickerGrid">
+            <!-- Renderizado dinámico -->
           </div>
-          <div class="live-step-box">
-            <div class="live-step-num">3</div>
-            <input type="text" class="live-step-input" data-step="2" value="${this.escapeHtml(this.customSteps[2])}" placeholder="Paso 3: Emplatado y aderezo...">
-          </div>
-        </div>
-      </div>
-
-      <!-- Matriz de 4 Columnas (Inventario Vivo) -->
-      <div class="assembler-grid" style="margin-bottom: 5rem;">
-        ${this.renderColumn('Proteina', '🥩 Proteínas', components)}
-        ${this.renderColumn('Vegetal', '🥦 Vegetales', components)}
-        ${this.renderColumn('Carbohidrato', '🥔 Carbohidratos', components)}
-        ${this.renderColumn('Grasa', '🥑 Grasas', components)}
-      </div>
-
-      <!-- BARRA FLOTANTE STICKY BOTTOM BAR (Siempre Visible) -->
-      <div class="sticky-plate-bar">
-        <div class="sticky-plate-bar-content">
-          <!-- Desglose de Chips de Alimentos en Vivo -->
-          <div class="sticky-chips-container" id="stickyChipsSummary">
-            ${this.renderStickyChips(components)}
-          </div>
-
-          <!-- Botones de Acción Rápida -->
-          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-            <button id="btnGenerateImage" class="btn btn-secondary btn-sm" style="opacity: 0.9;" title="Generar imagen con IA">
-              🎨 Generar Imagen
-            </button>
-            <button id="btnSavePlate" class="btn btn-primary btn-sm">
-              💾 Guardar Plato
-            </button>
+          <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+            <button id="btnDoneCategoryPicker" class="btn btn-primary btn-sm">👍 Listo</button>
           </div>
         </div>
-      </div>
+      </dialog>
 
-      <!-- MODAL UI NATIVO DE GENERACIÓN DE IMAGEN CON IA -->
+      <!-- MODAL UI DE GENERACIÓN DE IMAGEN CON IA -->
       <div id="modalImageGen" class="modal-overlay">
         <div class="modal-container glass-card" style="max-width: 550px; text-align: center;">
           <div class="modal-header">
@@ -168,6 +285,140 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
+  renderQuadrantContent(category, allComponents, defaultPlaceholder) {
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
+    const selComps = allComponents.filter(c => selectedIds.includes(c.id));
+    if (selComps.length === 0) {
+      return `<span class="quadrant-empty-placeholder">${defaultPlaceholder}</span>`;
+    }
+    const names = selComps.map(c => c.nombre).join(' + ');
+    return `<span class="quadrant-ingredient-text" title="${this.escapeHtml(names)}">${this.escapeHtml(names)}</span>`;
+  }
+
+  renderCompactChips(allComponents) {
+    const getNames = (cat, defaultName) => {
+      const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+      const comps = allComponents.filter(c => ids.includes(c.id));
+      return comps.length > 0 ? comps.map(c => c.nombre).join(' + ') : defaultName;
+    };
+    return `
+      <div class="plate-compact-chip prot" data-category="Proteina" title="Tocar para cambiar proteína">
+        🥩 ${this.escapeHtml(getNames('Proteina', '+ Proteína'))}
+      </div>
+      <div class="plate-compact-chip veg" data-category="Vegetal" title="Tocar para cambiar vegetales">
+        🥦 ${this.escapeHtml(getNames('Vegetal', '+ Vegetales'))}
+      </div>
+      <div class="plate-compact-chip carb" data-category="Carbohidrato" title="Tocar para cambiar carbohidratos">
+        🥔 ${this.escapeHtml(getNames('Carbohidrato', '+ Carbo'))}
+      </div>
+      <div class="plate-compact-chip fat" data-category="Grasa" title="Tocar para cambiar grasas">
+        🥑 ${this.escapeHtml(getNames('Grasa', '+ Grasa'))}
+      </div>
+    `;
+  }
+
+  openCategoryPicker(category, allComponents) {
+    const modal = this.container.querySelector('#modalCategoryPicker');
+    if (!modal) return;
+
+    const catLabels = {
+      Proteina: { icon: '🥩', title: 'Elegir Proteína' },
+      Vegetal: { icon: '🥦', title: 'Elegir Vegetales' },
+      Carbohidrato: { icon: '🥔', title: 'Elegir Carbohidratos' },
+      Grasa: { icon: '🥑', title: 'Elegir Grasas Saludables' }
+    };
+    const catInfo = catLabels[category] || { icon: '🥗', title: `Elegir ${category}` };
+
+    const titleEl = modal.querySelector('#categoryPickerTitle');
+    if (titleEl) {
+      titleEl.innerHTML = `<span>${catInfo.icon}</span> <span>${catInfo.title}</span>`;
+    }
+
+    const gridEl = modal.querySelector('#categoryPickerGrid');
+    if (!gridEl) return;
+
+    const categoryComps = allComponents.filter(c => c.categoria === category);
+    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
+
+    gridEl.innerHTML = categoryComps.map(comp => {
+      const isSel = selectedIds.includes(comp.id);
+      return `
+        <div class="category-picker-item ${isSel ? 'selected' : ''}" data-id="${comp.id}">
+          <div class="category-picker-item-icon">${comp.icono || catInfo.icon}</div>
+          <div class="category-picker-item-name">${this.escapeHtml(comp.nombre)}</div>
+          <div style="font-size: 0.72rem; color: var(--text-secondary);">⏱️ ${comp.tiempo_preparacion_min}m</div>
+        </div>
+      `;
+    }).join('');
+
+    // Eventos de selección en el picker
+    gridEl.querySelectorAll('.category-picker-item').forEach(item => {
+      item.addEventListener('click', async (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        if (!Array.isArray(this.selected[category])) {
+          this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
+        }
+        const idx = this.selected[category].indexOf(id);
+        if (idx >= 0) {
+          this.selected[category].splice(idx, 1);
+          e.currentTarget.classList.remove('selected');
+        } else {
+          this.selected[category].push(id);
+          e.currentTarget.classList.add('selected');
+        }
+        this.hasCustomAiSteps = false;
+        await this.updateVisualPlateAndSteps(allComponents);
+      });
+    });
+
+    modal.showModal();
+  }
+
+  async updateVisualPlateAndSteps(allComponents) {
+    this.updateStepDefaults(allComponents);
+
+    // Actualizar contenido de los cuadrantes
+    const quadProt = this.container.querySelector('#quadContentProtein');
+    if (quadProt) quadProt.innerHTML = this.renderQuadrantContent('Proteina', allComponents, '+ Elegir');
+
+    const quadVeg = this.container.querySelector('#quadContentVeg');
+    if (quadVeg) quadVeg.innerHTML = this.renderQuadrantContent('Vegetal', allComponents, '+ Elegir');
+
+    const quadCarb = this.container.querySelector('#quadContentCarb');
+    if (quadCarb) quadCarb.innerHTML = this.renderQuadrantContent('Carbohidrato', allComponents, '+ Elegir');
+
+    const quadFat = this.container.querySelector('#quadContentFat');
+    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '+');
+
+    // Actualizar barra colapsada
+    const compactBar = this.container.querySelector('#plateCompactBar');
+    if (compactBar) compactBar.innerHTML = this.renderCompactChips(allComponents);
+
+    // Actualizar título del plato en visualizador y modals
+    const titleDisplay = this.container.querySelector('#plateTitleDisplay');
+    if (titleDisplay) titleDisplay.textContent = this.plateName;
+
+    const cookingTitle = this.container.querySelector('#cookingModalTitle');
+    if (cookingTitle) cookingTitle.textContent = this.plateName;
+
+    const liveInput = this.container.querySelector('#livePlateNameInput');
+    if (liveInput && document.activeElement !== liveInput) liveInput.value = this.plateName;
+
+    // Actualizar pasos en Desktop
+    this.container.querySelectorAll('.live-step-input').forEach(input => {
+      const stepIdx = parseInt(input.getAttribute('data-step'), 10);
+      input.value = this.customSteps[stepIdx] || '';
+    });
+
+    // Actualizar pasos en Modo Cocina
+    const step0 = this.container.querySelector('#cookingStep0');
+    if (step0) step0.textContent = this.customSteps[0] || '';
+    const step1 = this.container.querySelector('#cookingStep1');
+    if (step1) step1.textContent = this.customSteps[1] || '';
+    const step2 = this.container.querySelector('#cookingStep2');
+    if (step2) step2.textContent = this.customSteps[2] || '';
+  }
+
   getMissingCategories() {
     const categories = [
       { key: 'Proteina', label: 'Proteína', icon: '🥩' },
@@ -180,83 +431,6 @@ export class AssemblerComponent {
       const selectedIds = Array.isArray(this.selected[cat.key]) ? this.selected[cat.key] : [];
       return selectedIds.length === 0;
     });
-  }
-
-  renderColumn(category, title, allComponents) {
-    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : [];
-    const categoryComponents = allComponents.filter(c => c.categoria === category);
-    const count = selectedIds.length;
-
-    let subBadge = category;
-    if (count === 0) {
-      subBadge = `⚪ Sin selección`;
-    } else if (count > 1) {
-      subBadge += ` • ${count} sel.`;
-    }
-
-    let headerBadgeStyle = count === 0 ? 'background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);' : '';
-
-    const cardsHtml = categoryComponents.map(comp => {
-      const isSelected = selectedIds.includes(comp.id);
-      return `
-        <div class="component-item-card ${isSelected ? 'selected' : ''}"
-             data-id="${comp.id}" data-category="${category}">
-          <div class="card-header-row">
-            <div class="card-title-group">
-              <span>${comp.icono || '🥗'}</span>
-              <span>${this.escapeHtml(comp.nombre)}</span>
-            </div>
-            ${isSelected ? '<span style="color: var(--color-veg); font-weight: 700; font-size: 0.85rem;">✓</span>' : ''}
-          </div>
-
-          <div class="card-details-row">
-            <span>⏱️ ${comp.tiempo_preparacion_min} min</span>
-            <span style="font-style: italic;">${this.escapeHtml(comp.metodo_coccion)}</span>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    return `
-      <div class="block-column" data-category="${category}">
-        <div class="block-column-header">
-          <div class="block-title">${title}</div>
-          <span class="block-badge" style="${headerBadgeStyle}">${subBadge}</span>
-        </div>
-        <div class="components-list">
-          ${cardsHtml.length > 0 ? cardsHtml : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay componentes cargados.</div>'}
-        </div>
-      </div>
-    `;
-  }
-
-  renderStickyChips(allComponents) {
-    const formatBlockChip = (category, icon, defaultLabel, colorBg, colorText, colorBorder) => {
-      const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
-      const selComps = allComponents.filter(c => selectedIds.includes(c.id));
-
-      if (selComps.length === 0) {
-        return `
-          <div class="sticky-chip" style="background: var(--color-carb-bg); color: var(--color-carb); border: 1px dashed var(--color-carb-border);">
-            ${icon} ${defaultLabel} (Sin selección)
-          </div>
-        `;
-      }
-
-      const names = selComps.map(c => c.nombre).join(' + ');
-      return `
-        <div class="sticky-chip" style="background: ${colorBg}; color: ${colorText}; border: 1px solid ${colorBorder};">
-          ${icon} ${names}
-        </div>
-      `;
-    };
-
-    return `
-      ${formatBlockChip('Proteina', '🥩', 'Proteína', 'var(--color-prot-bg)', 'var(--color-prot)', 'var(--color-prot-border)')}
-      ${formatBlockChip('Vegetal', '🥦', 'Vegetal', 'var(--color-veg-bg)', 'var(--color-veg)', 'var(--color-veg-border)')}
-      ${formatBlockChip('Carbohidrato', '🥔', 'Carbohidrato', 'var(--color-carb-bg)', 'var(--color-carb)', 'var(--color-carb-border)')}
-      ${formatBlockChip('Grasa', '🥑', 'Grasa', 'var(--color-fat-bg)', 'var(--color-fat)', 'var(--color-fat-border)')}
-    `;
   }
 
   async updateStepDefaults(components) {
@@ -725,13 +899,97 @@ export class AssemblerComponent {
     }
   }
 
-  bindEvents() {
-    // Formulario de Auto-Ensamblado por Ingredientes ⚡
+  async bindEvents() {
+    const components = await storage.getComponents();
+    const v2Container = this.container.querySelector('.assembler-v2-container');
+    const autoInput = this.container.querySelector('#autoIngredientsInput');
+
+    // 1. Colapso reactivo del plato al enfocar el input de chat (reserva de espacio para teclado móvil)
+    if (autoInput && v2Container) {
+      autoInput.addEventListener('focus', () => {
+        v2Container.classList.add('chat-focused');
+      });
+      autoInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          v2Container.classList.remove('chat-focused');
+        }, 220);
+      });
+    }
+
+    // 2. Entrada por Voz con Web Speech API (🎙️ Micrófono nativo)
+    const btnVoice = this.container.querySelector('#btnVoiceInput');
+    if (btnVoice && autoInput) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        btnVoice.addEventListener('click', () => {
+          showToast('Tu navegador no soporta dictado directo por voz. Podés usar el micrófono de tu teclado.', 'info', 4000);
+        });
+      } else {
+        let recognition = null;
+        let isListening = false;
+
+        btnVoice.addEventListener('click', () => {
+          if (isListening && recognition) {
+            recognition.stop();
+            return;
+          }
+
+          try {
+            recognition = new SpeechRecognition();
+            recognition.lang = 'es-ES';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = () => {
+              isListening = true;
+              btnVoice.classList.add('listening');
+              btnVoice.title = 'Escuchando... Tocá para detener';
+              showToast('🎙️ Escuchando... decí lo que tenés en la heladera', 'info', 3000);
+            };
+
+            recognition.onresult = async (event) => {
+              const transcript = event.results?.[0]?.[0]?.transcript;
+              if (transcript) {
+                autoInput.value = transcript;
+                showToast(`🎙️ Detectado: "${transcript}"`, 'info', 2500);
+                // Envío automático al terminar de hablar
+                const formAuto = this.container.querySelector('#formAutoSelectIngredients');
+                if (formAuto) {
+                  formAuto.dispatchEvent(new Event('submit', { cancelable: true }));
+                }
+              }
+            };
+
+            recognition.onerror = (event) => {
+              console.warn('Reconocimiento de voz:', event.error);
+              if (event.error !== 'no-speech') {
+                showToast('No se pudo acceder al micrófono o se canceló el dictado.', 'warning');
+              }
+            };
+
+            recognition.onend = () => {
+              isListening = false;
+              btnVoice.classList.remove('listening');
+              btnVoice.title = 'Dictar ingredientes por voz';
+            };
+
+            recognition.start();
+          } catch (err) {
+            console.error('Error al inicializar SpeechRecognition:', err);
+            isListening = false;
+            btnVoice.classList.remove('listening');
+          }
+        });
+      }
+    }
+
+    // 3. Formulario de Chat / Asistente de Cocina Rápida
     const formAuto = this.container.querySelector('#formAutoSelectIngredients');
     if (formAuto) {
       formAuto.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const inputVal = document.getElementById('autoIngredientsInput')?.value || '';
+        const inputVal = autoInput ? autoInput.value : '';
         const submitBtn = formAuto.querySelector('button[type="submit"]');
         const prevText = submitBtn ? submitBtn.innerHTML : '';
         if (submitBtn) {
@@ -751,7 +1009,7 @@ export class AssemblerComponent {
       });
     }
 
-    // Selector de Estilo de Servido (Caliente / Frío)
+    // 4. Selector de Estilo de Servido (Caliente / Frío)
     this.container.querySelectorAll('.mode-temp-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         this.plateMode = e.currentTarget.getAttribute('data-mode');
@@ -762,253 +1020,176 @@ export class AssemblerComponent {
       });
     });
 
-    // Selección de tarjetas en las 4 columnas (Multi-selección)
-    this.container.querySelectorAll('.component-item-card').forEach(card => {
-      card.addEventListener('click', async (e) => {
-        const id = e.currentTarget.getAttribute('data-id');
+    // 5. Interacción con Cuadrantes del Plato y Chips Colapsados (Abre Selector Táctil)
+    this.container.querySelectorAll('.plate-quadrant, .plate-compact-chip').forEach(el => {
+      el.addEventListener('click', (e) => {
         const category = e.currentTarget.getAttribute('data-category');
-        
-        if (!Array.isArray(this.selected[category])) {
-          this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
+        if (category) {
+          this.openCategoryPicker(category, components);
         }
-
-        const idx = this.selected[category].indexOf(id);
-        if (idx >= 0) {
-          // Des-seleccionar libremente (puede quedar en 0 seleccionados)
-          this.selected[category].splice(idx, 1);
-        } else {
-          // Agregar a la selección
-          this.selected[category].push(id);
-        }
-        
-        this.hasCustomAiSteps = false;
-        await this.render();
-        this.bindEvents();
       });
     });
 
-    // Botón Optimizar Pasos con IA (directo en la tarjeta principal)
-    const btnAiRefineLive = this.container.querySelector('#btnAiRefineStepsLive');
-    if (btnAiRefineLive) {
-      btnAiRefineLive.addEventListener('click', async () => {
-        const components = await storage.getComponents();
-        const getSelComps = (cat) => {
-          const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
-          return components.filter(c => ids.includes(c.id));
-        };
+    // 6. Modal Modo Cocina (HTML5 <dialog>)
+    const modalCooking = this.container.querySelector('#modalCookingMode');
+    const btnOpenCooking = this.container.querySelector('#btnOpenCookingMode');
+    const btnCloseCooking = this.container.querySelector('#btnCloseCookingMode');
 
-        const selProt = getSelComps('Proteina');
-        const selVeg = getSelComps('Vegetal');
-        const selCarb = getSelComps('Carbohidrato');
-        const selFat = getSelComps('Grasa');
+    if (btnOpenCooking && modalCooking) {
+      btnOpenCooking.addEventListener('click', () => {
+        modalCooking.showModal();
+      });
+    }
 
-        if (!selProt.length || !selVeg.length || !selCarb.length || !selFat.length) {
-          showToast('Seleccioná al menos 1 ingrediente en cada bloque primero', 'warning');
-          return;
-        }
+    if (btnCloseCooking && modalCooking) {
+      btnCloseCooking.addEventListener('click', () => {
+        modalCooking.close();
+      });
+    }
 
-        const prevText = btnAiRefineLive.innerHTML;
-        btnAiRefineLive.disabled = true;
-        btnAiRefineLive.innerHTML = '⌛ Optimizando...';
-
-        try {
-          const selectedComps = [...selProt, ...selVeg, ...selCarb, ...selFat];
-          const result = await geminiService.refineSteps(selectedComps, this.plateMode);
-          if (result && Array.isArray(result.pasos) && result.pasos.length >= 3) {
-            this.customSteps = result.pasos.slice(0, 3);
-            this.hasCustomAiSteps = true;
-            if (result.titulo) {
-              this.plateName = result.titulo;
-              const nameInput = this.container.querySelector('#livePlateNameInput');
-              if (nameInput) nameInput.value = this.plateName;
-            }
-            this.container.querySelectorAll('.live-step-input').forEach((input) => {
-              const stepIdx = parseInt(input.getAttribute('data-step'), 10);
-              input.value = this.customSteps[stepIdx] || '';
-            });
-            showToast('✨ Pasos optimizados con IA', 'success');
-          }
-        } catch (err) {
-          if (err.message === 'API_KEY_MISSING') {
-            showToast('Ingresá tu API Key de Gemini en Ajustes (⚙️) para usar la IA', 'warning');
-          } else {
-            showToast('No se pudo conectar con la IA. Usando pasos locales.', 'info');
-          }
-        } finally {
-          btnAiRefineLive.disabled = false;
-          btnAiRefineLive.innerHTML = prevText;
+    if (modalCooking) {
+      modalCooking.addEventListener('click', (e) => {
+        if (e.target === modalCooking) {
+          modalCooking.close();
         }
       });
     }
 
-    // Inputs de texto de pasos en vivo (pantalla principal)
+    // 7. Modal Selector de Categoría (HTML5 <dialog>)
+    const modalPicker = this.container.querySelector('#modalCategoryPicker');
+    const btnClosePicker = this.container.querySelector('#btnCloseCategoryPicker');
+    const btnDonePicker = this.container.querySelector('#btnDoneCategoryPicker');
+
+    if (btnClosePicker && modalPicker) {
+      btnClosePicker.addEventListener('click', () => modalPicker.close());
+    }
+    if (btnDonePicker && modalPicker) {
+      btnDonePicker.addEventListener('click', () => modalPicker.close());
+    }
+    if (modalPicker) {
+      modalPicker.addEventListener('click', (e) => {
+        if (e.target === modalPicker) {
+          modalPicker.close();
+        }
+      });
+    }
+
+    // 8. Descartar Callout Efímero del Chef
+    const btnCloseCallout = this.container.querySelector('#btnCloseChefCallout');
+    if (btnCloseCallout) {
+      btnCloseCallout.addEventListener('click', () => {
+        this.autoMatchNotification = '';
+        const pill = this.container.querySelector('#chefCalloutPill');
+        if (pill) pill.remove();
+      });
+    }
+
+    // 9. Reoptimizar Pasos con IA (Desktop y Modal)
+    const handleAiRefine = async (btnEl) => {
+      const getSelComps = (cat) => {
+        const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
+        return components.filter(c => ids.includes(c.id));
+      };
+
+      const selProt = getSelComps('Proteina');
+      const selVeg = getSelComps('Vegetal');
+      const selCarb = getSelComps('Carbohidrato');
+      const selFat = getSelComps('Grasa');
+
+      if (!selProt.length && !selVeg.length && !selCarb.length && !selFat.length) {
+        showToast('Seleccioná al menos 1 ingrediente primero', 'warning');
+        return;
+      }
+
+      const prevText = btnEl.innerHTML;
+      btnEl.disabled = true;
+      btnEl.innerHTML = '⌛ Optimizando...';
+
+      try {
+        const selectedComps = [...selProt, ...selVeg, ...selCarb, ...selFat];
+        const result = await geminiService.refineSteps(selectedComps, this.plateMode);
+        if (result && Array.isArray(result.pasos) && result.pasos.length >= 3) {
+          this.customSteps = result.pasos.slice(0, 3);
+          this.hasCustomAiSteps = true;
+          if (result.titulo) {
+            this.plateName = result.titulo;
+          }
+          await this.updateVisualPlateAndSteps(components);
+          showToast('✨ Pasos optimizados con IA', 'success');
+        }
+      } catch (err) {
+        if (err.message === 'API_KEY_MISSING') {
+          showToast('Ingresá tu API Key de Gemini en Ajustes (⚙️) para usar la IA', 'warning');
+        } else {
+          showToast('No se pudo conectar con la IA. Usando pasos locales.', 'info');
+        }
+      } finally {
+        btnEl.disabled = false;
+        btnEl.innerHTML = prevText;
+      }
+    };
+
+    const btnAiRefineLive = this.container.querySelector('#btnAiRefineStepsLive');
+    if (btnAiRefineLive) {
+      btnAiRefineLive.addEventListener('click', () => handleAiRefine(btnAiRefineLive));
+    }
+
+    const btnAiRefineModal = this.container.querySelector('#btnAiRefineInModal');
+    if (btnAiRefineModal) {
+      btnAiRefineModal.addEventListener('click', () => handleAiRefine(btnAiRefineModal));
+    }
+
+    // 10. Inputs de texto de pasos en vivo (Desktop)
     this.container.querySelectorAll('.live-step-input').forEach(input => {
       input.addEventListener('input', (e) => {
         const stepIdx = parseInt(e.target.getAttribute('data-step'), 10);
         this.customSteps[stepIdx] = e.target.value;
         this.hasCustomAiSteps = true;
+        const modalStep = this.container.querySelector(`#cookingStep${stepIdx}`);
+        if (modalStep) modalStep.textContent = e.target.value;
       });
     });
 
-    // Input nombre de plato (pantalla principal)
+    // 11. Input nombre de plato (Desktop)
     const liveNameInput = this.container.querySelector('#livePlateNameInput');
     if (liveNameInput) {
       liveNameInput.addEventListener('input', (e) => {
         this.plateName = e.target.value;
+        const plateTitleDisplay = this.container.querySelector('#plateTitleDisplay');
+        if (plateTitleDisplay) plateTitleDisplay.textContent = e.target.value;
+        const cookingModalTitle = this.container.querySelector('#cookingModalTitle');
+        if (cookingModalTitle) cookingModalTitle.textContent = e.target.value;
       });
     }
 
-    // Botones Guardar Plato (pantalla principal y sticky bar)
+    // 12. Guardar Plato (Desktop y Modal)
     const btnSavePlateLive = this.container.querySelector('#btnSavePlateLive');
     if (btnSavePlateLive) {
-      btnSavePlateLive.addEventListener('click', async () => {
+      btnSavePlateLive.addEventListener('click', () => this.saveCurrentPlate());
+    }
+
+    const btnSavePlateInModal = this.container.querySelector('#btnSavePlateInModal');
+    if (btnSavePlateInModal) {
+      btnSavePlateInModal.addEventListener('click', async () => {
         await this.saveCurrentPlate();
+        if (modalCooking) modalCooking.close();
       });
     }
 
-    // Control Modal Generador de Imagen
+    // 13. Control Modal Generador de Imagen
     const modalImg = this.container.querySelector('#modalImageGen');
     const btnCloseImgModal = this.container.querySelector('#btnCloseImgModal');
     const imgModalBody = this.container.querySelector('#imgModalBody');
 
-    if (btnCloseImgModal) {
+    if (btnCloseImgModal && modalImg) {
       btnCloseImgModal.addEventListener('click', () => {
         modalImg.classList.remove('open');
       });
     }
 
-    // Botón Generar Imagen con IA
     const btnGenImg = this.container.querySelector('#btnGenerateImage');
-    if (btnGenImg) {
-      const executeImageGeneration = async (mode = 'grid') => {
-        const apiKey = await storage.getApiKey();
-        const stabilityKey = await storage.getStabilityApiKey();
-
-        if (!apiKey && !stabilityKey) {
-          showToast('Por favor ingresá tu API Key en la pestaña Ajustes (⚙️) para habilitar la generación de imágenes con IA.', 'warning', 5000);
-          const settingsTab = document.querySelector('.nav-tab[data-tab="settings"]');
-          if (settingsTab) settingsTab.click();
-          return;
-        }
-
-        const components = await storage.getComponents();
-        const getSelComps = (cat) => {
-          const ids = Array.isArray(this.selected[cat]) ? this.selected[cat] : (this.selected[cat] ? [this.selected[cat]] : []);
-          return components.filter(c => ids.includes(c.id));
-        };
-
-        const selProt = getSelComps('Proteina');
-        const selVeg = getSelComps('Vegetal');
-        const selCarb = getSelComps('Carbohidrato');
-        const selFat = getSelComps('Grasa');
-
-        const protStr = selProt.map(c => c.nombre).join(' + ') || 'Proteína';
-        const vegStr = selVeg.map(c => c.nombre).join(' + ') || 'Vegetales';
-        const carbStr = selCarb.map(c => c.nombre).join(' + ') || 'Carbohidratos';
-        const fatStr = selFat.map(c => c.nombre).join(' + ') || 'Grasas';
-
-        let promptText = '';
-        if (mode === 'grid') {
-          promptText = `A top-view 2x2 grid collage photography showing 4 separate food items in 4 distinct quadrants: top-left quadrant ${protStr}, top-right quadrant ${vegStr}, bottom-left quadrant ${carbStr}, bottom-right quadrant ${fatStr}. High quality food photography, clean grid divider, studio lighting.`;
-        } else {
-          promptText = `Un plato saludable y delicioso compuesto por ${protStr}, ${vegStr}, ${carbStr} y ${fatStr}. Presentación gourmet.`;
-        }
-
-        // 1. Abrir Modal y mostrar Loader Animado en Vivo
-        modalImg.classList.add('open');
-        imgModalBody.innerHTML = `
-          <div style="padding: 2rem 1rem; text-align: center;">
-            <div style="font-size: 3rem; animation: spin 2s infinite linear; display: inline-block; margin-bottom: 1rem;">🎨</div>
-            <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">
-              ${mode === 'grid' ? 'Generando Grilla 2x2 por IA (4 Bloques)...' : 'Generando Plato Emplatado con IA...'}
-            </h4>
-            <p style="color: var(--text-secondary); font-size: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
-              ${stabilityKey ? 'Sintetizando imagen única por IA con Stability AI (Stable Diffusion Core)...' : 'Conectando con Google Gemini...'}
-            </p>
-            <div style="background: #f7f9fc; padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-fat); text-align: left; font-style: italic; color: var(--text-secondary);">
-              Modo: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong><br>
-              Prompt: "${this.escapeHtml(promptText)}"
-            </div>
-          </div>
-          <style>
-            @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-          </style>
-        `;
-
-        // 2. Ejecutar generación con la API configurada
-        try {
-          let imgSrc = '';
-          if (stabilityKey) {
-            imgSrc = await this.generateDishImageWithStability(stabilityKey, promptText);
-          } else {
-            imgSrc = await this.generateDishImage(apiKey, promptText);
-          }
-          this.generatedImageSrc = imgSrc;
-
-          // 3. Renderizar resultado en el Modal con selector de modos
-          imgModalBody.innerHTML = `
-            <div style="text-align: center;">
-              <div style="margin-bottom: 1rem; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--border-glow); box-shadow: var(--shadow-md);">
-                <img src="${imgSrc}" alt="Plato generado por IA" style="width: 100%; max-height: 380px; object-fit: cover; display: block;">
-              </div>
-              <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">${this.escapeHtml(this.plateName)}</h4>
-              <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1rem;">
-                Modo actual: <strong>${mode === 'grid' ? '🧩 Grilla 2x2 (4 Cuadrantes)' : '🍲 Plato Emplatado'}</strong>.
-              </p>
-
-              <!-- Botones de Alternancia de Modos -->
-              <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
-                <button id="btnGenPlateMode" class="btn ${mode === 'plate' ? 'btn-primary' : 'btn-secondary'} btn-sm">
-                  🍲 Vista Emplatado
-                </button>
-                <button id="btnGenGridMode" class="btn ${mode === 'grid' ? 'btn-primary' : 'btn-secondary'} btn-sm">
-                  🧩 Vista Grilla 2x2
-                </button>
-              </div>
-
-              <div style="display: flex; gap: 0.75rem; justify-content: center;">
-                <button id="btnCloseImgSuccess" class="btn btn-secondary btn-sm">
-                  👍 Listo / Cerrar
-                </button>
-              </div>
-            </div>
-          `;
-
-          const btnPlate = imgModalBody.querySelector('#btnGenPlateMode');
-          if (btnPlate) {
-            btnPlate.addEventListener('click', () => executeImageGeneration('plate'));
-          }
-
-          const btnGrid = imgModalBody.querySelector('#btnGenGridMode');
-          if (btnGrid) {
-            btnGrid.addEventListener('click', () => executeImageGeneration('grid'));
-          }
-
-          const btnSuccess = imgModalBody.querySelector('#btnCloseImgSuccess');
-          if (btnSuccess) {
-            btnSuccess.addEventListener('click', () => {
-              modalImg.classList.remove('open');
-            });
-          }
-
-        } catch (err) {
-          imgModalBody.innerHTML = `
-            <div style="padding: 1.5rem; text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚠️</div>
-              <h4 style="font-size: 1.1rem; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem;">Error al Generar Imagen</h4>
-              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
-                ${this.escapeHtml(err.message || 'Error al conectar con el servicio de IA.')}
-              </p>
-              <button class="btn btn-primary btn-sm" onclick="document.querySelector('.nav-tab[data-tab=\\'settings\\']').click(); document.getElementById('modalImageGen').classList.remove('open');">
-                ⚙️ Ir a Ajustes para Revisar Claves
-              </button>
-            </div>
-          `;
-        }
-      };
-
+    if (btnGenImg && modalImg && imgModalBody) {
       btnGenImg.addEventListener('click', () => {
-        // Muestra la imagen estática local en lugar de llamar a la IA
         modalImg.classList.add('open');
         imgModalBody.innerHTML = `
           <div style="text-align: center;">
@@ -1017,23 +1198,19 @@ export class AssemblerComponent {
             </div>
             <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">${this.escapeHtml(this.plateName) || 'Plato Modular'}</h4>
             <p style="color: var(--text-secondary); font-size: 0.825rem; margin-bottom: 1rem;">
-              Vista de referencia del plato.
+              Vista de referencia del plato ensamblado.
             </p>
             <div style="display: flex; gap: 0.75rem; justify-content: center;">
-              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('modalImageGen').classList.remove('open');">
+              <button class="btn btn-secondary btn-sm" id="btnCloseImgModalInner">
                 👍 Cerrar
               </button>
             </div>
           </div>
         `;
-      });
-    }
-
-    // Botón Guardar Plato
-    const btnSave = this.container.querySelector('#btnSavePlate');
-    if (btnSave) {
-      btnSave.addEventListener('click', async () => {
-        await this.saveCurrentPlate();
+        const innerClose = imgModalBody.querySelector('#btnCloseImgModalInner');
+        if (innerClose) {
+          innerClose.addEventListener('click', () => modalImg.classList.remove('open'));
+        }
       });
     }
   }

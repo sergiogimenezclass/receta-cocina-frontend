@@ -942,3 +942,569 @@
   outline: none;
 }
 
+/* ==========================================================================
+   VERSIÓN B: PLATO PROTAGÓNICO + MODO COCINA DESPLEGABLE
+   ========================================================================== */
+
+.assembler-v2-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-bottom: 5.5rem; /* Espacio para barra de chat fija */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .assembler-v2-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2rem;
+    align-items: start;
+    padding-bottom: 2rem;
+  }
+}
+
+.v2-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.v2-right-col {
+  display: none; /* En mobile se accede mediante el botón Modo Cocina */
+}
+
+@media (min-width: 1024px) {
+  .v2-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+/* Tarjeta del Lienzo del Plato */
+.plate-canvas-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+/* Colapso reactivo: barra horizontal de 4 chips cuando el input tiene foco */
+.plate-compact-bar {
+  display: none;
+  width: 100%;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.25rem;
+  opacity: 0;
+  transition: opacity 0.25s ease, max-height 0.25s ease;
+}
+
+.plate-compact-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.plate-compact-chip:hover {
+  transform: translateY(-1px);
+}
+
+.plate-compact-chip.prot { background: var(--color-prot-bg); color: var(--color-prot); border-color: var(--color-prot-border); }
+.plate-compact-chip.veg  { background: var(--color-veg-bg);  color: var(--color-veg);  border-color: var(--color-veg-border); }
+.plate-compact-chip.carb { background: var(--color-carb-bg); color: var(--color-carb); border-color: var(--color-carb-border); }
+.plate-compact-chip.fat  { background: var(--color-fat-bg);  color: var(--color-fat);  border-color: var(--color-fat-border); }
+
+/* Estado colapsado cuando el input de chat está enfocado */
+.assembler-v2-container.chat-focused .visual-plate-circle-wrapper {
+  display: none;
+}
+
+.assembler-v2-container.chat-focused .plate-compact-bar {
+  display: flex;
+  opacity: 1;
+}
+
+.assembler-v2-container.chat-focused .btn-open-cooking-mode {
+  display: none;
+}
+
+/* Plato Circular Visual Protagónico */
+.visual-plate-circle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  transition: opacity 0.25s ease;
+}
+
+.visual-plate-circle {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #ffffff 60%, #e9f0f8 100%);
+  box-shadow: 0 14px 34px rgba(32, 50, 74, 0.12), 0 0 0 9px #ffffff, 0 0 0 11px var(--border-color);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 10px;
+  gap: 6px;
+  user-select: none;
+}
+
+@media (min-width: 480px) {
+  .visual-plate-circle {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .visual-plate-circle {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+/* Cuadrantes Táctiles del Plato */
+.plate-quadrant {
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.plate-quadrant:hover {
+  transform: scale(1.02);
+  z-index: 5;
+  filter: brightness(1.03);
+}
+
+.plate-quadrant:active {
+  transform: scale(0.98);
+}
+
+/* Sector 1: Proteína (25% - Arriba a la izquierda) */
+.plate-quadrant.quad-protein {
+  grid-column: 1;
+  grid-row: 1;
+  border-top-left-radius: 120px;
+  background: var(--color-prot-bg);
+  border: 1.5px solid var(--color-prot-border);
+  color: var(--color-prot);
+}
+
+/* Sector 2: Vegetales (50% - Toda la mitad derecha) */
+.plate-quadrant.quad-veg {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  border-top-right-radius: 120px;
+  border-bottom-right-radius: 120px;
+  background: var(--color-veg-bg);
+  border: 1.5px solid var(--color-veg-border);
+  color: var(--color-veg);
+}
+
+/* Sector 3: Carbohidratos (25% - Abajo a la izquierda) */
+.plate-quadrant.quad-carb {
+  grid-column: 1;
+  grid-row: 2;
+  border-bottom-left-radius: 120px;
+  background: var(--color-carb-bg);
+  border: 1.5px solid var(--color-carb-border);
+  color: var(--color-carb);
+}
+
+/* Sector 4: Grasas Saludables (Núcleo central circular) */
+.plate-quadrant.quad-fat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--color-fat-border);
+  box-shadow: 0 4px 12px rgba(39, 127, 165, 0.15);
+  color: var(--color-fat);
+  z-index: 10;
+  padding: 0.35rem;
+}
+
+.plate-quadrant.quad-fat:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+  z-index: 15;
+}
+
+.quadrant-badge-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.quadrant-ingredient-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.quad-veg .quadrant-ingredient-text {
+  max-width: 125px;
+  -webkit-line-clamp: 4;
+}
+
+.quad-fat .quadrant-ingredient-text {
+  font-size: 0.72rem;
+  max-width: 75px;
+}
+
+.quadrant-empty-placeholder {
+  font-size: 0.74rem;
+  opacity: 0.65;
+  font-style: italic;
+}
+
+/* Botón Destacado Móvil: Modo Cocina */
+.btn-open-cooking-mode {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.85rem 1.4rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 320px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(51, 103, 200, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-open-cooking-mode:hover {
+  background: #2552a8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(51, 103, 200, 0.3);
+}
+
+.btn-open-cooking-mode:active {
+  transform: translateY(0);
+}
+
+/* Barra de Chat Flotante / Fija al Pie */
+.v2-bottom-chat-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--border-color);
+  padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px)) 1rem;
+  box-shadow: 0 -4px 20px rgba(32, 50, 74, 0.08);
+}
+
+.v2-bottom-chat-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Píldora de Tip Efímero del Chef */
+.chef-callout-pill {
+  background: #fdf8eb;
+  border: 1px solid #f6e0b5;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  color: #8d5b0c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+  animation: slideUpFade 0.2s ease-out;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chef-callout-close {
+  background: transparent;
+  border: none;
+  color: #8d5b0c;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  line-height: 1;
+}
+
+/* Formulario de Chat / Entrada de Voz */
+.v2-chat-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.v2-chat-input {
+  flex: 1;
+  background: #f2f6fb;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.v2-chat-input:focus {
+  background: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+/* Botón de Micrófono (Web Speech API) */
+.btn-mic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: #f2f6fb;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-mic:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: #bdcef5;
+}
+
+.btn-mic.listening {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+  animation: micPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes micPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.btn-chat-submit {
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1.15rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   MODAL DIALOG NATIVO: MODO COCINA (HTML5 <dialog>)
+   ========================================================================== */
+
+dialog.cooking-mode-modal,
+dialog.category-picker-modal {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: 580px;
+  width: calc(100% - 2rem);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-card);
+  margin: auto;
+}
+
+dialog::backdrop {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-dialog-inner {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.modal-dialog-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-dialog-close {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  line-height: 1;
+  border-radius: var(--radius-sm);
+}
+
+.modal-dialog-close:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Pasos en Modo Cocina (Grandes y legibles para mesada) */
+.cooking-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cooking-step-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.cooking-step-badge {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cooking-step-content {
+  flex: 1;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* Modal Selector Rápido de Categoría */
+.category-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.65rem;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+
+.category-picker-item {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.category-picker-item:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  transform: translateY(-1px);
+}
+
+.category-picker-item.selected {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.category-picker-item-icon {
+  font-size: 1.4rem;
+}
+
+.category-picker-item-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+
