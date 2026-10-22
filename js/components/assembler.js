@@ -486,18 +486,28 @@ export class AssemblerComponent {
 
       const aiResult = await geminiService.assembleFromText(queryText, allComponents, currentContext);
       if (aiResult) {
-        const validProt = allComponents.find(c => c.id === aiResult.proteina_id);
-        const validVeg = allComponents.find(c => c.id === aiResult.vegetal_id);
-        const validCarb = allComponents.find(c => c.id === aiResult.carbo_id);
-        const validFat = allComponents.find(c => c.id === aiResult.grasa_id);
+        const getValidIds = (keyArray, keySingle) => {
+          let candidateIds = [];
+          if (Array.isArray(aiResult[keyArray])) {
+            candidateIds = aiResult[keyArray];
+          } else if (aiResult[keySingle]) {
+            candidateIds = [aiResult[keySingle]];
+          }
+          return allComponents.filter(c => candidateIds.includes(c.id)).map(c => c.id);
+        };
 
-        const foundAny = validProt || validVeg || validCarb || validFat;
+        const validProts = getValidIds('proteina_ids', 'proteina_id');
+        const validVegs = getValidIds('vegetal_ids', 'vegetal_id');
+        const validCarbs = getValidIds('carbo_ids', 'carbo_id');
+        const validFats = getValidIds('grasa_ids', 'grasa_id');
+
+        const foundAny = validProts.length > 0 || validVegs.length > 0 || validCarbs.length > 0 || validFats.length > 0;
 
         if (foundAny) {
-          this.selected.Proteina = validProt ? [validProt.id] : [];
-          this.selected.Vegetal = validVeg ? [validVeg.id] : [];
-          this.selected.Carbohidrato = validCarb ? [validCarb.id] : [];
-          this.selected.Grasa = validFat ? [validFat.id] : [];
+          this.selected.Proteina = validProts;
+          this.selected.Vegetal = validVegs;
+          this.selected.Carbohidrato = validCarbs;
+          this.selected.Grasa = validFats;
 
           if (aiResult.modo === 'frio' || aiResult.modo === 'caliente') {
             this.plateMode = aiResult.modo;

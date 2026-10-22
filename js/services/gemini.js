@@ -156,9 +156,10 @@ REGLAS ESTRICTAS DE INTERPRETACIÓN:
    - Interpretá frases cotidianas de verdulería o alacena (ej: "bandejitas de la verdulera", "verduras varias" = Wok de Vegetales Mixtos; "fideos" = Fideos / Pasta).
 2. DESCARTE DE NEGACIONES Y EXCLUSIONES:
    - Si el usuario dice que tiene algo pero aclara que NO lo va a usar (ej: "tengo leche pero no la voy a usar", "sin cebolla"), descartalo por completo. No lo asignes a ninguna categoría ni lo menciones en los pasos.
-3. RESPETO DE INGREDIENTES REALES (CATEGORÍAS NULAS):
-   - Asigná el id correspondiente de la biblioteca para cada una de las 4 categorías: "Proteina", "Vegetal", "Carbohidrato", "Grasa".
-   - SI EL USUARIO NO TIENE NI MENCIONA INGREDIENTES PARA ALGUNA CATEGORÍA (por ejemplo, no tiene carbohidratos): NO inventes ingredientes que el usuario no tiene. Dejá ese campo en null (ej: "carbo_id": null).
+3. RESPETO DE INGREDIENTES REALES Y MULTI-SELECCIÓN (ARRAYS):
+   - Asigná un array con los IDs correspondientes de la biblioteca para cada una de las 4 categorías: "proteina_ids", "vegetal_ids", "carbo_ids", "grasa_ids".
+   - SI EL USUARIO MENCIONA MÚLTIPLES INGREDIENTES DE UNA MISMA CATEGORÍA (ej: "lechuga y tomate", "morrón y cebolla", "pollo y huevo"): INCLUÍ TODOS LOS IDS COINCIDENTES EN EL ARRAY (ej: "vegetal_ids": ["comp_veg_1", "comp_veg_2"]).
+   - SI EL USUARIO NO TIENE NI MENCIONA INGREDIENTES PARA ALGUNA CATEGORÍA (por ejemplo, no tiene carbohidratos): Dejá ese array vacío [] (ej: "carbo_ids": []). NO inventes ingredientes fantasma.
    - Si hay un plato actual y el usuario solo cambia un ingrediente, mantén los otros intactos.
 4. SUGERENCIA NUTRICIONAL OPCIONAL:
    - Si falta alguna categoría clave (como Carbohidrato, Proteína o Vegetal), incluí en el campo "sugerencia_opcional" un consejo breve, amable y no invasivo explicando qué podría sumar si lo encuentra en su alacena (ej: "💡 Te faltó un carbohidrato (como papa o arroz). Si encontrás algo en la alacena, sumalo para mayor energía y saciedad"). Si no falta ninguna categoría, devolvé null.
@@ -166,14 +167,14 @@ REGLAS ESTRICTAS DE INTERPRETACIÓN:
    - Redactá un array de EXACTAMENTE 3 pasos muy cortos, ejecutivos y al grano, UTILIZANDO ÚNICAMENTE los ingredientes que el usuario realmente tiene disponibles. Si no tiene carbohidrato, no le indiques cocinar arroz ni fideos.
 6. MODO Y TÍTULO:
    - "modo": "caliente" o "frio" según los ingredientes y el texto del usuario.
-   - "titulo": Nombre simple y directo (ej: "Pechuga dorada con vegetales y palta"). Cero pretensiones gourmet.
+   - "titulo": Nombre simple y directo (ej: "Bife a la plancha con ensalada fresca y frutos secos"). Cero pretensiones gourmet.
 
 FORMATO DE RESPUESTA EXCLUSIVO EN JSON:
 {
-  "proteina_id": "string" | null,
-  "vegetal_id": "string" | null,
-  "carbo_id": "string" | null,
-  "grasa_id": "string" | null,
+  "proteina_ids": ["string"],
+  "vegetal_ids": ["string"],
+  "carbo_ids": ["string"],
+  "grasa_ids": ["string"],
   "modo": "caliente" | "frio",
   "titulo": "string",
   "pasos": ["paso 1", "paso 2", "paso 3"],
