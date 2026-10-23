@@ -14,25 +14,25 @@
   --border-color: #e0e8f1;
   --border-glow: #b7c9df;
 
-  --color-primary: #3367c8;
-  --color-primary-soft: #e8efff;
+  --color-primary: #2563eb;
+  --color-primary-soft: #e0edff;
 
-  /* Macronutrient Colors */
-  --color-prot: #b34d5b;
-  --color-prot-bg: #faedf0;
-  --color-prot-border: #ebcbd1;
+  /* Macronutrient Colors (Figma Mockup Palette) */
+  --color-prot: #991b1b;
+  --color-prot-bg: #ffb5a7;
+  --color-prot-border: #fca5a5;
 
-  --color-veg: #357a63;
-  --color-veg-bg: #eaf4ef;
-  --color-veg-border: #c5e1d3;
+  --color-veg: #166534;
+  --color-veg-bg: #c1f2ad;
+  --color-veg-border: #86efac;
 
-  --color-carb: #a76312;
-  --color-carb-bg: #fbf1e3;
-  --color-carb-border: #efd7b6;
+  --color-carb: #854d0e;
+  --color-carb-bg: #fed976;
+  --color-carb-border: #fde047;
 
-  --color-fat: #277fa5;
-  --color-fat-bg: #e8f3f8;
-  --color-fat-border: #c0dce9;
+  --color-fat: #c2410c;
+  --color-fat-bg: #ffffff;
+  --color-fat-border: #fb923c;
 
   /* Glassmorphism */
   --glass-blur: blur(12px);
@@ -291,18 +291,26 @@ footer.app-footer {
   }
 
   .brand {
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .brand-icon {
-    width: 1.75rem;
-    height: 1.75rem;
-    font-size: 1rem;
-    border-radius: 0.45rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.15rem;
+    border-radius: 0.55rem;
+    background: #e8f5e9;
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .brand h1 {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
   }
 
   .brand span.tag,
@@ -311,17 +319,28 @@ footer.app-footer {
   }
 
   nav.app-nav {
-    padding: 0.15rem;
-    gap: 0.15rem;
-    border-radius: var(--radius-sm);
+    padding: 3px 5px;
+    gap: 3px;
+    border-radius: var(--radius-full);
     overflow: visible;
-    background: #f8fafc;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
   }
 
   .nav-tab {
-    padding: 0.3rem 0.45rem;
-    font-size: 0.78rem;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.85rem;
     gap: 0.25rem;
+    border-radius: var(--radius-full);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+  }
+
+  .nav-tab.active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.12);
   }
 
   .nav-tab .nav-tab-label {

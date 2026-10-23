@@ -88,7 +88,9 @@ export class AssemblerComponent {
               <div class="visual-plate-circle">
                 <!-- Cuadrante 1: Proteína (25% arriba-izquierda) -->
                 <div class="plate-quadrant quad-protein" data-category="Proteina" title="Tocar para editar Proteínas">
-                  <div class="quadrant-badge-title">🥩 Proteína (25%)</div>
+                  <div class="quad-emoji">🥩</div>
+                  <div class="quadrant-badge-title">Proteína</div>
+                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentProtein">
                     ${this.renderQuadrantContent('Proteina', components, '+ Elegir')}
                   </div>
@@ -96,7 +98,9 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 2: Vegetales (50% mitad derecha) -->
                 <div class="plate-quadrant quad-veg" data-category="Vegetal" title="Tocar para editar Vegetales">
-                  <div class="quadrant-badge-title">🥦 Vegetales (50%)</div>
+                  <div class="quad-emoji">🥦</div>
+                  <div class="quadrant-badge-title">Vegetales</div>
+                  <div class="quad-pct">(50%)</div>
                   <div class="quadrant-content" id="quadContentVeg">
                     ${this.renderQuadrantContent('Vegetal', components, '+ Elegir')}
                   </div>
@@ -104,7 +108,9 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 3: Carbohidrato (25% abajo-izquierda) -->
                 <div class="plate-quadrant quad-carb" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
-                  <div class="quadrant-badge-title">🥔 Carbohidrato (25%)</div>
+                  <div class="quad-emoji">🥔</div>
+                  <div class="quadrant-badge-title">Carbohidrato</div>
+                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentCarb">
                     ${this.renderQuadrantContent('Carbohidrato', components, '+ Elegir')}
                   </div>
@@ -112,7 +118,8 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 4: Grasas Saludables (núcleo central) -->
                 <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
-                  <div class="quadrant-badge-title">🥑 Grasas</div>
+                  <div class="quad-emoji">🥑</div>
+                  <div class="quadrant-badge-title">Grasas</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '+')}
                   </div>
@@ -140,9 +147,9 @@ export class AssemblerComponent {
 
               <form id="formAutoSelectIngredients" class="v2-chat-form">
                 <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
-                  🎙️
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
                 </button>
-                <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Escribí o dictá lo que tenés en la heladera..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
+                <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Escribí o dictá lo que tenés..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
                 <button type="submit" class="btn btn-primary btn-chat-submit">
                   ✨ Armar
                 </button>
