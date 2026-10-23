@@ -1,5 +1,5 @@
 import { storage } from './services/storage.js';
-import { AssemblerComponent } from './components/assembler.js?v=46';
+import { AssemblerComponent } from './components/assembler.js?v=47';
 import { LibraryComponent } from './components/library.js';
 import { PlannerComponent } from './components/planner.js';
 import { SettingsComponent } from './components/settings.js';

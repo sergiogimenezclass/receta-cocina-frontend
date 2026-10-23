@@ -1014,8 +1014,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: clamp(10px, 2.2vh, 18px);
   position: relative;
   box-shadow: none;
   transition: all 0.25s ease;
@@ -1150,10 +1150,10 @@
 }
 
 .plate-title {
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.25;
   margin: 0;
 }
@@ -1168,8 +1168,8 @@
 }
 
 .visual-plate-circle {
-  width: 255px;
-  height: 255px;
+  width: clamp(240px, 68vw, 280px);
+  height: clamp(240px, 68vw, 280px);
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -1233,43 +1233,49 @@
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
-  border-top-left-radius: 125px;
+  border-top-left-radius: 140px;
   background: var(--color-prot-bg);
   border: 1.5px solid var(--color-prot-border);
   color: var(--color-prot);
+  padding: 0.5rem 1.4rem 0.5rem 0.4rem;
 }
 
 /* Sector 2: Vegetales (50% - Toda la mitad derecha) */
 .plate-quadrant.quad-veg {
   grid-column: 2;
   grid-row: 1 / span 2;
-  border-top-right-radius: 125px;
-  border-bottom-right-radius: 125px;
+  border-top-right-radius: 140px;
+  border-bottom-right-radius: 140px;
   background: var(--color-veg-bg);
   border: 1.5px solid var(--color-veg-border);
   color: var(--color-veg);
+  padding: 0.5rem 0.4rem 0.5rem 2.2rem;
 }
 
 /* Sector 3: Carbohidratos (25% - Abajo a la izquierda) */
 .plate-quadrant.quad-carb {
   grid-column: 1;
   grid-row: 2;
-  border-bottom-left-radius: 125px;
+  border-bottom-left-radius: 140px;
   background: var(--color-carb-bg);
   border: 1.5px solid var(--color-carb-border);
   color: var(--color-carb);
+  padding: 0.5rem 1.4rem 0.5rem 0.4rem;
 }
 
 @media (min-width: 1024px) {
   .plate-quadrant.quad-protein {
     border-top-left-radius: 170px;
+    padding: 0.5rem;
   }
   .plate-quadrant.quad-veg {
     border-top-right-radius: 170px;
     border-bottom-right-radius: 170px;
+    padding: 0.5rem;
   }
   .plate-quadrant.quad-carb {
     border-bottom-left-radius: 170px;
+    padding: 0.5rem;
   }
 }
 
@@ -1279,11 +1285,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 78px;
-  height: 78px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
   background: #ffffff;
-  border: 3.5px solid var(--color-fat-border);
+  border: 3px solid var(--color-fat-border);
   box-shadow: 0 4px 14px rgba(249, 115, 22, 0.22), 0 0 0 2.5px #ffffff;
   color: var(--color-fat);
   z-index: 5;
