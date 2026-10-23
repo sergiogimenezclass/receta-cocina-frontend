@@ -125,6 +125,28 @@ export class AssemblerComponent {
             </div>
           </div>
 
+          <!-- BARRA DE CHAT INTEGRADA CON MICRÓFONO Y TIP DEL CHEF -->
+          <div class="v2-bottom-chat-bar">
+            <div class="v2-bottom-chat-inner">
+              ${this.autoMatchNotification ? `
+                <div class="chef-callout-pill" id="chefCalloutPill">
+                  <span>${this.autoMatchNotification}</span>
+                  <button type="button" class="chef-callout-close" id="btnCloseChefCallout" title="Descartar">&times;</button>
+                </div>
+              ` : ''}
+
+              <form id="formAutoSelectIngredients" class="v2-chat-form">
+                <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
+                  🎙️
+                </button>
+                <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Escribí o dictá lo que tenés en la heladera..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
+                <button type="submit" class="btn btn-primary btn-chat-submit">
+                  ✨ Armar
+                </button>
+              </form>
+            </div>
+          </div>
+
         </div>
 
         <!-- COLUMNA DERECHA: Panel de Cocina en Vivo (Visible en Desktop ≥ 1024px) -->
@@ -173,28 +195,6 @@ export class AssemblerComponent {
           </div>
         </div>
 
-      </div>
-
-      <!-- BARRA DE CHAT INFERIOR CON MICRÓFONO Y TIP DEL CHEF -->
-      <div class="v2-bottom-chat-bar">
-        <div class="v2-bottom-chat-inner">
-          ${this.autoMatchNotification ? `
-            <div class="chef-callout-pill" id="chefCalloutPill">
-              <span>${this.autoMatchNotification}</span>
-              <button type="button" class="chef-callout-close" id="btnCloseChefCallout" title="Descartar">&times;</button>
-            </div>
-          ` : ''}
-
-          <form id="formAutoSelectIngredients" class="v2-chat-form">
-            <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
-              🎙️
-            </button>
-            <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Escribí o dictá lo que tenés en la heladera..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
-            <button type="submit" class="btn btn-primary btn-chat-submit">
-              ✨ Armar
-            </button>
-          </form>
-        </div>
       </div>
 
       <!-- MODAL HTML5 NATIVO: MODO COCINA (DESPLEGABLE MÓVIL) -->
