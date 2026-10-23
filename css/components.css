@@ -949,15 +949,12 @@
 .assembler-v2-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
-  max-height: 100%;
-  flex: 1;
+  width: 100%;
+  position: relative;
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
-  padding-bottom: 0;
 }
 
 @media (min-width: 1024px) {
@@ -967,8 +964,8 @@
     gap: 2rem;
     align-items: start;
     height: auto;
-    max-height: none;
     overflow: visible;
+    position: static;
     padding-bottom: 2rem;
   }
 }
@@ -976,22 +973,17 @@
 .v2-left-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  gap: 0;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (min-width: 1024px) {
   .v2-left-col {
     height: auto;
     gap: 1.25rem;
-    justify-content: flex-start;
-    align-items: stretch;
+    position: static;
     overflow: visible;
   }
 }
@@ -1015,11 +1007,11 @@
   background: transparent;
   border: none;
   border-radius: var(--radius-lg);
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem 64px 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.35rem;
   position: relative;
   box-shadow: none;
@@ -1158,8 +1150,8 @@
 }
 
 .visual-plate-circle {
-  width: 236px;
-  height: 236px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 50%, #ffffff 60%, #e9f0f8 100%);
   box-shadow: 0 4px 14px rgba(32, 50, 74, 0.08), 0 0 0 4px #ffffff, 0 0 0 6px var(--border-color);
@@ -1168,8 +1160,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  padding: 6px;
-  gap: 5px;
+  padding: 5px;
+  gap: 4px;
   user-select: none;
   flex-shrink: 0;
 }
@@ -1186,12 +1178,12 @@
 
 /* Cuadrantes Táctiles del Plato */
 .plate-quadrant {
-  border-radius: 14px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem;
+  padding: 0.5rem 0.4rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1213,7 +1205,7 @@
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
-  border-top-left-radius: 120px;
+  border-top-left-radius: 110px;
   background: var(--color-prot-bg);
   border: 1.5px solid var(--color-prot-border);
   color: var(--color-prot);
@@ -1223,8 +1215,8 @@
 .plate-quadrant.quad-veg {
   grid-column: 2;
   grid-row: 1 / span 2;
-  border-top-right-radius: 120px;
-  border-bottom-right-radius: 120px;
+  border-top-right-radius: 110px;
+  border-bottom-right-radius: 110px;
   background: var(--color-veg-bg);
   border: 1.5px solid var(--color-veg-border);
   color: var(--color-veg);
@@ -1234,10 +1226,23 @@
 .plate-quadrant.quad-carb {
   grid-column: 1;
   grid-row: 2;
-  border-bottom-left-radius: 120px;
+  border-bottom-left-radius: 110px;
   background: var(--color-carb-bg);
   border: 1.5px solid var(--color-carb-border);
   color: var(--color-carb);
+}
+
+@media (min-width: 1024px) {
+  .plate-quadrant.quad-protein {
+    border-top-left-radius: 170px;
+  }
+  .plate-quadrant.quad-veg {
+    border-top-right-radius: 170px;
+    border-bottom-right-radius: 170px;
+  }
+  .plate-quadrant.quad-carb {
+    border-bottom-left-radius: 170px;
+  }
 }
 
 /* Sector 4: Grasas Saludables (Núcleo central circular) */
@@ -1349,19 +1354,23 @@
 
 /* Barra de Chat Flotante / Pie de Canvas */
 .v2-bottom-chat-bar {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
   width: 100%;
-  flex-shrink: 0;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-top: 1px solid var(--border-color);
   padding: 0.45rem 0.75rem calc(0.45rem + env(safe-area-inset-bottom, 0px)) 0.75rem;
-  box-shadow: 0 -2px 10px rgba(32, 50, 74, 0.06);
+  box-shadow: 0 -3px 12px rgba(32, 50, 74, 0.08);
 }
 
 @media (min-width: 1024px) {
   .v2-bottom-chat-bar {
+    position: static;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
