@@ -341,39 +341,101 @@ export class AssemblerComponent {
     if (!gridEl) return;
 
     const categoryComps = allComponents.filter(c => c.categoria === category);
-    const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
 
-    gridEl.innerHTML = categoryComps.map(comp => {
-      const isSel = selectedIds.includes(comp.id);
-      return `
-        <div class="category-picker-item ${isSel ? 'selected' : ''}" data-id="${comp.id}">
-          <div class="category-picker-item-icon">${comp.icono || catInfo.icon}</div>
-          <div class="category-picker-item-name">${this.escapeHtml(comp.nombre)}</div>
-          <div style="font-size: 0.72rem; color: var(--text-secondary);">⏱️ ${comp.tiempo_preparacion_min}m</div>
+    const renderSections = () => {
+      const selectedIds = Array.isArray(this.selected[category])
+        ? this.selected[category]
+        : (this.selected[category] ? [this.selected[category]] : []);
+
+      const selectedComps = categoryComps.filter(c => selectedIds.includes(c.id));
+      const availableComps = categoryComps.filter(c => !selectedIds.includes(c.id));
+
+      let html = '';
+
+      // 1. SECCIÓN SUPERIOR: Ingredientes actualmente seleccionados en el plato
+      if (selectedComps.length > 0) {
+        html += `
+          <div class="category-picker-section">
+            <div class="category-picker-section-title">
+              <span>✨ En tu plato actualmente</span>
+              <span class="category-picker-badge">${selectedComps.length} activo${selectedComps.length > 1 ? 's' : ''}</span>
+            </div>
+            <div class="category-picker-selected-list">
+              ${selectedComps.map(comp => `
+                <div class="category-picker-selected-card" data-id="${comp.id}">
+                  <span class="category-picker-selected-icon">${comp.icono || catInfo.icon}</span>
+                  <div class="category-picker-selected-info">
+                    <span class="category-picker-selected-name">${this.escapeHtml(comp.nombre)}</span>
+                    <span class="category-picker-selected-time">⏱️ ${comp.tiempo_preparacion_min} min de cocción</span>
+                  </div>
+                  <button type="button" class="category-picker-remove-btn" data-action="remove" data-id="${comp.id}" title="Quitar del plato" aria-label="Quitar">✕</button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="category-picker-divider">
+            <span>Otras opciones de la biblioteca</span>
+          </div>
+        `;
+      } else {
+        html += `
+          <div class="category-picker-empty-hint">
+            💡 Tocá cualquier ingrediente abajo para sumarlo al cuadrante
+          </div>
+        `;
+      }
+
+      // 2. SECCIÓN INFERIOR: Grilla de ingredientes disponibles en la biblioteca
+      html += `
+        <div class="category-picker-subgrid">
+          ${availableComps.map(comp => `
+            <div class="category-picker-item" data-id="${comp.id}">
+              <div class="category-picker-item-icon">${comp.icono || catInfo.icon}</div>
+              <div class="category-picker-item-name">${this.escapeHtml(comp.nombre)}</div>
+              <div style="font-size: 0.72rem; color: var(--text-secondary);">⏱️ ${comp.tiempo_preparacion_min}m</div>
+            </div>
+          `).join('')}
         </div>
       `;
-    }).join('');
 
-    // Eventos de selección en el picker
-    gridEl.querySelectorAll('.category-picker-item').forEach(item => {
-      item.addEventListener('click', async (e) => {
-        const id = e.currentTarget.getAttribute('data-id');
-        if (!Array.isArray(this.selected[category])) {
-          this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
-        }
-        const idx = this.selected[category].indexOf(id);
-        if (idx >= 0) {
-          this.selected[category].splice(idx, 1);
-          e.currentTarget.classList.remove('selected');
-        } else {
-          this.selected[category].push(id);
-          e.currentTarget.classList.add('selected');
-        }
-        this.hasCustomAiSteps = false;
-        await this.updateVisualPlateAndSteps(allComponents);
+      gridEl.innerHTML = html;
+
+      // Eventos para quitar de la lista de seleccionados
+      gridEl.querySelectorAll('.category-picker-remove-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const id = e.currentTarget.getAttribute('data-id');
+          if (!Array.isArray(this.selected[category])) {
+            this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
+          }
+          const idx = this.selected[category].indexOf(id);
+          if (idx >= 0) {
+            this.selected[category].splice(idx, 1);
+          }
+          this.hasCustomAiSteps = false;
+          await this.updateVisualPlateAndSteps(allComponents);
+          renderSections();
+        });
       });
-    });
 
+      // Eventos para seleccionar de la biblioteca disponible
+      gridEl.querySelectorAll('.category-picker-item').forEach(item => {
+        item.addEventListener('click', async (e) => {
+          const id = e.currentTarget.getAttribute('data-id');
+          if (!Array.isArray(this.selected[category])) {
+            this.selected[category] = this.selected[category] ? [this.selected[category]] : [];
+          }
+          if (!this.selected[category].includes(id)) {
+            this.selected[category].push(id);
+          }
+          this.hasCustomAiSteps = false;
+          await this.updateVisualPlateAndSteps(allComponents);
+          renderSections();
+        });
+      });
+    };
+
+    renderSections();
     modal.showModal();
   }
 
