@@ -1,0 +1,339 @@
+/* ==========================================================================
+   RESET Y CONFIGURACIÓN BASE DEL VIEWPORT MÓVIL
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   APP SHELL DE 3 FILAS (GRID: auto 1fr auto)
+   ========================================================================== */
+.mobile-app-shell {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   1. HEADER FIJO (auto / 48px)
+   ========================================================================== */
+.app-header {
+  height: 48px;
+  padding: 0 0.85rem;
+  padding-top: env(safe-area-inset-top, 0px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-icon {
+  font-size: 1.15rem;
+  background: #e0e7ff;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.25rem;
+  background: #f8fafc;
+  padding: 2px 4px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  padding: 4px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.nav-btn.active {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+   2. CONTENIDO PRINCIPAL (1fr: ABSORBE EL ESPACIO RESTANTE)
+   ========================================================================== */
+.app-content {
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.6rem 1rem;
+}
+
+/* Controles superiores: Caliente/Frío y Tiempo */
+.top-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 290px;
+}
+
+.servido-toggle {
+  display: flex;
+  background: #f1f5f9;
+  padding: 2px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  gap: 2px;
+}
+
+.btn-toggle {
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 16px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.btn-toggle.active {
+  background: #ffffff;
+  color: #3b82f6;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.time-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 3px 8px;
+  border-radius: 14px;
+}
+
+/* Título */
+.plate-title-box {
+  text-align: center;
+  max-width: 300px;
+}
+
+.plate-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.25;
+}
+
+/* Plato Circular */
+.plate-container {
+  display: grid;
+  place-items: center;
+}
+
+.plate-circle {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  padding: 5px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08), 0 0 0 5px #ffffff, 0 0 0 7px #e2e8f0;
+  user-select: none;
+}
+
+.quadrant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.quadrant:active {
+  transform: scale(0.97);
+}
+
+.quad-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.quad-val {
+  font-size: 0.68rem;
+  opacity: 0.7;
+}
+
+/* Proteína (25% arriba-izquierda) */
+.quad-prot {
+  grid-column: 1;
+  grid-row: 1;
+  border-top-left-radius: 115px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Vegetales (50% mitad derecha) */
+.quad-veg {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  border-top-right-radius: 115px;
+  border-bottom-right-radius: 115px;
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+/* Carbohidrato (25% abajo-izquierda) */
+.quad-carb {
+  grid-column: 1;
+  grid-row: 2;
+  border-bottom-left-radius: 115px;
+  background: #fefce8;
+  color: #ca8a04;
+  border: 1px solid #fef08a;
+}
+
+/* Grasa (núcleo central) */
+.quad-fat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #fed7aa;
+  color: #ea580c;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.quad-fat .quad-label {
+  font-size: 0.68rem;
+}
+
+/* Botón de acción */
+.action-box {
+  width: 100%;
+  max-width: 270px;
+}
+
+.btn-cooking-mode {
+  width: 100%;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+/* ==========================================================================
+   3. FOOTER / CHAT BAR (NATURALMENTE ABAJO EN EL FLUJO DE LA GRILLA)
+   ========================================================================== */
+.app-footer {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.chat-form {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.btn-mic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.chat-input {
+  flex: 1;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.chat-input:focus {
+  background: #ffffff;
+  border-color: #3b82f6;
+}
+
+.btn-submit {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

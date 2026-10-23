@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+  <title>Prototipo Mobile Shell - Antirecetario</title>
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+  <div class="mobile-app-shell">
+
+    <!-- 1. ENCABEZADO FIJO DE APLICACIÓN -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">🥬</span>
+        <span class="brand-title">Antirecetario</span>
+      </div>
+      <nav class="app-nav">
+        <button class="nav-btn active" title="Constructor">🧩</button>
+        <button class="nav-btn" title="Plan">📅</button>
+        <button class="nav-btn" title="Biblioteca">📚</button>
+        <button class="nav-btn" title="Ajustes">⚙️</button>
+      </nav>
+    </header>
+
+    <!-- 2. CONTENIDO PRINCIPAL (ABSORBE EL 100% DEL ESPACIO RESTANTE) -->
+    <main class="app-content">
+      
+      <!-- Controles de Servido y Tiempo -->
+      <div class="top-controls">
+        <div class="servido-toggle">
+          <button class="btn-toggle active">🍲 Caliente</button>
+          <button class="btn-toggle">🥗 Frío</button>
+        </div>
+        <div class="time-badge">
+          ⏱️ ~15 min
+        </div>
+      </div>
+
+      <!-- Título del Plato -->
+      <div class="plate-title-box">
+        <h2 class="plate-title">Plato Caliente de Proteína con Carbohidrato</h2>
+      </div>
+
+      <!-- Plato Circular Táctil -->
+      <div class="plate-container">
+        <div class="plate-circle">
+          <div class="quadrant quad-prot">
+            <span class="quad-label">🥩 Proteína</span>
+            <span class="quad-val">25%</span>
+          </div>
+          <div class="quadrant quad-veg">
+            <span class="quad-label">🥦 Vegetales</span>
+            <span class="quad-val">50%</span>
+          </div>
+          <div class="quadrant quad-carb">
+            <span class="quad-label">🥔 Carbo</span>
+            <span class="quad-val">25%</span>
+          </div>
+          <div class="quadrant quad-fat">
+            <span class="quad-label">🥑 Grasas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de Modo Cocina -->
+      <div class="action-box">
+        <button class="btn-cooking-mode">
+          🍳 Ver 3 Pasos de Cocinado (15 min) ➔
+        </button>
+      </div>
+
+    </main>
+
+    <!-- 3. BARRA DE CHAT INFERIOR (NATURALMENTE PEGADA ABAJO) -->
+    <footer class="app-footer">
+      <form class="chat-form" onsubmit="event.preventDefault();">
+        <button type="button" class="btn-mic" title="Dictar por voz">🎙️</button>
+        <input type="text" class="chat-input" placeholder="Escribí o dictá lo que tenés en la heladera...">
+        <button type="submit" class="btn-submit">✨ Armar</button>
+      </form>
+    </footer>
+
+  </div>
+
+</body>
+</html>
