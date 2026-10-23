@@ -1221,17 +1221,9 @@
   border-color: var(--color-fat-border);
 }
 
-/* Estado colapsado cuando el input de chat está enfocado */
-.assembler-v2-container.chat-focused .plate-title-box,
-.assembler-v2-container.chat-focused .visual-plate-circle-wrapper,
-.assembler-v2-container.chat-focused .plate-action-box,
-.assembler-v2-container.chat-focused .btn-open-cooking-mode {
-  display: none !important;
-}
-
+/* El plato permanece siempre visible e interactivo aunque el input tenga foco */
 .assembler-v2-container.chat-focused .plate-compact-bar {
-  display: flex !important;
-  opacity: 1;
+  display: none !important;
 }
 
 /* Título del Plato (Oculto en móvil según diseño) */
