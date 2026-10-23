@@ -1014,8 +1014,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: clamp(0.6rem, 1.8vh, 1rem);
+  justify-content: center;
+  gap: clamp(0.75rem, 2vh, 1.25rem);
   position: relative;
   box-shadow: none;
   transition: all 0.25s ease;
@@ -1168,8 +1168,8 @@
 }
 
 .visual-plate-circle {
-  width: clamp(260px, 78vw, 300px);
-  height: clamp(260px, 78vw, 300px);
+  width: clamp(275px, 80vw, 315px);
+  height: clamp(275px, 80vw, 315px);
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -1179,7 +1179,7 @@
   padding: 6px;
   gap: 5px;
   background: #ffffff;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1), 0 0 0 6px #ffffff, 0 0 0 8px #e2e8f0;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08), 0 0 0 6px #ffffff, 0 2px 8px rgba(0, 0, 0, 0.04);
   user-select: none;
   flex-shrink: 0;
 }
@@ -1233,34 +1233,34 @@
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
-  border-top-left-radius: 150px;
+  border-top-left-radius: 160px;
   background: var(--color-prot-bg);
   border: 1.5px solid var(--color-prot-border);
   color: var(--color-prot);
-  padding: 0.5rem 1.6rem 0.5rem 0.5rem;
+  padding: 0.5rem 1.4rem 0.5rem 0.6rem;
 }
 
 /* Sector 2: Vegetales (50% - Toda la mitad derecha) */
 .plate-quadrant.quad-veg {
   grid-column: 2;
   grid-row: 1 / span 2;
-  border-top-right-radius: 150px;
-  border-bottom-right-radius: 150px;
+  border-top-right-radius: 160px;
+  border-bottom-right-radius: 160px;
   background: var(--color-veg-bg);
   border: 1.5px solid var(--color-veg-border);
   color: var(--color-veg);
-  padding: 0.6rem 0.5rem 0.6rem 2.6rem;
+  padding: 0.5rem 0.8rem 0.5rem 1.5rem;
 }
 
 /* Sector 3: Carbohidratos (25% - Abajo a la izquierda) */
 .plate-quadrant.quad-carb {
   grid-column: 1;
   grid-row: 2;
-  border-bottom-left-radius: 150px;
+  border-bottom-left-radius: 160px;
   background: var(--color-carb-bg);
   border: 1.5px solid var(--color-carb-border);
   color: var(--color-carb);
-  padding: 0.5rem 1.6rem 0.5rem 0.5rem;
+  padding: 0.5rem 1.4rem 0.5rem 0.6rem;
 }
 
 @media (min-width: 1024px) {
@@ -1285,12 +1285,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 78px;
-  height: 78px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
   background: #ffffff;
   border: 3.5px solid var(--color-fat-border);
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.22), 0 0 0 2.5px #ffffff;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.22), 0 0 0 3px #ffffff;
   color: var(--color-fat);
   z-index: 5;
   display: flex;
@@ -1341,7 +1341,7 @@
 /* Contenedor del botón de acción */
 .plate-action-box {
   width: 100%;
-  max-width: 290px;
+  max-width: 320px;
   display: flex;
   justify-content: center;
   flex-shrink: 0;
@@ -1394,17 +1394,18 @@
   color: #ffffff;
   border: none;
   border-radius: var(--radius-full);
-  padding: 0.75rem 1.4rem;
+  padding: 0.72rem 1.25rem;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   width: 100%;
-  max-width: 290px;
+  max-width: 315px;
+  white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
   transition: all 0.2s ease;
