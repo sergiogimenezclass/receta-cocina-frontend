@@ -1010,12 +1010,12 @@
   background: transparent;
   border: none;
   border-radius: var(--radius-lg);
-  padding: 0.75rem 0.75rem;
+  padding: 0.25rem 0.75rem 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(0.75rem, 2vh, 1.25rem);
+  justify-content: flex-start;
+  gap: 0;
   position: relative;
   box-shadow: none;
   transition: all 0.25s ease;
@@ -1037,6 +1037,17 @@
     flex: initial;
     overflow: visible;
   }
+  .plate-top-controls {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .visual-plate-circle-wrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .plate-action-box {
+    margin-bottom: 0;
+  }
 }
 
 /* Barra superior: Estilo de Servido + Tiempo estimado */
@@ -1048,6 +1059,8 @@
   max-width: 320px;
   gap: 0.75rem;
   flex-shrink: 0;
+  margin-top: 0.15rem;
+  margin-bottom: auto;
 }
 
 .activity-selector.compact {
@@ -1141,12 +1154,9 @@
   opacity: 1;
 }
 
-/* Título del Plato */
+/* Título del Plato (Oculto en móvil según diseño) */
 .plate-title-box {
-  text-align: center;
-  width: 100%;
-  max-width: 330px;
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .plate-title {
@@ -1165,6 +1175,8 @@
   width: 100%;
   flex-shrink: 0;
   transition: opacity 0.25s ease;
+  margin-top: auto;
+  margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
 }
 
 .visual-plate-circle {
@@ -1345,6 +1357,7 @@
   display: flex;
   justify-content: center;
   flex-shrink: 0;
+  margin-bottom: auto;
 }
 
 .quadrant-badge-title {
