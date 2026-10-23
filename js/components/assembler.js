@@ -78,8 +78,8 @@ export class AssemblerComponent {
 
             <!-- Gráfico Protagónico del Plato Circular -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
-              <div style="text-align: center; margin-bottom: 0.15rem;">
-                <h2 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0;" id="plateTitleDisplay">
+              <div style="text-align: center; margin: 0 0 0.15rem 0; max-width: 310px;">
+                <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.25;" id="plateTitleDisplay">
                   ${this.escapeHtml(this.plateName)}
                 </h2>
               </div>
