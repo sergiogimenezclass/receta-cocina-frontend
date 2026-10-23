@@ -6,84 +6,88 @@
   <title>Antirecetario | Construcción Modular de Platos</title>
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=43">
-  <link rel="stylesheet" href="css/components.css?v=43">
-  <link rel="stylesheet" href="css/glassmorphism.css?v=43">
+  <link rel="stylesheet" href="css/main.css?v=44">
+  <link rel="stylesheet" href="css/components.css?v=44">
+  <link rel="stylesheet" href="css/glassmorphism.css?v=44">
 </head>
 <body>
 
-  <!-- Application Header -->
-  <header class="app-header">
-    <div class="brand">
-      <span class="brand-icon">🥬</span>
-      <div>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <h1>Antirecetario</h1>
-          <span class="tag">v1.0 LocalStorage</span>
+  <div class="app-shell">
+
+    <!-- Application Header -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">🥬</span>
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <h1>Antirecetario</h1>
+            <span class="tag">v1.0 LocalStorage</span>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-secondary);">Platos simples con lo que hay en casa</div>
         </div>
-        <div style="font-size: 0.78rem; color: var(--text-secondary);">Platos simples con lo que hay en casa</div>
       </div>
-    </div>
 
-    <!-- SPA Navigation Tabs -->
-    <nav class="app-nav">
-      <button class="nav-tab active" data-tab="assembler" title="Constructor de Platos">
-        <span class="nav-tab-icon">🧩</span><span class="nav-tab-label">Constructor</span>
-      </button>
-      <button class="nav-tab" data-tab="planner" title="Plan Semanal">
-        <span class="nav-tab-icon">📅</span><span class="nav-tab-label">Plan</span>
-      </button>
-      <button class="nav-tab" data-tab="library" title="Biblioteca">
-        <span class="nav-tab-icon">📚</span><span class="nav-tab-label">Biblioteca</span>
-      </button>
-      <button class="nav-tab" data-tab="settings" title="Ajustes">
-        <span class="nav-tab-icon">⚙️</span><span class="nav-tab-label">Ajustes</span>
-      </button>
-    </nav>
-  </header>
+      <!-- SPA Navigation Tabs -->
+      <nav class="app-nav">
+        <button class="nav-tab active" data-tab="assembler" title="Constructor de Platos">
+          <span class="nav-tab-icon">🧩</span><span class="nav-tab-label">Constructor</span>
+        </button>
+        <button class="nav-tab" data-tab="planner" title="Plan Semanal">
+          <span class="nav-tab-icon">📅</span><span class="nav-tab-label">Plan</span>
+        </button>
+        <button class="nav-tab" data-tab="library" title="Biblioteca">
+          <span class="nav-tab-icon">📚</span><span class="nav-tab-label">Biblioteca</span>
+        </button>
+        <button class="nav-tab" data-tab="settings" title="Ajustes">
+          <span class="nav-tab-icon">⚙️</span><span class="nav-tab-label">Ajustes</span>
+        </button>
+      </nav>
+    </header>
 
-  <!-- Application Main Content Area -->
-  <main class="app-main">
+    <!-- Application Main Content Area -->
+    <main class="app-main">
 
-    <!-- TAB 1: Ensamblador de Platos (4 Columnas) -->
-    <section id="assembler" class="tab-pane active">
-      <!-- Inyectado dinámicamente por AssemblerComponent -->
-    </section>
+      <!-- TAB 1: Ensamblador de Platos (4 Columnas) -->
+      <section id="assembler" class="tab-pane active">
+        <!-- Inyectado dinámicamente por AssemblerComponent -->
+      </section>
 
-    <!-- TAB 2: Planificador Semanal -->
-    <section id="planner" class="tab-pane">
-      <!-- Inyectado dinámicamente por PlannerComponent -->
-    </section>
+      <!-- TAB 2: Planificador Semanal -->
+      <section id="planner" class="tab-pane">
+        <!-- Inyectado dinámicamente por PlannerComponent -->
+      </section>
 
-    <!-- TAB 3: Biblioteca de Componentes -->
-    <section id="library" class="tab-pane">
-      <!-- Inyectado dinámicamente por LibraryComponent -->
-    </section>
+      <!-- TAB 3: Biblioteca de Componentes -->
+      <section id="library" class="tab-pane">
+        <!-- Inyectado dinámicamente por LibraryComponent -->
+      </section>
 
-    <!-- TAB 4: Ajustes y Configuración -->
-    <section id="settings" class="tab-pane">
-      <!-- Inyectado dinámicamente por SettingsComponent -->
-    </section>
+      <!-- TAB 4: Ajustes y Configuración -->
+      <section id="settings" class="tab-pane">
+        <!-- Inyectado dinámicamente por SettingsComponent -->
+      </section>
 
-  </main>
+    </main>
 
-  <!-- Application Footer -->
-  <footer class="app-footer">
-    <div>
-      Antirecetario © 2026 — Ideas simples para cocinar con lo que hay.
-    </div>
-    <div style="display: flex; gap: 0.75rem;">
-      <button id="btnExportJSON" class="btn btn-secondary btn-sm" title="Exportar datos para migración futura">
-        📦 Exportar Datos (JSON)
-      </button>
-      <button id="btnResetSeed" class="btn btn-secondary btn-sm" title="Restablecer datos iniciales de fábrica">
-        🔄 Reiniciar Datos Seed
-      </button>
-    </div>
-  </footer>
+    <!-- Application Footer -->
+    <footer class="app-footer">
+      <div>
+        Antirecetario © 2026 — Ideas simples para cocinar con lo que hay.
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <button id="btnExportJSON" class="btn btn-secondary btn-sm" title="Exportar datos para migración futura">
+          📦 Exportar Datos (JSON)
+        </button>
+        <button id="btnResetSeed" class="btn btn-secondary btn-sm" title="Restablecer datos iniciales de fábrica">
+          🔄 Reiniciar Datos Seed
+        </button>
+      </div>
+    </footer>
+
+  </div>
 
   <!-- Main JavaScript Module Entrypoint -->
-  <script type="module" src="js/app.js?v=43"></script>
+  <script type="module" src="js/app.js?v=44"></script>
 
 </body>
 </html>
