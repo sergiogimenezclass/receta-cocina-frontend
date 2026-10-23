@@ -55,7 +55,7 @@ export class AssemblerComponent {
         <div class="v2-left-col">
 
           <div class="plate-canvas-card">
-            <!-- Barra superior ultra-compacta: Estilo de Servido + Tiempo estimado -->
+            <!-- 1. Controles de Servido y Tiempo -->
             <div class="plate-top-controls">
               <div class="activity-selector compact">
                 <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" title="Estilo Caliente (Wok / Sopa)">
@@ -71,19 +71,20 @@ export class AssemblerComponent {
               </div>
             </div>
 
+            <!-- 2. Título del Plato -->
+            <div class="plate-title-box">
+              <h2 class="plate-title" id="plateTitleDisplay">
+                ${this.escapeHtml(this.plateName)}
+              </h2>
+            </div>
+
             <!-- Barra Colapsada Reactiva (cuando el input de chat tiene foco) -->
             <div class="plate-compact-bar" id="plateCompactBar">
               ${this.renderCompactChips(components)}
             </div>
 
-            <!-- Gráfico Protagónico del Plato Circular -->
+            <!-- 3. Plato Circular Táctil -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
-              <div style="text-align: center; margin: 0 0 0.15rem 0; max-width: 310px;">
-                <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.25;" id="plateTitleDisplay">
-                  ${this.escapeHtml(this.plateName)}
-                </h2>
-              </div>
-
               <div class="visual-plate-circle">
                 <!-- Cuadrante 1: Proteína (25% arriba-izquierda) -->
                 <div class="plate-quadrant quad-protein" data-category="Proteina" title="Tocar para editar Proteínas">
@@ -111,14 +112,16 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 4: Grasas Saludables (núcleo central) -->
                 <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
-                  <div class="quadrant-badge-title" style="font-size: 0.65rem;">🥑 Grasas</div>
+                  <div class="quadrant-badge-title">🥑 Grasas</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '+')}
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Botón Móvil: Abrir Modo Cocina Desplegable -->
+            <!-- 4. Botón de Modo Cocina -->
+            <div class="plate-action-box">
               <button type="button" id="btnOpenCookingMode" class="btn-open-cooking-mode">
                 🍳 Ver 3 Pasos de Cocinado (${estimatedTime} min) ➔
               </button>
