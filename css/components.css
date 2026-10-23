@@ -109,10 +109,21 @@
   font-weight: 700;
 }
 
-.block-column[data-category="Proteina"] .block-title { color: var(--color-prot); }
-.block-column[data-category="Vegetal"] .block-title { color: var(--color-veg); }
-.block-column[data-category="Carbohidrato"] .block-title { color: var(--color-carb); }
-.block-column[data-category="Grasa"] .block-title { color: var(--color-fat); }
+.block-column[data-category="Proteina"] .block-title {
+  color: var(--color-prot);
+}
+
+.block-column[data-category="Vegetal"] .block-title {
+  color: var(--color-veg);
+}
+
+.block-column[data-category="Carbohidrato"] .block-title {
+  color: var(--color-carb);
+}
+
+.block-column[data-category="Grasa"] .block-title {
+  color: var(--color-fat);
+}
 
 .block-badge {
   font-size: 0.75rem;
@@ -122,10 +133,29 @@
   text-transform: uppercase;
 }
 
-.block-column[data-category="Proteina"] .block-badge { background: var(--color-prot-bg); color: var(--color-prot); border: 1px solid var(--color-prot-border); }
-.block-column[data-category="Vegetal"] .block-badge { background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border); }
-.block-column[data-category="Carbohidrato"] .block-badge { background: var(--color-carb-bg); color: var(--color-carb); border: 1px solid var(--color-carb-border); }
-.block-column[data-category="Grasa"] .block-badge { background: var(--color-fat-bg); color: var(--color-fat); border: 1px solid var(--color-fat-border); }
+.block-column[data-category="Proteina"] .block-badge {
+  background: var(--color-prot-bg);
+  color: var(--color-prot);
+  border: 1px solid var(--color-prot-border);
+}
+
+.block-column[data-category="Vegetal"] .block-badge {
+  background: var(--color-veg-bg);
+  color: var(--color-veg);
+  border: 1px solid var(--color-veg-border);
+}
+
+.block-column[data-category="Carbohidrato"] .block-badge {
+  background: var(--color-carb-bg);
+  color: var(--color-carb);
+  border: 1px solid var(--color-carb-border);
+}
+
+.block-column[data-category="Grasa"] .block-badge {
+  background: var(--color-fat-bg);
+  color: var(--color-fat);
+  border: 1px solid var(--color-fat-border);
+}
 
 /* Component Cards list in column */
 .components-list {
@@ -159,7 +189,9 @@
   box-shadow: none;
 }
 
-.block-column .component-item-card.selected { border-color: #91afe7; }
+.block-column .component-item-card.selected {
+  border-color: #91afe7;
+}
 
 .component-item-card.disabled-fridge {
   opacity: 0.35;
@@ -379,11 +411,13 @@
   .sticky-plate-bar {
     padding: 0.4rem 0.75rem;
   }
+
   .sticky-plate-bar-content {
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 0.5rem;
   }
+
   .sticky-chips-container {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -391,15 +425,18 @@
     -webkit-overflow-scrolling: touch;
     padding-bottom: 2px;
   }
+
   .sticky-chips-container::-webkit-scrollbar {
     display: none;
   }
+
   .sticky-chip {
     white-space: nowrap;
     font-size: 0.72rem;
     padding: 0.2rem 0.45rem;
     flex-shrink: 0;
   }
+
   .micro-steps-drawer {
     bottom: 58px;
     padding: 1rem;
@@ -612,14 +649,31 @@
   transform: translateY(0);
 }
 
-.toast--success { border-left: 3px solid #34d399; }
-.toast--error   { border-left: 3px solid #f87171; }
-.toast--warning { border-left: 3px solid #fbbf24; }
-.toast--info    { border-left: 3px solid #60a5fa; }
+.toast--success {
+  border-left: 3px solid #34d399;
+}
 
-.toast__icon { font-size: 1.05rem; flex-shrink: 0; }
+.toast--error {
+  border-left: 3px solid #f87171;
+}
 
-.toast__msg { flex: 1; line-height: 1.4; }
+.toast--warning {
+  border-left: 3px solid #fbbf24;
+}
+
+.toast--info {
+  border-left: 3px solid #60a5fa;
+}
+
+.toast__icon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.toast__msg {
+  flex: 1;
+  line-height: 1.4;
+}
 
 .toast__close {
   background: none;
@@ -632,7 +686,10 @@
   flex-shrink: 0;
   transition: color 0.15s;
 }
-.toast__close:hover { color: var(--text-primary); }
+
+.toast__close:hover {
+  color: var(--text-primary);
+}
 
 /* ==========================================================================
    DIÁLOGO DE CONFIRMACIÓN CUSTOM
@@ -992,7 +1049,8 @@
 }
 
 .v2-right-col {
-  display: none; /* En mobile se accede mediante el botón Modo Cocina */
+  display: none;
+  /* En mobile se accede mediante el botón Modo Cocina */
 }
 
 @media (min-width: 1024px) {
@@ -1037,14 +1095,17 @@
     flex: initial;
     overflow: visible;
   }
+
   .plate-top-controls {
     margin-top: 0;
     margin-bottom: 0;
   }
+
   .visual-plate-circle-wrapper {
     margin-top: 0;
     margin-bottom: 0;
   }
+
   .plate-action-box {
     margin-bottom: 0;
   }
@@ -1136,10 +1197,29 @@
   transform: translateY(-1px);
 }
 
-.plate-compact-chip.prot { background: var(--color-prot-bg); color: var(--color-prot); border-color: var(--color-prot-border); }
-.plate-compact-chip.veg  { background: var(--color-veg-bg);  color: var(--color-veg);  border-color: var(--color-veg-border); }
-.plate-compact-chip.carb { background: var(--color-carb-bg); color: var(--color-carb); border-color: var(--color-carb-border); }
-.plate-compact-chip.fat  { background: var(--color-fat-bg);  color: var(--color-fat);  border-color: var(--color-fat-border); }
+.plate-compact-chip.prot {
+  background: var(--color-prot-bg);
+  color: var(--color-prot);
+  border-color: var(--color-prot-border);
+}
+
+.plate-compact-chip.veg {
+  background: var(--color-veg-bg);
+  color: var(--color-veg);
+  border-color: var(--color-veg-border);
+}
+
+.plate-compact-chip.carb {
+  background: var(--color-carb-bg);
+  color: var(--color-carb);
+  border-color: var(--color-carb-border);
+}
+
+.plate-compact-chip.fat {
+  background: var(--color-fat-bg);
+  color: var(--color-fat);
+  border-color: var(--color-fat-border);
+}
 
 /* Estado colapsado cuando el input de chat está enfocado */
 .assembler-v2-container.chat-focused .plate-title-box,
@@ -1175,7 +1255,6 @@
   width: 100%;
   flex-shrink: 0;
   transition: opacity 0.25s ease;
-  margin-top: auto;
   margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
 }
 
@@ -1280,11 +1359,13 @@
     border-top-left-radius: 170px;
     padding: 0.5rem;
   }
+
   .plate-quadrant.quad-veg {
     border-top-right-radius: 170px;
     border-bottom-right-radius: 170px;
     padding: 0.5rem;
   }
+
   .plate-quadrant.quad-carb {
     border-bottom-left-radius: 170px;
     padding: 0.5rem;
@@ -1488,8 +1569,15 @@
 }
 
 @keyframes slideUpFade {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chef-callout-close {
@@ -1545,9 +1633,20 @@
 }
 
 @keyframes micPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-  50% { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
 }
 
 .v2-chat-input {
@@ -1745,5 +1844,3 @@ dialog::backdrop {
   font-weight: 600;
   color: var(--text-primary);
 }
-
-
