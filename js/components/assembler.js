@@ -91,7 +91,7 @@ export class AssemblerComponent {
                   <div class="quad-emoji">🥩</div>
                   <div class="quadrant-badge-title">Proteína</div>
                   <div class="quadrant-content" id="quadContentProtein">
-                    ${this.renderQuadrantContent('Proteina', components, '+ Elegir')}
+                    ${this.renderQuadrantContent('Proteina', components, '')}
                   </div>
                 </div>
 
@@ -100,7 +100,7 @@ export class AssemblerComponent {
                   <div class="quad-emoji">🥦</div>
                   <div class="quadrant-badge-title">Vegetales</div>
                   <div class="quadrant-content" id="quadContentVeg">
-                    ${this.renderQuadrantContent('Vegetal', components, '+ Elegir')}
+                    ${this.renderQuadrantContent('Vegetal', components, '')}
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@ export class AssemblerComponent {
                   <div class="quad-emoji">🥔</div>
                   <div class="quadrant-badge-title">Carbohidrato</div>
                   <div class="quadrant-content" id="quadContentCarb">
-                    ${this.renderQuadrantContent('Carbohidrato', components, '+ Elegir')}
+                    ${this.renderQuadrantContent('Carbohidrato', components, '')}
                   </div>
                 </div>
 
@@ -118,7 +118,7 @@ export class AssemblerComponent {
                   <div class="quad-emoji">🥑</div>
                   <div class="quadrant-badge-title">Grasas</div>
                   <div class="quadrant-content" id="quadContentFat">
-                    ${this.renderQuadrantContent('Grasa', components, '+ Elegir')}
+                    ${this.renderQuadrantContent('Grasa', components, '')}
                   </div>
                 </div>
               </div>
@@ -285,11 +285,11 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
-  renderQuadrantContent(category, allComponents, defaultPlaceholder) {
+  renderQuadrantContent(category, allComponents, defaultPlaceholder = '') {
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
     const selComps = allComponents.filter(c => selectedIds.includes(c.id));
     if (selComps.length === 0) {
-      return `<span class="quadrant-empty-placeholder">${defaultPlaceholder}</span>`;
+      return defaultPlaceholder ? `<span class="quadrant-empty-placeholder">${defaultPlaceholder}</span>` : '';
     }
     const names = selComps.map(c => c.nombre).join(' + ');
     return `<span class="quadrant-ingredient-text" title="${this.escapeHtml(names)}">${this.escapeHtml(names)}</span>`;
@@ -441,16 +441,16 @@ export class AssemblerComponent {
 
     // Actualizar contenido de los cuadrantes
     const quadProt = this.container.querySelector('#quadContentProtein');
-    if (quadProt) quadProt.innerHTML = this.renderQuadrantContent('Proteina', allComponents, '+ Elegir');
+    if (quadProt) quadProt.innerHTML = this.renderQuadrantContent('Proteina', allComponents, '');
 
     const quadVeg = this.container.querySelector('#quadContentVeg');
-    if (quadVeg) quadVeg.innerHTML = this.renderQuadrantContent('Vegetal', allComponents, '+ Elegir');
+    if (quadVeg) quadVeg.innerHTML = this.renderQuadrantContent('Vegetal', allComponents, '');
 
     const quadCarb = this.container.querySelector('#quadContentCarb');
-    if (quadCarb) quadCarb.innerHTML = this.renderQuadrantContent('Carbohidrato', allComponents, '+ Elegir');
+    if (quadCarb) quadCarb.innerHTML = this.renderQuadrantContent('Carbohidrato', allComponents, '');
 
     const quadFat = this.container.querySelector('#quadContentFat');
-    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '+ Elegir');
+    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '');
 
     // Actualizar barra colapsada
     const compactBar = this.container.querySelector('#plateCompactBar');

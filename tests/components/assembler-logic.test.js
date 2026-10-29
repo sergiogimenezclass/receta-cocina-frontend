@@ -67,9 +67,12 @@ test('AssemblerComponent - renderQuadrantContent() formatea cuadrantes vacíos y
   const assembler = new AssemblerComponent('assembler');
   const components = await storage.getComponents();
 
-  // Vacío: renderiza el placeholder
-  const vacioHtml = assembler.renderQuadrantContent('Proteina', components, '+ Elegir');
-  assert.ok(vacioHtml.includes('+ Elegir'));
+  // Vacío: renderiza el placeholder opcional o vacío
+  const vacioConPlaceholder = assembler.renderQuadrantContent('Proteina', components, '+ Elegir');
+  assert.ok(vacioConPlaceholder.includes('+ Elegir'));
+
+  const vacioSinPlaceholder = assembler.renderQuadrantContent('Proteina', components, '');
+  assert.strictEqual(vacioSinPlaceholder, '');
 
   // Con alimento seleccionado: renderiza el nombre del alimento
   assembler.selected.Proteina = ['comp_prot_1'];
