@@ -310,8 +310,11 @@ export class AssemblerComponent {
     if (selComps.length === 0) {
       return defaultPlaceholder ? `<span class="quadrant-empty-placeholder">${defaultPlaceholder}</span>` : '';
     }
-    const names = selComps.map(c => c.nombre).join(' + ');
-    return `<span class="quadrant-ingredient-text" title="${this.escapeHtml(names)}">${this.escapeHtml(names)}</span>`;
+    const allNames = selComps.map(c => c.nombre).join(' + ');
+    const firstName = selComps[0].nombre;
+    const extraCount = selComps.length - 1;
+    const badgeHtml = extraCount > 0 ? `<span class="quadrant-ingredient-count">+${extraCount}</span>` : '';
+    return `<span class="quadrant-ingredient-text" title="${this.escapeHtml(allNames)}"><span class="quadrant-ingredient-name">${this.escapeHtml(firstName)}</span>${badgeHtml}</span>`;
   }
 
   renderCompactChips(allComponents) {

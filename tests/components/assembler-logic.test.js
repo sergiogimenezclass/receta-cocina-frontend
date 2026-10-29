@@ -78,6 +78,12 @@ test('AssemblerComponent - renderQuadrantContent() formatea cuadrantes vacíos y
   assembler.selected.Proteina = ['comp_prot_1'];
   const llenoHtml = assembler.renderQuadrantContent('Proteina', components, '+ Elegir');
   assert.ok(llenoHtml.includes('Pechuga / Suprema de Pollo'));
+
+  // Con múltiples alimentos seleccionados: renderiza el primero y el badge +N
+  assembler.selected.Proteina = ['comp_prot_1', 'comp_prot_3'];
+  const multipleHtml = assembler.renderQuadrantContent('Proteina', components);
+  assert.ok(multipleHtml.includes('Pechuga / Suprema de Pollo'));
+  assert.ok(multipleHtml.includes('+1'));
 });
 
 test('AssemblerComponent - renderCompactChips() genera los 4 badges compactos', async () => {
