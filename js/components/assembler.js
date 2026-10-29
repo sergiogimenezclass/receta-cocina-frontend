@@ -87,8 +87,8 @@ export class AssemblerComponent {
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
               <div class="visual-plate-circle">
                 <!-- Cuadrante 1: Proteína (arriba-izquierda) -->
-                <div class="plate-quadrant quad-protein" data-category="Proteina" title="Tocar para editar Proteínas">
-                  <div class="quad-emoji">🥩</div>
+                <div class="plate-quadrant quad-protein ${this.hasCategorySelected('Proteina') ? 'has-ingredient' : ''}" data-category="Proteina" title="Tocar para editar Proteínas">
+                  <div class="quad-emoji" id="quadEmojiProtein">${this.getQuadrantEmoji('Proteina', components, '🥩')}</div>
                   <div class="quadrant-badge-title">Proteína</div>
                   <div class="quadrant-content" id="quadContentProtein">
                     ${this.renderQuadrantContent('Proteina', components, '')}
@@ -96,8 +96,8 @@ export class AssemblerComponent {
                 </div>
 
                 <!-- Cuadrante 2: Vegetales (arriba-derecha) -->
-                <div class="plate-quadrant quad-veg" data-category="Vegetal" title="Tocar para editar Vegetales">
-                  <div class="quad-emoji">🥦</div>
+                <div class="plate-quadrant quad-veg ${this.hasCategorySelected('Vegetal') ? 'has-ingredient' : ''}" data-category="Vegetal" title="Tocar para editar Vegetales">
+                  <div class="quad-emoji" id="quadEmojiVeg">${this.getQuadrantEmoji('Vegetal', components, '🥦')}</div>
                   <div class="quadrant-badge-title">Vegetales</div>
                   <div class="quadrant-content" id="quadContentVeg">
                     ${this.renderQuadrantContent('Vegetal', components, '')}
@@ -105,8 +105,8 @@ export class AssemblerComponent {
                 </div>
 
                 <!-- Cuadrante 3: Carbohidrato (abajo-izquierda) -->
-                <div class="plate-quadrant quad-carb" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
-                  <div class="quad-emoji">🥔</div>
+                <div class="plate-quadrant quad-carb ${this.hasCategorySelected('Carbohidrato') ? 'has-ingredient' : ''}" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
+                  <div class="quad-emoji" id="quadEmojiCarb">${this.getQuadrantEmoji('Carbohidrato', components, '🥔')}</div>
                   <div class="quadrant-badge-title">Carbohidrato</div>
                   <div class="quadrant-content" id="quadContentCarb">
                     ${this.renderQuadrantContent('Carbohidrato', components, '')}
@@ -114,8 +114,8 @@ export class AssemblerComponent {
                 </div>
 
                 <!-- Cuadrante 4: Grasas Saludables (abajo-derecha) -->
-                <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
-                  <div class="quad-emoji">🥑</div>
+                <div class="plate-quadrant quad-fat ${this.hasCategorySelected('Grasa') ? 'has-ingredient' : ''}" data-category="Grasa" title="Tocar para editar Grasas Saludables">
+                  <div class="quad-emoji" id="quadEmojiFat">${this.getQuadrantEmoji('Grasa', components, '🥑')}</div>
                   <div class="quadrant-badge-title">Grasas</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '')}
@@ -286,6 +286,24 @@ export class AssemblerComponent {
     this.updateStepDefaults(components);
   }
 
+  hasCategorySelected(category) {
+    const ids = Array.isArray(this.selected[category])
+      ? this.selected[category]
+      : (this.selected[category] ? [this.selected[category]] : []);
+    return ids.length > 0;
+  }
+
+  getQuadrantEmoji(category, allComponents, defaultEmoji) {
+    const ids = Array.isArray(this.selected[category])
+      ? this.selected[category]
+      : (this.selected[category] ? [this.selected[category]] : []);
+    if (ids.length > 0) {
+      const comp = allComponents.find(c => ids.includes(c.id));
+      if (comp && comp.icono) return comp.icono;
+    }
+    return defaultEmoji;
+  }
+
   renderQuadrantContent(category, allComponents, defaultPlaceholder = '') {
     const selectedIds = Array.isArray(this.selected[category]) ? this.selected[category] : (this.selected[category] ? [this.selected[category]] : []);
     const selComps = allComponents.filter(c => selectedIds.includes(c.id));
@@ -440,18 +458,29 @@ export class AssemblerComponent {
   async updateVisualPlateAndSteps(allComponents) {
     this.updateStepDefaults(allComponents);
 
-    // Actualizar contenido de los cuadrantes
-    const quadProt = this.container.querySelector('#quadContentProtein');
-    if (quadProt) quadProt.innerHTML = this.renderQuadrantContent('Proteina', allComponents, '');
+    // Actualizar contenido, emojis y estado activo de los cuadrantes
+    const updateQuadrant = (quadClass, contentId, emojiId, category, defaultEmoji) => {
+      const isSel = this.hasCategorySelected(category);
+      const quadEl = this.container.querySelector(quadClass);
+      if (quadEl) {
+        quadEl.classList.toggle('has-ingredient', isSel);
+      }
 
-    const quadVeg = this.container.querySelector('#quadContentVeg');
-    if (quadVeg) quadVeg.innerHTML = this.renderQuadrantContent('Vegetal', allComponents, '');
+      const contentEl = this.container.querySelector(contentId);
+      if (contentEl) {
+        contentEl.innerHTML = this.renderQuadrantContent(category, allComponents, '');
+      }
 
-    const quadCarb = this.container.querySelector('#quadContentCarb');
-    if (quadCarb) quadCarb.innerHTML = this.renderQuadrantContent('Carbohidrato', allComponents, '');
+      const emojiEl = this.container.querySelector(emojiId);
+      if (emojiEl) {
+        emojiEl.textContent = this.getQuadrantEmoji(category, allComponents, defaultEmoji);
+      }
+    };
 
-    const quadFat = this.container.querySelector('#quadContentFat');
-    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '');
+    updateQuadrant('.quad-protein', '#quadContentProtein', '#quadEmojiProtein', 'Proteina', '🥩');
+    updateQuadrant('.quad-veg', '#quadContentVeg', '#quadEmojiVeg', 'Vegetal', '🥦');
+    updateQuadrant('.quad-carb', '#quadContentCarb', '#quadEmojiCarb', 'Carbohidrato', '🥔');
+    updateQuadrant('.quad-fat', '#quadContentFat', '#quadEmojiFat', 'Grasa', '🥑');
 
     // Actualizar barra colapsada
     const compactBar = this.container.querySelector('#plateCompactBar');

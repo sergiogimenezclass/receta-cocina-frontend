@@ -1281,7 +1281,7 @@
   }
 }
 
-/* Cuadrantes Táctiles del Plato */
+/* Cuadrantes Táctiles del Plato (Porcelana Cerámica Base - Opción 2) */
 .plate-quadrant {
   display: flex;
   flex-direction: column;
@@ -1291,14 +1291,22 @@
   cursor: pointer;
   border: none;
   outline: none;
-  transition: transform 0.15s ease, filter 0.15s ease;
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease,
+              box-shadow 0.3s ease,
+              transform 0.15s ease,
+              filter 0.15s ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: linear-gradient(135deg, #fdfcfb, #f6f4f2);
+  color: var(--text-secondary);
+  box-shadow: inset 0 0 0 1px rgba(225, 221, 218, 0.55);
 }
 
 .plate-quadrant:hover {
-  filter: brightness(1.02);
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(200, 195, 190, 0.8), 0 4px 12px rgba(53, 44, 34, 0.05);
 }
 
 .plate-quadrant:active {
@@ -1308,20 +1316,23 @@
 .quad-emoji {
   font-size: clamp(2.5rem, 6.5vw, 3.8rem);
   line-height: 1;
-  filter: drop-shadow(0 8px 5px rgba(69, 58, 43, 0.16));
+  filter: drop-shadow(0 4px 4px rgba(69, 58, 43, 0.08));
+  opacity: 0.65;
   user-select: none;
   margin-bottom: 2px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.25s ease, filter 0.25s ease;
 }
 
-/* Sector 1: Proteína (Arriba a la izquierda) */
+.plate-quadrant:hover .quad-emoji {
+  opacity: 0.92;
+  transform: scale(1.08);
+}
+
+/* Posicionamiento en Grilla y Geometría de cada Sector */
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
   border-radius: 100% 10px 10px 10px;
-  background: var(--color-prot-bg);
-  border: none;
-  color: var(--color-prot);
   padding: 0.5rem;
 }
 
@@ -1329,14 +1340,10 @@
   transform: rotate(-14deg);
 }
 
-/* Sector 2: Vegetales (Arriba a la derecha) */
 .plate-quadrant.quad-veg {
   grid-column: 2;
   grid-row: 1;
   border-radius: 10px 100% 10px 10px;
-  background: var(--color-veg-bg);
-  border: none;
-  color: var(--color-veg);
   padding: 0.5rem;
 }
 
@@ -1345,14 +1352,10 @@
   transform: rotate(10deg);
 }
 
-/* Sector 3: Carbohidratos (Abajo a la izquierda) */
 .plate-quadrant.quad-carb {
   grid-column: 1;
   grid-row: 2;
   border-radius: 10px 10px 10px 100%;
-  background: var(--color-carb-bg);
-  border: none;
-  color: var(--color-carb);
   padding: 0.5rem;
 }
 
@@ -1361,14 +1364,10 @@
   transform: rotate(8deg);
 }
 
-/* Sector 4: Grasas Saludables (Abajo a la derecha) */
 .plate-quadrant.quad-fat {
   grid-column: 2;
   grid-row: 2;
   border-radius: 10px 10px 100% 10px;
-  background: var(--color-fat-bg);
-  border: none;
-  color: var(--color-fat);
   padding: 0.5rem;
 }
 
@@ -1376,8 +1375,46 @@
   transform: rotate(-12deg);
 }
 
-.plate-quadrant:hover .quad-emoji {
-  transform: scale(1.08);
+/* ========================================================
+   ESTADO ACTIVO: Cuadrante con ingrediente asignado
+   (Activación cromática suave al seleccionar)
+   ======================================================== */
+.plate-quadrant.has-ingredient {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.plate-quadrant.has-ingredient .quad-emoji {
+  opacity: 1;
+  filter: drop-shadow(0 8px 6px rgba(69, 58, 43, 0.16));
+}
+
+.plate-quadrant.has-ingredient .quadrant-badge-title {
+  opacity: 1;
+  font-weight: 750;
+}
+
+.plate-quadrant.quad-protein.has-ingredient {
+  background: var(--color-prot-bg);
+  color: var(--color-prot);
+  box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.25);
+}
+
+.plate-quadrant.quad-veg.has-ingredient {
+  background: var(--color-veg-bg);
+  color: var(--color-veg);
+  box-shadow: inset 0 0 0 1px rgba(134, 239, 172, 0.35);
+}
+
+.plate-quadrant.quad-carb.has-ingredient {
+  background: var(--color-carb-bg);
+  color: var(--color-carb);
+  box-shadow: inset 0 0 0 1px rgba(253, 224, 71, 0.3);
+}
+
+.plate-quadrant.quad-fat.has-ingredient {
+  background: var(--color-fat-bg);
+  color: var(--color-fat);
+  box-shadow: inset 0 0 0 1px rgba(251, 146, 60, 0.3);
 }
 
 @media (min-width: 1024px) {

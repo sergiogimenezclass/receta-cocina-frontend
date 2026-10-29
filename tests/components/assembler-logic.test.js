@@ -96,3 +96,18 @@ test('AssemblerComponent - escapeHtml() previene inyección de código malicioso
   const sanitized = assembler.escapeHtml('<script>alert("xss")</script>&');
   assert.strictEqual(sanitized, '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;&amp;');
 });
+
+test('AssemblerComponent - hasCategorySelected y getQuadrantEmoji para activación dinámica de cuadrantes', async () => {
+  const assembler = new AssemblerComponent('assembler');
+  const components = await storage.getComponents();
+
+  // En vacío: hasCategorySelected retorna false y getQuadrantEmoji retorna el emoji por defecto
+  assert.strictEqual(assembler.hasCategorySelected('Proteina'), false);
+  assert.strictEqual(assembler.getQuadrantEmoji('Proteina', components, '🥩'), '🥩');
+
+  // Al seleccionar pollo: hasCategorySelected retorna true y getQuadrantEmoji retorna el icono específico (🍗)
+  assembler.selected.Proteina = ['comp_prot_1'];
+  assert.strictEqual(assembler.hasCategorySelected('Proteina'), true);
+  assert.strictEqual(assembler.getQuadrantEmoji('Proteina', components, '🥩'), '🍗');
+});
+
