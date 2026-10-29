@@ -1120,8 +1120,8 @@
   max-width: min(78vw, 420px);
   gap: 0.75rem;
   flex-shrink: 0;
-  margin-top: 0.15rem;
-  margin-bottom: auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
 }
 
 .activity-selector.compact {
@@ -1247,7 +1247,8 @@
   width: 100%;
   flex-shrink: 0;
   transition: opacity 0.25s ease;
-  margin: clamp(0.5rem, 1.5vh, 1rem) 0;
+  margin-top: auto;
+  margin-bottom: 0;
 }
 
 .visual-plate-circle {
@@ -1266,7 +1267,7 @@
   box-shadow: 0 16px 25px rgba(53, 44, 34, 0.12), 0 2px 7px rgba(53, 44, 34, 0.08), inset 0 0 0 1px #ece9e6;
   user-select: none;
   flex-shrink: 0;
-  transform: translateY(-4px);
+  transform: none;
 }
 
 @media (min-width: 1024px) {
@@ -1408,8 +1409,8 @@
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: clamp(12px, 2.5vw, 20px);
-  margin-bottom: clamp(6px, 1.5vh, 12px);
+  margin-top: clamp(16px, 3.5vw, 28px);
+  margin-bottom: auto;
 }
 
 .quadrant-badge-title {
