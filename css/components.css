@@ -1318,7 +1318,7 @@
   grid-row: 1;
   border-top-left-radius: 160px;
   background: var(--color-prot-bg);
-  border: 1.5px solid var(--color-prot-border);
+  border: none;
   color: var(--color-prot);
   padding: 0.5rem 0.6rem;
 }
@@ -1329,7 +1329,7 @@
   grid-row: 1;
   border-top-right-radius: 160px;
   background: var(--color-veg-bg);
-  border: 1.5px solid var(--color-veg-border);
+  border: none;
   color: var(--color-veg);
   padding: 0.5rem 0.6rem;
 }
@@ -1340,7 +1340,7 @@
   grid-row: 2;
   border-bottom-left-radius: 160px;
   background: var(--color-carb-bg);
-  border: 1.5px solid var(--color-carb-border);
+  border: none;
   color: var(--color-carb);
   padding: 0.5rem 0.6rem;
 }
@@ -1351,7 +1351,7 @@
   grid-row: 2;
   border-bottom-right-radius: 160px;
   background: var(--color-fat-bg);
-  border: 1.5px solid var(--color-fat-border);
+  border: none;
   color: var(--color-fat);
   padding: 0.5rem 0.6rem;
 }
