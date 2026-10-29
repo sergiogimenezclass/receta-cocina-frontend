@@ -86,41 +86,37 @@ export class AssemblerComponent {
             <!-- 3. Plato Circular Táctil -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
               <div class="visual-plate-circle">
-                <!-- Cuadrante 1: Proteína (25% arriba-izquierda) -->
+                <!-- Cuadrante 1: Proteína (arriba-izquierda) -->
                 <div class="plate-quadrant quad-protein" data-category="Proteina" title="Tocar para editar Proteínas">
                   <div class="quad-emoji">🥩</div>
                   <div class="quadrant-badge-title">Proteína</div>
-                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentProtein">
                     ${this.renderQuadrantContent('Proteina', components, '+ Elegir')}
                   </div>
                 </div>
 
-                <!-- Cuadrante 2: Vegetales (25% arriba-derecha) -->
+                <!-- Cuadrante 2: Vegetales (arriba-derecha) -->
                 <div class="plate-quadrant quad-veg" data-category="Vegetal" title="Tocar para editar Vegetales">
                   <div class="quad-emoji">🥦</div>
                   <div class="quadrant-badge-title">Vegetales</div>
-                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentVeg">
                     ${this.renderQuadrantContent('Vegetal', components, '+ Elegir')}
                   </div>
                 </div>
 
-                <!-- Cuadrante 3: Carbohidrato (25% abajo-izquierda) -->
+                <!-- Cuadrante 3: Carbohidrato (abajo-izquierda) -->
                 <div class="plate-quadrant quad-carb" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
                   <div class="quad-emoji">🥔</div>
                   <div class="quadrant-badge-title">Carbohidrato</div>
-                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentCarb">
                     ${this.renderQuadrantContent('Carbohidrato', components, '+ Elegir')}
                   </div>
                 </div>
 
-                <!-- Cuadrante 4: Grasas Saludables (25% abajo-derecha) -->
+                <!-- Cuadrante 4: Grasas Saludables (abajo-derecha) -->
                 <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
                   <div class="quad-emoji">🥑</div>
                   <div class="quadrant-badge-title">Grasas</div>
-                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '+ Elegir')}
                   </div>
