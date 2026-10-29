@@ -1117,7 +1117,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 320px;
+  max-width: min(78vw, 420px);
   gap: 0.75rem;
   flex-shrink: 0;
   margin-top: 0.15rem;
@@ -1126,7 +1126,7 @@
 
 .activity-selector.compact {
   display: flex;
-  background: #f1f5f9;
+  background: #ede9e6;
   padding: 3px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-color);
@@ -1247,33 +1247,36 @@
   width: 100%;
   flex-shrink: 0;
   transition: opacity 0.25s ease;
-  margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+  margin: clamp(0.5rem, 1.5vh, 1rem) 0;
 }
 
 .visual-plate-circle {
-  width: clamp(275px, 80vw, 315px);
-  height: clamp(275px, 80vw, 315px);
+  width: min(78vw, 420px);
+  aspect-ratio: 1;
+  height: auto;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  padding: 6px;
-  gap: 5px;
+  padding: 10px;
+  gap: 7px;
   background: #ffffff;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08), 0 0 0 6px #ffffff, 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 16px 25px rgba(53, 44, 34, 0.12), 0 2px 7px rgba(53, 44, 34, 0.08), inset 0 0 0 1px #ece9e6;
   user-select: none;
   flex-shrink: 0;
+  transform: translateY(-4px);
 }
 
 @media (min-width: 1024px) {
   .visual-plate-circle {
-    width: 340px;
-    height: 340px;
-    padding: 10px;
-    gap: 6px;
-    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.12), 0 0 0 9px #ffffff, 0 0 0 11px var(--border-color);
+    width: 380px;
+    height: 380px;
+    padding: 12px;
+    gap: 8px;
+    box-shadow: 0 20px 32px rgba(53, 44, 34, 0.14), 0 3px 10px rgba(53, 44, 34, 0.08), inset 0 0 0 1px #ece9e6;
+    transform: none;
   }
 }
 
@@ -1285,13 +1288,16 @@
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  border: none;
+  outline: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
   position: relative;
+  overflow: hidden;
   z-index: 1;
 }
 
 .plate-quadrant:hover {
-  filter: brightness(1.03);
+  filter: brightness(1.02);
 }
 
 .plate-quadrant:active {
@@ -1299,117 +1305,142 @@
 }
 
 .quad-emoji {
-  font-size: 1.25rem;
+  font-size: clamp(2.5rem, 6.5vw, 3.8rem);
   line-height: 1;
+  filter: drop-shadow(0 8px 5px rgba(69, 58, 43, 0.16));
+  user-select: none;
   margin-bottom: 2px;
+  transition: transform 0.2s ease;
 }
 
-.quad-pct {
-  font-size: 0.72rem;
-  font-weight: 600;
-  opacity: 0.85;
-  margin-bottom: 2px;
-  color: inherit;
-}
-
-/* Sector 1: Proteína (25% - Arriba a la izquierda) */
+/* Sector 1: Proteína (Arriba a la izquierda) */
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
-  border-top-left-radius: 160px;
+  border-radius: 100% 10px 10px 10px;
   background: var(--color-prot-bg);
   border: none;
   color: var(--color-prot);
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
 }
 
-/* Sector 2: Vegetales (25% - Arriba a la derecha) */
+.plate-quadrant.quad-protein .quad-emoji {
+  transform: rotate(-14deg);
+}
+
+/* Sector 2: Vegetales (Arriba a la derecha) */
 .plate-quadrant.quad-veg {
   grid-column: 2;
   grid-row: 1;
-  border-top-right-radius: 160px;
+  border-radius: 10px 100% 10px 10px;
   background: var(--color-veg-bg);
   border: none;
   color: var(--color-veg);
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
 }
 
-/* Sector 3: Carbohidratos (25% - Abajo a la izquierda) */
+.plate-quadrant.quad-veg .quad-emoji {
+  font-size: clamp(2.2rem, 5.8vw, 3.4rem);
+  transform: rotate(10deg);
+}
+
+/* Sector 3: Carbohidratos (Abajo a la izquierda) */
 .plate-quadrant.quad-carb {
   grid-column: 1;
   grid-row: 2;
-  border-bottom-left-radius: 160px;
+  border-radius: 10px 10px 10px 100%;
   background: var(--color-carb-bg);
   border: none;
   color: var(--color-carb);
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
 }
 
-/* Sector 4: Grasas Saludables (25% - Abajo a la derecha) */
+.plate-quadrant.quad-carb .quad-emoji {
+  font-size: clamp(2.2rem, 5.8vw, 3.4rem);
+  transform: rotate(8deg);
+}
+
+/* Sector 4: Grasas Saludables (Abajo a la derecha) */
 .plate-quadrant.quad-fat {
   grid-column: 2;
   grid-row: 2;
-  border-bottom-right-radius: 160px;
+  border-radius: 10px 10px 100% 10px;
   background: var(--color-fat-bg);
   border: none;
   color: var(--color-fat);
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
+}
+
+.plate-quadrant.quad-fat .quad-emoji {
+  transform: rotate(-12deg);
+}
+
+.plate-quadrant:hover .quad-emoji {
+  transform: scale(1.08);
 }
 
 @media (min-width: 1024px) {
   .plate-quadrant.quad-protein {
-    border-top-left-radius: 170px;
-    padding: 0.5rem;
+    border-radius: 100% 12px 12px 12px;
+    padding: 0.75rem;
   }
 
   .plate-quadrant.quad-veg {
-    border-top-right-radius: 170px;
-    padding: 0.5rem;
+    border-radius: 12px 100% 12px 12px;
+    padding: 0.75rem;
   }
 
   .plate-quadrant.quad-carb {
-    border-bottom-left-radius: 170px;
-    padding: 0.5rem;
+    border-radius: 12px 12px 12px 100%;
+    padding: 0.75rem;
   }
 
   .plate-quadrant.quad-fat {
-    border-bottom-right-radius: 170px;
-    padding: 0.5rem;
+    border-radius: 12px 12px 100% 12px;
+    padding: 0.75rem;
   }
 }
 
 /* Contenedor del botón de acción */
 .plate-action-box {
   width: 100%;
-  max-width: 320px;
+  max-width: min(78vw, 420px);
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  margin-bottom: auto;
+  margin-top: clamp(12px, 2.5vw, 20px);
+  margin-bottom: clamp(6px, 1.5vh, 12px);
 }
 
 .quadrant-badge-title {
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 2vw, 0.88rem);
   font-weight: 700;
-  text-transform: none;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1px;
+  margin-top: 2px;
   color: inherit;
+  opacity: 0.88;
 }
 
 .quadrant-ingredient-text {
-  font-size: 0.75rem;
+  font-size: clamp(0.72rem, 1.8vw, 0.84rem);
   font-weight: 600;
   line-height: 1.25;
-  max-width: 105px;
+  max-width: 90%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  margin-top: 3px;
+  color: #171513;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .quadrant-empty-placeholder {
@@ -1421,25 +1452,26 @@
 
 /* Botón Destacado Móvil: Modo Cocina (Estilo Mockup) */
 .btn-open-cooking-mode {
-  background: var(--color-primary);
-  color: #ffffff;
-  border: none;
+  background: linear-gradient(#ffffff, #f8f6f4);
+  color: #171513;
+  border: 1px solid #e1ddda;
   border-radius: var(--radius-full);
-  padding: 0.72rem 1.25rem;
+  min-height: 54px;
+  padding: 0.65rem 1.4rem;
   font-family: inherit;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: clamp(13px, 2.8vw, 16px);
+  font-weight: 600;
+  letter-spacing: -0.3px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   width: 100%;
-  max-width: 315px;
+  max-width: 340px;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
-  transition: all 0.2s ease;
+  box-shadow: 0 5px 12px rgba(37, 30, 23, 0.1), inset 0 1px #ffffff;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 @media (min-width: 1024px) {
@@ -1449,25 +1481,34 @@
 }
 
 .btn-open-cooking-mode:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(#ffffff, #f4f1ee);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 30, 23, 0.14), inset 0 1px #ffffff;
 }
 
 .btn-open-cooking-mode:active {
   transform: translateY(0);
 }
 
-/* Barra de Chat Inferior (Fila natural del grid, nunca position fixed) */
+/* Barra de Chat Inferior (Bottom-sheet integrado estilo Mockup) */
 .v2-bottom-chat-bar {
   position: static;
   width: 100%;
   background: #ffffff;
-  border-top: 1px solid var(--border-color);
-  padding: 0.45rem 0.5rem;
-  padding-bottom: calc(0.45rem + env(safe-area-inset-bottom, 0px));
-  box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.05);
+  border-top: 1px solid #e1ddda;
+  border-radius: 28px 28px 0 0;
+  padding: 8px 16px 12px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 18px rgba(36, 32, 28, 0.06);
   flex-shrink: 0;
+}
+
+.grabber {
+  width: 54px;
+  height: 5px;
+  margin: 0 auto 8px;
+  border-radius: 9px;
+  background: #d4d1cf;
 }
 
 @media (min-width: 1024px) {
@@ -1476,9 +1517,13 @@
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
     background: var(--bg-card);
     margin-top: 0;
+  }
+
+  .grabber {
+    display: none;
   }
 }
 
@@ -1528,38 +1573,49 @@
   line-height: 1;
 }
 
-/* Formulario de Chat / Entrada de Voz (Estilo Mockup) */
+/* Formulario de Chat / Entrada de Voz */
 .v2-chat-form {
+  height: 54px;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  width: 100%;
+  gap: 8px;
+  padding: 4px 6px 4px 14px;
+  border: 1px solid #d8d3d0;
+  border-radius: 999px;
+  background: linear-gradient(110deg, #f9f8f7, #f4f1ef);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.v2-chat-form:focus-within {
+  background: #ffffff;
+  border-color: #b5ada7;
+  box-shadow: 0 0 0 3px rgba(73, 59, 49, 0.08);
 }
 
 .btn-mic {
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
   border-radius: 50%;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #334155;
-  font-size: 1.05rem;
+  border: none;
+  background: transparent;
+  color: #665c54;
+  font-size: 1.15rem;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
   padding: 0;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   transition: all 0.15s ease;
   flex-shrink: 0;
 }
 
 .btn-mic:hover {
-  background: #f8fafc;
-  color: var(--color-primary);
-  border-color: #cbd5e1;
+  background: rgba(0, 0, 0, 0.06);
+  color: #171513;
 }
 
 .btn-mic.listening {
@@ -1589,48 +1645,41 @@
 .v2-chat-input {
   flex: 1;
   min-width: 0;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-full);
-  padding: 0.6rem 0.75rem;
-  font-size: 0.81rem;
+  background: transparent;
+  border: none;
+  padding: 0 4px;
+  font-size: clamp(13px, 2.8vw, 16px);
   font-family: inherit;
-  color: #0f172a;
+  color: #171513;
   outline: none;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s ease;
+  box-shadow: none;
 }
 
 .v2-chat-input::placeholder {
-  color: #94a3b8;
-  font-size: 0.81rem;
-}
-
-.v2-chat-input:focus {
-  background: #ffffff;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  color: #898582;
+  opacity: 1;
 }
 
 .btn-chat-submit {
-  background: var(--color-primary);
-  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
   border: none;
-  border-radius: var(--radius-full);
-  padding: 0.6rem 0.85rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  box-shadow: 0 3px 12px rgba(37, 99, 235, 0.3);
-  transition: all 0.15s ease;
+  background: #493b31;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(73, 59, 49, 0.22);
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
   flex-shrink: 0;
 }
 
 .btn-chat-submit:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 5px 16px rgba(37, 99, 235, 0.38);
+  background: #30261f;
+  transform: scale(1.05);
 }
 
 /* ==========================================================================

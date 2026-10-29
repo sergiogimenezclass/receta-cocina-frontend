@@ -1,37 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Mercado Vivo: light, calm surfaces with a clear blue action color */
-  --bg-primary: #f2f6fb;
+  /* Warm Culinary Palette (Mockup Version B) */
+  --bg-primary: #f7f6f4;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #f7faff;
+  --bg-card-hover: #faf9f7;
 
-  --text-primary: #20324a;
-  --text-secondary: #5d7086;
-  --text-muted: #718096;
+  --text-primary: #171513;
+  --text-secondary: #665c54;
+  --text-muted: #898582;
 
-  --border-color: #e0e8f1;
-  --border-glow: #b7c9df;
+  --border-color: #e1ddda;
+  --border-glow: #d4d1cf;
 
-  --color-primary: #2563eb;
-  --color-primary-soft: #e0edff;
+  --color-primary: #493b31;
+  --color-primary-soft: #f4f1ef;
 
-  /* Macronutrient Colors (Figma Mockup Palette) */
+  /* Macronutrient Colors */
   --color-prot: #991b1b;
-  --color-prot-bg: #ffb5a7;
+  --color-prot-bg: linear-gradient(135deg, #f8ddd6, #fbece7);
   --color-prot-border: #fca5a5;
 
   --color-veg: #166534;
-  --color-veg-bg: #c1f2ad;
+  --color-veg-bg: linear-gradient(135deg, #e5f6df, #c9ebc3);
   --color-veg-border: #86efac;
 
-  --color-carb: #854d0e;
-  --color-carb-bg: #fed976;
+  --color-carb: #78350f;
+  --color-carb-bg: linear-gradient(135deg, #f0e9e4, #e5dbd5);
   --color-carb-border: #fde047;
 
-  --color-fat: #c2410c;
-  --color-fat-bg: #ffedd5;
+  --color-fat: #9a3412;
+  --color-fat-bg: linear-gradient(135deg, #fbf4cf, #f5e9a7);
   --color-fat-border: #fb923c;
 
   /* Glassmorphism */
