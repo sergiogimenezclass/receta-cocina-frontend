@@ -1320,19 +1320,18 @@
   background: var(--color-prot-bg);
   border: 1.5px solid var(--color-prot-border);
   color: var(--color-prot);
-  padding: 0.5rem 1.4rem 0.5rem 0.6rem;
+  padding: 0.5rem 0.6rem;
 }
 
-/* Sector 2: Vegetales (50% - Toda la mitad derecha) */
+/* Sector 2: Vegetales (25% - Arriba a la derecha) */
 .plate-quadrant.quad-veg {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   border-top-right-radius: 160px;
-  border-bottom-right-radius: 160px;
   background: var(--color-veg-bg);
   border: 1.5px solid var(--color-veg-border);
   color: var(--color-veg);
-  padding: 0.5rem 0.8rem 0.5rem 1.5rem;
+  padding: 0.5rem 0.6rem;
 }
 
 /* Sector 3: Carbohidratos (25% - Abajo a la izquierda) */
@@ -1343,7 +1342,18 @@
   background: var(--color-carb-bg);
   border: 1.5px solid var(--color-carb-border);
   color: var(--color-carb);
-  padding: 0.5rem 1.4rem 0.5rem 0.6rem;
+  padding: 0.5rem 0.6rem;
+}
+
+/* Sector 4: Grasas Saludables (25% - Abajo a la derecha) */
+.plate-quadrant.quad-fat {
+  grid-column: 2;
+  grid-row: 2;
+  border-bottom-right-radius: 160px;
+  background: var(--color-fat-bg);
+  border: 1.5px solid var(--color-fat-border);
+  color: var(--color-fat);
+  padding: 0.5rem 0.6rem;
 }
 
 @media (min-width: 1024px) {
@@ -1354,7 +1364,6 @@
 
   .plate-quadrant.quad-veg {
     border-top-right-radius: 170px;
-    border-bottom-right-radius: 170px;
     padding: 0.5rem;
   }
 
@@ -1362,65 +1371,11 @@
     border-bottom-left-radius: 170px;
     padding: 0.5rem;
   }
-}
 
-/* Sector 4: Grasas Saludables (Núcleo central circular con aro naranja) */
-.plate-quadrant.quad-fat {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 82px;
-  height: 82px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3.5px solid var(--color-fat-border);
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.22), 0 0 0 3px #ffffff;
-  color: var(--color-fat);
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.15rem;
-}
-
-.plate-quadrant.quad-fat .quad-emoji {
-  font-size: 1.15rem;
-  margin-bottom: 1px;
-}
-
-.plate-quadrant.quad-fat .quadrant-badge-title {
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: #0f172a;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-  line-height: 1.1;
-}
-
-.plate-quadrant.quad-fat .quadrant-content {
-  font-size: 0.72rem;
-  line-height: 1;
-  font-weight: 700;
-  color: #94a3b8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 1024px) {
   .plate-quadrant.quad-fat {
-    width: 90px;
-    height: 90px;
-    padding: 0.35rem;
+    border-bottom-right-radius: 170px;
+    padding: 0.5rem;
   }
-}
-
-.plate-quadrant.quad-fat:hover {
-  transform: translate(-50%, -50%) scale(1.06);
-  z-index: 15;
 }
 
 /* Contenedor del botón de acción */
@@ -1455,16 +1410,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}
-
-.quad-veg .quadrant-ingredient-text {
-  max-width: 120px;
-  -webkit-line-clamp: 3;
-}
-
-.quad-fat .quadrant-ingredient-text {
-  font-size: 0.7rem;
-  max-width: 68px;
 }
 
 .quadrant-empty-placeholder {

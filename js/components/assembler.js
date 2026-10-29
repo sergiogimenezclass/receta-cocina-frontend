@@ -96,11 +96,11 @@ export class AssemblerComponent {
                   </div>
                 </div>
 
-                <!-- Cuadrante 2: Vegetales (50% mitad derecha) -->
+                <!-- Cuadrante 2: Vegetales (25% arriba-derecha) -->
                 <div class="plate-quadrant quad-veg" data-category="Vegetal" title="Tocar para editar Vegetales">
                   <div class="quad-emoji">🥦</div>
                   <div class="quadrant-badge-title">Vegetales</div>
-                  <div class="quad-pct">(50%)</div>
+                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentVeg">
                     ${this.renderQuadrantContent('Vegetal', components, '+ Elegir')}
                   </div>
@@ -116,12 +116,13 @@ export class AssemblerComponent {
                   </div>
                 </div>
 
-                <!-- Cuadrante 4: Grasas Saludables (núcleo central) -->
+                <!-- Cuadrante 4: Grasas Saludables (25% abajo-derecha) -->
                 <div class="plate-quadrant quad-fat" data-category="Grasa" title="Tocar para editar Grasas Saludables">
                   <div class="quad-emoji">🥑</div>
                   <div class="quadrant-badge-title">Grasas</div>
+                  <div class="quad-pct">(25%)</div>
                   <div class="quadrant-content" id="quadContentFat">
-                    ${this.renderQuadrantContent('Grasa', components, '+')}
+                    ${this.renderQuadrantContent('Grasa', components, '+ Elegir')}
                   </div>
                 </div>
               </div>
@@ -453,7 +454,7 @@ export class AssemblerComponent {
     if (quadCarb) quadCarb.innerHTML = this.renderQuadrantContent('Carbohidrato', allComponents, '+ Elegir');
 
     const quadFat = this.container.querySelector('#quadContentFat');
-    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '+');
+    if (quadFat) quadFat.innerHTML = this.renderQuadrantContent('Grasa', allComponents, '+ Elegir');
 
     // Actualizar barra colapsada
     const compactBar = this.container.querySelector('#plateCompactBar');
