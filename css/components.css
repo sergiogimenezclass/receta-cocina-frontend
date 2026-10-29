@@ -1299,7 +1299,7 @@
   }
 }
 
-/* Cuadrantes Táctiles del Plato (Porcelana Lustrosa 3D - Opción A) */
+/* Cuadrantes Táctiles del Plato (Acabado Pastel Gastronómico Cálido) */
 .plate-quadrant {
   display: flex;
   flex-direction: column;
@@ -1309,26 +1309,15 @@
   cursor: pointer;
   border: none;
   outline: none;
-  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.25s ease,
-              box-shadow 0.3s ease,
-              transform 0.15s ease,
-              filter 0.15s ease;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.25s ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: linear-gradient(145deg, #ffffff 0%, #faf8f5 100%);
-  color: var(--text-primary);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 1),
-              inset 0 -1px 2px rgba(0, 0, 0, 0.03),
-              inset 0 0 0 1px rgba(230, 225, 220, 0.7);
 }
 
 .plate-quadrant:hover {
-  background: #ffffff;
-  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 1),
-              0 6px 16px rgba(53, 44, 34, 0.08),
-              inset 0 0 0 1px rgba(200, 195, 190, 0.9);
+  filter: brightness(1.03);
+  transform: translateY(-1px);
 }
 
 .plate-quadrant:active {
@@ -1338,7 +1327,7 @@
 .quad-emoji {
   font-size: clamp(2.5rem, 6.5vw, 3.8rem);
   line-height: 1;
-  filter: drop-shadow(0 8px 6px rgba(58, 42, 28, 0.16));
+  filter: drop-shadow(0 8px 6px rgba(58, 42, 28, 0.18));
   opacity: 1;
   user-select: none;
   margin-bottom: 2px;
@@ -1347,15 +1336,17 @@
 
 .plate-quadrant:hover .quad-emoji {
   transform: scale(1.08);
-  filter: drop-shadow(0 10px 8px rgba(58, 42, 28, 0.22));
+  filter: drop-shadow(0 10px 8px rgba(58, 42, 28, 0.24));
 }
 
-/* Posicionamiento en Grilla y Geometría de cada Sector */
+/* Posicionamiento en Grilla, Geometría y Colores de cada Sector */
 .plate-quadrant.quad-protein {
   grid-column: 1;
   grid-row: 1;
   border-radius: 100% 10px 10px 10px;
-  padding: 0.5rem;
+  background: linear-gradient(135deg, #fceae5 0%, #f7dcd5 100%);
+  color: #991b1b;
+  padding: 0.6rem 0.6rem 0.5rem 0.8rem;
 }
 
 .plate-quadrant.quad-protein .quad-emoji {
@@ -1366,7 +1357,9 @@
   grid-column: 2;
   grid-row: 1;
   border-radius: 10px 100% 10px 10px;
-  padding: 0.5rem;
+  background: linear-gradient(135deg, #ebf9e7 0%, #d8f3d1 100%);
+  color: #166534;
+  padding: 0.6rem 0.8rem 0.5rem 0.6rem;
 }
 
 .plate-quadrant.quad-veg .quad-emoji {
@@ -1378,7 +1371,9 @@
   grid-column: 1;
   grid-row: 2;
   border-radius: 10px 10px 10px 100%;
-  padding: 0.5rem;
+  background: linear-gradient(135deg, #fbf4ea 0%, #f3e5d4 100%);
+  color: #854d0e;
+  padding: 0.5rem 0.6rem 0.7rem 0.95rem;
 }
 
 .plate-quadrant.quad-carb .quad-emoji {
@@ -1390,7 +1385,9 @@
   grid-column: 2;
   grid-row: 2;
   border-radius: 10px 10px 100% 10px;
-  padding: 0.5rem;
+  background: linear-gradient(135deg, #fef8db 0%, #f8edb3 100%);
+  color: #9a3412;
+  padding: 0.5rem 0.95rem 0.7rem 0.6rem;
 }
 
 .plate-quadrant.quad-fat .quad-emoji {
@@ -1399,67 +1396,39 @@
 
 /* ========================================================
    ESTADO ACTIVO: Cuadrante con ingrediente asignado
-   (Inundación cromática con pasteles gastronómicos ricos)
+   (Resalte con borde de confirmación y pastilla flotante)
    ======================================================== */
 .plate-quadrant.has-ingredient {
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
-              inset 0 0 0 1.5px rgba(0, 0, 0, 0.08),
-              0 4px 14px rgba(45, 34, 24, 0.08);
+  box-shadow: inset 0 0 0 2px currentColor, 0 6px 16px rgba(45, 34, 24, 0.12);
 }
 
 .plate-quadrant.has-ingredient .quad-emoji {
-  filter: drop-shadow(0 9px 8px rgba(58, 42, 28, 0.2));
+  filter: drop-shadow(0 10px 8px rgba(58, 42, 28, 0.24));
 }
 
 .plate-quadrant.has-ingredient .quadrant-badge-title {
   opacity: 1;
-  font-weight: 750;
-  color: inherit;
-}
-
-.plate-quadrant.quad-protein.has-ingredient {
-  background: linear-gradient(135deg, #fceae5 0%, #f7dcd5 100%);
-  color: #991b1b;
-  box-shadow: inset 0 0 0 1.5px #f87171, 0 4px 14px rgba(239, 68, 68, 0.12);
-}
-
-.plate-quadrant.quad-veg.has-ingredient {
-  background: linear-gradient(135deg, #ebf9e7 0%, #d8f3d1 100%);
-  color: #166534;
-  box-shadow: inset 0 0 0 1.5px #4ade80, 0 4px 14px rgba(34, 197, 94, 0.12);
-}
-
-.plate-quadrant.quad-carb.has-ingredient {
-  background: linear-gradient(135deg, #fbf4ea 0%, #f3e5d4 100%);
-  color: #854d0e;
-  box-shadow: inset 0 0 0 1.5px #facc15, 0 4px 14px rgba(234, 179, 8, 0.12);
-}
-
-.plate-quadrant.quad-fat.has-ingredient {
-  background: linear-gradient(135deg, #fef8db 0%, #f8edb3 100%);
-  color: #9a3412;
-  box-shadow: inset 0 0 0 1.5px #fb923c, 0 4px 14px rgba(249, 115, 22, 0.12);
 }
 
 @media (min-width: 1024px) {
   .plate-quadrant.quad-protein {
     border-radius: 100% 12px 12px 12px;
-    padding: 0.75rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
   }
 
   .plate-quadrant.quad-veg {
     border-radius: 12px 100% 12px 12px;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem 0.75rem 0.75rem;
   }
 
   .plate-quadrant.quad-carb {
     border-radius: 12px 12px 12px 100%;
-    padding: 0.75rem;
+    padding: 0.75rem 0.75rem 1rem 1.15rem;
   }
 
   .plate-quadrant.quad-fat {
     border-radius: 12px 12px 100% 12px;
-    padding: 0.75rem;
+    padding: 0.75rem 1.15rem 1rem 0.75rem;
   }
 }
 
@@ -1475,24 +1444,26 @@
 }
 
 .quadrant-badge-title {
-  font-size: clamp(0.72rem, 2vw, 0.88rem);
-  font-weight: 700;
+  font-size: clamp(0.68rem, 1.8vw, 0.82rem);
+  font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 2px;
-  color: var(--text-secondary);
-  opacity: 0.85;
-  transition: opacity 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+  color: currentColor;
+  opacity: 0.92;
+  max-width: 95%;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, font-weight 0.2s ease;
 }
 
 .quadrant-ingredient-text {
   font-size: clamp(0.72rem, 1.8vw, 0.84rem);
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.25;
-  max-width: 90%;
+  max-width: 92%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -1502,9 +1473,9 @@
   color: #171513;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
 }
 
 .quadrant-empty-placeholder {
