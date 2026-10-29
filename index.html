@@ -6,9 +6,9 @@
   <title>Antirecetario | Construcción Modular de Platos</title>
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=60">
-  <link rel="stylesheet" href="css/components.css?v=60">
-  <link rel="stylesheet" href="css/glassmorphism.css?v=60">
+  <link rel="stylesheet" href="css/main.css?v=61">
+  <link rel="stylesheet" href="css/components.css?v=61">
+  <link rel="stylesheet" href="css/glassmorphism.css?v=61">
 </head>
 <body>
 
@@ -17,7 +17,12 @@
     <!-- Application Header -->
     <header class="app-header">
       <div class="brand">
-        <span class="brand-icon">🥬</span>
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </span>
         <div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <h1>Antirecetario</h1>
@@ -30,16 +35,51 @@
       <!-- SPA Navigation Tabs -->
       <nav class="app-nav">
         <button class="nav-tab active" data-tab="assembler" title="Constructor de Platos">
-          <span class="nav-tab-icon">🧩</span><span class="nav-tab-label">Constructor</span>
+          <span class="nav-tab-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9.5"/>
+              <line x1="12" y1="2.5" x2="12" y2="21.5"/>
+              <line x1="2.5" y1="12" x2="21.5" y2="12"/>
+            </svg>
+          </span>
+          <span class="nav-tab-label">Constructor</span>
         </button>
         <button class="nav-tab" data-tab="planner" title="Plan Semanal">
-          <span class="nav-tab-icon">📅</span><span class="nav-tab-label">Plan</span>
+          <span class="nav-tab-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="3"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </span>
+          <span class="nav-tab-label">Plan</span>
         </button>
         <button class="nav-tab" data-tab="library" title="Biblioteca">
-          <span class="nav-tab-icon">📚</span><span class="nav-tab-label">Biblioteca</span>
+          <span class="nav-tab-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10"/>
+              <path d="M6 10h7"/>
+            </svg>
+          </span>
+          <span class="nav-tab-label">Biblioteca</span>
         </button>
         <button class="nav-tab" data-tab="settings" title="Ajustes">
-          <span class="nav-tab-icon">⚙️</span><span class="nav-tab-label">Ajustes</span>
+          <span class="nav-tab-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="14" y1="21" y2="21"/>
+              <line x1="18" x2="20" y1="21" y2="21"/>
+              <circle cx="16" cy="21" r="2"/>
+              <line x1="4" x2="10" y1="12" y2="12"/>
+              <line x1="14" x2="20" y1="12" y2="12"/>
+              <circle cx="12" cy="12" r="2"/>
+              <line x1="4" x2="6" y1="3" y2="3"/>
+              <line x1="10" x2="20" y1="3" y2="3"/>
+              <circle cx="8" cy="3" r="2"/>
+            </svg>
+          </span>
+          <span class="nav-tab-label">Ajustes</span>
         </button>
       </nav>
     </header>
@@ -87,7 +127,7 @@
   </div>
 
   <!-- Main JavaScript Module Entrypoint -->
-  <script type="module" src="js/app.js?v=58"></script>
+  <script type="module" src="js/app.js?v=61"></script>
 
 </body>
 </html>
