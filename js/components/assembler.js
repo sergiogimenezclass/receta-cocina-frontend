@@ -311,10 +311,8 @@ export class AssemblerComponent {
       return defaultPlaceholder ? `<span class="quadrant-empty-placeholder">${defaultPlaceholder}</span>` : '';
     }
     const allNames = selComps.map(c => c.nombre).join(' + ');
-    const firstName = selComps[0].nombre;
-    const extraCount = selComps.length - 1;
-    const badgeHtml = extraCount > 0 ? `<span class="quadrant-ingredient-count">+${extraCount}</span>` : '';
-    return `<span class="quadrant-ingredient-text" title="${this.escapeHtml(allNames)}"><span class="quadrant-ingredient-name">${this.escapeHtml(firstName)}</span>${badgeHtml}</span>`;
+    const count = selComps.length;
+    return `<span class="quadrant-corner-badge" title="${this.escapeHtml(allNames)}" aria-label="${count} seleccionado${count > 1 ? 's' : ''}: ${this.escapeHtml(allNames)}">${count}</span>`;
   }
 
   renderCompactChips(allComponents) {

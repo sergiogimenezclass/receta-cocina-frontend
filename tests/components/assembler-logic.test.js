@@ -74,16 +74,18 @@ test('AssemblerComponent - renderQuadrantContent() formatea cuadrantes vacíos y
   const vacioSinPlaceholder = assembler.renderQuadrantContent('Proteina', components, '');
   assert.strictEqual(vacioSinPlaceholder, '');
 
-  // Con alimento seleccionado: renderiza el nombre del alimento
+  // Con alimento seleccionado: renderiza el badge de conteo (1) y el nombre en tooltip
   assembler.selected.Proteina = ['comp_prot_1'];
   const llenoHtml = assembler.renderQuadrantContent('Proteina', components, '+ Elegir');
   assert.ok(llenoHtml.includes('Pechuga / Suprema de Pollo'));
+  assert.ok(llenoHtml.includes('quadrant-corner-badge'));
+  assert.ok(llenoHtml.includes('>1<'));
 
-  // Con múltiples alimentos seleccionados: renderiza el primero y el badge +N
+  // Con múltiples alimentos seleccionados: badge muestra el conteo total (2)
   assembler.selected.Proteina = ['comp_prot_1', 'comp_prot_3'];
   const multipleHtml = assembler.renderQuadrantContent('Proteina', components);
   assert.ok(multipleHtml.includes('Pechuga / Suprema de Pollo'));
-  assert.ok(multipleHtml.includes('+1'));
+  assert.ok(multipleHtml.includes('>2<'));
 });
 
 test('AssemblerComponent - renderCompactChips() genera los 4 badges compactos', async () => {
