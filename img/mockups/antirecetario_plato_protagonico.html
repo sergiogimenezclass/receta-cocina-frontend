@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f7f5">
+  <title>Antirecetario — Plato protagonista</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171513;
+      --paper: #fbfaf9;
+      --line: #e1ddda;
+      --plate: min(78vw, 470px);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100dvh;
+      padding: 24px;
+      color: var(--ink);
+      background: radial-gradient(ellipse at 50% 45%, #fff 0, #f7f6f4 58%, #efeeec 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    .phone {
+      position: relative;
+      width: min(100%, 604px);
+      height: min(1220px, calc(100dvh - 48px));
+      min-height: 700px;
+      padding: 20px 20px 22px;
+      overflow: hidden;
+      border: 1px solid #d5d1ce;
+      border-radius: 76px;
+      background: linear-gradient(145deg, #fff 0%, #faf9f7 100%);
+      box-shadow: 0 2px 3px #0000000a, 0 22px 48px #24201c1a, inset 0 0 0 5px #f1efed, inset 0 0 0 7px #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .phone::before, .phone::after {
+      content: ""; position: absolute; left: -3px; width: 3px; border-radius: 4px 0 0 4px;
+      background: #d8d4d1; box-shadow: inset 1px 0 #fff;
+    }
+    .phone::before { top: 265px; height: 74px; }
+    .phone::after { top: 370px; height: 84px; }
+    .status {
+      height: 52px; flex: 0 0 52px; padding: 13px 42px 0;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      font-size: 19px; line-height: 1; font-weight: 700; letter-spacing: -.3px;
+    }
+    .island { position: absolute; left: 50%; top: 27px; width: 170px; height: 48px; transform: translateX(-50%); border-radius: 28px; background: #f3f1ef; }
+    .status-icons { display: flex; align-items: center; gap: 6px; }
+    .signal { display: flex; align-items: end; gap: 2px; height: 15px; }
+    .signal i { display:block; width:4px; border-radius:2px; background:#171513; }
+    .signal i:nth-child(1){height:6px}.signal i:nth-child(2){height:9px}.signal i:nth-child(3){height:12px}.signal i:nth-child(4){height:15px}
+    .wifi { font-size: 19px; line-height: 14px; transform: scaleX(1.1); }
+    .battery { width:30px;height:15px;border:2px solid #171513;border-radius:4px;position:relative;margin-left:3px; }
+    .battery::before { content:""; position:absolute; inset:2px 4px 2px 2px; background:#171513;border-radius:1px; }
+    .battery::after { content:""; position:absolute; right:-5px;top:3px;width:3px;height:6px;background:#171513;border-radius:0 2px 2px 0; }
+    h1 { margin: 62px 0 0; text-align:center; font-size: clamp(32px, 7vw, 52px); line-height:1.05; font-weight:750; letter-spacing:-2px; }
+    .hero { flex: 1; min-height: 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 14px 0 28px; }
+    .plate {
+      position:relative; width:var(--plate); aspect-ratio:1; flex:none; border-radius:50%;
+      background-color:#fff; background-image:url("version_b_plato_protagonico.jpg"); background-size:157% auto; background-position:50% 43%; padding:10px; box-shadow: 0 16px 25px #352c2220, 0 2px 7px #352c2214, inset 0 0 0 1px #ece9e6;
+      transform: translateY(-8px);
+    }
+    .quadrants { position:absolute; inset:11px; border-radius:50%; overflow:hidden; display:grid; grid-template:1fr 1fr / 1fr 1fr; gap:7px; }
+    .cell { position:relative; display:grid; place-items:center; overflow:hidden; }
+    .cell.protein { background:linear-gradient(135deg,#f8ddd6,#fbece7); border-radius:100% 8px 8px 8px; }
+    .cell.vegetables { background:linear-gradient(135deg,#e5f6df,#c9ebc3); border-radius:8px 100% 8px 8px; }
+    .cell.fats { background:linear-gradient(135deg,#fbf4cf,#f5e9a7); border-radius:8px 8px 8px 100%; }
+    .cell.carbs { background:linear-gradient(135deg,#f0e9e4,#e5dbd5); border-radius:8px 8px 100% 8px; }
+    .food { position:relative; z-index:1; font-size:clamp(58px,12vw,102px); line-height:1; filter:drop-shadow(0 8px 5px #453a2b24); user-select:none; }
+    .protein .food { transform:rotate(-17deg); }
+    .vegetables .food { font-size:clamp(48px,10vw,82px); transform:rotate(10deg); }
+    .fats .food { transform:rotate(-12deg); }
+    .carbs .food { font-size:clamp(48px,10vw,82px); transform:rotate(8deg); }
+    .label { position:absolute; z-index:2; font-size:clamp(13px,2.8vw,20px); font-weight:650; letter-spacing:-.4px; white-space:nowrap; }
+    .protein .label { top:18%; left:10%; transform:rotate(-48deg); }
+    .vegetables .label { top:17%; right:5%; transform:rotate(48deg); }
+    .fats .label { bottom:13%; left:2%; transform:rotate(53deg); }
+    .carbs .label { bottom:14%; right:2%; transform:rotate(-52deg); }
+    .cook-button {
+      margin-top: clamp(28px, 6vw, 52px); min-height:60px; padding:0 23px; border:1px solid #e1ddda; border-radius:999px;
+      background:linear-gradient(#fff,#f8f6f4); color:var(--ink); box-shadow:0 5px 9px #251e1719, inset 0 1px #fff;
+      font-size:clamp(14px,2.8vw,19px); font-weight:600; letter-spacing:-.35px; cursor:pointer; display:flex; align-items:center; gap:10px;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .cook-button:hover { transform:translateY(-2px); box-shadow:0 8px 14px #251e1720,inset 0 1px #fff; }
+    .cook-button:active { transform:translateY(0); }
+    .arrow { font-size:24px; line-height:1; }
+    .steps { display:none; max-width:440px; margin:18px 26px 0; padding:17px 20px; border:1px solid #e8e4e1; border-radius:20px; background:#ffffffed; box-shadow:0 8px 18px #211b1410; font-size:14px; line-height:1.5; }
+    .steps.open { display:block; animation:show .2s ease-out; }
+    .steps ol { padding-left:20px; margin:8px 0 0; }
+    .steps li + li { margin-top:4px; }
+    @keyframes show { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+    .composer {
+      flex:0 0 auto; margin:0 -1px -1px; padding:10px 17px 21px; border-radius:30px 30px 48px 48px;
+      background:#fff; box-shadow:0 -3px 12px #24201c0a;
+    }
+    .grabber { width:58px;height:5px;margin:0 auto 11px;border-radius:9px;background:#d4d1cf; }
+    .form { height:62px; display:flex; align-items:center; gap:9px; padding:5px 7px 5px 24px; border:1px solid #d8d3d0; border-radius:999px; background:linear-gradient(110deg,#f9f8f7,#f4f1ef); box-shadow:inset 0 1px 2px #00000006; }
+    .form input { min-width:0; flex:1; border:0; outline:0; background:transparent; color:var(--ink); font-size:clamp(14px,3vw,19px); letter-spacing:-.3px; }
+    .form input::placeholder { color:#898582; opacity:1; }
+    .send { width:48px;height:48px; flex:none; display:grid;place-items:center;border:0;border-radius:50%;background:#493b31;color:white;cursor:pointer;transition:background .2s,transform .2s; }
+    .send:hover { background:#30261f;transform:scale(1.04); }
+    .send svg { width:26px;height:26px; }
+    .notice { display:none; padding:10px 15px 0; text-align:center; color:#665c54; font-size:13px; }
+    .notice.visible { display:block; }
+    @media (max-width:650px) {
+      body { padding:0; background:var(--paper); }
+      .phone { width:100%; height:100dvh; min-height:590px; border:0; border-radius:0; padding: max(10px,env(safe-area-inset-top)) 12px max(10px,env(safe-area-inset-bottom)); box-shadow:none; }
+      .phone::before,.phone::after { display:none; }
+      .status { padding-left:30px;padding-right:30px; }
+      .island { top:22px; }
+      h1 { margin-top:48px; }
+      :root { --plate:min(78vw,430px); }
+      .composer { padding-bottom:max(13px,env(safe-area-inset-bottom)); }
+    }
+    @media (max-height:800px) and (min-width:651px) {
+      .phone { height:calc(100dvh - 28px); min-height:680px; border-radius:58px; }
+      h1 { margin-top:36px; }
+      .hero { padding-top:4px;padding-bottom:10px; }
+      :root { --plate:min(64vh,390px); }
+      .cook-button { margin-top:24px;min-height:52px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="Antirecetario, propuesta de plato">
+    <div class="island" aria-hidden="true"></div>
+    <div class="status" aria-hidden="true">
+      <span>9:41</span>
+      <span class="status-icons"><span class="signal"><i></i><i></i><i></i><i></i></span><span class="wifi">◔</span><span class="battery"></span></span>
+    </div>
+    <h1>Antirecetario</h1>
+    <section class="hero" aria-label="Composición del plato">
+      <div class="plate" role="img" aria-label="Plato dividido en proteína, vegetales, grasas saludables y carbohidratos">
+
+      </div>
+      <button class="cook-button" id="cookButton" type="button" aria-expanded="false" aria-controls="steps">
+        <span aria-hidden="true">🍳</span><span>Ver 3 Pasos de Cocinado (12 min)</span><span class="arrow" aria-hidden="true">→</span>
+      </button>
+      <div class="steps" id="steps" aria-live="polite">
+        <strong>Una idea rápida para cocinar</strong>
+        <ol><li>Dorá la proteína en una sartén caliente.</li><li>Cociná los vegetales hasta que estén tiernos y verdes.</li><li>Serví con arroz y palta; ajustá con sal y limón.</li></ol>
+      </div>
+    </section>
+    <section class="composer" aria-label="Contame qué ingredientes tenés">
+      <div class="grabber" aria-hidden="true"></div>
+      <form class="form" id="ingredientForm">
+        <input id="ingredients" name="ingredients" autocomplete="off" aria-label="Ingredientes disponibles" placeholder="Decime qué tenés en la heladera...">
+        <button class="send" type="submit" aria-label="Enviar ingredientes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 3.5 21 12 4 20.5l2.1-7.1L15 12l-8.9-1.4L4 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <p class="notice" id="notice" role="status"></p>
+    </section>
+  </main>
+  <script>
+    const cookButton = document.querySelector('#cookButton');
+    const steps = document.querySelector('#steps');
+    cookButton.addEventListener('click', () => {
+      const open = cookButton.getAttribute('aria-expanded') !== 'true';
+      cookButton.setAttribute('aria-expanded', String(open));
+      steps.classList.toggle('open', open);
+      cookButton.querySelector('.arrow').textContent = open ? '↑' : '→';
+    });
+
+    const form = document.querySelector('#ingredientForm');
+    const ingredients = document.querySelector('#ingredients');
+    const notice = document.querySelector('#notice');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = ingredients.value.trim();
+      notice.textContent = value
+        ? `¡Anotado! Vamos a pensar un plato con: ${value}.`
+        : 'Contame qué ingredientes tenés y armamos una idea.';
+      notice.classList.add('visible');
+      if (value) ingredients.value = '';
+    });
+  </script>
+</body>
+</html>
