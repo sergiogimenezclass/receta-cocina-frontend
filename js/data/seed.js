@@ -426,6 +426,22 @@ export const INITIAL_SEED = {
       tiempo_preparacion_min: 0,
       metodo_coccion: "Rallar directo sobre el plato terminado",
       icono: "🧀"
+    },
+    {
+      id: "comp_fat_7",
+      nombre: "Manteca",
+      categoria: "Grasa",
+      tiempo_preparacion_min: 1,
+      metodo_coccion: "Fundir en sartén para dorar o mezclar en caliente",
+      icono: "🧈"
+    },
+    {
+      id: "comp_fat_8",
+      nombre: "Crema de Leche",
+      categoria: "Grasa",
+      tiempo_preparacion_min: 2,
+      metodo_coccion: "Agregar a la sartén para ligar una salsa o en frío",
+      icono: "🥛"
     }
   ],
 

@@ -159,3 +159,17 @@ test('AssemblerComponent - deterministicAutoSelect detecta correctamente nuevas 
   assembler.deterministicAutoSelect('bife de higado con cebolla', components);
   assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_19', 'Debe detectar Hígado');
 });
+
+test('AssemblerComponent - deterministicAutoSelect detecta correctamente grasas Manteca y Crema de Leche', async () => {
+  const assembler = new AssemblerComponent('testContainer');
+  const components = await storage.getComponents();
+
+  // Test Manteca
+  assembler.deterministicAutoSelect('fideos con manteca', components);
+  assert.strictEqual(assembler.selected.Grasa[0], 'comp_fat_7', 'Debe detectar Manteca como Grasa');
+
+  // Test Crema de Leche
+  assembler.deterministicAutoSelect('pollo salteado con crema de leche y champiñones', components);
+  assert.strictEqual(assembler.selected.Grasa[0], 'comp_fat_8', 'Debe detectar Crema de Leche como Grasa');
+});
+

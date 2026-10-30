@@ -932,7 +932,9 @@ export class AssemblerComponent {
         aceitunas: ['aceituna', 'aceitunas', 'olivas'],
         frutos: ['frutos', 'secos', 'nueces', 'almendras'],
         semillas: ['semillas', 'chia', 'girasol', 'sesamo'],
-        queso: ['parmesano', 'sardo', 'rallado', 'reggianito', 'grana', 'provolone']
+        queso: ['parmesano', 'sardo', 'rallado', 'reggianito', 'grana', 'provolone'],
+        manteca: ['manteca', 'mantequilla'],
+        crema: ['crema', 'nata']
       }
     };
 
