@@ -20,14 +20,14 @@ class StorageService {
 
   _initSeedIfNeeded() {
     const currentSeedVersion = localStorage.getItem('mpb_seed_version');
-    if (currentSeedVersion !== 'v2_latam') {
+    if (currentSeedVersion !== 'v3_latam') {
       const existing = JSON.parse(localStorage.getItem(KEYS.COMPONENTS) || '[]');
       // Preservar componentes personalizados creados por el usuario
       const customComps = existing.filter(c => !c.id.startsWith('comp_prot_') && !c.id.startsWith('comp_veg_') && !c.id.startsWith('comp_carb_') && !c.id.startsWith('comp_fat_'));
       localStorage.setItem(KEYS.COMPONENTS, JSON.stringify([...INITIAL_SEED.components, ...customComps]));
       localStorage.setItem(KEYS.PLATES, JSON.stringify(INITIAL_SEED.plates));
       localStorage.setItem(KEYS.WEEKLY_PLAN, JSON.stringify(INITIAL_SEED.weeklyPlan));
-      localStorage.setItem('mpb_seed_version', 'v2_latam');
+      localStorage.setItem('mpb_seed_version', 'v3_latam');
     }
 
     if (!localStorage.getItem(KEYS.COMPONENTS)) {

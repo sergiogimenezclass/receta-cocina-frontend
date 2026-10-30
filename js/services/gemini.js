@@ -159,10 +159,12 @@ REGLAS ESTRICTAS DE INTERPRETACIÓN:
 3. RESPETO DE INGREDIENTES REALES Y MULTI-SELECCIÓN (ARRAYS):
    - Asigná un array con los IDs correspondientes de la biblioteca para cada una de las 4 categorías: "proteina_ids", "vegetal_ids", "carbo_ids", "grasa_ids".
    - SI EL USUARIO MENCIONA MÚLTIPLES INGREDIENTES DE UNA MISMA CATEGORÍA (ej: "lechuga y tomate", "morrón y cebolla", "pollo y huevo"): INCLUÍ TODOS LOS IDS COINCIDENTES EN EL ARRAY (ej: "vegetal_ids": ["comp_veg_1", "comp_veg_2"]).
-   - SI EL USUARIO NO TIENE NI MENCIONA INGREDIENTES PARA ALGUNA CATEGORÍA (por ejemplo, no tiene carbohidratos): Dejá ese array vacío [] (ej: "carbo_ids": []). NO inventes ingredientes fantasma.
+   - SI UN INGREDIENTE MENCIONADO NO TIENE NOMBRE IDÉNTICO EN LA BIBLIOTECA (ej: el usuario dice "rabanito", "morrón", "cebollita de verdeo"): vincúlalo al vegetal más cercano y compatible de la lista (ej: "comp_veg_10" Cebolla, "comp_veg_8" Wok/Salteado, o "comp_veg_1" Hojas/Ensalada fresca) e intégralo de forma real en los 3 pasos.
+   - SI EL USUARIO REALMENTE NO TIENE NI MENCIONA INGREDIENTES PARA ALGUNA CATEGORÍA (por ejemplo, no nombró ninguna grasa ni aceite): Dejá ese array vacío [] (ej: "grasa_ids": []). NO inventes ingredientes fantasma.
    - Si hay un plato actual y el usuario solo cambia un ingrediente, mantén los otros intactos.
 4. SUGERENCIA NUTRICIONAL OPCIONAL:
-   - Si falta alguna categoría clave (como Carbohidrato, Proteína o Vegetal), incluí en el campo "sugerencia_opcional" un consejo breve, amable y no invasivo explicando qué podría sumar si lo encuentra en su alacena (ej: "💡 Te faltó un carbohidrato (como papa o arroz). Si encontrás algo en la alacena, sumalo para mayor energía y saciedad"). Si no falta ninguna categoría, devolvé null.
+   - ÚNICAMENTE si el usuario REALMENTE NO MENCIONÓ NINGÚN INGREDIENTE para una categoría (por ejemplo, si no nombró ninguna grasa, o no nombró ninguna proteína), incluí en el campo "sugerencia_opcional" un consejo breve, amable y no invasivo explicando qué podría sumar si lo encuentra en su alacena (ej: "💡 Te faltó una grasa saludable (como un chorrito de aceite de oliva o semillas) para balancear el plato").
+   - REGLA CRÍTICA: Si el usuario SÍ MENCIONÓ ingredientes de una categoría (por ejemplo, dijo "cebolla" o "rabanito"), NUNCA digas que le faltaron vegetales. Si el usuario ya aportó vegetales en su frase, devolvé null en sugerencia_opcional.
 5. FORMATO DE PASOS:
    - Redactá un array de EXACTAMENTE 3 pasos muy cortos, ejecutivos y al grano, UTILIZANDO ÚNICAMENTE los ingredientes que el usuario realmente tiene disponibles. Si no tiene carbohidrato, no le indiques cocinar arroz ni fideos.
 6. MODO Y TÍTULO:

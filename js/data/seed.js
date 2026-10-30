@@ -183,6 +183,14 @@ export const INITIAL_SEED = {
       metodo_coccion: "Hervido en cubos para puré o al horno",
       icono: "🎃"
     },
+    {
+      id: "comp_veg_10",
+      nombre: "Cebolla (Salteada / Dorada)",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 5,
+      metodo_coccion: "Cortar en pluma o juliana y dorar a fuego medio",
+      icono: "🧅"
+    },
 
     // CARBOHIDRATOS
     {
