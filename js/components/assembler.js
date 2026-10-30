@@ -55,7 +55,7 @@ export class AssemblerComponent {
         <div class="v2-left-col">
 
           <div class="plate-canvas-card">
-            <!-- 1. Controles de Servido y Tiempo -->
+            <!-- 1. Selector de Estilo de Servido -->
             <div class="plate-top-controls">
               <div class="activity-selector compact">
                 <button class="mode-temp-btn ${this.plateMode === 'caliente' ? 'active' : ''}" data-mode="caliente" title="Estilo Caliente (Wok / Sopa)">
@@ -64,10 +64,6 @@ export class AssemblerComponent {
                 <button class="mode-temp-btn ${this.plateMode === 'frio' ? 'active' : ''}" data-mode="frio" title="Estilo Frío (Ensalada / Bowl)">
                   🥗 Frío
                 </button>
-              </div>
-
-              <div class="plate-meta-time">
-                ⏱️ ~${estimatedTime} min
               </div>
             </div>
 
@@ -510,6 +506,23 @@ export class AssemblerComponent {
     if (step1) step1.textContent = this.customSteps[1] || '';
     const step2 = this.container.querySelector('#cookingStep2');
     if (step2) step2.textContent = this.customSteps[2] || '';
+
+    // Actualizar tiempo dinámico en el botón de Modo Cocina
+    const selectedIds = [
+      ...(Array.isArray(this.selected.Proteina) ? this.selected.Proteina : []),
+      ...(Array.isArray(this.selected.Vegetal) ? this.selected.Vegetal : []),
+      ...(Array.isArray(this.selected.Carbohidrato) ? this.selected.Carbohidrato : []),
+      ...(Array.isArray(this.selected.Grasa) ? this.selected.Grasa : [])
+    ];
+    const selComps = allComponents.filter(c => selectedIds.includes(c.id));
+    const estimatedTime = selComps.length > 0 
+      ? Math.max(...selComps.map(c => c.tiempo_preparacion_min || 10))
+      : 15;
+
+    const btnOpenCooking = this.container.querySelector('#btnOpenCookingMode');
+    if (btnOpenCooking) {
+      btnOpenCooking.innerHTML = `<span>🍳</span><span>Ver 3 Pasos de Cocinado (${estimatedTime} min)</span><span class="arrow" aria-hidden="true">→</span>`;
+    }
   }
 
   getMissingCategories() {
