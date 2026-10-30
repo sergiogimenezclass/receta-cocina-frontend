@@ -97,3 +97,20 @@ test('Contrato DOM LibraryComponent - Barra de filtros por macronutrientes respo
   assert.ok(html.includes('filter-cat-btn active'), 'El botón inicial debe tener clase active');
 });
 
+test('Contrato DOM PlannerComponent - Diseño limpio y sin selector de actividad', async () => {
+  const { PlannerComponent } = await import('../../js/components/planner.js');
+  const planner = new PlannerComponent('planner');
+  await planner.render();
+  const html = planner.container.innerHTML;
+
+  assert.ok(html.includes('class="planner-title"'), 'Debe incluir .planner-title');
+  assert.ok(!html.includes('select-day-activity'), 'NO debe contener selector de actividad');
+  assert.ok(!html.includes('🔴'), 'NO debe contener emojis de semáforo');
+  assert.ok(!html.includes('🌅'), 'NO debe contener emojis de amanecer');
+  assert.ok(!html.includes('🌙'), 'NO debe contener emojis de luna');
+  assert.ok(html.includes('class="weekly-grid"'), 'Debe incluir contenedor .weekly-grid');
+  assert.ok(html.includes('class="day-card'), 'Debe incluir tarjetas .day-card');
+  assert.ok(html.includes('class="planner-day-pill'), 'Debe incluir selector móvil de días');
+});
+
+

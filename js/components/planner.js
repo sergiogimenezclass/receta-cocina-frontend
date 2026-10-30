@@ -3,6 +3,7 @@ import { storage } from '../services/storage.js';
 export class PlannerComponent {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
+    this.activeDay = 'all';
     this.dias = [
       { key: 'lunes', nombre: 'Lunes' },
       { key: 'martes', nombre: 'Martes' },
@@ -24,11 +25,17 @@ export class PlannerComponent {
     const plates = await storage.getPlates();
 
     this.container.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <h2 style="font-size: 1.4rem; font-weight: 700;">📅 Planificador Semanal por Nivel de Actividad</h2>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">Asigna el tipo de entrenamiento y hasta 4 comidas por día en orden cronológico.</p>
-        </div>
+      <div class="planner-header">
+        <h2 class="planner-title">Planificador Semanal</h2>
+        <p class="planner-subtitle">Organiza tus comidas de cada día de la semana.</p>
+      </div>
+
+      <!-- Selector de día para pantallas móviles -->
+      <div class="planner-day-filter">
+        <button type="button" class="planner-day-pill ${this.activeDay === 'all' ? 'active' : ''}" data-day="all">Toda la semana</button>
+        ${this.dias.map(d => `
+          <button type="button" class="planner-day-pill ${this.activeDay === d.key ? 'active' : ''}" data-day="${d.key}">${d.nombre.slice(0, 3)}</button>
+        `).join('')}
       </div>
 
       <!-- Parrilla Semanal -->
@@ -39,8 +46,6 @@ export class PlannerComponent {
   }
 
   renderDayCard(dia, planData, plates) {
-    const actividad = planData.actividad || 'Moderado';
-    
     // Determinar si las comidas opcionales están activadas
     const hasDesayuno = planData.has_desayuno || !!planData.desayuno_id;
     const hasMerienda = planData.has_merienda || !!planData.merienda_id;
@@ -51,41 +56,38 @@ export class PlannerComponent {
     const cena = plates.find(p => p.id === planData.cena_id);
 
     return `
-      <div class="day-card glass-card" data-day="${dia.key}">
+      <div class="day-card ${this.activeDay !== 'all' && this.activeDay !== dia.key ? 'is-hidden-mobile' : ''}" data-day="${dia.key}">
         <div class="day-header">
           <span class="day-name">${dia.nombre}</span>
-          <select class="form-control select-day-activity" data-day="${dia.key}" style="font-size: 0.75rem; padding: 0.2rem 0.4rem; width: auto;">
-            <option value="Intenso" ${actividad === 'Intenso' ? 'selected' : ''}>🔴 Intenso</option>
-            <option value="Moderado" ${actividad === 'Moderado' ? 'selected' : ''}>🟡 Moderado</option>
-            <option value="Descanso" ${actividad === 'Descanso' ? 'selected' : ''}>🟢 Descanso</option>
-          </select>
         </div>
 
-        <!-- 1. DESAYUNO (Opcional - Primero) -->
-        ${hasDesayuno ? this.renderMealSlot(dia.key, 'desayuno', '🌅 Desayuno', desayuno, plates, true) : ''}
+        <!-- 1. DESAYUNO (Opcional) -->
+        ${hasDesayuno ? this.renderMealSlot(dia.key, 'desayuno', 'Desayuno', desayuno, plates, true) : ''}
 
         <!-- 2. ALMUERZO (Fijo) -->
-        ${this.renderMealSlot(dia.key, 'almuerzo', '☀️ Almuerzo', almuerzo, plates, false)}
+        ${this.renderMealSlot(dia.key, 'almuerzo', 'Almuerzo', almuerzo, plates, false)}
 
-        <!-- 3. MERIENDA (Opcional - En el medio) -->
-        ${hasMerienda ? this.renderMealSlot(dia.key, 'merienda', '☕ Merienda', merienda, plates, true) : ''}
+        <!-- 3. MERIENDA (Opcional) -->
+        ${hasMerienda ? this.renderMealSlot(dia.key, 'merienda', 'Merienda', merienda, plates, true) : ''}
 
         <!-- 4. CENA (Fijo) -->
-        ${this.renderMealSlot(dia.key, 'cena', '🌙 Cena', cena, plates, false)}
+        ${this.renderMealSlot(dia.key, 'cena', 'Cena', cena, plates, false)}
 
-        <!-- Botones de alta rápida para Desayuno / Merienda -->
-        <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem; flex-wrap: wrap;">
-          ${!hasDesayuno ? `
-            <button class="btn btn-sm btn-secondary btn-add-optional-meal" data-day="${dia.key}" data-type="desayuno" style="font-size: 0.75rem; flex: 1;">
-              + 🌅 Desayuno
-            </button>
-          ` : ''}
-          ${!hasMerienda ? `
-            <button class="btn btn-sm btn-secondary btn-add-optional-meal" data-day="${dia.key}" data-type="merienda" style="font-size: 0.75rem; flex: 1;">
-              + ☕ Merienda
-            </button>
-          ` : ''}
-        </div>
+        <!-- Botones discretos para sumar Desayuno / Merienda -->
+        ${(!hasDesayuno || !hasMerienda) ? `
+          <div class="day-add-meals">
+            ${!hasDesayuno ? `
+              <button type="button" class="btn-add-meal-chip btn-add-optional-meal" data-day="${dia.key}" data-type="desayuno">
+                + Desayuno
+              </button>
+            ` : ''}
+            ${!hasMerienda ? `
+              <button type="button" class="btn-add-meal-chip btn-add-optional-meal" data-day="${dia.key}" data-type="merienda">
+                + Merienda
+              </button>
+            ` : ''}
+          </div>
+        ` : ''}
       </div>
     `;
   }
@@ -93,23 +95,24 @@ export class PlannerComponent {
   renderMealSlot(dayKey, mealType, labelText, assignedPlate, plates, isOptional) {
     return `
       <div class="meal-slot">
-        <div class="meal-slot-label" style="display: flex; justify-content: space-between; align-items: center;">
-          <span>${labelText}</span>
+        <div class="meal-slot-header">
+          <span class="meal-slot-label">${labelText}</span>
           ${isOptional ? `
-            <button class="btn-remove-optional-meal" data-day="${dayKey}" data-type="${mealType}" title="Eliminar ${labelText}" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.8rem;">
-              🗑️
+            <button type="button" class="btn-remove-optional-meal" data-day="${dayKey}" data-type="${mealType}" title="Quitar ${labelText}" aria-label="Quitar ${labelText}">
+              &times;
             </button>
           ` : ''}
         </div>
         ${assignedPlate ? `
           <div class="meal-assigned">
-            <div class="meal-assigned-title">${this.escapeHtml(assignedPlate.nombre)}</div>
-            <button class="btn btn-sm btn-danger btn-remove-meal" data-day="${dayKey}" data-type="${mealType}" style="margin-top: 0.4rem; width: 100%;">Quitar Plato</button>
+            <span class="meal-assigned-title" title="${this.escapeHtml(assignedPlate.nombre)}">${this.escapeHtml(assignedPlate.nombre)}</span>
+            <button type="button" class="btn-remove-meal" data-day="${dayKey}" data-type="${mealType}" title="Quitar plato" aria-label="Quitar plato">
+              &times;
+            </button>
           </div>
         ` : `
-          <div class="meal-slot-content">Sin plato asignado</div>
-          <select class="form-control select-assign-meal" data-day="${dayKey}" data-type="${mealType}" style="margin-top: 0.5rem; font-size: 0.8rem;">
-            <option value="">+ Asignar Plato...</option>
+          <select class="form-control select-assign-meal" data-day="${dayKey}" data-type="${mealType}" aria-label="Asignar plato para ${labelText}">
+            <option value="">+ Asignar plato...</option>
             ${plates.map(p => `<option value="${p.id}">${this.escapeHtml(p.nombre)}</option>`).join('')}
           </select>
         `}
@@ -118,14 +121,21 @@ export class PlannerComponent {
   }
 
   bindEvents() {
-    // Cambio nivel de actividad del día
-    this.container.querySelectorAll('.select-day-activity').forEach(select => {
-      select.addEventListener('change', async (e) => {
-        const dayKey = e.target.getAttribute('data-day');
-        const level = e.target.value;
-        await storage.setDayActivity(dayKey, level);
-        await this.render();
-        this.bindEvents();
+    // Selector móvil de día
+    this.container.querySelectorAll('.planner-day-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        this.activeDay = e.currentTarget.getAttribute('data-day');
+        this.container.querySelectorAll('.planner-day-pill').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+
+        this.container.querySelectorAll('.day-card').forEach(card => {
+          const cardDay = card.getAttribute('data-day');
+          if (this.activeDay === 'all' || this.activeDay === cardDay) {
+            card.classList.remove('is-hidden-mobile');
+          } else {
+            card.classList.add('is-hidden-mobile');
+          }
+        });
       });
     });
 
