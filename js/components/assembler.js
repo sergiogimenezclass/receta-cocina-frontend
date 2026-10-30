@@ -1034,34 +1034,25 @@ export class AssemblerComponent {
         let recognition = null;
         let isListening = false;
         let silenceTimer = null;
-        let hasSubmitted = false;
         let accumulatedTranscript = '';
 
-        const submitTranscript = () => {
-          if (hasSubmitted) return;
+        const stopListening = () => {
           if (silenceTimer) clearTimeout(silenceTimer);
-          const text = (accumulatedTranscript || autoInput.value).trim();
-          if (text) {
-            hasSubmitted = true;
-            if (recognition) {
-              try { recognition.stop(); } catch (_) {}
-            }
-            showToast(`🎙️ Detectado: "${text}"`, 'info', 2000);
-            const formAuto = this.container.querySelector('#formAutoSelectIngredients');
-            if (formAuto) {
-              formAuto.dispatchEvent(new Event('submit', { cancelable: true }));
-            }
+          if (recognition) {
+            try { recognition.stop(); } catch (_) {}
           }
+          isListening = false;
+          btnVoice.classList.remove('listening');
+          btnVoice.title = 'Dictar ingredientes por voz';
         };
 
         btnVoice.addEventListener('click', async () => {
-          if (isListening && recognition) {
-            submitTranscript();
+          if (isListening) {
+            stopListening();
             return;
           }
 
           try {
-            hasSubmitted = false;
             accumulatedTranscript = '';
             recognition = new SpeechRecognition();
             const voiceLang = await storage.getVoiceLanguage();
@@ -1073,8 +1064,8 @@ export class AssemblerComponent {
             recognition.onstart = () => {
               isListening = true;
               btnVoice.classList.add('listening');
-              btnVoice.title = 'Escuchando... Tocá el mic para enviar';
-              showToast('🎙️ Escuchando... decí lo que tenés en la heladera', 'info', 3000);
+              btnVoice.title = 'Escuchando... Tocá para detener';
+              showToast('🎙️ Escuchando... decí tus ingredientes', 'info', 2500);
             };
 
             recognition.onresult = (event) => {
@@ -1098,11 +1089,12 @@ export class AssemblerComponent {
                 autoInput.value = liveText;
               }
 
-              // Esperar 1.3 segundos de silencio continuo para auto-enviar
+              // Si hay silencio por 2.5 segundos, cerrar el micrófono pero NO enviar el formulario
               if (silenceTimer) clearTimeout(silenceTimer);
               silenceTimer = setTimeout(() => {
-                submitTranscript();
-              }, 1300);
+                stopListening();
+                showToast('🎙️ Dictado listo. Tocá "Armar" para buscar', 'info', 2500);
+              }, 2500);
             };
 
             recognition.onerror = (event) => {
@@ -1113,24 +1105,17 @@ export class AssemblerComponent {
               } else if (event.error !== 'no-speech') {
                 showToast(`Error de micrófono: ${event.error}`, 'warning', 3000);
               }
+              stopListening();
             };
 
             recognition.onend = () => {
-              isListening = false;
-              btnVoice.classList.remove('listening');
-              btnVoice.title = 'Dictar ingredientes por voz';
-              if (silenceTimer) clearTimeout(silenceTimer);
-              // Si el motor se detuvo pero quedó texto sin enviar, enviarlo
-              if (autoInput.value.trim() && !hasSubmitted) {
-                submitTranscript();
-              }
+              stopListening();
             };
 
             recognition.start();
           } catch (err) {
             console.error('Error al inicializar SpeechRecognition:', err);
-            isListening = false;
-            btnVoice.classList.remove('listening');
+            stopListening();
           }
         });
       }
