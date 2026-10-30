@@ -879,15 +879,21 @@ export class AssemblerComponent {
     // Diccionario de grupos gastronómicos (hiperónimos y sinónimos)
     const SYNONYM_GROUPS = {
       Proteina: {
-        carne: ['bife', 'magro', 'carne', 'picada', 'molida', 'vacuno', 'res', 'ternera', 'corte', 'milanesa', 'hamburguesa'],
+        milanesa: ['milanesa', 'milanesas', 'milanga', 'escalope', 'escalopes', 'apanado', 'empanada', 'empanadas'],
+        carne: ['bife', 'magro', 'carne', 'picada', 'molida', 'vacuno', 'res', 'ternera', 'corte', 'hamburguesa'],
         asado: ['asado', 'tira', 'costillar', 'parrilla'],
         tortuguita: ['tortuguita', 'tortuga'],
         palomita: ['palomita', 'paloma'],
         pollo: ['pollo', 'pechuga', 'suprema', 'muslo', 'pata', 'pavo', 'ave'],
         huevo: ['huevo', 'huevos', 'pasado', 'revuelto', 'duro', 'cocido', 'omelette', 'clara', 'yema'],
         pescado: ['atun', 'pescado', 'merluza', 'tilapia', 'filete', 'lomo', 'salmon'],
+        caballa: ['caballa', 'sardina', 'sardinas'],
         cerdo: ['cerdo', 'costilla', 'costillita', 'chancho', 'puerco'],
-        tofu: ['tofu', 'soya', 'soja', 'seitan']
+        bondiola: ['bondiola', 'bondiolita', 'solomillo', 'carre'],
+        queso: ['queso', 'port salut', 'portsalut', 'cremoso', 'cuartirolo', 'ricota', 'mozzarella', 'muzzarella', 'magro'],
+        tofu: ['tofu', 'seitan'],
+        soja: ['soja', 'texturizada', 'soya'],
+        higado: ['higado', 'higaditos', 'viscera', 'visceras']
       },
       Vegetal: {
         wok: ['wok', 'bandejita', 'bandejitas', 'salteado', 'salteada', 'verduras', 'mixto', 'mixtos'],
@@ -926,7 +932,7 @@ export class AssemblerComponent {
         aceitunas: ['aceituna', 'aceitunas', 'olivas'],
         frutos: ['frutos', 'secos', 'nueces', 'almendras'],
         semillas: ['semillas', 'chia', 'girasol', 'sesamo'],
-        queso: ['queso', 'parmesano', 'sardo', 'rallado', 'reggianito']
+        queso: ['parmesano', 'sardo', 'rallado', 'reggianito', 'grana', 'provolone']
       }
     };
 

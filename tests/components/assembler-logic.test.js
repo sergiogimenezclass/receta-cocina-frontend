@@ -131,4 +131,31 @@ test('AssemblerComponent - deterministicAutoSelect no confunde "pata" con "palta
   assert.strictEqual(assembler.selected.Grasa.length, 0, 'No debe asignar Palta como Grasa al procesar "pata"');
 });
 
+test('AssemblerComponent - deterministicAutoSelect detecta correctamente nuevas proteínas cotidianas argentinas', async () => {
+  const assembler = new AssemblerComponent('testContainer');
+  const components = await storage.getComponents();
 
+  // Test 1: Milanesa
+  assembler.deterministicAutoSelect('tengo una milanesa con pure de papas', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_14', 'Debe detectar Milanesa');
+
+  // Test 2: Bondiola de cerdo
+  assembler.deterministicAutoSelect('bife de bondiola con ensalada de rucula', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_15', 'Debe detectar Bondiola');
+
+  // Test 3: Queso Port Salut
+  assembler.deterministicAutoSelect('queso port salut con tomate', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_16', 'Debe detectar Queso Fresco / Port Salut');
+
+  // Test 4: Caballa en lata
+  assembler.deterministicAutoSelect('lata de caballa con arroz', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_17', 'Debe detectar Caballa');
+
+  // Test 5: Soja texturizada
+  assembler.deterministicAutoSelect('soja texturizada salteada con fideos', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_18', 'Debe detectar Soja texturizada');
+
+  // Test 6: Bife de hígado
+  assembler.deterministicAutoSelect('bife de higado con cebolla', components);
+  assert.strictEqual(assembler.selected.Proteina[0], 'comp_prot_19', 'Debe detectar Hígado');
+});

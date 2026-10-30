@@ -109,6 +109,54 @@ export const INITIAL_SEED = {
       metodo_coccion: "Dorar en cubos con salsa de soja",
       icono: "🧈"
     },
+    {
+      id: "comp_prot_14",
+      nombre: "Milanesa (Carne o Pollo)",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 12,
+      metodo_coccion: "Al horno en asadera aceitada o a la sartén",
+      icono: "🥩"
+    },
+    {
+      id: "comp_prot_15",
+      nombre: "Bondiola o Solomillo de Cerdo",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 10,
+      metodo_coccion: "En bifes a la plancha caliente con limón o mostaza",
+      icono: "🥩"
+    },
+    {
+      id: "comp_prot_16",
+      nombre: "Queso Fresco / Port Salut / Ricota",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 1,
+      metodo_coccion: "En cubos para ensalada o gratinado sobre vegetales",
+      icono: "🧀"
+    },
+    {
+      id: "comp_prot_17",
+      nombre: "Caballa en Lata (al Natural o Aceite)",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 0,
+      metodo_coccion: "Escurrir de la lata y servir directo en ensalada",
+      icono: "🥫"
+    },
+    {
+      id: "comp_prot_18",
+      nombre: "Soja Texturizada Salteada",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 8,
+      metodo_coccion: "Hidratar en agua tibia y dorar en sartén con condimentos",
+      icono: "🫘"
+    },
+    {
+      id: "comp_prot_19",
+      nombre: "Bife de Hígado Encebollado",
+      categoria: "Proteina",
+      tiempo_preparacion_min: 6,
+      metodo_coccion: "Plancha bien caliente 2-3 min por lado con orégano y cebolla",
+      icono: "🥩"
+    },
 
     // VEGETALES
     {
