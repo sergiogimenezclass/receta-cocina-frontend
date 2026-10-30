@@ -1561,7 +1561,8 @@
 
 /* Barra de Chat Inferior (Bottom-sheet integrado estilo Mockup) */
 .v2-bottom-chat-bar {
-  position: static;
+  position: relative;
+  overflow: hidden;
   width: 100%;
   background: #ffffff;
   border-top: 1px solid #e1ddda;
@@ -1582,7 +1583,8 @@
 
 @media (min-width: 1024px) {
   .v2-bottom-chat-bar {
-    position: static;
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -1749,6 +1751,63 @@
 .btn-chat-submit:hover {
   background: #30261f;
   transform: scale(1.05);
+}
+
+.btn-chat-submit.is-loading {
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.chat-submit-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: submitSpin 0.75s linear infinite;
+  display: block;
+}
+
+@keyframes submitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Barra de Progreso Lineal Indeterminada (Opción 2) */
+.chat-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.chat-progress-bar.is-active {
+  opacity: 1;
+  background: rgba(73, 59, 49, 0.12);
+}
+
+.chat-progress-bar.is-active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -40%;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, #493b31, #8d5b0c, transparent);
+  animation: indeterminateProgress 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes indeterminateProgress {
+  0% { left: -40%; width: 40%; }
+  50% { width: 60%; }
+  100% { left: 100%; width: 30%; }
 }
 
 /* ==========================================================================

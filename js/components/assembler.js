@@ -130,6 +130,7 @@ export class AssemblerComponent {
 
           <!-- BARRA DE CHAT INTEGRADA CON MICRÓFONO Y TIP DEL CHEF -->
           <div class="v2-bottom-chat-bar">
+            <div class="chat-progress-bar" id="chatProgressBar" aria-hidden="true"></div>
             <div class="grabber" aria-hidden="true"></div>
             <div class="v2-bottom-chat-inner">
               ${this.autoMatchNotification ? `
@@ -1128,17 +1129,39 @@ export class AssemblerComponent {
         e.preventDefault();
         const inputVal = autoInput ? autoInput.value : '';
         const submitBtn = formAuto.querySelector('button[type="submit"]');
-        const prevText = submitBtn ? submitBtn.innerHTML : '';
+        const progressBar = this.container.querySelector('#chatProgressBar');
+        const prevHtml = submitBtn ? submitBtn.innerHTML : '';
+        const prevPlaceholder = autoInput ? autoInput.placeholder : '';
+
         if (submitBtn) {
           submitBtn.disabled = true;
-          submitBtn.innerHTML = '⌛ Armando...';
+          submitBtn.classList.add('is-loading');
+          submitBtn.innerHTML = '<div class="chat-submit-spinner" aria-hidden="true"></div>';
+          submitBtn.setAttribute('aria-label', 'Armando plato...');
         }
+        if (autoInput) {
+          autoInput.disabled = true;
+          autoInput.placeholder = 'Analizando ingredientes y combinaciones...';
+        }
+        if (progressBar) {
+          progressBar.classList.add('is-active');
+        }
+
         try {
           await this.autoSelectByIngredientsText(inputVal);
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = prevText;
+            submitBtn.classList.remove('is-loading');
+            submitBtn.innerHTML = prevHtml;
+            submitBtn.setAttribute('aria-label', 'Enviar ingredientes');
+          }
+          if (autoInput) {
+            autoInput.disabled = false;
+            autoInput.placeholder = prevPlaceholder;
+          }
+          if (progressBar) {
+            progressBar.classList.remove('is-active');
           }
         }
         await this.render();
