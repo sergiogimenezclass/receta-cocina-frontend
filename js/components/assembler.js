@@ -144,7 +144,7 @@ export class AssemblerComponent {
                 <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
                 </button>
-                <input type="text" id="autoIngredientsInput" class="v2-chat-input" placeholder="Decime qué tenés en la heladera..." value="${this.escapeHtml(this.autoQueryText)}" autocomplete="off">
+                <textarea id="autoIngredientsInput" class="v2-chat-input" rows="1" placeholder="Decime qué tenés en la heladera..." autocomplete="off">${this.escapeHtml(this.autoQueryText)}</textarea>
                 <button type="submit" class="btn btn-chat-submit" aria-label="Enviar ingredientes">
                   <svg viewBox="0 0 24 24" fill="none" width="20" height="20" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 3.5 21 12 4 20.5l2.1-7.1L15 12l-8.9-1.4L4 3.5Z"/></svg>
                 </button>
@@ -1009,7 +1009,40 @@ export class AssemblerComponent {
     const v2Container = this.container.querySelector('.assembler-v2-container');
     const autoInput = this.container.querySelector('#autoIngredientsInput');
 
-    // 1. Colapso reactivo del plato al enfocar el input de chat (reserva de espacio para teclado móvil)
+    // 1. Manejo reactivo de Textarea Auto-expandible (estilo Gemini / ChatGPT)
+    if (autoInput) {
+      const adjustHeight = () => {
+        autoInput.style.height = 'auto';
+        const scrollH = autoInput.scrollHeight;
+        const maxHeight = 120; // Límite máximo de ~4 a 5 líneas
+        if (scrollH > maxHeight) {
+          autoInput.style.height = `${maxHeight}px`;
+          autoInput.style.overflowY = 'auto';
+        } else {
+          autoInput.style.height = `${Math.max(scrollH, 38)}px`;
+          autoInput.style.overflowY = 'hidden';
+        }
+      };
+
+      autoInput.addEventListener('input', adjustHeight);
+      requestAnimationFrame(adjustHeight);
+
+      // Enviar con Enter (sin Shift) en pantallas de escritorio; Shift+Enter agrega salto de línea
+      autoInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          const isMobile = window.innerWidth <= 768;
+          if (!isMobile) {
+            e.preventDefault();
+            const formAuto = this.container.querySelector('#formAutoSelectIngredients');
+            if (formAuto) {
+              formAuto.dispatchEvent(new Event('submit', { cancelable: true }));
+            }
+          }
+        }
+      });
+    }
+
+    // Colapso reactivo del plato al enfocar el input de chat (reserva de espacio para teclado móvil)
     if (autoInput && v2Container) {
       autoInput.addEventListener('focus', () => {
         v2Container.classList.add('chat-focused');
@@ -1086,6 +1119,7 @@ export class AssemblerComponent {
               const liveText = (accumulatedTranscript + (interim ? ' ' + interim : '')).trim();
               if (liveText) {
                 autoInput.value = liveText;
+                autoInput.dispatchEvent(new Event('input'));
               }
 
               // Si hay silencio por 2.5 segundos, cerrar el micrófono pero NO enviar el formulario
