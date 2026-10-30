@@ -377,6 +377,14 @@ export const INITIAL_SEED = {
       metodo_coccion: "Lavar y hervir 10 min a fuego bajo",
       icono: "🌾"
     },
+    {
+      id: "comp_carb_9",
+      nombre: "Avena (Arrollada)",
+      categoria: "Carbohidrato",
+      tiempo_preparacion_min: 2,
+      metodo_coccion: "Cocinar 2 min en líquido caliente o consumir directa",
+      icono: "🥣"
+    },
 
     // GRASAS
     {

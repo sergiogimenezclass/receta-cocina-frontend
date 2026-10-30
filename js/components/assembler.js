@@ -924,7 +924,8 @@ export class AssemblerComponent {
         pasta: ['fideos', 'fideo', 'pasta', 'pastas', 'tallarines', 'spaghetti'],
         choclo: ['choclo', 'choclos', 'maiz', 'elote'],
         legumbres: ['lenteja', 'lentejas', 'poroto', 'porotos', 'frijol', 'frijoles', 'garbanzo', 'garbanzos'],
-        quinoa: ['quinoa', 'graneada']
+        quinoa: ['quinoa', 'graneada'],
+        avena: ['avena', 'arrollada', 'porridge', 'oatmeal']
       },
       Grasa: {
         palta: ['palta', 'paltas', 'aguacate'],

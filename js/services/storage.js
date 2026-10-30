@@ -20,14 +20,14 @@ class StorageService {
 
   _initSeedIfNeeded() {
     const currentSeedVersion = localStorage.getItem('mpb_seed_version');
-    if (currentSeedVersion !== 'v6_grasas') {
+    if (currentSeedVersion !== 'v7_avena') {
       const existing = JSON.parse(localStorage.getItem(KEYS.COMPONENTS) || '[]');
       // Preservar componentes personalizados creados por el usuario
       const customComps = existing.filter(c => !c.id.startsWith('comp_prot_') && !c.id.startsWith('comp_veg_') && !c.id.startsWith('comp_carb_') && !c.id.startsWith('comp_fat_'));
       localStorage.setItem(KEYS.COMPONENTS, JSON.stringify([...INITIAL_SEED.components, ...customComps]));
       localStorage.setItem(KEYS.PLATES, JSON.stringify(INITIAL_SEED.plates));
       localStorage.setItem(KEYS.WEEKLY_PLAN, JSON.stringify(INITIAL_SEED.weeklyPlan));
-      localStorage.setItem('mpb_seed_version', 'v6_grasas');
+      localStorage.setItem('mpb_seed_version', 'v7_avena');
     }
 
     if (!localStorage.getItem(KEYS.COMPONENTS)) {

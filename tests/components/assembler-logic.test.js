@@ -173,3 +173,12 @@ test('AssemblerComponent - deterministicAutoSelect detecta correctamente grasas 
   assert.strictEqual(assembler.selected.Grasa[0], 'comp_fat_8', 'Debe detectar Crema de Leche como Grasa');
 });
 
+test('AssemblerComponent - deterministicAutoSelect detecta correctamente Avena como Carbohidrato', async () => {
+  const assembler = new AssemblerComponent('testContainer');
+  const components = await storage.getComponents();
+
+  assembler.deterministicAutoSelect('bowl de avena arrollada con frutos secos', components);
+  assert.strictEqual(assembler.selected.Carbohidrato[0], 'comp_carb_9', 'Debe detectar Avena como Carbohidrato');
+});
+
+
