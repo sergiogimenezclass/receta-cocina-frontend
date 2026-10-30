@@ -81,3 +81,19 @@ test('Contrato DOM index.html - Estructura base requerida por app.js', () => {
   assert.ok(indexHtml.includes('id="btnExportJSON"'), 'Falta botón id="btnExportJSON"');
   assert.ok(indexHtml.includes('id="btnResetSeed"'), 'Falta botón id="btnResetSeed"');
 });
+
+test('Contrato DOM LibraryComponent - Barra de filtros por macronutrientes responsive', async () => {
+  const { LibraryComponent } = await import('../../js/components/library.js');
+  const library = new LibraryComponent('library');
+  await library.render();
+  const html = library.container.innerHTML;
+
+  assert.ok(html.includes('class="library-filter-bar"'), 'Debe incluir contenedor .library-filter-bar');
+  assert.ok(html.includes('data-cat="ALL"'), 'Debe incluir filtro ALL');
+  assert.ok(html.includes('data-cat="Proteina"'), 'Debe incluir filtro Proteina');
+  assert.ok(html.includes('data-cat="Vegetal"'), 'Debe incluir filtro Vegetal');
+  assert.ok(html.includes('data-cat="Carbohidrato"'), 'Debe incluir filtro Carbohidrato');
+  assert.ok(html.includes('data-cat="Grasa"'), 'Debe incluir filtro Grasa');
+  assert.ok(html.includes('filter-cat-btn active'), 'El botón inicial debe tener clase active');
+});
+

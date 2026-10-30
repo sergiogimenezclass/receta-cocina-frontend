@@ -44,12 +44,12 @@ export class LibraryComponent {
       </div>
 
       <!-- Filtros por categoría de bloque -->
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; overflow-x: auto; padding-bottom: 0.5rem;">
-        <button class="btn btn-secondary btn-sm filter-cat-btn ${this.activeFilterCategory === 'ALL' ? 'active' : ''}" data-cat="ALL">Todos los Bloques</button>
-        <button class="btn btn-secondary btn-sm filter-cat-btn ${this.activeFilterCategory === 'Proteina' ? 'active' : ''}" data-cat="Proteina">🥩 Proteínas</button>
-        <button class="btn btn-secondary btn-sm filter-cat-btn ${this.activeFilterCategory === 'Vegetal' ? 'active' : ''}" data-cat="Vegetal">🥦 Vegetales</button>
-        <button class="btn btn-secondary btn-sm filter-cat-btn ${this.activeFilterCategory === 'Carbohidrato' ? 'active' : ''}" data-cat="Carbohidrato">🥔 Carbohidratos</button>
-        <button class="btn btn-secondary btn-sm filter-cat-btn ${this.activeFilterCategory === 'Grasa' ? 'active' : ''}" data-cat="Grasa">🥑 Grasas</button>
+      <div class="library-filter-bar">
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'ALL' ? 'active' : ''}" data-cat="ALL">Todos los Bloques</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Proteina' ? 'active' : ''}" data-cat="Proteina">🥩 Proteínas</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Vegetal' ? 'active' : ''}" data-cat="Vegetal">🥦 Vegetales</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Carbohidrato' ? 'active' : ''}" data-cat="Carbohidrato">🥔 Carbohidratos</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Grasa' ? 'active' : ''}" data-cat="Grasa">🥑 Grasas</button>
       </div>
 
       <!-- Grilla de Componentes -->
