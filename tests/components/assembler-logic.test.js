@@ -119,3 +119,16 @@ test('AssemblerComponent - hasCategorySelected y getQuadrantEmoji para activaci�
   assert.strictEqual(assembler.getQuadrantEmoji('Proteina', components, '🥩'), '🍗');
 });
 
+test('AssemblerComponent - deterministicAutoSelect no confunde "pata" con "palta"', async () => {
+  const assembler = new AssemblerComponent('testContainer');
+  const components = await storage.getComponents();
+
+  assembler.deterministicAutoSelect('papas, cebolla, rabanito, pata de pollo', components);
+
+  assert.ok(assembler.selected.Proteina.length > 0, 'Debe detectar pollo como Proteína');
+  assert.ok(assembler.selected.Vegetal.length > 0, 'Debe detectar cebolla como Vegetal');
+  assert.ok(assembler.selected.Carbohidrato.length > 0, 'Debe detectar papas como Carbohidrato');
+  assert.strictEqual(assembler.selected.Grasa.length, 0, 'No debe asignar Palta como Grasa al procesar "pata"');
+});
+
+

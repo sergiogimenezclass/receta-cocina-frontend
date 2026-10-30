@@ -913,7 +913,7 @@ export class AssemblerComponent {
         quinoa: ['quinoa', 'graneada']
       },
       Grasa: {
-        palta: ['palta', 'paltas', 'aguacate', 'panca', 'panta', 'palte'],
+        palta: ['palta', 'paltas', 'aguacate'],
         aceite: ['aceite', 'oliva', 'extra'],
         aceitunas: ['aceituna', 'aceitunas', 'olivas'],
         frutos: ['frutos', 'secos', 'nueces', 'almendras'],
@@ -955,13 +955,15 @@ export class AssemblerComponent {
             score += 18;
           }
 
-          // C. Distancia fuzzy (erratas de tipeo como ceboolla -> cebolla) solo contra las palabras del NOMBRE
+          // C. Distancia fuzzy solo para palabras de 5+ letras (evita que palabras de 4 letras como "pata" colisionen con "palta")
           compNameWords.forEach(cw => {
             const cwClean = collapseDuplicates(cw);
-            if (cwClean.length >= 4 && token.length >= 4) {
+            if (cwClean.length >= 5 && token.length >= 5) {
               const dist = levDistance(token, cwClean);
-              if (dist <= 2) {
+              if (dist <= 1) {
                 score += 20;
+              } else if (cwClean.length >= 7 && token.length >= 6 && dist <= 2) {
+                score += 15;
               }
             }
           });
@@ -969,7 +971,12 @@ export class AssemblerComponent {
           // D. Búsqueda en mapa de sinónimos y grupos gastronómicos de la categoría
           const catSynonyms = SYNONYM_GROUPS[cat] || {};
           Object.values(catSynonyms).forEach(groupKeywords => {
-            const tokenMatchesGroup = groupKeywords.some(kw => kw === token || kw === rawToken || getStem(kw) === stem || (kw.length >= 4 && levDistance(token, kw) <= 2));
+            const tokenMatchesGroup = groupKeywords.some(kw => {
+              if (kw === token || kw === rawToken || getStem(kw) === stem) return true;
+              if (kw.length >= 5 && token.length >= 5 && levDistance(token, kw) <= 1) return true;
+              if (kw.length >= 7 && token.length >= 6 && levDistance(token, kw) <= 2) return true;
+              return false;
+            });
             if (tokenMatchesGroup) {
               const compMatchesGroup = groupKeywords.some(kw => compFullText.includes(kw));
               if (compMatchesGroup) {
