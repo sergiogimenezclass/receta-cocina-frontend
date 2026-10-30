@@ -1112,6 +1112,7 @@ export class AssemblerComponent {
             accumulatedTranscript = '';
             recognition = new SpeechRecognition();
             const voiceLang = await storage.getVoiceLanguage();
+            const silenceTimeoutMs = await storage.getVoiceSilenceTimeout();
             recognition.lang = voiceLang || 'es-ES';
             recognition.continuous = true;
             recognition.interimResults = true;
@@ -1146,12 +1147,15 @@ export class AssemblerComponent {
                 autoInput.dispatchEvent(new Event('input'));
               }
 
-              // Si hay silencio por 2.5 segundos, cerrar el micrófono pero NO enviar el formulario
+              // Si hay silencio por el tiempo configurado (por defecto 8s), cerrar el micrófono pero NO enviar el formulario
               if (silenceTimer) clearTimeout(silenceTimer);
-              silenceTimer = setTimeout(() => {
-                stopListening();
-                showToast('🎙️ Dictado listo. Tocá "Armar" para buscar', 'info', 2500);
-              }, 2500);
+              const timeout = typeof silenceTimeoutMs === 'number' ? silenceTimeoutMs : 8000;
+              if (timeout > 0) {
+                silenceTimer = setTimeout(() => {
+                  stopListening();
+                  showToast('🎙️ Dictado listo. Tocá "Armar" para buscar', 'info', 2500);
+                }, timeout);
+              }
             };
 
             recognition.onerror = (event) => {

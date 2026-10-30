@@ -87,3 +87,20 @@ test('StorageService - Idioma de Dictado por Voz (getVoiceLanguage y saveVoiceLa
   assert.strictEqual(await storage.getVoiceLanguage(), 'es-ES');
 });
 
+test('StorageService - Tiempo de Silencio de Micrófono (getVoiceSilenceTimeout y saveVoiceSilenceTimeout)', async () => {
+  localStorage.removeItem('mpb_voice_silence_timeout_v1');
+  const defaultTimeout = await storage.getVoiceSilenceTimeout();
+  assert.strictEqual(defaultTimeout, 8000, 'Por defecto la pausa de silencio debe ser 8000 ms (8 segundos)');
+
+  const savedTimeout = await storage.saveVoiceSilenceTimeout(12000);
+  assert.strictEqual(savedTimeout, 12000);
+
+  const retrievedTimeout = await storage.getVoiceSilenceTimeout();
+  assert.strictEqual(retrievedTimeout, 12000, 'Debe persistir el tiempo configurado');
+
+  // Modo manual (0 ms)
+  await storage.saveVoiceSilenceTimeout(0);
+  assert.strictEqual(await storage.getVoiceSilenceTimeout(), 0);
+});
+
+

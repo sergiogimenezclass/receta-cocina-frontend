@@ -7,6 +7,7 @@ const KEYS = {
   API_KEY: 'mpb_gemini_api_key_v1',
   STABILITY_API_KEY: 'mpb_stability_api_key_v1',
   VOICE_LANG: 'mpb_voice_lang_v1',
+  VOICE_SILENCE_TIMEOUT: 'mpb_voice_silence_timeout_v1',
 };
 
 /**
@@ -96,6 +97,17 @@ class StorageService {
     const validLang = (lang || 'es-ES').trim();
     localStorage.setItem(KEYS.VOICE_LANG, validLang);
     return validLang;
+  }
+
+  async getVoiceSilenceTimeout() {
+    const val = localStorage.getItem(KEYS.VOICE_SILENCE_TIMEOUT);
+    return val !== null ? parseInt(val, 10) : 8000;
+  }
+
+  async saveVoiceSilenceTimeout(ms) {
+    const validMs = typeof ms === 'number' ? ms : (parseInt(ms, 10) || 0);
+    localStorage.setItem(KEYS.VOICE_SILENCE_TIMEOUT, validMs.toString());
+    return validMs;
   }
 
   // --- COMPONENTES ---

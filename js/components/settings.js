@@ -15,6 +15,7 @@ export class SettingsComponent {
     const apiKey = await storage.getApiKey();
     const stabilityApiKey = await storage.getStabilityApiKey();
     const voiceLang = await storage.getVoiceLanguage();
+    const voiceSilenceTimeout = await storage.getVoiceSilenceTimeout();
 
     this.container.innerHTML = `
       <div style="margin-bottom: 2rem;">
@@ -124,6 +125,24 @@ export class SettingsComponent {
           </div>
           <div id="voiceLangFeedback" style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-secondary);">
             Idioma predeterminado: <strong>Español (es-ES)</strong>. Se aplicará inmediatamente cada vez que toques el micrófono en el ensamblador.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.25rem; margin-bottom: 0.75rem;">
+          <label for="selectVoiceSilenceTimeout" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">
+            ⏱️ Pausa de silencio antes de cerrar el micrófono:
+          </label>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <select id="selectVoiceSilenceTimeout" class="form-control" style="flex: 1; min-width: 260px; padding: 0.6rem 0.85rem; border-radius: var(--radius-md); font-size: 0.95rem; cursor: pointer;">
+              <option value="3000" ${voiceSilenceTimeout === 3000 ? 'selected' : ''}>⚡ Rápido (3 segundos)</option>
+              <option value="5000" ${voiceSilenceTimeout === 5000 ? 'selected' : ''}>⏳ Normal (5 segundos)</option>
+              <option value="8000" ${voiceSilenceTimeout === 8000 ? 'selected' : ''}>🐢 Muy pausado (8 segundos - Ideal para hablar con pausas)</option>
+              <option value="12000" ${voiceSilenceTimeout === 12000 ? 'selected' : ''}>🦥 Extendido (12 segundos)</option>
+              <option value="0" ${voiceSilenceTimeout === 0 ? 'selected' : ''}>🛑 Solo manual (no se corta por silencio, tocar 🎙️ para detener)</option>
+            </select>
+          </div>
+          <div id="voiceSilenceFeedback" style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-secondary);">
+            Configurado en: <strong>${voiceSilenceTimeout === 0 ? 'Solo manual' : (voiceSilenceTimeout / 1000) + ' segundos'}</strong>. Evita que el dictado se corte mientras pensás los ingredientes.
           </div>
         </div>
       </div>
@@ -341,6 +360,21 @@ export class SettingsComponent {
         showToast(`🎙️ Idioma de voz: ${langLabel}`, 'success', 2500);
         if (voiceLangFeedback) {
           voiceLangFeedback.innerHTML = `✅ Idioma activo: <strong>${langLabel}</strong> (${newLang}). Guardado en configuración.`;
+        }
+      });
+    }
+
+    // Configuración de Pausa de Silencio del Micrófono
+    const selectVoiceSilenceTimeout = this.container.querySelector('#selectVoiceSilenceTimeout');
+    const voiceSilenceFeedback = this.container.querySelector('#voiceSilenceFeedback');
+    if (selectVoiceSilenceTimeout) {
+      selectVoiceSilenceTimeout.addEventListener('change', async (e) => {
+        const newTimeout = parseInt(e.target.value, 10);
+        await storage.saveVoiceSilenceTimeout(newTimeout);
+        const label = newTimeout === 0 ? 'Solo manual (sin corte por silencio)' : `${newTimeout / 1000} segundos de pausa`;
+        showToast(`🎙️ Pausa de micrófono: ${label}`, 'success', 2500);
+        if (voiceSilenceFeedback) {
+          voiceSilenceFeedback.innerHTML = `✅ Pausa activa: <strong>${label}</strong>. Guardado en configuración.`;
         }
       });
     }
