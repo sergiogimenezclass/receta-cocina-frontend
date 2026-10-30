@@ -135,7 +135,7 @@ export class AssemblerComponent {
             <div class="v2-bottom-chat-inner">
               ${this.autoMatchNotification ? `
                 <div class="chef-callout-pill" id="chefCalloutPill">
-                  <span>${this.autoMatchNotification}</span>
+                  <div class="chef-callout-text">${this.autoMatchNotification}</div>
                   <button type="button" class="chef-callout-close" id="btnCloseChefCallout" title="Descartar">&times;</button>
                 </div>
               ` : ''}
@@ -803,11 +803,10 @@ export class AssemblerComponent {
           }
 
           if (aiResult.sugerencia_opcional) {
-            this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">${this.escapeHtml(aiResult.sugerencia_opcional)}</div>`;
+            this.autoMatchNotification = `💡 ${this.escapeHtml(aiResult.sugerencia_opcional)}`;
           } else {
             this.autoMatchNotification = '';
           }
-          showToast('Plato armado con éxito', 'success');
           return;
         }
       }
@@ -996,13 +995,12 @@ export class AssemblerComponent {
       this.plateName = '';
       const missingCats = categories.filter(cat => !this.selected[cat] || this.selected[cat].length === 0);
       if (missingCats.length > 0) {
-        this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: var(--color-carb-bg); border: 1px dashed var(--color-carb-border); border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--color-carb); font-weight: 500;">💡 <strong>Sugerencia opcional:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo en las columnas si tenés a mano en la cocina.</div>`;
+        this.autoMatchNotification = `💡 <strong>Sugerencia:</strong> No detectamos ${missingCats.join(', ')}. Podés sumarlo tocando el cuadrante.`;
       } else {
         this.autoMatchNotification = '';
       }
-      showToast('Plato armado con éxito', 'info');
     } else {
-      this.autoMatchNotification = `<div style="padding: 0.65rem 0.85rem; background: #fee2e2; border: 1px solid #fca5a5; border-radius: var(--radius-sm); font-size: 0.825rem; color: #b91c1c; font-weight: 500;">⚠️ No se encontraron coincidencias en la biblioteca para "${this.escapeHtml(queryText)}". Revisá que los nombres estén cargados en la Biblioteca.</div>`;
+      this.autoMatchNotification = `⚠️ No se encontraron coincidencias para "${this.escapeHtml(queryText)}".`;
     }
   }
 

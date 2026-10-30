@@ -625,6 +625,16 @@
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+  #toast-container {
+    top: calc(54px + env(safe-area-inset-top, 0px) + 8px);
+    bottom: auto;
+    left: 1rem;
+    right: 1rem;
+    align-items: center;
+  }
+}
+
 .toast {
   display: flex;
   align-items: center;
@@ -642,6 +652,14 @@
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@media (max-width: 768px) {
+  .toast {
+    max-width: 100%;
+    width: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .toast--visible {
@@ -1607,18 +1625,23 @@
 
 /* Píldora de Tip Efímero del Chef */
 .chef-callout-pill {
-  background: #fdf8eb;
+  width: calc(100% - 24px);
+  max-width: 440px;
+  margin: 0 auto 8px auto;
+  background: #fffdf5;
   border: 1px solid #f6e0b5;
-  border-radius: var(--radius-full);
-  padding: 0.35rem 0.85rem;
+  border-radius: 12px;
+  padding: 8px 12px;
   font-size: 0.8rem;
+  line-height: 1.4;
   color: #8d5b0c;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.45rem;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(141, 91, 12, 0.06);
   animation: slideUpFade 0.2s ease-out;
+  box-sizing: border-box;
 }
 
 @keyframes slideUpFade {
@@ -1633,15 +1656,29 @@
   }
 }
 
+.chef-callout-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
 .chef-callout-close {
   background: transparent;
   border: none;
   color: #8d5b0c;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 0 0.2rem;
+  padding: 0 2px;
   line-height: 1;
+  align-self: flex-start;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+
+.chef-callout-close:hover {
+  opacity: 1;
 }
 
 /* Formulario de Chat / Entrada de Voz */
