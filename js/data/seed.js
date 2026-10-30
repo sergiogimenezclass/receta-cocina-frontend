@@ -191,6 +191,78 @@ export const INITIAL_SEED = {
       metodo_coccion: "Cortar en pluma o juliana y dorar a fuego medio",
       icono: "🧅"
     },
+    {
+      id: "comp_veg_11",
+      nombre: "Morrón / Pimiento (Rojo o Verde)",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 5,
+      metodo_coccion: "Salteado en tiras, asado a la plancha o en ensalada",
+      icono: "🫑"
+    },
+    {
+      id: "comp_veg_12",
+      nombre: "Berenjena a la Plancha o Asada",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 8,
+      metodo_coccion: "En rodajas doradas a la sartén o al horno con orégano",
+      icono: "🍆"
+    },
+    {
+      id: "comp_veg_13",
+      nombre: "Cebolla de Verdeo y Puerro",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 4,
+      metodo_coccion: "Salteado rápido en sartén o picado fino",
+      icono: "🧅"
+    },
+    {
+      id: "comp_veg_14",
+      nombre: "Remolacha (Rallada o Hervida)",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 2,
+      metodo_coccion: "Rallada fresca en ensalada o hervida en cubos",
+      icono: "🥗"
+    },
+    {
+      id: "comp_veg_15",
+      nombre: "Repollo (Blanco o Colorado)",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 2,
+      metodo_coccion: "Cortado fino en ensalada crujiente o salteado al wok",
+      icono: "🥬"
+    },
+    {
+      id: "comp_veg_16",
+      nombre: "Pepino en Rodajas",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 1,
+      metodo_coccion: "Lavar, cortar en rodajas finas y servir fresco",
+      icono: "🥒"
+    },
+    {
+      id: "comp_veg_17",
+      nombre: "Rabanitos en Rodajas",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 1,
+      metodo_coccion: "Lavar, laminar fino para ensalada fresca y crocante",
+      icono: "🥗"
+    },
+    {
+      id: "comp_veg_18",
+      nombre: "Coliflor al Vapor o Salteada",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 7,
+      metodo_coccion: "En ramilletes al vapor o dorada en sartén",
+      icono: "🥦"
+    },
+    {
+      id: "comp_veg_19",
+      nombre: "Chauchas al Vapor o Salteadas",
+      categoria: "Vegetal",
+      tiempo_preparacion_min: 6,
+      metodo_coccion: "Hervidas al dente con oliva o salteadas con ajo",
+      icono: "🫛"
+    },
 
     // CARBOHIDRATOS
     {
