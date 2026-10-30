@@ -1054,7 +1054,7 @@ export class AssemblerComponent {
           }
         };
 
-        btnVoice.addEventListener('click', () => {
+        btnVoice.addEventListener('click', async () => {
           if (isListening && recognition) {
             submitTranscript();
             return;
@@ -1064,7 +1064,8 @@ export class AssemblerComponent {
             hasSubmitted = false;
             accumulatedTranscript = '';
             recognition = new SpeechRecognition();
-            recognition.lang = navigator.language || 'es-ES';
+            const voiceLang = await storage.getVoiceLanguage();
+            recognition.lang = voiceLang || 'es-ES';
             recognition.continuous = true;
             recognition.interimResults = true;
             recognition.maxAlternatives = 1;

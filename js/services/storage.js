@@ -6,6 +6,7 @@ const KEYS = {
   WEEKLY_PLAN: 'mpb_weekly_plan_v1',
   API_KEY: 'mpb_gemini_api_key_v1',
   STABILITY_API_KEY: 'mpb_stability_api_key_v1',
+  VOICE_LANG: 'mpb_voice_lang_v1',
 };
 
 /**
@@ -85,6 +86,16 @@ class StorageService {
   async saveStabilityApiKey(key) {
     localStorage.setItem(KEYS.STABILITY_API_KEY, key.trim());
     return key.trim();
+  }
+
+  async getVoiceLanguage() {
+    return localStorage.getItem(KEYS.VOICE_LANG) || 'es-ES';
+  }
+
+  async saveVoiceLanguage(lang) {
+    const validLang = (lang || 'es-ES').trim();
+    localStorage.setItem(KEYS.VOICE_LANG, validLang);
+    return validLang;
   }
 
   // --- COMPONENTES ---

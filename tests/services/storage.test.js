@@ -70,3 +70,20 @@ test('StorageService - Exportación y Reseteo a valores de fábrica', async () =
   assert.strictEqual(platesTrasReset.length, INITIAL_SEED.plates.length, 
     'El reseteo debe devolver exactamente la cantidad de platos de fábrica');
 });
+
+test('StorageService - Idioma de Dictado por Voz (getVoiceLanguage y saveVoiceLanguage)', async () => {
+  localStorage.removeItem('mpb_voice_lang_v1');
+  const defaultLang = await storage.getVoiceLanguage();
+  assert.strictEqual(defaultLang, 'es-ES', 'Por defecto el idioma de dictado debe ser Español (es-ES)');
+
+  const savedLang = await storage.saveVoiceLanguage('es-AR');
+  assert.strictEqual(savedLang, 'es-AR');
+
+  const retrievedLang = await storage.getVoiceLanguage();
+  assert.strictEqual(retrievedLang, 'es-AR', 'Debe persistir el idioma configurado');
+
+  // Si se pasa vacío, debe volver a es-ES por defecto
+  await storage.saveVoiceLanguage('');
+  assert.strictEqual(await storage.getVoiceLanguage(), 'es-ES');
+});
+

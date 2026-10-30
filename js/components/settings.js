@@ -14,11 +14,12 @@ export class SettingsComponent {
   async render() {
     const apiKey = await storage.getApiKey();
     const stabilityApiKey = await storage.getStabilityApiKey();
+    const voiceLang = await storage.getVoiceLanguage();
 
     this.container.innerHTML = `
       <div style="margin-bottom: 2rem;">
         <h2 style="font-size: 1.4rem; font-weight: 700;">⚙️ Configuración y Ajustes</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">Configura tus API Keys para la inteligencia de recetas y la generación de imágenes reales con IA.</p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Configura el idioma de dictado por voz y tus API Keys para la inteligencia de recetas e imágenes IA.</p>
       </div>
 
       <!-- SECCIÓN 1: GEMINI API KEY -->
@@ -94,6 +95,36 @@ export class SettingsComponent {
             <li>Haz click en el botón <strong>"+ Create API Key"</strong>.</li>
             <li>Copia la clave generada (comienza con <code>sk-...</code>) y pégala arriba.</li>
           </ol>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 3: IDIOMA DE DICTADO POR VOZ -->
+      <div class="glass-card" style="padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;">🎙️ Idioma de Dictado por Voz (Micrófono)</h3>
+          <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: var(--color-veg-bg); color: var(--color-veg); border: 1px solid var(--color-veg-border);">
+            🌐 Web Speech API
+          </span>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label for="selectVoiceLang" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">
+            Selecciona el idioma para el reconocimiento por voz:
+          </label>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <select id="selectVoiceLang" class="form-control" style="flex: 1; min-width: 260px; padding: 0.6rem 0.85rem; border-radius: var(--radius-md); font-size: 0.95rem; cursor: pointer;">
+              <option value="es-ES" ${voiceLang === 'es-ES' ? 'selected' : ''}>🇪🇸 Español (España / Universal)</option>
+              <option value="es-AR" ${voiceLang === 'es-AR' ? 'selected' : ''}>🇦🇷 Español (Argentina)</option>
+              <option value="es-MX" ${voiceLang === 'es-MX' ? 'selected' : ''}>🇲🇽 Español (México)</option>
+              <option value="es-US" ${voiceLang === 'es-US' ? 'selected' : ''}>🇺🇸 Español (Estados Unidos / LatAm)</option>
+              <option value="en-US" ${voiceLang === 'en-US' ? 'selected' : ''}>🇺🇸 English (US)</option>
+              <option value="it-IT" ${voiceLang === 'it-IT' ? 'selected' : ''}>🇮🇹 Italiano</option>
+              <option value="pt-BR" ${voiceLang === 'pt-BR' ? 'selected' : ''}>🇧🇷 Português (Brasil)</option>
+            </select>
+          </div>
+          <div id="voiceLangFeedback" style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-secondary);">
+            Idioma predeterminado: <strong>Español (es-ES)</strong>. Se aplicará inmediatamente cada vez que toques el micrófono en el ensamblador.
+          </div>
         </div>
       </div>
 
@@ -290,7 +321,29 @@ export class SettingsComponent {
       });
     }
 
-
+    // Configuración de Idioma de Dictado por Voz
+    const selectVoiceLang = this.container.querySelector('#selectVoiceLang');
+    const voiceLangFeedback = this.container.querySelector('#voiceLangFeedback');
+    if (selectVoiceLang) {
+      selectVoiceLang.addEventListener('change', async (e) => {
+        const newLang = e.target.value;
+        await storage.saveVoiceLanguage(newLang);
+        const langNames = {
+          'es-ES': 'Español (España / Universal)',
+          'es-AR': 'Español (Argentina)',
+          'es-MX': 'Español (México)',
+          'es-US': 'Español (Estados Unidos / LatAm)',
+          'en-US': 'English (US)',
+          'it-IT': 'Italiano',
+          'pt-BR': 'Português (Brasil)'
+        };
+        const langLabel = langNames[newLang] || newLang;
+        showToast(`🎙️ Idioma de voz: ${langLabel}`, 'success', 2500);
+        if (voiceLangFeedback) {
+          voiceLangFeedback.innerHTML = `✅ Idioma activo: <strong>${langLabel}</strong> (${newLang}). Guardado en configuración.`;
+        }
+      });
+    }
   }
 
   escapeHtml(str) {
