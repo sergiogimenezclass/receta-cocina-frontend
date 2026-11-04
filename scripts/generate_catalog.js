@@ -1,0 +1,1526 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '..');
+
+// Cargar seed para validar IDs
+const seedModule = await import('../js/data/seed.js');
+const validComponentIds = new Set(seedModule.INITIAL_SEED.components.map(c => c.id));
+const compMap = new Map(seedModule.INITIAL_SEED.components.map(c => [c.id, c]));
+
+const lotes = [
+  // -------------------------------------------------------------
+  // LOTE 1: Clásicos Fundacionales Argentinos (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_01",
+    tema: "Clásicos Fundacionales Argentinos",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_01",
+        cuadrante: "superior_izq",
+        nombre: "Bife a la Plancha con Puré y Rúcula",
+        modo: "caliente",
+        proteina_id: "comp_prot_3",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Bife de chorizo o churrasco jugoso sellado a la plancha con puré de papas rústico dorado y ensalada fresca de rúcula aderezada con aceite de oliva.",
+        prompt_cuadrante: "Bife de lomo / churrasco jugoso sellado a la plancha con marcas de cocción, acompañado de puré de papas casero dorado y ensalada fresca de hojas de rúcula y tomates cherry con un chorrito de aceite de oliva virgen.",
+        tags: ["bife", "churrasco", "carne", "pure", "papa", "rucula", "oliva"]
+      },
+      {
+        id: "plate_cat_02",
+        cuadrante: "superior_der",
+        nombre: "Suprema Grillada con Calabaza y Brócoli",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: null,
+        vegetal_id: "comp_veg_9",
+        vegetal_secundario_id: "comp_veg_5",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 15,
+        descripcion: "Suprema de pechuga dorada con hierbas, cubos de calabaza asada caramelizada, arbolitos de brócoli al vapor y láminas de palta madura.",
+        prompt_cuadrante: "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y abanico de láminas de palta fresca.",
+        tags: ["pollo", "suprema", "pechuga", "calabaza", "brocoli", "palta"]
+      },
+      {
+        id: "plate_cat_03",
+        cuadrante: "inferior_izq",
+        nombre: "Merluza al Limón con Arroz y Espinaca",
+        modo: "caliente",
+        proteina_id: "comp_prot_10",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_7",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 12,
+        descripcion: "Filet de merluza a la plancha con perejil y gajos de limón, acompañado de arroz blanco esponjoso y espinacas tiernas salteadas con oliva.",
+        prompt_cuadrante: "Filete de pescado blanco (merluza) a la plancha con perejil fresco y gajo de limón, timbal de arroz blanco esponjoso al vapor, espinacas salteadas al dente con un hilo de aceite de oliva.",
+        tags: ["pescado", "merluza", "arroz", "espinaca", "limon", "oliva"]
+      },
+      {
+        id: "plate_cat_04",
+        cuadrante: "inferior_der",
+        nombre: "Huevos Revueltos con Fideos al Wok",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_8",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 10,
+        descripcion: "Huevos revueltos esponjosos con fideos secos salteados con wok de morrón, cebolla y zanahoria, espolvoreados con semillas tostadas.",
+        prompt_cuadrante: "Huevos revueltos cremosos y esponjosos sobre plato cerámico, acompañados de fideos salteados al wok con tiras finas de morrón rojo, cebolla y zanahoria, terminados con semillas de girasol tostadas.",
+        tags: ["huevo", "revuelto", "fideos", "pasta", "wok", "vegetales", "semillas"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 2: Milanesas y Clásicos Familiares (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_02",
+    tema: "Milanesas y Comidas Caseras Populares",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_05",
+        cuadrante: "superior_izq",
+        nombre: "Milanesa de Carne con Puré y Mixta",
+        modo: "caliente",
+        proteina_id: "comp_prot_14",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Milanesa clásica de nalga/bola de lomo crujiente al horno con puré de papas casero y ensalada mixta de lechuga y tomate.",
+        prompt_cuadrante: "Milanesa de carne vacuna dorada y crujiente recién horneada con gajo de limón, porción generosa de puré de papas rústico y ensalada clásica de lechuga criolla y tomate redondo con aceite de oliva.",
+        tags: ["milanesa", "carne", "pure", "papa", "lechuga", "tomate", "oliva"]
+      },
+      {
+        id: "plate_cat_06",
+        cuadrante: "superior_der",
+        nombre: "Milanesa de Pollo con Fideos al Manteca y Queso",
+        modo: "caliente",
+        proteina_id: "comp_prot_14",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 15,
+        descripcion: "Milanesa de pechuga dorada con fideos cinta salteados a la manteca, lluvia de queso rallado sardo y rodajas de tomate fresco.",
+        prompt_cuadrante: "Suprema milanesa de pollo dorada al horno, junto a un nido de fideos salteados con manteca fundida y lluvia de queso rallado sardo gratinado, acompañado de rodajas de tomate perita.",
+        tags: ["milanesa", "pollo", "fideos", "manteca", "queso", "tomate"]
+      },
+      {
+        id: "plate_cat_07",
+        cuadrante: "inferior_izq",
+        nombre: "Picadillo Criollo con Arroz Blanco y Huevo",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_10",
+        vegetal_secundario_id: "comp_veg_11",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 15,
+        descripcion: "Carne picada especial salteada con cebolla, morrón rojo y especias criollas, servida con arroz blanco al vapor, cuartos de huevo duro y aceitunas verdes.",
+        prompt_cuadrante: "Carne picada salteada bien sazonada con cebolla dorada y morrón rojo en cubitos, corona de arroz blanco esponjoso, rodajas de huevo duro y aceitunas verdes brillantes.",
+        tags: ["picada", "carne", "arroz", "cebolla", "morron", "huevo", "aceitunas"]
+      },
+      {
+        id: "plate_cat_08",
+        cuadrante: "inferior_der",
+        nombre: "Pata-Muslo al Horno con Batatas Caramelizadas",
+        modo: "caliente",
+        proteina_id: "comp_prot_2",
+        carbo_id: "comp_carb_4",
+        vegetal_id: "comp_veg_10",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 25,
+        descripcion: "Pata-muslo asado con piel crujiente al limón y orégano, cuñas de batata doradas y gajos de cebolla asada dulce.",
+        prompt_cuadrante: "Pata-muslo de pollo asado con piel dorada y crocante con romero y limón, acompañado de gajos de batata asada caramelizada y cebolla dorada al horno con aceite de oliva.",
+        tags: ["pollo", "pata-muslo", "batata", "cebolla", "horno", "oliva"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 3: Pastas, Guisos y Ollas Populares (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_03",
+    tema: "Pastas, Guisos y Platos de Olla",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_09",
+        cuadrante: "superior_izq",
+        nombre: "Fideos con Tuco Casero de Carne Picada",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_2",
+        vegetal_secundario_id: "comp_veg_10",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 15,
+        descripcion: "Plato hondo de fideos al dente con salsa boloñesa casera de carne picada, tomate maduro, cebolla y abundante queso rallado.",
+        prompt_cuadrante: "Plato hondo de fideos spaghetti al dente con salsa tuco boloñesa casera con abundante carne picada magra, tomate fresco reducido, hojas de laurel y abundante lluvia de queso parmesano rallado.",
+        tags: ["fideos", "pasta", "carne", "picada", "tuco", "tomate", "queso"]
+      },
+      {
+        id: "plate_cat_10",
+        cuadrante: "superior_der",
+        nombre: "Cazuela de Lentejas Express con Picada",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_4",
+        vegetal_secundario_id: "comp_veg_11",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 18,
+        descripcion: "Cazuela reconfortante de lentejas cocidas con carne picada salteada, cubos de zanahoria, cebolla y morrón con pimentón dulce.",
+        prompt_cuadrante: "Cazuela de barro humeante con guiso express de lentejas tiernas, carne picada salteada, rodajas de zanahoria naranja, morrón rojo en cubitos y un toque de pimentón dulce con aceite de oliva.",
+        tags: ["lentejas", "legumbres", "carne", "picada", "zanahoria", "morron", "oliva"]
+      },
+      {
+        id: "plate_cat_11",
+        cuadrante: "inferior_izq",
+        nombre: "Pastel de Papas Individual Gratinado",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_10",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 20,
+        descripcion: "Porción de pastel de papas con base jugosa de carne picada con cebolla y aceitunas, cubierta con puré de papas dorado y gratinado.",
+        prompt_cuadrante: "Porción cuadrada servida de pastel de papas tradicional: base espesa y jugosa de carne molida sazonada con cebolla dorada y aceitunas, coronada por puré de papas con costra gratinada al horno.",
+        tags: ["pastel", "papa", "carne", "picada", "pure", "cebolla", "aceitunas"]
+      },
+      {
+        id: "plate_cat_12",
+        cuadrante: "inferior_der",
+        nombre: "Guiso de Porotos con Bondiola y Zapallo",
+        modo: "caliente",
+        proteina_id: "comp_prot_15",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_9",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 25,
+        descripcion: "Guiso espeso de porotos cocidos con bocados tiernos de bondiola de cerdo dorada y cubos dulces de zapallo anco.",
+        prompt_cuadrante: "Plato hondo de guisado criollo con porotos blancos tiernos, trozos dorados y jugosos de bondiola de cerdo, cubos de zapallo anco color naranja intenso y perejil fresco picado.",
+        tags: ["porotos", "legumbres", "bondiola", "cerdo", "zapallo", "calabaza"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 4: Carnes Vacunas Cotidianas (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_04",
+    tema: "Cortes Vacunos Cotidianos a la Plancha y Olla",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_13",
+        cuadrante: "superior_izq",
+        nombre: "Tortuguita en Bifes a la Criolla con Arroz",
+        modo: "caliente",
+        proteina_id: "comp_prot_6",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_11",
+        vegetal_secundario_id: "comp_veg_10",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Bifecitos finos de tortuguita sellados a la plancha con cebolla y morrón salteados, servidos con arroz blanco al vapor.",
+        prompt_cuadrante: "Bifecitos finos de carne vacuna (tortuguita) dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con timbal de arroz blanco al vapor.",
+        tags: ["tortuguita", "carne", "bife", "arroz", "cebolla", "morron", "oliva"]
+      },
+      {
+        id: "plate_cat_14",
+        cuadrante: "superior_der",
+        nombre: "Palomita en Bifes con Puré de Batata y Ensalada",
+        modo: "caliente",
+        proteina_id: "comp_prot_7",
+        carbo_id: "comp_carb_4",
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Bifecitos tiernos de palomita vuelta y vuelta a fuego vivo con puré cremoso de batata y hojas de rúcula.",
+        prompt_cuadrante: "Bifes delgados de palomita a la plancha con costra dorada, acompañados de puré suave de batata asada y bouquet de hojas frescas de rúcula con aceite de oliva extra virgen.",
+        tags: ["palomita", "carne", "bife", "batata", "pure", "rucula", "oliva"]
+      },
+      {
+        id: "plate_cat_15",
+        cuadrante: "inferior_izq",
+        nombre: "Hígado Encebollado con Puré de Papas",
+        modo: "caliente",
+        proteina_id: "comp_prot_19",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_10",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 12,
+        descripcion: "Bifecito de hígado jugoso salteado con abundante cebolla caramelizada y puré de papas enriquecido con manteca.",
+        prompt_cuadrante: "Bife de hígado vacuno tierno y jugoso cubierto de abundantes aros de cebolla dorada caramelizada, servido con puré de papas rústico emulsionado con manteca derretida.",
+        tags: ["higado", "encebollado", "carne", "pure", "papa", "cebolla", "manteca"]
+      },
+      {
+        id: "plate_cat_16",
+        cuadrante: "inferior_der",
+        nombre: "Tira de Asado a la Plancha con Ensalada Rusa",
+        modo: "caliente",
+        proteina_id: "comp_prot_5",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_4",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 25,
+        descripcion: "Tira de asado crocante a la plancha gruesa acompañada de clásica ensalada rusa (papas y zanahorias en cubos) con aceitunas.",
+        prompt_cuadrante: "Tira de asado con hueso bien marcada y dorada a la plancha, servida junto a una porción de clásica ensalada rusa (cubitos de papa y zanahoria) decorada con aceitunas verdes enteras.",
+        tags: ["asado", "tira", "carne", "ensalada-rusa", "papa", "zanahoria", "aceitunas"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 5: Cerdo y Aves al Plato (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_05",
+    tema: "Cerdo y Aves con Guarniciones Variadas",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_17",
+        cuadrante: "superior_izq",
+        nombre: "Costillita de Cerdo con Batata y Espinaca",
+        modo: "caliente",
+        proteina_id: "comp_prot_12",
+        carbo_id: "comp_carb_4",
+        vegetal_id: "comp_veg_7",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Costillita de cerdo jugosa dorada a la sartén con rodajas de batata asada y salteado tibio de espinaca con ajo y oliva.",
+        prompt_cuadrante: "Costillita de cerdo dorada a la plancha con limón, acompañada de rodajas de batata asada dulce y espinacas tiernas salteadas con aceite de oliva extra virgen.",
+        tags: ["cerdo", "costillita", "batata", "espinaca", "oliva"]
+      },
+      {
+        id: "plate_cat_18",
+        cuadrante: "superior_der",
+        nombre: "Bondiola de Cerdo con Choclo y Morrón Asado",
+        modo: "caliente",
+        proteina_id: "comp_prot_15",
+        carbo_id: "comp_carb_5",
+        vegetal_id: "comp_veg_11",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 18,
+        descripcion: "Medallones de bondiola dorada con choclo desgranado salteado a la manteca y tiras de morrón asado dulce.",
+        prompt_cuadrante: "Medallones gruesos de bondiola de cerdo sellados con costra caramelizada, porción de choclo amarillo desgranado salteado con manteca y tiras de morrón rojo asado dulce.",
+        tags: ["bondiola", "cerdo", "choclo", "morron", "manteca"]
+      },
+      {
+        id: "plate_cat_19",
+        cuadrante: "inferior_izq",
+        nombre: "Suprema con Arroz al Verdeo y Zanahorias",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_13",
+        vegetal_secundario_id: "comp_veg_4",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Suprema de pollo a la plancha con arroz blanco salteado con cebolla de verdeo fresca y bastones de zanahoria tiernos.",
+        prompt_cuadrante: "Pechuga de pollo a la plancha dorada en filetes, servida con arroz blanco salteado con abundante cebolla de verdeo en rodajitas y bastones de zanahoria brillante al oliva.",
+        tags: ["pollo", "suprema", "arroz", "verdeo", "zanahoria", "oliva"]
+      },
+      {
+        id: "plate_cat_20",
+        cuadrante: "inferior_der",
+        nombre: "Pata-Muslo al Limón con Mandioca al Vapor",
+        modo: "caliente",
+        proteina_id: "comp_prot_2",
+        carbo_id: "comp_carb_7",
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 25,
+        descripcion: "Pata-muslo asado bien crocante con trozos tiernos de mandioca hervida al vapor aderezada con aceite de oliva y perejil.",
+        prompt_cuadrante: "Pata-muslo de pollo al horno dorado al orégano y limón, acompañado de trozos suaves de mandioca hervida blanca aderezados con aceite de oliva y perejil picado, junto a hojas verdes.",
+        tags: ["pollo", "pata-muslo", "mandioca", "limon", "oliva"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 6: Pescados y Mariscos Cotidianos (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_06",
+    tema: "Pescados y Conservas al Plato Caliente",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_21",
+        cuadrante: "superior_izq",
+        nombre: "Merluza a la Plancha con Puré y Tomates",
+        modo: "caliente",
+        proteina_id: "comp_prot_10",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 12,
+        descripcion: "Filet de merluza dorado a la sartén con orégano y limón, puré de papas cremoso y rodajas de tomate aderezadas.",
+        prompt_cuadrante: "Filetes de merluza blanca dorados a la plancha con rodajas de limón y perejil, acompañados de puré de papas casero suave y rodajas de tomate fresco condimentadas con aceite de oliva.",
+        tags: ["merluza", "pescado", "pure", "papa", "tomate", "oliva"]
+      },
+      {
+        id: "plate_cat_22",
+        cuadrante: "superior_der",
+        nombre: "Merluza con Wok de Vegetales y Arroz",
+        modo: "caliente",
+        proteina_id: "comp_prot_10",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_8",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Filet de pescado blanco tierno servido sobre salteado caliente de wok mixto (zucchini, morrón, cebolla) y arroz blanco.",
+        prompt_cuadrante: "Filete de pescado blanco merluza tierno y dorado, servido sobre un colorido wok de vegetales en juliana (zucchini, morrón rojo y cebolla) con porción de arroz blanco esponjoso.",
+        tags: ["merluza", "pescado", "arroz", "wok", "vegetales", "oliva"]
+      },
+      {
+        id: "plate_cat_23",
+        cuadrante: "inferior_izq",
+        nombre: "Fideos Salteados con Atún, Tomate y Aceitunas",
+        modo: "caliente",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 10,
+        descripcion: "Fideos al dente salteados a fuego vivo con lomitos de atún al natural, dados de tomate fresco y aceitunas negras.",
+        prompt_cuadrante: "Plato de fideos al dente salteados en sartén con trozos de atún en lomo, tomates en cubos dorados, aceitunas negras en rodajas y hojitas de albahaca fresca.",
+        tags: ["atun", "fideos", "pasta", "tomate", "aceitunas"]
+      },
+      {
+        id: "plate_cat_24",
+        cuadrante: "inferior_der",
+        nombre: "Caballa Salteada con Papas y Verdeo al Pimentón",
+        modo: "caliente",
+        proteina_id: "comp_prot_17",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_13",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 12,
+        descripcion: "Lomos de caballa salteados con papas en cubos al vapor, cebolla de verdeo y una pizca de pimentón dulce.",
+        prompt_cuadrante: "Lomos tiernos de caballa salteados en sartén caliente con papas cocidas en cubos, lluvia de cebolla de verdeo en rodajas finas y pizca de pimentón ahumado con aceite de oliva.",
+        tags: ["caballa", "pescado", "papas", "verdeo", "pimenton", "oliva"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 7: Huevos, Revueltos y Omelettes (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_07",
+    tema: "Huevos y Omelettes Rápidos de Almuerzo y Cena",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_25",
+        cuadrante: "superior_izq",
+        nombre: "Omelette de Queso con Batatas Doradas y Tomate",
+        modo: "caliente",
+        proteina_id: "comp_prot_16",
+        carbo_id: "comp_carb_4",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 10,
+        descripcion: "Omelette dorado relleno de queso cremoso derretido, acompañado de dados de batata salteados y tomates cherry.",
+        prompt_cuadrante: "Omelette esponjoso dorado doblado a la mitad con queso fresco derretido en su interior, acompañado de dados de batata asada dorada y tomates cherry con aceite de oliva.",
+        tags: ["omelette", "huevo", "queso", "batata", "tomate", "oliva"]
+      },
+      {
+        id: "plate_cat_26",
+        cuadrante: "superior_der",
+        nombre: "Huevos Revueltos con Avena Salada, Champiñones y Palta",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: "comp_carb_9",
+        vegetal_id: "comp_veg_3",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 10,
+        descripcion: "Huevos revueltos bien cremosos sobre base de avena salada caliente, champiñones salteados al dente y abanico de palta.",
+        prompt_cuadrante: "Bowl tibio con huevos revueltos cremosos montados sobre avena salada cocida, champiñones dorados en rodajas a la sartén y gajos de palta madura con pimienta negra recién molida.",
+        tags: ["huevos", "revuelto", "avena", "hongos", "champinones", "palta"]
+      },
+      {
+        id: "plate_cat_27",
+        cuadrante: "inferior_izq",
+        nombre: "Revuelto Gramajo Casero Express",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_10",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 12,
+        descripcion: "Clásico revuelto gramajo con huevos apenas cuajados, papas doradas en bastones finos y cebolla salteada a la manteca.",
+        prompt_cuadrante: "Plato hondo de clásico Revuelto Gramajo porteño: huevos revueltos húmedos y cremosos combinados con papas en bastones delgados dorados y cebolla salteada a la manteca fundida.",
+        tags: ["revuelto", "gramajo", "huevos", "papas", "cebolla", "manteca"]
+      },
+      {
+        id: "plate_cat_28",
+        cuadrante: "inferior_der",
+        nombre: "Tortilla de Acelga con Queso Rallado y Tomate",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_7",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 15,
+        descripcion: "Porción de tortilla esponjosa de acelga o espinaca con papas en cubitos, queso rallado gratinado y rodajas de tomate.",
+        prompt_cuadrante: "Triángulo grueso servido de tortilla de acelga y espinaca verde intenso con papas picadas, cubierta con queso rallado dorado y ensalada de rodajas de tomate con orégano.",
+        tags: ["tortilla", "acelga", "espinaca", "huevos", "papa", "queso", "tomate"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 8: Vegetales Rellenos y Al Horno (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_08",
+    tema: "Vegetales Rellenos y Platos Gratinados",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_29",
+        cuadrante: "superior_izq",
+        nombre: "Zapallito Relleno con Carne Picada y Arroz",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_6",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 20,
+        descripcion: "Medios zapallitos redondos rellenos de carne picada sazonada con arroz blanco, coronados con queso gratinado al horno.",
+        prompt_cuadrante: "Zapallitos redondos cortados a la mitad y rellenos con carne picada jugosa, arroz blanco y cebollita, cubiertos de queso rallado gratinado dorado burbujeante.",
+        tags: ["zapallito", "relleno", "carne", "picada", "arroz", "queso"]
+      },
+      {
+        id: "plate_cat_30",
+        cuadrante: "superior_der",
+        nombre: "Calabaza Asada Rellena con Pollo y Choclo",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_5",
+        vegetal_id: "comp_veg_9",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 25,
+        descripcion: "Mitad de calabaza asada tierna rellena con tiras de pollo a la plancha, choclo desgranado dulce y queso derretido.",
+        prompt_cuadrante: "Media calabaza asada caramelizada ahuecada y rellena de pechuga de pollo desmenuzada, granos de choclo amarillo dulce y queso sardo rallado dorado al horno.",
+        tags: ["calabaza", "rellena", "pollo", "choclo", "queso"]
+      },
+      {
+        id: "plate_cat_31",
+        cuadrante: "inferior_izq",
+        nombre: "Berenjena Napolitana con Puré de Papas",
+        modo: "caliente",
+        proteina_id: "comp_prot_16",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_12",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Rodajas gruesas de berenjena a la plancha cubiertas con salsa de tomate, queso cremoso fundido y puré de papas.",
+        prompt_cuadrante: "Láminas gruesas de berenjena asada a la napolitana cubiertas con salsa de tomate casera y abundante queso fresco fundido con orégano, servidas junto a puré de papas casero.",
+        tags: ["berenjena", "napolitana", "queso", "pure", "papa", "tomate"]
+      },
+      {
+        id: "plate_cat_32",
+        cuadrante: "inferior_der",
+        nombre: "Morrón Relleno con Huevo, Carne Picada y Arroz",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_11",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 20,
+        descripcion: "Medio morrón rojo asado relleno con carne picada sofrita, arroz y queso gratinado con cebollita de verdeo.",
+        prompt_cuadrante: "Medio morrón rojo grande asado al horno relleno con carne picada bien condimentada, arroz blanco y queso derretido dorado, con cebollita de verdeo fresca encima.",
+        tags: ["morron", "relleno", "carne", "picada", "arroz", "queso"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 9: Woks y Salteados Rápidos (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_09",
+    tema: "Woks y Salteados Rápidos al Fuego Fuerte",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_33",
+        cuadrante: "superior_izq",
+        nombre: "Wok de Pollo con Fideos, Vegetales y Semillas",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_8",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 12,
+        descripcion: "Tiras de pechuga salteadas a fuego fuerte con fideos secos, morrón, cebolla y zanahoria, coronadas con mix de semillas tostadas.",
+        prompt_cuadrante: "Wok humeante con tiras doradas de pechuga de pollo mezcladas con fideos al dente, tiras crujientes de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo y chía.",
+        tags: ["wok", "pollo", "fideos", "pasta", "vegetales", "semillas"]
+      },
+      {
+        id: "plate_cat_34",
+        cuadrante: "superior_der",
+        nombre: "Salteado de Carne con Chauchas y Arroz Blanco",
+        modo: "caliente",
+        proteina_id: "comp_prot_3",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_19",
+        vegetal_secundario_id: "comp_veg_10",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 12,
+        descripcion: "Tiras de bife magro salteadas con chauchas verdes tiernas y cebolla en juliana, servidas con arroz blanco.",
+        prompt_cuadrante: "Salteado en sartén de tiras jugosas de bife vacuno con chauchas verdes enteras tiernas y cebolla dorada, acompañado de una porción de arroz blanco al vapor con aceite de oliva.",
+        tags: ["carne", "bife", "chauchas", "arroz", "cebolla", "oliva"]
+      },
+      {
+        id: "plate_cat_35",
+        cuadrante: "inferior_izq",
+        nombre: "Cerdo Salteado con Zucchini, Hongos y Fideos",
+        modo: "caliente",
+        proteina_id: "comp_prot_12",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_6",
+        vegetal_secundario_id: "comp_veg_3",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Tiras de costillita de cerdo doradas con dados de zucchini y champiñones salteados, mezclados con fideos cinta.",
+        prompt_cuadrante: "Tiras doradas de carne de cerdo salteadas a fuego vivo con medias lunas de zucchini, láminas de champiñones dorados y fideos cintas con un toque de aceite de oliva.",
+        tags: ["cerdo", "zucchini", "hongos", "champinones", "fideos", "oliva"]
+      },
+      {
+        id: "plate_cat_36",
+        cuadrante: "inferior_der",
+        nombre: "Wok de Tofu con Brócoli, Arroz y Sésamo",
+        modo: "caliente",
+        proteina_id: "comp_prot_13",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_5",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 12,
+        descripcion: "Cubos de tofu bien dorados a la plancha con arbolitos de brócoli al vapor, arroz blanco o integral y semillas de sésamo.",
+        prompt_cuadrante: "Plato vegetariano con cubos crocantes de tofu dorado a la sartén, arbolitos de brócoli verde brillante al vapor, arroz blanco esponjoso y semillas de sésamo tostadas espolvoreadas.",
+        tags: ["tofu", "brocoli", "arroz", "semillas", "sesamo", "vegetariano"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 10: Platos Criollos con Legumbres y Granos (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_10",
+    tema: "Legumbres, Quinoa y Risottos Criollos",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_37",
+        cuadrante: "superior_izq",
+        nombre: "Guiso de Porotos Alubia con Carne y Calabaza",
+        modo: "caliente",
+        proteina_id: "comp_prot_3",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_9",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 20,
+        descripcion: "Estofado criollo de porotos alubia tiernos con cubos de carne vacuna magra y dados de calabaza dulce.",
+        prompt_cuadrante: "Plato hondo de guisado de porotos alubia blancos en salsa suave y espesa, bocados tiernos de carne vacuna sellada y dados anaranjados de calabaza dulce con aceite de oliva.",
+        tags: ["porotos", "legumbres", "carne", "calabaza", "oliva"]
+      },
+      {
+        id: "plate_cat_38",
+        cuadrante: "superior_der",
+        nombre: "Quinoa Caliente con Pollo, Hongos y Puerro",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_8",
+        vegetal_id: "comp_veg_3",
+        vegetal_secundario_id: "comp_veg_13",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Bowl tibio de quinoa esponjosa con cubos dorados de pechuga de pollo, champiñones salteados y puerro al oliva.",
+        prompt_cuadrante: "Bowl caliente con base de quinoa cocida esponjosa, cubos dorados de pechuga de pollo a la plancha, champiñones salteados en láminas y rodajas finas de puerro pochado con oliva.",
+        tags: ["quinoa", "pollo", "hongos", "champinones", "puerro", "oliva"]
+      },
+      {
+        id: "plate_cat_39",
+        cuadrante: "inferior_izq",
+        nombre: "Lentejas Estofadas con Huevo Duro y Zanahoria",
+        modo: "caliente",
+        proteina_id: "comp_prot_9",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_4",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Plato nutritivo de lentejas estofadas con rodajas de zanahoria tierna, coronadas con huevo duro en mitades y oliva.",
+        prompt_cuadrante: "Lentejas estofadas en salsa espesa con rodajas de zanahoria cocida, coronadas con dos mitades de huevo duro con yema dorada y un toque de pimentón dulce con aceite de oliva.",
+        tags: ["lentejas", "legumbres", "huevo", "zanahoria", "oliva"]
+      },
+      {
+        id: "plate_cat_40",
+        cuadrante: "inferior_der",
+        nombre: "Arroz Cremoso con Pollo, Manteca y Queso",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_10",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 18,
+        descripcion: "Arroz cremoso estilo risotto criollo cocinado con pechuga de pollo desmenuzada, cebolla dorada, manteca y queso rallado.",
+        prompt_cuadrante: "Arroz cremoso brillante ligado con manteca y queso sardo rallado, con bocados dorados de pechuga de pollo y cebolla rehogada, decorado con perejil fresco picado.",
+        tags: ["arroz", "pollo", "risotto", "cebolla", "manteca", "queso"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 11: Pastas y Cereales Cremosos (Calientes)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_11",
+    tema: "Pastas y Cereales con Salsas Ligeras",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_41",
+        cuadrante: "superior_izq",
+        nombre: "Fideos con Pollo a la Crema y Champiñones",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_3",
+        grasa_id: "comp_fat_8",
+        tiempo_min: 15,
+        descripcion: "Fideos al dente bañados en salsa suave de crema de leche con dados de pollo dorado y champiñones laminados.",
+        prompt_cuadrante: "Fideos cintas humeantes cubiertos con salsa cremosa de crema de leche, trozos de pechuga de pollo dorada y abundantes champiñones fileteados con pimienta blanca.",
+        tags: ["fideos", "pasta", "pollo", "crema", "hongos", "champinones"]
+      },
+      {
+        id: "plate_cat_42",
+        cuadrante: "superior_der",
+        nombre: "Fideos con Queso Fresco, Espinaca y Nueces",
+        modo: "caliente",
+        proteina_id: "comp_prot_16",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_7",
+        grasa_id: "comp_fat_4",
+        tiempo_min: 12,
+        descripcion: "Pasta salteada con hojas de espinaca tierna, cubos de queso cremoso que se funden al servir y nueces picadas crujientes.",
+        prompt_cuadrante: "Plato de fideos cortos con hojas de espinaca verde oscuro salteadas, dados de queso fresco blanco semiderretido y trozos de nueces tostadas crujientes.",
+        tags: ["fideos", "pasta", "queso", "espinaca", "nueces"]
+      },
+      {
+        id: "plate_cat_43",
+        cuadrante: "inferior_izq",
+        nombre: "Avena Salada Caliente con Huevo y Espinaca",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: "comp_carb_9",
+        vegetal_id: "comp_veg_7",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 8,
+        descripcion: "Porridge o avena salada caliente cocida con caldo, coronada con huevo revuelto o poché y espinacas al oliva.",
+        prompt_cuadrante: "Bowl reconfortante de avena arrollada salada cocida y cremosa, coronada con huevo revuelto tierno, hojas de espinaca salteadas y un hilo de aceite de oliva virgen extra.",
+        tags: ["avena", "huevo", "espinaca", "desayuno-salado", "oliva"]
+      },
+      {
+        id: "plate_cat_44",
+        cuadrante: "inferior_der",
+        nombre: "Arroz con Atún a la Crema y Cebolla de Verdeo",
+        modo: "caliente",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_13",
+        grasa_id: "comp_fat_8",
+        tiempo_min: 10,
+        descripcion: "Arroz blanco caliente salteado con atún desmenuzado, un chorrito de crema de leche y aros verdes de cebollita de verdeo.",
+        prompt_cuadrante: "Arroz blanco cremoso salteado en sartén con lomitos de atún claro, suave emulsión de crema de leche y rodajitas verdes brillantes de cebolla de verdeo.",
+        tags: ["arroz", "atun", "crema", "verdeo"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 12: Plant-Based / Vegetarianos Calientes
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_12",
+    tema: "Opciones Vegetarianas y Proteínas Vegetales",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_45",
+        cuadrante: "superior_izq",
+        nombre: "Tofu a la Plancha con Puré de Calabaza y Brócoli",
+        modo: "caliente",
+        proteina_id: "comp_prot_13",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_5",
+        vegetal_secundario_id: "comp_veg_9",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Láminas gruesas de tofu bien doradas y crocantes con puré mixto de papa y calabaza, más brócoli al vapor.",
+        prompt_cuadrante: "Láminas gruesas de tofu dorado crujiente a la plancha con hierbas, porción de puré sedoso de calabaza y papa dorada, y ramilletes de brócoli verde brillante con aceite de oliva.",
+        tags: ["tofu", "pure", "calabaza", "brocoli", "vegetariano", "oliva"]
+      },
+      {
+        id: "plate_cat_46",
+        cuadrante: "superior_der",
+        nombre: "Fideos con Boloñesa de Soja Texturizada",
+        modo: "caliente",
+        proteina_id: "comp_prot_18",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_10",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 15,
+        descripcion: "Fideos al dente con salsa de tomate criolla y soja texturizada sofrita con cebolla y orégano, con queso rallado.",
+        prompt_cuadrante: "Nido de fideos al dente cubiertos de salsa boloñesa vegetal de soja texturizada con tomate concentrado, cebolla sofrita y lluvia de queso rallado sardo.",
+        tags: ["fideos", "pasta", "soja-texturizada", "tomate", "queso", "vegetariano"]
+      },
+      {
+        id: "plate_cat_47",
+        cuadrante: "inferior_izq",
+        nombre: "Quinoa Caliente con Tofu, Zucchini y Semillas",
+        modo: "caliente",
+        proteina_id: "comp_prot_13",
+        carbo_id: "comp_carb_8",
+        vegetal_id: "comp_veg_6",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 12,
+        descripcion: "Bowl caliente de quinoa cocida con dados de tofu sellado, rodajas de zucchini a la plancha y semillas de girasol tostadas.",
+        prompt_cuadrante: "Bowl tibio de quinoa esponjosa coronada con cubitos de tofu dorado, medias lunas de zucchini salteadas y semillas de girasol tostadas crujientes con oliva.",
+        tags: ["quinoa", "tofu", "zucchini", "semillas", "vegetariano", "oliva"]
+      },
+      {
+        id: "plate_cat_48",
+        cuadrante: "inferior_der",
+        nombre: "Soja Texturizada con Arroz, Morrón y Cebolla",
+        modo: "caliente",
+        proteina_id: "comp_prot_18",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_11",
+        vegetal_secundario_id: "comp_veg_10",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Salteado criollo de soja texturizada hidratada con morrón rojo y cebolla, servida con timbal de arroz blanco.",
+        prompt_cuadrante: "Picadillo vegetal de soja texturizada dorada en sartén con cubitos de morrón rojo dulce y cebolla salteada, acompañado de arroz blanco al vapor con aceite de oliva.",
+        tags: ["soja-texturizada", "arroz", "morron", "cebolla", "vegetariano", "oliva"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 13: Cenas Ligeras Low-Carb (Carnes y Aves sin Almidón)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_13",
+    tema: "Cenas Ligeras Low-Carb: Carnes y Aves",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_49",
+        cuadrante: "superior_izq",
+        nombre: "Bife Grillado con Espinacas y Champiñones Salteados",
+        modo: "caliente",
+        proteina_id: "comp_prot_3",
+        carbo_id: null,
+        vegetal_id: "comp_veg_7",
+        vegetal_secundario_id: "comp_veg_3",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 10,
+        descripcion: "Bife de lomo o churrasco jugoso sin carbohidrato, acompañado de salteado caliente de hojas de espinaca y champiñones con oliva.",
+        prompt_cuadrante: "Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de una generosa porción de espinacas tiernas salteadas y champiñones dorados al ajillo con aceite de oliva.",
+        tags: ["bife", "carne", "espinaca", "hongos", "champinones", "low-carb", "oliva"]
+      },
+      {
+        id: "plate_cat_50",
+        cuadrante: "superior_der",
+        nombre: "Pechuga Dorada con Brócoli y Coliflor a la Manteca",
+        modo: "caliente",
+        proteina_id: "comp_prot_1",
+        carbo_id: null,
+        vegetal_id: "comp_veg_5",
+        vegetal_secundario_id: "comp_veg_18",
+        grasa_id: "comp_fat_7",
+        tiempo_min: 12,
+        descripcion: "Filet de pechuga dorada a la plancha servido con ramilletes de brócoli y coliflor al vapor bañados con manteca fundida.",
+        prompt_cuadrante: "Pechuga de pollo dorada jugosa a la plancha con limón, servida junto a arbolitos de brócoli verde brillante y coliflor blanca al vapor bañados con manteca derretida y pimienta negra.",
+        tags: ["pollo", "suprema", "brocoli", "coliflor", "manteca", "low-carb"]
+      },
+      {
+        id: "plate_cat_51",
+        cuadrante: "inferior_izq",
+        nombre: "Costillita de Cerdo con Zucchini y Berenjenas",
+        modo: "caliente",
+        proteina_id: "comp_prot_12",
+        carbo_id: null,
+        vegetal_id: "comp_veg_6",
+        vegetal_secundario_id: "comp_veg_12",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 15,
+        descripcion: "Costillita de cerdo a la plancha con rodajas gruesas de zucchini y berenjenas asadas con hierbas y oliva.",
+        prompt_cuadrante: "Costillita de cerdo marcada a la plancha bien dorada con gajo de limón, acompañada de láminas asadas de berenjena y rodajas de zucchini a la plancha con aceite de oliva extra virgen.",
+        tags: ["cerdo", "costillita", "zucchini", "berenjena", "low-carb", "oliva"]
+      },
+      {
+        id: "plate_cat_52",
+        cuadrante: "inferior_der",
+        nombre: "Hamburguesas Caseras al Plato con Rúcula y Palta",
+        modo: "caliente",
+        proteina_id: "comp_prot_4",
+        carbo_id: null,
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 10,
+        descripcion: "Dos hamburguesas caseras de carne picada magra al plato con colchón de rúcula fresca, tomatitos cherry y abanico de palta.",
+        prompt_cuadrante: "Dos medallones gruesos de hamburguesa casera de carne vacuna bien dorados al plato, servidos sobre un colchón de hojas de rúcula fresca con láminas de palta madura y aceite de oliva.",
+        tags: ["hamburguesa", "carne", "picada", "rucula", "palta", "low-carb"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 14: Cenas Low-Carb (Pescados, Huevos y Tofu)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_14",
+    tema: "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_53",
+        cuadrante: "superior_izq",
+        nombre: "Merluza al Limón con Chauchas y Calabaza al Oliva",
+        modo: "caliente",
+        proteina_id: "comp_prot_10",
+        carbo_id: null,
+        vegetal_id: "comp_veg_19",
+        vegetal_secundario_id: "comp_veg_9",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 12,
+        descripcion: "Filet de merluza tierna a la plancha con chauchas salteadas al dente y cubitos tiernos de calabaza al oliva.",
+        prompt_cuadrante: "Filete de merluza blanca cocido a la plancha con perejil fresco y limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza anco asada con aceite de oliva.",
+        tags: ["merluza", "pescado", "chauchas", "calabaza", "low-carb", "oliva"]
+      },
+      {
+        id: "plate_cat_54",
+        cuadrante: "superior_der",
+        nombre: "Revuelto de Huevos con Zucchini y Queso Sardo",
+        modo: "caliente",
+        proteina_id: "comp_prot_8",
+        carbo_id: null,
+        vegetal_id: "comp_veg_6",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 8,
+        descripcion: "Huevos revueltos salteados con zucchini en cubitos dorados, cebolla de verdeo y lluvia de queso rallado sardo.",
+        prompt_cuadrante: "Huevos revueltos esponjosos y cremosos salteados en sartén con dados dorados de zucchini tierno y terminados con abundante queso sardo rallado gratinado.",
+        tags: ["huevos", "revuelto", "zucchini", "queso", "low-carb"]
+      },
+      {
+        id: "plate_cat_55",
+        cuadrante: "inferior_izq",
+        nombre: "Omelette de Queso Fresco con Tomates y Semillas",
+        modo: "caliente",
+        proteina_id: "comp_prot_16",
+        carbo_id: null,
+        vegetal_id: "comp_veg_2",
+        vegetal_secundario_id: "comp_veg_1",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 8,
+        descripcion: "Omelette tierno relleno de queso fresco con ensalada tibia de tomates cherry salteados y mix de semillas de chía y sésamo.",
+        prompt_cuadrante: "Omelette dorado esponjoso con centro de queso fresco derretido, acompañado de tomates en rodajas asados en sartén y espolvoreado con semillas mixtas tostadas.",
+        tags: ["omelette", "queso", "tomate", "semillas", "low-carb"]
+      },
+      {
+        id: "plate_cat_56",
+        cuadrante: "inferior_der",
+        nombre: "Tofu Salteado con Wok de Vegetales y Almendras",
+        modo: "caliente",
+        proteina_id: "comp_prot_13",
+        carbo_id: null,
+        vegetal_id: "comp_veg_8",
+        grasa_id: "comp_fat_4",
+        tiempo_min: 12,
+        descripcion: "Cubos de tofu a la plancha salteados con variedad de vegetales (zucchini, morrón, cebolla) y almendras tostadas picadas.",
+        prompt_cuadrante: "Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas.",
+        tags: ["tofu", "wok", "vegetales", "almendras", "frutos-secos", "low-carb"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 15: Cenas Express Low-Carb Variadas
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_15",
+    tema: "Cenas Express Low-Carb Cotidianas",
+    tipo: "caliente",
+    platos: [
+      {
+        id: "plate_cat_57",
+        cuadrante: "superior_izq",
+        nombre: "Palomita en Bifes con Ensalada de Repollo y Aceitunas",
+        modo: "caliente",
+        proteina_id: "comp_prot_7",
+        carbo_id: null,
+        vegetal_id: "comp_veg_15",
+        vegetal_secundario_id: "comp_veg_17",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 10,
+        descripcion: "Bifecitos de palomita a la plancha servidos con ensalada crujiente de repollo blanco en juliana, rabanitos y aceitunas.",
+        prompt_cuadrante: "Bifes delgados de carne de palomita dorados vuelta y vuelta a la plancha, acompañados de ensalada fresca de repollo blanco en tiras finas, rodajas de rabanito y aceitunas verdes.",
+        tags: ["palomita", "carne", "bife", "repollo", "rabanitos", "aceitunas", "low-carb"]
+      },
+      {
+        id: "plate_cat_58",
+        cuadrante: "superior_der",
+        nombre: "Tira de Asado con Berenjenas y Morrones Asados",
+        modo: "caliente",
+        proteina_id: "comp_prot_5",
+        carbo_id: null,
+        vegetal_id: "comp_veg_12",
+        vegetal_secundario_id: "comp_veg_11",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 20,
+        descripcion: "Costilla de asado crocante a la plancha con berenjena asada ahumada y tiras de morrón quemado al fuego.",
+        prompt_cuadrante: "Tira de asado a la plancha bien dorada y jugosa, servida con rodajas de berenjena asada con piel tostada y tiras de morrón rojo asado dulce aderezados con aceite de oliva.",
+        tags: ["asado", "tira", "carne", "berenjena", "morron", "low-carb", "oliva"]
+      },
+      {
+        id: "plate_cat_59",
+        cuadrante: "inferior_izq",
+        nombre: "Pata-Muslo al Horno con Coliflor y Tomates Asados",
+        modo: "caliente",
+        proteina_id: "comp_prot_2",
+        carbo_id: null,
+        vegetal_id: "comp_veg_18",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 25,
+        descripcion: "Presa de pollo asada con piel crujiente, servida con ramilletes de coliflor salteada al orégano y tomates asados.",
+        prompt_cuadrante: "Pata-muslo asada al horno bien dorada y crujiente, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado al orégano con aceite de oliva.",
+        tags: ["pollo", "pata-muslo", "coliflor", "tomate", "low-carb", "oliva"]
+      },
+      {
+        id: "plate_cat_60",
+        cuadrante: "inferior_der",
+        nombre: "Atún Caliente con Chauchas al Vapor y Huevo Duro",
+        modo: "caliente",
+        proteina_id: "comp_prot_11",
+        carbo_id: null,
+        vegetal_id: "comp_veg_19",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 8,
+        descripcion: "Lomo de atún escurrido salteado tibio con chauchas al vapor y huevo duro en cuartos con aceite de oliva.",
+        prompt_cuadrante: "Plato caliente con lomos de atún claro sellados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro, todo bañado con aceite de oliva virgen extra y pimienta.",
+        tags: ["atun", "pescado", "chauchas", "huevo", "low-carb", "oliva"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 16: Clásicos de Atún y Pescado en Ensalada (Fríos)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_16",
+    tema: "Ensaladas y Platos Fríos de Atún y Pescado",
+    tipo: "frio",
+    platos: [
+      {
+        id: "plate_cat_61",
+        cuadrante: "superior_izq",
+        nombre: "Ensalada de Atún con Arroz, Huevo y Aceitunas",
+        modo: "frio",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 5,
+        descripcion: "Clásica ensalada veraniega de arroz blanco frío con atún en lomo, dados de tomate fresco, huevo duro picado y aceitunas verdes.",
+        prompt_cuadrante: "Bowl fresco de ensalada fría con arroz blanco cocido suelto, trozos generosos de atún al natural, dados de tomate perita maduro, cuartos de huevo duro y aceitunas verdes descarozadas.",
+        tags: ["atun", "arroz", "huevo", "tomate", "aceitunas", "ensalada", "frio"]
+      },
+      {
+        id: "plate_cat_62",
+        cuadrante: "superior_der",
+        nombre: "Salpicón de Atún con Papas, Zanahoria y Oliva",
+        modo: "frio",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_4",
+        vegetal_secundario_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Salpicón frío con cubos de papa hervida fría, zanahoria rallada fresca, hojas de lechuga y lomos de atún aderezados con oliva.",
+        prompt_cuadrante: "Plato hondo de salpicón frío con cubos firmes de papa hervida, hebras de zanahoria rallada fresca, hojas de lechuga crocante y lomos de atún con hilo de aceite de oliva.",
+        tags: ["atun", "papas", "zanahoria", "lechuga", "salpicon", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_63",
+        cuadrante: "inferior_izq",
+        nombre: "Ensalada de Caballa con Fideos Fríos y Rúcula",
+        modo: "frio",
+        proteina_id: "comp_prot_17",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_1",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Fideos secos fríos (tirabuzón/moñito) con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry.",
+        prompt_cuadrante: "Ensalada de fideos cortos al dente fríos mezclados con lomos enteros de caballa en conserva, hojas frescas de rúcula verde oscura y tomates cherry cortados al medio con oliva.",
+        tags: ["caballa", "pescado", "fideos", "pasta", "rucula", "tomate", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_64",
+        cuadrante: "inferior_der",
+        nombre: "Bowl Frío de Arroz con Atún, Choclo y Palta",
+        modo: "frio",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_5",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 5,
+        descripcion: "Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.",
+        prompt_cuadrante: "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y abanico de palta cremosa rociada con gotas de limón.",
+        tags: ["atun", "choclo", "arroz", "palta", "tomate", "bowl", "frio"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 17: Salpicones de Pollo y Aves (Fríos)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_17",
+    tema: "Salpicones de Pollo y Ensaladas de Ave",
+    tipo: "frio",
+    platos: [
+      {
+        id: "plate_cat_65",
+        cuadrante: "superior_izq",
+        nombre: "Salpicón Criollo de Pollo con Papas y Hojas Verdes",
+        modo: "frio",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_1",
+        vegetal_secundario_id: "comp_veg_4",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Pechuga de pollo cocida desmenuzada fría con cubos de papa hervida, lechuga crocante y zanahoria rallada al oliva.",
+        prompt_cuadrante: "Fuente de ensalada fresca con hebras de pechuga de pollo cocida desmenuzada, dados de papa hervida fría, hojas de lechuga cortada, zanahoria rallada fina y aceite de oliva virgen.",
+        tags: ["pollo", "salpicon", "papas", "lechuga", "zanahoria", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_66",
+        cuadrante: "superior_der",
+        nombre: "Ensalada Caesar Criolla con Pollo y Parmesano",
+        modo: "frio",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_1",
+        grasa_id: "comp_fat_6",
+        tiempo_min: 8,
+        descripcion: "Tiras de pechuga dorada fría sobre colchón abundante de hojas verdes, crutones crocantes y lascas de queso sardo/parmesano.",
+        prompt_cuadrante: "Ensalada estilo Caesar con hojas de lechuga romana y rúcula, tiras de pechuga de pollo grillada fría, cubitos de crutones tostados dorados y láminas de queso parmesano rallado.",
+        tags: ["pollo", "caesar", "lechuga", "queso", "crutones", "frio"]
+      },
+      {
+        id: "plate_cat_67",
+        cuadrante: "inferior_izq",
+        nombre: "Bowl de Quinoa Fría con Pollo y Pepino",
+        modo: "frio",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_8",
+        vegetal_id: "comp_veg_16",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 8,
+        descripcion: "Quinoa cocida fría con cubos de pollo a la plancha, rodajas finas de pepino refrescante, tomates cherry y oliva.",
+        prompt_cuadrante: "Bowl fresco con base de quinoa esponjosa fría, cubos de pechuga de pollo a la plancha, rodajitas finas y crocantes de pepino con piel, tomates cherry y aderezo de aceite de oliva.",
+        tags: ["quinoa", "pollo", "pepino", "tomate", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_68",
+        cuadrante: "inferior_der",
+        nombre: "Ensalada de Pollo con Choclo, Remolacha y Nueces",
+        modo: "frio",
+        proteina_id: "comp_prot_1",
+        carbo_id: "comp_carb_5",
+        vegetal_id: "comp_veg_14",
+        grasa_id: "comp_fat_4",
+        tiempo_min: 8,
+        descripcion: "Pollo cocido desmenuzado con choclo desgranado dulce, remolacha cocida en cubos y mariposas de nueces crujientes.",
+        prompt_cuadrante: "Ensalada multicolor con cubos de pechuga de pollo cocida, granos de choclo amarillo dorado, dados de remolacha cocida de color violeta intenso y trozos de nueces tostadas.",
+        tags: ["pollo", "choclo", "remolacha", "nueces", "frio"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 18: Huevos Duros y Ensaladas de Legumbres (Fríos)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_18",
+    tema: "Huevos Duros y Ensaladas de Legumbres Frías",
+    tipo: "frio",
+    platos: [
+      {
+        id: "plate_cat_69",
+        cuadrante: "superior_izq",
+        nombre: "Ensalada de Lentejas Frías con Huevo Duro y Tomate",
+        modo: "frio",
+        proteina_id: "comp_prot_9",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_2",
+        vegetal_secundario_id: "comp_veg_13",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Lentejas cocidas escurridas frías mezcladas con dados de tomate, huevo duro picado y cebolla de verdeo con oliva.",
+        prompt_cuadrante: "Bowl de ensalada de lentejas cocidas firmes y frías, tomates en cubitos frescos, cebollita de verdeo picada fina y dos huevos duros cortados en mitades con aceite de oliva.",
+        tags: ["lentejas", "legumbres", "huevo", "tomate", "verdeo", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_70",
+        cuadrante: "superior_der",
+        nombre: "Ensalada Primavera de Fideos con Huevo y Choclo",
+        modo: "frio",
+        proteina_id: "comp_prot_9",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_4",
+        vegetal_secundario_id: "comp_veg_5",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 5,
+        descripcion: "Fideos secos fríos con trozos de huevo duro, choclo en grano, zanahoria rallada fresca y aceitunas negras.",
+        prompt_cuadrante: "Ensalada primaveral de fideos cortos con trozos de huevo duro picado, granos de choclo amarillo, hebras de zanahoria fresca y aceitunas negras enteras.",
+        tags: ["fideos", "pasta", "huevo", "choclo", "zanahoria", "aceitunas", "frio"]
+      },
+      {
+        id: "plate_cat_71",
+        cuadrante: "inferior_izq",
+        nombre: "Ensalada de Porotos Alubia Fríos con Huevo y Perejil",
+        modo: "frio",
+        proteina_id: "comp_prot_9",
+        carbo_id: "comp_carb_6",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Porotos alubia blancos tiernos fríos con abundante perejil fresco picado, tomate en cubos, huevo duro y aceite de oliva.",
+        prompt_cuadrante: "Plato de ensalada fresca de porotos blancos alubia al dente, lluvia de perejil picado, dados de tomate fresco, cuartos de huevo duro y un chorro generoso de aceite de oliva virgen.",
+        tags: ["porotos", "legumbres", "huevo", "tomate", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_72",
+        cuadrante: "inferior_der",
+        nombre: "Ensalada de Arroz Frío con Huevo, Chauchas y Palta",
+        modo: "frio",
+        proteina_id: "comp_prot_9",
+        carbo_id: "comp_carb_1",
+        vegetal_id: "comp_veg_19",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 5,
+        descripcion: "Arroz blanco frío suelto con chauchas cocidas tiernas en trocitos, huevo duro picado y cubos de palta fresca.",
+        prompt_cuadrante: "Bowl veraniego de arroz blanco frío cocido, chauchas verdes tiernas cortadas al sesgo, trozos de huevo duro con yema firme y dados de palta madura con toque de limón.",
+        tags: ["arroz", "huevo", "chauchas", "palta", "frio"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 19: Quesos y Ensaladas Frescas (Fríos)
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_19",
+    tema: "Quesos Frescos, Caprese y Ensaladas Livianas",
+    tipo: "frio",
+    platos: [
+      {
+        id: "plate_cat_73",
+        cuadrante: "superior_izq",
+        nombre: "Ensalada Caprese Criolla con Queso Fresco y Rúcula",
+        modo: "frio",
+        proteina_id: "comp_prot_16",
+        carbo_id: null,
+        vegetal_id: "comp_veg_2",
+        vegetal_secundario_id: "comp_veg_1",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Rodajas gruesas de tomate maduro con láminas de queso fresco o port salut, hojas de rúcula y aceite de oliva extra virgen.",
+        prompt_cuadrante: "Plato plano con clásica ensalada Caprese: rodajas intercaladas de tomate perita maduro y queso fresco cremoso blanco, coronadas por hojas verdes de rúcula y aceite de oliva extra virgen.",
+        tags: ["caprese", "queso", "tomate", "rucula", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_74",
+        cuadrante: "superior_der",
+        nombre: "Ensalada Fresca de Ricota con Remolacha y Nueces",
+        modo: "frio",
+        proteina_id: "comp_prot_16",
+        carbo_id: null,
+        vegetal_id: "comp_veg_14",
+        vegetal_secundario_id: "comp_veg_1",
+        grasa_id: "comp_fat_4",
+        tiempo_min: 5,
+        descripcion: "Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.",
+        prompt_cuadrante: "Ensalada gourmet fresca con hojas de rúcula, dados de remolacha cocida dulce de color borravino, porciones suaves de ricota fresca blanca y mitades de nueces crocantes.",
+        tags: ["ricota", "queso", "remolacha", "rucula", "nueces", "frio"]
+      },
+      {
+        id: "plate_cat_75",
+        cuadrante: "inferior_izq",
+        nombre: "Pasta Fría con Dados de Queso, Tomate y Aceitunas",
+        modo: "frio",
+        proteina_id: "comp_prot_16",
+        carbo_id: "comp_carb_2",
+        vegetal_id: "comp_veg_2",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 5,
+        descripcion: "Fideos fríos al dente con dados de queso port salut/tybo, tomatitos en cuartos, aceitunas negras y albahaca fresca.",
+        prompt_cuadrante: "Bowl de ensalada de pasta fría con fideos tirabuzón, cubos firmes de queso semiduro, tomates cherry cortados al medio, aceitunas negras y hojitas de albahaca fresca con aceite de oliva.",
+        tags: ["pasta", "fideos", "queso", "tomate", "aceitunas", "frio"]
+      },
+      {
+        id: "plate_cat_76",
+        cuadrante: "inferior_der",
+        nombre: "Bowl de Quinoa con Queso Port Salut, Pepino y Semillas",
+        modo: "frio",
+        proteina_id: "comp_prot_16",
+        carbo_id: "comp_carb_8",
+        vegetal_id: "comp_veg_16",
+        vegetal_secundario_id: "comp_veg_17",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 8,
+        descripcion: "Quinoa fría con cubitos de queso port salut, rodajas finas de pepino, rabanitos crocantes y mix de semillas de chía.",
+        prompt_cuadrante: "Bowl saludable con base de quinoa fría suelta, dados blancos de queso port salut fresco, rodajas delgadas de pepino y rabanitos rosados, espolvoreado con semillas de sésamo y chía.",
+        tags: ["quinoa", "queso", "pepino", "rabanitos", "semillas", "frio"]
+      }
+    ]
+  },
+
+  // -------------------------------------------------------------
+  // LOTE 20: Viandas Frías y Bowls de Verano
+  // -------------------------------------------------------------
+  {
+    lote_id: "lote_20",
+    tema: "Viandas Prácticas y Bowls Nutritivos de Verano",
+    tipo: "frio",
+    platos: [
+      {
+        id: "plate_cat_77",
+        cuadrante: "superior_izq",
+        nombre: "Salpicón de Carne Fría con Papas y Hojas Verdes",
+        modo: "frio",
+        proteina_id: "comp_prot_3",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_1",
+        vegetal_secundario_id: "comp_veg_2",
+        grasa_id: "comp_fat_1",
+        tiempo_min: 5,
+        descripcion: "Tiras frías de bife o carne asada cocida con dados de papa hervida, hojas de lechuga crocante, tomate y oliva.",
+        prompt_cuadrante: "Plato de salpicón criollo tradicional con tiras delgadas de carne vacuna cocida fría, dados de papa cocida al dente, hojas de lechuga fresca y tomate cortado con aceite de oliva virgen.",
+        tags: ["carne", "bife", "salpicon", "papas", "lechuga", "tomate", "frio", "oliva"]
+      },
+      {
+        id: "plate_cat_78",
+        cuadrante: "superior_der",
+        nombre: "Ensalada Rusa con Tiras de Milanesa Fría",
+        modo: "frio",
+        proteina_id: "comp_prot_14",
+        carbo_id: "comp_carb_3",
+        vegetal_id: "comp_veg_4",
+        grasa_id: "comp_fat_3",
+        tiempo_min: 5,
+        descripcion: "Clásica ensalada rusa de papa y zanahoria con tiras crujientes de milanesa fría y aceitunas verdes.",
+        prompt_cuadrante: "Porción de ensalada rusa tradicional con cubitos de papa y zanahoria, coronada con tiras de milanesa dorada crujiente fría cortada al bies y aceitunas verdes brillantes.",
+        tags: ["milanesa", "ensalada-rusa", "papa", "zanahoria", "aceitunas", "frio"]
+      },
+      {
+        id: "plate_cat_79",
+        cuadrante: "inferior_izq",
+        nombre: "Bowl Detox de Tofu Frío con Quinoa y Repollo",
+        modo: "frio",
+        proteina_id: "comp_prot_13",
+        carbo_id: "comp_carb_8",
+        vegetal_id: "comp_veg_15",
+        vegetal_secundario_id: "comp_veg_16",
+        grasa_id: "comp_fat_2",
+        tiempo_min: 8,
+        descripcion: "Tofu firme frío marinado en limón sobre quinoa cocida, juliana fina de repollo colorado, pepino y palta.",
+        prompt_cuadrante: "Bowl fresco con base de quinoa suelta, cubos de tofu blanco marinado, repollo colorado cortado en juliana finísima, rodajas de pepino y gajos de palta madura con oliva.",
+        tags: ["tofu", "quinoa", "repollo", "pepino", "palta", "frio", "vegetariano"]
+      },
+      {
+        id: "plate_cat_80",
+        cuadrante: "inferior_der",
+        nombre: "Ensalada de Avena Remojada con Atún y Zanahoria",
+        modo: "frio",
+        proteina_id: "comp_prot_11",
+        carbo_id: "comp_carb_9",
+        vegetal_id: "comp_veg_4",
+        grasa_id: "comp_fat_5",
+        tiempo_min: 5,
+        descripcion: "Base fresca de avena arrollada hidratada con agua o caldo frío, lomitos de atún al natural, zanahoria rallada y semillas.",
+        prompt_cuadrante: "Bowl nutritivo de avena arrollada tierna hidratada en frío, cubierta con lomitos de atún claro, hebras de zanahoria fresca y semillas de girasol y sésamo tostadas con oliva.",
+        tags: ["atun", "avena", "zanahoria", "semillas", "bowl", "frio"]
+      }
+    ]
+  }
+];
+
+// Validar que todos los IDs existan en seed.js
+let errorCount = 0;
+lotes.forEach(l => {
+  l.platos.forEach(p => {
+    if (p.proteina_id && !validComponentIds.has(p.proteina_id)) {
+      console.error(`ERROR en ${p.id}: proteina_id ${p.proteina_id} no existe en seed`);
+      errorCount++;
+    }
+    if (p.carbo_id && !validComponentIds.has(p.carbo_id)) {
+      console.error(`ERROR en ${p.id}: carbo_id ${p.carbo_id} no existe en seed`);
+      errorCount++;
+    }
+    if (p.vegetal_id && !validComponentIds.has(p.vegetal_id)) {
+      console.error(`ERROR en ${p.id}: vegetal_id ${p.vegetal_id} no existe en seed`);
+      errorCount++;
+    }
+    if (p.vegetal_secundario_id && !validComponentIds.has(p.vegetal_secundario_id)) {
+      console.error(`ERROR en ${p.id}: vegetal_secundario_id ${p.vegetal_secundario_id} no existe en seed`);
+      errorCount++;
+    }
+    if (p.grasa_id && !validComponentIds.has(p.grasa_id)) {
+      console.error(`ERROR en ${p.id}: grasa_id ${p.grasa_id} no existe en seed`);
+      errorCount++;
+    }
+  });
+});
+
+if (errorCount > 0) {
+  console.error(`Se encontraron ${errorCount} errores de IDs. Abortando.`);
+  process.exit(1);
+}
+
+console.log(`Validación exitosa: 20 lotes con 80 platos validados con seed.js`);
+
+// 1. Guardar JSON
+const catalogJsonPath = path.join(rootDir, 'js', 'data', 'plates-catalog.json');
+const flatPlates = [];
+lotes.forEach(l => {
+  l.platos.forEach(p => {
+    flatPlates.push({
+      ...p,
+      lote_id: l.lote_id,
+      lote_tema: l.tema
+    });
+  });
+});
+
+const jsonOutput = {
+  version: "1.0.0",
+  total_lotes: lotes.length,
+  total_platos: flatPlates.length,
+  resumen_modos: {
+    caliente: flatPlates.filter(p => p.modo === 'caliente').length,
+    frio: flatPlates.filter(p => p.modo === 'frio').length
+  },
+  resumen_carbo: {
+    con_carbohidrato: flatPlates.filter(p => p.carbo_id !== null).length,
+    sin_carbohidrato_low_carb: flatPlates.filter(p => p.carbo_id === null).length
+  },
+  lotes: lotes,
+  platos: flatPlates
+};
+
+fs.writeFileSync(catalogJsonPath, JSON.stringify(jsonOutput, null, 2), 'utf-8');
+console.log(`JSON generado en: ${catalogJsonPath}`);
+
+// 2. Guardar Markdown de documentación con prompts listos para 2x2
+let mdContent = `# Catálogo Maestro de Platos 2x2 (Cobertura $\ge 80\%$)
+
+Este documento contiene la biblioteca oficial de **80 combinaciones gastronómicas cotidianas argentinas**, organizadas en **20 lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
+
+---
+
+## Métricas del Catálogo
+- **Total de Lotes (Imágenes 2x2 a generar):** 20
+- **Total de Platos resultantes (recortados 1:1):** 80
+- **Distribución por Estilo de Servicio:**
+  - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** 60 platos (75%)
+  - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** 20 platos (25%)
+- **Distribución por Macronutrientes:**
+  - 🥔 **Platos con Carbohidrato almidonado:** 65 platos (81.25%)
+  - 🥩 **Platos Low-Carb / Cenas Ligeras (Doble vegetal + grasa):** 15 platos (18.75%)
+
+---
+
+## Estructura de Cuadrantes para cada Lote 2x2
+Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse simétricamente en 4 cuadrantes:
+| Cuadrante | Ubicación | Código |
+| :--- | :--- | :--- |
+| **Cuadrante 1** | Superior Izquierdo | \`superior_izq\` (Top-Left) |
+| **Cuadrante 2** | Superior Derecho | \`superior_der\` (Top-Right) |
+| **Cuadrante 3** | Inferior Izquierdo | \`inferior_izq\` (Bottom-Left) |
+| **Cuadrante 4** | Inferior Derecho | \`inferior_der\` (Bottom-Right) |
+
+---
+
+`;
+
+lotes.forEach((lote, idx) => {
+  mdContent += `## Lote ${idx + 1} (${lote.lote_id}): ${lote.tema}\n`;
+  mdContent += `- **Modo general:** ${lote.tipo === 'caliente' ? '🍲 Caliente' : '🥗 Frío'}\n\n`;
+
+  lote.platos.forEach(p => {
+    const prot = compMap.get(p.proteina_id);
+    const carbo = p.carbo_id ? compMap.get(p.carbo_id) : null;
+    const veg1 = compMap.get(p.vegetal_id);
+    const veg2 = p.vegetal_secundario_id ? compMap.get(p.vegetal_secundario_id) : null;
+    const fat = compMap.get(p.grasa_id);
+
+    const posEmoji = p.cuadrante === 'superior_izq' ? '↖️ Superior Izquierdo'
+      : p.cuadrante === 'superior_der' ? '↗️ Superior Derecho'
+      : p.cuadrante === 'inferior_izq' ? '↙️ Inferior Izquierdo'
+      : '↘️ Inferior Derecho';
+
+    mdContent += `### ${posEmoji} — ${p.nombre} (\`${p.id}\`)\n`;
+    mdContent += `- **Ingredientes Clave:**\n`;
+    mdContent += `  - **Proteína:** ${prot ? `${prot.icono} ${prot.nombre}` : 'Ninguna'}\n`;
+    mdContent += `  - **Carbohidrato:** ${carbo ? `${carbo.icono} ${carbo.nombre}` : '*(Sin carbohidrato / Low-Carb)*'}\n`;
+    mdContent += `  - **Vegetales:** ${veg1 ? `${veg1.icono} ${veg1.nombre}` : ''}${veg2 ? ` + ${veg2.icono} ${veg2.nombre}` : ''}\n`;
+    mdContent += `  - **Grasa:** ${fat ? `${fat.icono} ${fat.nombre}` : ''}\n`;
+    mdContent += `- **Tiempo sugerido:** ⏱️ ~${p.tiempo_min} min | **Servido:** ${p.modo === 'caliente' ? 'Caliente' : 'Frío'}\n`;
+    mdContent += `- **Descripción Culinaria:** ${p.descripcion}\n`;
+    mdContent += `- **Prompt Fotográfico:** *"${p.prompt_cuadrante}"*\n\n`;
+  });
+
+  mdContent += `> [!NOTE] Prompt consolidado para generar el Lote ${idx + 1} (Grilla 2x2)\n`;
+  mdContent += `\`\`\`text\n`;
+  mdContent += `Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:\n`;
+  mdContent += `- Cuadrante Superior Izquierdo: ${lote.platos[0].prompt_cuadrante}\n`;
+  mdContent += `- Cuadrante Superior Derecho: ${lote.platos[1].prompt_cuadrante}\n`;
+  mdContent += `- Cuadrante Inferior Izquierdo: ${lote.platos[2].prompt_cuadrante}\n`;
+  mdContent += `- Cuadrante Inferior Derecho: ${lote.platos[3].prompt_cuadrante}\n`;
+  mdContent += `Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.\n`;
+  mdContent += `\`\`\`\n\n---\n\n`;
+});
+
+const docPath = path.join(rootDir, 'docs', 'catalogo_platos_2x2.md');
+fs.writeFileSync(docPath, mdContent, 'utf-8');
+console.log(`Markdown generado en: ${docPath}`);
