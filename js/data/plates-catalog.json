@@ -36,7 +36,8 @@
             "papa",
             "rucula",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_01.jpg"
         },
         {
           "id": "plate_cat_02",
@@ -58,7 +59,8 @@
             "calabaza",
             "brocoli",
             "palta"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_02.jpg"
         },
         {
           "id": "plate_cat_03",
@@ -79,7 +81,8 @@
             "espinaca",
             "limon",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_03.jpg"
         },
         {
           "id": "plate_cat_04",
@@ -101,7 +104,8 @@
             "wok",
             "vegetales",
             "semillas"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_04.jpg"
         }
       ]
     },
@@ -130,7 +134,8 @@
             "lechuga",
             "tomate",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_05.jpg"
         },
         {
           "id": "plate_cat_06",
@@ -151,7 +156,8 @@
             "manteca",
             "queso",
             "tomate"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_06.jpg"
         },
         {
           "id": "plate_cat_07",
@@ -174,7 +180,8 @@
             "morron",
             "huevo",
             "aceitunas"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_07.jpg"
         },
         {
           "id": "plate_cat_08",
@@ -195,7 +202,8 @@
             "cebolla",
             "horno",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/batch-platos/plate_cat_08.jpg"
         }
       ]
     },
@@ -1898,7 +1906,8 @@
         "oliva"
       ],
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos"
+      "lote_tema": "Clásicos Fundacionales Argentinos",
+      "imagen_url": "img/batch-platos/plate_cat_01.jpg"
     },
     {
       "id": "plate_cat_02",
@@ -1922,7 +1931,8 @@
         "palta"
       ],
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos"
+      "lote_tema": "Clásicos Fundacionales Argentinos",
+      "imagen_url": "img/batch-platos/plate_cat_02.jpg"
     },
     {
       "id": "plate_cat_03",
@@ -1945,7 +1955,8 @@
         "oliva"
       ],
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos"
+      "lote_tema": "Clásicos Fundacionales Argentinos",
+      "imagen_url": "img/batch-platos/plate_cat_03.jpg"
     },
     {
       "id": "plate_cat_04",
@@ -1969,7 +1980,8 @@
         "semillas"
       ],
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos"
+      "lote_tema": "Clásicos Fundacionales Argentinos",
+      "imagen_url": "img/batch-platos/plate_cat_04.jpg"
     },
     {
       "id": "plate_cat_05",
@@ -1993,7 +2005,8 @@
         "oliva"
       ],
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares"
+      "lote_tema": "Milanesas y Comidas Caseras Populares",
+      "imagen_url": "img/batch-platos/plate_cat_05.jpg"
     },
     {
       "id": "plate_cat_06",
@@ -2016,7 +2029,8 @@
         "tomate"
       ],
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares"
+      "lote_tema": "Milanesas y Comidas Caseras Populares",
+      "imagen_url": "img/batch-platos/plate_cat_06.jpg"
     },
     {
       "id": "plate_cat_07",
@@ -2041,7 +2055,8 @@
         "aceitunas"
       ],
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares"
+      "lote_tema": "Milanesas y Comidas Caseras Populares",
+      "imagen_url": "img/batch-platos/plate_cat_07.jpg"
     },
     {
       "id": "plate_cat_08",
@@ -2064,7 +2079,8 @@
         "oliva"
       ],
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares"
+      "lote_tema": "Milanesas y Comidas Caseras Populares",
+      "imagen_url": "img/batch-platos/plate_cat_08.jpg"
     },
     {
       "id": "plate_cat_09",
