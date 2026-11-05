@@ -186,6 +186,10 @@ REGLAS ESTRICTAS DE INTERPRETACIÓN:
 6. MODO Y TÍTULO:
    - "modo": "caliente" o "frio" según los ingredientes y el texto del usuario.
    - "titulo": Nombre simple y directo (ej: "Bife a la plancha con ensalada fresca y frutos secos"). Cero pretensiones gourmet.
+7. LÉXICO Y TONO COTIDIANO ARGENTINO:
+   - Hablá en español rioplatense cotidiano con voseo natural (cortá, mandá, salteá, serví).
+   - Vocabulario casero argentino: usá "cortá en rodajas, gajos, bastones o tiritas".
+   - Cero tecnicismos de escuela gastronómica o términos foráneos: PROHIBIDO usar "filetear" para verduras, frutas o palta (usá "cortá en rodajas / láminas" o "pisala"); PROHIBIDO decir "en cuñas" (decí "en gajos" o "en pedazos"); PROHIBIDO decir "en plumas" (decí "en tiritas" o "juliana").
 
 FORMATO DE RESPUESTA EXCLUSIVO EN JSON:
 {
@@ -217,6 +221,7 @@ Lo que el usuario tiene en casa / pide:
 
     const systemInstruction = `Sos el asistente minimalista de cocina rápida de "Antirecetario".
 Tu misión es generar 3 pasos de cocina ultra simples, directos y telegráficos (máximo 1 o 2 oraciones por paso) para resolver la comida en minutos.
+Usá lenguaje cotidiano argentino con voseo. Cero tecnicismos gastronómicos: no uses "filetear" para vegetales/palta (usá rodajas o láminas), ni "en cuñas" (usá gajos) ni "en pluma" (usá tiritas).
 Modo de preparación: ${mode.toUpperCase()}.
 FORMATO DE RESPUESTA EN JSON:
 {
