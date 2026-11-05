@@ -13,7 +13,9 @@ class GeminiService {
    * Consulta dinámicamente los modelos autorizados para la clave actual y prioriza los más rápidos.
    */
   async _getAvailableModels(apiKey) {
-    if (this._activeModel) return [this._activeModel];
+    if (this._activeModel && !this._activeModel.includes('2.5')) return [this._activeModel];
+
+    const DEFAULT_MODELS = ['gemini-3.5-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite'];
 
     try {
       const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`, {
@@ -22,34 +24,35 @@ class GeminiService {
 
       if (listResp.ok) {
         const data = await listResp.json();
+        // Filtrar estrictamente modelos de texto puros (excluir imagen, tts, audio, embed, omni, preview y obsoletos)
         const available = (data.models || [])
           .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
-          .map(m => m.name.replace('models/', ''));
+          .map(m => m.name.replace('models/', ''))
+          .filter(m => !m.includes('image') && !m.includes('tts') && !m.includes('audio') && !m.includes('embed') && !m.includes('omni') && !m.includes('preview') && !m.includes('2.5'));
 
-        if (available.length > 0) {
-          const sorted = [];
-          // Modelos estables comprobados primero
-          ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash-8b'].forEach(m => {
-            if (available.includes(m) && !sorted.includes(m)) sorted.push(m);
-          });
-          // Otros modelos flash excluyendo versiones experimentales no soportadas
-          const otherFlash = available.filter(m => m.includes('flash') && !m.includes('2.5') && !sorted.includes(m));
-          sorted.push(...otherFlash);
-          const others = available.filter(m => !m.includes('2.5') && !sorted.includes(m));
-          sorted.push(...others);
+        const preferred = [];
+        for (const m of ['gemini-3.5-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite', 'gemini-3.6-flash', 'gemini-2.0-flash']) {
+          if (available.includes(m)) preferred.push(m);
+        }
 
-          return sorted;
+        if (preferred.length === 0) {
+          const anyFlash = available.filter(m => m.includes('flash')).slice(0, 3);
+          preferred.push(...anyFlash);
+        }
+
+        if (preferred.length > 0) {
+          return preferred.slice(0, 3);
         }
       }
     } catch (e) {
       console.warn('Error al listar modelos disponibles en Gemini:', e);
     }
 
-    return ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
+    return DEFAULT_MODELS;
   }
 
   /**
-   * Ejecuta la llamada a Gemini recorriendo los modelos disponibles con parseo JSON seguro.
+   * Ejecuta la llamada a Gemini con modelo óptimo y sin reintentos masivos.
    */
   async _callGemini(promptText, systemInstruction = '') {
     const apiKey = await storage.getApiKey();
@@ -63,6 +66,7 @@ class GeminiService {
     let lastError = null;
 
     for (const model of candidateModels) {
+      let resp;
       try {
         const fullPrompt = systemInstruction ? `${systemInstruction}\n\n${promptText}` : promptText;
         const bodyPayload = {
@@ -72,7 +76,7 @@ class GeminiService {
           }
         };
 
-        const resp = await fetch(
+        resp = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${trimmedKey}`,
           {
             method: 'POST',
@@ -80,32 +84,44 @@ class GeminiService {
             body: JSON.stringify(bodyPayload)
           }
         );
+      } catch (networkErr) {
+        lastError = networkErr;
+        continue;
+      }
 
-        if (!resp.ok) {
-          const errData = await resp.json().catch(() => ({}));
-          throw new Error(errData.error?.message || `HTTP ${resp.status}`);
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        const status = resp.status;
+        const errMsg = errData.error?.message || `HTTP ${status}`;
+        lastError = new Error(errMsg);
+
+        // Si es 429 (límite de cuota) o 401/403 (autenticación), frenar de inmediato
+        if (status === 429 || status === 401 || status === 403) {
+          throw lastError;
         }
 
-        const data = await resp.json();
-        const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!rawText) {
-          throw new Error('Respuesta vacía de la IA');
-        }
-
-        const parsed = this._extractJSON(rawText);
-        this._activeModel = model; // Cachear el modelo que funcionó
-        try {
-          localStorage.setItem('mpb_verified_gemini_model', model);
-        } catch (_) {}
-        return parsed;
-      } catch (err) {
-        lastError = err;
-        // Si el modelo guardado previamente falló, limpiar para re-evaluar candidatos
         if (this._activeModel === model) {
           this._activeModel = null;
           try { localStorage.removeItem('mpb_verified_gemini_model'); } catch (_) {}
         }
+        continue;
       }
+
+      // Respuesta HTTP 200 OK: parsear datos y no intentar ningún otro modelo
+      const data = await resp.json();
+      const parts = data.candidates?.[0]?.content?.parts || [];
+      const rawText = parts.map(p => p.text || '').join('').trim();
+      if (!rawText) {
+        throw new Error('Respuesta vacía de la IA');
+      }
+
+      const parsed = this._extractJSON(rawText);
+      console.log('🤖 [Gemini AI Response]:', parsed);
+      this._activeModel = model;
+      try {
+        localStorage.setItem('mpb_verified_gemini_model', model);
+      } catch (_) {}
+      return parsed;
     }
 
     throw lastError || new Error('No se pudo conectar con Gemini');

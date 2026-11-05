@@ -1,6 +1,6 @@
 import { storage } from '../services/storage.js';
 import { showToast } from '../utils/toast.js';
-import { geminiService } from '../services/gemini.js';
+import { geminiService } from '../services/gemini.js?v=5';
 
 export class AssemblerComponent {
   constructor(containerId) {
@@ -766,6 +766,7 @@ export class AssemblerComponent {
 
       const aiResult = await geminiService.assembleFromText(queryText, allComponents, currentContext);
       if (aiResult) {
+        console.log('🍽️ [Assembler AI Result]:', aiResult);
         const getValidIds = (keyArray, keySingle) => {
           let candidateIds = [];
           if (Array.isArray(aiResult[keyArray])) {
