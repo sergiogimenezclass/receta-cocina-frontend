@@ -25,8 +25,10 @@ test('AssemblerComponent - Integración de matching con catálogo y cola de foto
   await assembler.render();
   const html100 = assembler.container.innerHTML;
   assert.ok(html100.includes('src="img/platos/plate_cat_01.jpg"'));
-  assert.ok(html100.includes('100% coincidencia'));
+  assert.ok(html100.includes('id="visualPlatePhotoFrame"'));
+  assert.ok(html100.includes('id="modalPlateZoom"'));
   assert.ok(html100.includes('id="btnTogglePlateView"'));
+  assert.ok(!html100.includes('100% coincidencia'), 'No debe mostrar porcentaje de coincidencia al usuario');
 
   // Caso 2: Coincidencia < 80% (se añade a la cola de generación)
   await storage.clearGenerationQueue();

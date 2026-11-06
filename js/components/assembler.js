@@ -91,10 +91,10 @@ export class AssemblerComponent {
             <!-- 3. Plato Circular Táctil / Vista Foto Real -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
               ${this.showPhotoView && this.matchedPlateImage ? `
-                <div class="visual-plate-photo-frame" title="${this.escapeHtml(this.plateName)}">
+                <div class="visual-plate-photo-frame" id="visualPlatePhotoFrame" title="Tocar para ampliar foto" role="button" tabindex="0">
                   <img src="${this.escapeHtml(this.matchedPlateImage)}" alt="${this.escapeHtml(this.plateName)}" class="visual-plate-photo-img" />
-                  <div class="visual-plate-match-badge">
-                    <span>📸</span> <span>${this.matchScore}% coincidencia</span>
+                  <div class="visual-plate-zoom-hint" title="Ampliar">
+                    <span>🔍</span>
                   </div>
                 </div>
                 <button type="button" id="btnTogglePlateView" class="btn-toggle-plate-view" title="Ver cuadrantes de ingredientes">
@@ -141,7 +141,7 @@ export class AssemblerComponent {
               </div>
               ${!this.showPhotoView && this.matchedPlateImage ? `
                 <button type="button" id="btnTogglePlateView" class="btn-toggle-plate-view" title="Ver foto del plato">
-                  <span>📸</span> <span>Ver foto real (${this.matchScore}%)</span>
+                  <span>📸</span> <span>Ver foto real</span>
                 </button>
               ` : ''}
             </div>
@@ -288,6 +288,18 @@ export class AssemblerComponent {
           </div>
           <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
             <button id="btnDoneCategoryPicker" class="btn btn-primary btn-sm">👍 Listo</button>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- MODAL HTML5 NATIVO: ZOOM DE FOTO DEL PLATO -->
+      <dialog id="modalPlateZoom" closedby="any" class="plate-zoom-modal">
+        <div class="plate-zoom-dialog-inner">
+          <button type="button" class="plate-zoom-close" id="btnClosePlateZoom" aria-label="Cerrar ampliación">&times;</button>
+          <img src="${this.escapeHtml(this.matchedPlateImage || '')}" alt="${this.escapeHtml(this.plateName)}" class="plate-zoom-img" id="plateZoomImg" />
+          <div class="plate-zoom-caption">
+            <h3>${this.escapeHtml(this.plateName || (this.matchedPlate ? this.matchedPlate.nombre : 'Plato'))}</h3>
+            ${this.matchedPlate && this.matchedPlate.descripcion ? `<p>${this.escapeHtml(this.matchedPlate.descripcion)}</p>` : ''}
           </div>
         </div>
       </dialog>
@@ -794,7 +806,7 @@ export class AssemblerComponent {
       this.matchedPlateImage = result.imageUrl;
       this.generatedImageSrc = result.imageUrl;
       this.showPhotoView = true;
-      this.matchNotification = `📸 Foto de catálogo: "${result.plate.nombre}" (${result.score}% coincidencia)`;
+      this.matchNotification = `📸 Foto de catálogo: "${result.plate.nombre}"`;
     } else if (result.matched && !result.hasImage) {
       this.matchedPlateImage = null;
       this.showPhotoView = false;
@@ -808,7 +820,7 @@ export class AssemblerComponent {
         matchedCatalogId: result.plate.id,
         score: result.score
       });
-      this.matchNotification = `🎨 Coincide al ${result.score}% con "${result.plate.nombre}". Añadido a la cola para generar su lote 2x2.`;
+      this.matchNotification = `🎨 Plato sugerido: "${result.plate.nombre}". Añadido a la cola para generar su foto.`;
     } else {
       this.matchedPlateImage = null;
       this.showPhotoView = false;
@@ -1335,6 +1347,40 @@ export class AssemblerComponent {
         this.showPhotoView = !this.showPhotoView;
         await this.render();
         this.bindEvents();
+      });
+    }
+
+    // 4c. Zoom de Foto del Plato (<dialog id="modalPlateZoom">)
+    const photoFrame = this.container.querySelector('#visualPlatePhotoFrame');
+    const modalZoom = this.container.querySelector('#modalPlateZoom');
+    const btnCloseZoom = this.container.querySelector('#btnClosePlateZoom');
+
+    if (photoFrame && modalZoom) {
+      const openZoom = () => {
+        if (typeof modalZoom.showModal === 'function') {
+          modalZoom.showModal();
+        }
+      };
+      photoFrame.addEventListener('click', openZoom);
+      photoFrame.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openZoom();
+        }
+      });
+    }
+
+    if (btnCloseZoom && modalZoom) {
+      btnCloseZoom.addEventListener('click', () => {
+        modalZoom.close();
+      });
+    }
+
+    if (modalZoom) {
+      modalZoom.addEventListener('click', (e) => {
+        if (e.target === modalZoom) {
+          modalZoom.close();
+        }
       });
     }
 
