@@ -1,6 +1,7 @@
 import { storage } from '../services/storage.js';
 import { showToast } from '../utils/toast.js';
 import { geminiService } from '../services/gemini.js?v=5';
+import { catalogMatcher } from '../services/matcher.js';
 
 export class AssemblerComponent {
   constructor(containerId) {
@@ -25,9 +26,17 @@ export class AssemblerComponent {
     // Estado del buscador de Auto-Ensamblado determinista por ingredientes
     this.autoQueryText = '';
     this.autoMatchNotification = '';
+
+    // Estado del Matching con el Catálogo de 80 platos y cola de fotos
+    this.matchedPlate = null;
+    this.matchScore = 0;
+    this.matchedPlateImage = null;
+    this.showPhotoView = true;
+    this.matchNotification = '';
   }
 
   async init() {
+    await this.updateCatalogMatch();
     await this.render();
     this.bindEvents();
   }
@@ -79,9 +88,21 @@ export class AssemblerComponent {
               ${this.renderCompactChips(components)}
             </div>
 
-            <!-- 3. Plato Circular Táctil -->
+            <!-- 3. Plato Circular Táctil / Vista Foto Real -->
             <div class="visual-plate-circle-wrapper" id="visualPlateWrapper">
-              <div class="visual-plate-circle">
+              ${this.showPhotoView && this.matchedPlateImage ? `
+                <div class="visual-plate-photo-frame" title="${this.escapeHtml(this.plateName)}">
+                  <img src="${this.escapeHtml(this.matchedPlateImage)}" alt="${this.escapeHtml(this.plateName)}" class="visual-plate-photo-img" />
+                  <div class="visual-plate-match-badge">
+                    <span>📸</span> <span>${this.matchScore}% coincidencia</span>
+                  </div>
+                </div>
+                <button type="button" id="btnTogglePlateView" class="btn-toggle-plate-view" title="Ver cuadrantes de ingredientes">
+                  <span>🧩</span> <span>Ver cuadrantes táctiles</span>
+                </button>
+              ` : ''}
+
+              <div class="visual-plate-circle" style="${this.showPhotoView && this.matchedPlateImage ? 'display: none;' : ''}">
                 <!-- Cuadrante 1: Proteína (arriba-izquierda) -->
                 <div class="plate-quadrant quad-protein ${this.hasCategorySelected('Proteina') ? 'has-ingredient' : ''}" data-category="Proteina" title="Tocar para editar Proteínas">
                   <div class="quad-emoji" id="quadEmojiProtein">${this.getQuadrantEmoji('Proteina', components, '🥩')}</div>
@@ -118,6 +139,11 @@ export class AssemblerComponent {
                   </div>
                 </div>
               </div>
+              ${!this.showPhotoView && this.matchedPlateImage ? `
+                <button type="button" id="btnTogglePlateView" class="btn-toggle-plate-view" title="Ver foto del plato">
+                  <span>📸</span> <span>Ver foto real (${this.matchScore}%)</span>
+                </button>
+              ` : ''}
             </div>
 
             <!-- 4. Botón de Modo Cocina -->
@@ -133,9 +159,9 @@ export class AssemblerComponent {
             <div class="chat-progress-bar" id="chatProgressBar" aria-hidden="true"></div>
             <div class="grabber" aria-hidden="true"></div>
             <div class="v2-bottom-chat-inner">
-              ${this.autoMatchNotification ? `
+              ${this.autoMatchNotification || this.matchNotification ? `
                 <div class="chef-callout-pill" id="chefCalloutPill">
-                  <div class="chef-callout-text">${this.autoMatchNotification}</div>
+                  <div class="chef-callout-text">${this.escapeHtml(this.autoMatchNotification || this.matchNotification)}</div>
                   <button type="button" class="chef-callout-close" id="btnCloseChefCallout" title="Descartar">&times;</button>
                 </div>
               ` : ''}
@@ -455,6 +481,7 @@ export class AssemblerComponent {
 
   async updateVisualPlateAndSteps(allComponents) {
     this.updateStepDefaults(allComponents);
+    await this.updateCatalogMatch();
 
     // Actualizar contenido, emojis y estado activo de los cuadrantes
     const updateQuadrant = (quadClass, contentId, emojiId, category, defaultEmoji) => {
@@ -743,6 +770,63 @@ export class AssemblerComponent {
     return `data:image/png;base64,${data.image}`;
   }
 
+  async updateCatalogMatch() {
+    const hasAny = [
+      ...(Array.isArray(this.selected.Proteina) ? this.selected.Proteina : []),
+      ...(Array.isArray(this.selected.Vegetal) ? this.selected.Vegetal : []),
+      ...(Array.isArray(this.selected.Carbohidrato) ? this.selected.Carbohidrato : []),
+      ...(Array.isArray(this.selected.Grasa) ? this.selected.Grasa : [])
+    ].length > 0;
+
+    if (!hasAny) {
+      this.matchedPlate = null;
+      this.matchScore = 0;
+      this.matchedPlateImage = null;
+      this.matchNotification = '';
+      return null;
+    }
+
+    const result = await catalogMatcher.findBestMatch(this.selected, this.plateMode, 80);
+    this.matchedPlate = result.plate;
+    this.matchScore = result.score;
+
+    if (result.matched && result.hasImage) {
+      this.matchedPlateImage = result.imageUrl;
+      this.generatedImageSrc = result.imageUrl;
+      this.showPhotoView = true;
+      this.matchNotification = `📸 Foto de catálogo: "${result.plate.nombre}" (${result.score}% coincidencia)`;
+    } else if (result.matched && !result.hasImage) {
+      this.matchedPlateImage = null;
+      this.showPhotoView = false;
+      await storage.addToGenerationQueue({
+        nombre: this.plateName || result.plate.nombre,
+        proteina_ids: this.selected.Proteina,
+        vegetal_ids: this.selected.Vegetal,
+        carbo_ids: this.selected.Carbohidrato,
+        grasa_ids: this.selected.Grasa,
+        modo: this.plateMode,
+        matchedCatalogId: result.plate.id,
+        score: result.score
+      });
+      this.matchNotification = `🎨 Coincide al ${result.score}% con "${result.plate.nombre}". Añadido a la cola para generar su lote 2x2.`;
+    } else {
+      this.matchedPlateImage = null;
+      this.showPhotoView = false;
+      await storage.addToGenerationQueue({
+        nombre: this.plateName || 'Plato Personalizado',
+        proteina_ids: this.selected.Proteina,
+        vegetal_ids: this.selected.Vegetal,
+        carbo_ids: this.selected.Carbohidrato,
+        grasa_ids: this.selected.Grasa,
+        modo: this.plateMode,
+        score: result.score
+      });
+      this.matchNotification = '';
+    }
+
+    return result;
+  }
+
   async autoSelectByIngredientsText(queryText) {
     if (!queryText || !queryText.trim()) return;
 
@@ -808,6 +892,7 @@ export class AssemblerComponent {
           } else {
             this.autoMatchNotification = '';
           }
+          await this.updateCatalogMatch();
           return;
         }
       }
@@ -818,6 +903,7 @@ export class AssemblerComponent {
     // 2. Fallback determinista local (algoritmo sin IA)
     this.hasCustomAiSteps = false;
     this.deterministicAutoSelect(queryText, allComponents);
+    await this.updateCatalogMatch();
   }
 
   deterministicAutoSelect(queryText, allComponents) {
@@ -1236,10 +1322,21 @@ export class AssemblerComponent {
         this.plateMode = e.currentTarget.getAttribute('data-mode');
         this.hasCustomAiSteps = false;
         this.plateName = ''; // Resetear título genérico para regenerar con el nuevo estilo
+        await this.updateCatalogMatch();
         await this.render();
         this.bindEvents();
       });
     });
+
+    // 4b. Alternar entre Foto Real y Cuadrantes Táctiles
+    const btnToggle = this.container.querySelector('#btnTogglePlateView');
+    if (btnToggle) {
+      btnToggle.addEventListener('click', async () => {
+        this.showPhotoView = !this.showPhotoView;
+        await this.render();
+        this.bindEvents();
+      });
+    }
 
     // 5. Interacción con Cuadrantes del Plato y Chips Colapsados (Abre Selector Táctil)
     this.container.querySelectorAll('.plate-quadrant, .plate-compact-chip').forEach(el => {
@@ -1292,6 +1389,10 @@ export class AssemblerComponent {
         if (e.target === modalPicker) {
           modalPicker.close();
         }
+      });
+      modalPicker.addEventListener('close', async () => {
+        await this.render();
+        this.bindEvents();
       });
     }
 

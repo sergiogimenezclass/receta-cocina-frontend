@@ -16,6 +16,7 @@ export class SettingsComponent {
     const stabilityApiKey = await storage.getStabilityApiKey();
     const voiceLang = await storage.getVoiceLanguage();
     const voiceSilenceTimeout = await storage.getVoiceSilenceTimeout();
+    const queue = await storage.getGenerationQueue();
 
     this.container.innerHTML = `
       <div style="margin-bottom: 2rem;">
@@ -145,6 +146,42 @@ export class SettingsComponent {
             Configurado en: <strong>${voiceSilenceTimeout === 0 ? 'Solo manual' : (voiceSilenceTimeout / 1000) + ' segundos'}</strong>. Evita que el dictado se corte mientras pensás los ingredientes.
           </div>
         </div>
+      </div>
+
+      <!-- SECCIÓN 4: COLA DE GENERACIÓN DE FOTOS (LOTES 2x2) -->
+      <div class="glass-card" style="padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700;">🎨 Cola de Generación de Fotos (Lotes 2x2)</h3>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem;">Platos armados que no alcanzaron el 80% o cuya foto aún no está en catálogo.</p>
+          </div>
+          <span class="badge" style="font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: var(--radius-sm); background: var(--bg-surface); border: 1px solid var(--border-color);">
+            ${queue.length} plato${queue.length === 1 ? '' : 's'} en cola
+          </span>
+        </div>
+
+        ${queue.length > 0 ? `
+          <div style="max-height: 240px; overflow-y: auto; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            ${queue.map((item, idx) => `
+              <div style="padding: 0.65rem 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <strong>#${idx + 1} ${this.escapeHtml(item.nombre || 'Plato')}</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">
+                    ${item.modo === 'frio' ? '🥗 Frío' : '🍲 Caliente'} • Encolado: ${new Date(item.queuedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                </div>
+                <span style="font-size: 0.75rem; color: var(--text-secondary);">${item.score}% match</span>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" id="btnClearGenerationQueue" class="btn btn-secondary btn-sm">
+            🗑️ Vaciar Cola
+          </button>
+        ` : `
+          <div style="font-size: 0.85rem; color: var(--text-secondary); padding: 0.5rem 0;">
+            No hay platos pendientes en la cola. Cuando crees platos sin foto directa en catálogo, se acumularán aquí para preparar tus próximos lotes 2x2.
+          </div>
+        `}
       </div>
 
     `;
@@ -376,6 +413,17 @@ export class SettingsComponent {
         if (voiceSilenceFeedback) {
           voiceSilenceFeedback.innerHTML = `✅ Pausa activa: <strong>${label}</strong>. Guardado en configuración.`;
         }
+      });
+    }
+
+    // Vaciar cola de generación de fotos
+    const btnClearQueue = this.container.querySelector('#btnClearGenerationQueue');
+    if (btnClearQueue) {
+      btnClearQueue.addEventListener('click', async () => {
+        await storage.clearGenerationQueue();
+        showToast('🗑️ Cola de generación de fotos vaciada.', 'info');
+        await this.render();
+        this.bindEvents();
       });
     }
   }

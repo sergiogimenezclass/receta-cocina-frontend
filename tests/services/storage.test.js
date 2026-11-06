@@ -103,4 +103,34 @@ test('StorageService - Tiempo de Silencio de Micrófono (getVoiceSilenceTimeout 
   assert.strictEqual(await storage.getVoiceSilenceTimeout(), 0);
 });
 
+test('StorageService - Cola de generación de fotos (getGenerationQueue, addToGenerationQueue, clearGenerationQueue)', async () => {
+  await storage.clearGenerationQueue();
+  const initial = await storage.getGenerationQueue();
+  assert.deepStrictEqual(initial, []);
+
+  const plate = {
+    nombre: 'Pata de pollo con papas',
+    proteina_ids: ['comp_prot_2'],
+    vegetal_ids: ['comp_veg_2'],
+    carbo_ids: ['comp_carb_3'],
+    grasa_ids: ['comp_fat_2'],
+    modo: 'caliente'
+  };
+
+  const added = await storage.addToGenerationQueue(plate);
+  assert.ok(added && added.id);
+  assert.strictEqual(added.nombre, plate.nombre);
+
+  const queue = await storage.getGenerationQueue();
+  assert.strictEqual(queue.length, 1);
+
+  // Evitar duplicados
+  const dup = await storage.addToGenerationQueue(plate);
+  assert.strictEqual(dup, null);
+  assert.strictEqual((await storage.getGenerationQueue()).length, 1);
+
+  await storage.clearGenerationQueue();
+  assert.deepStrictEqual(await storage.getGenerationQueue(), []);
+});
+
 

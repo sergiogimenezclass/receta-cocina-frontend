@@ -8,6 +8,7 @@ const KEYS = {
   STABILITY_API_KEY: 'mpb_stability_api_key_v1',
   VOICE_LANG: 'mpb_voice_lang_v1',
   VOICE_SILENCE_TIMEOUT: 'mpb_voice_silence_timeout_v1',
+  GENERATION_QUEUE: 'mpb_generation_queue_v1',
 };
 
 /**
@@ -108,6 +109,44 @@ class StorageService {
     const validMs = typeof ms === 'number' ? ms : (parseInt(ms, 10) || 0);
     localStorage.setItem(KEYS.VOICE_SILENCE_TIMEOUT, validMs.toString());
     return validMs;
+  }
+
+  // --- COLA DE GENERACIÓN DE FOTOS (LOTES 2x2) ---
+  async getGenerationQueue() {
+    try {
+      const data = localStorage.getItem(KEYS.GENERATION_QUEUE);
+      return data ? JSON.parse(data) : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  async addToGenerationQueue(plateData) {
+    const queue = await this.getGenerationQueue();
+    const sig = `${plateData.nombre || ''}|${(plateData.proteina_ids || []).sort().join(',')}|${(plateData.vegetal_ids || []).sort().join(',')}|${(plateData.carbo_ids || []).sort().join(',')}|${(plateData.grasa_ids || []).sort().join(',')}`;
+    
+    const exists = queue.some(item => {
+      const itemSig = `${item.nombre || ''}|${(item.proteina_ids || []).sort().join(',')}|${(item.vegetal_ids || []).sort().join(',')}|${(item.carbo_ids || []).sort().join(',')}|${(item.grasa_ids || []).sort().join(',')}`;
+      return itemSig === sig;
+    });
+
+    if (!exists) {
+      const entry = {
+        id: `queue_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+        queuedAt: new Date().toISOString(),
+        status: 'pending',
+        ...plateData
+      };
+      queue.push(entry);
+      localStorage.setItem(KEYS.GENERATION_QUEUE, JSON.stringify(queue));
+      return entry;
+    }
+    return null;
+  }
+
+  async clearGenerationQueue() {
+    localStorage.removeItem(KEYS.GENERATION_QUEUE);
+    return true;
   }
 
   // --- COMPONENTES ---
