@@ -233,7 +233,8 @@
             "tuco",
             "tomate",
             "queso"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_09.jpg"
         },
         {
           "id": "plate_cat_10",
@@ -256,7 +257,8 @@
             "zanahoria",
             "morron",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_10.jpg"
         },
         {
           "id": "plate_cat_11",
@@ -278,7 +280,8 @@
             "pure",
             "cebolla",
             "aceitunas"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_11.jpg"
         },
         {
           "id": "plate_cat_12",
@@ -299,7 +302,8 @@
             "cerdo",
             "zapallo",
             "calabaza"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_12.jpg"
         }
       ]
     },
@@ -329,7 +333,8 @@
             "cebolla",
             "morron",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_13.jpg"
         },
         {
           "id": "plate_cat_14",
@@ -351,7 +356,8 @@
             "pure",
             "rucula",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_14.jpg"
         },
         {
           "id": "plate_cat_15",
@@ -373,7 +379,8 @@
             "papa",
             "cebolla",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_15.jpg"
         },
         {
           "id": "plate_cat_16",
@@ -395,7 +402,8 @@
             "papa",
             "zanahoria",
             "aceitunas"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_16.jpg"
         }
       ]
     },
@@ -2104,7 +2112,7 @@
         "tomate",
         "queso"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_09.jpg",
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2130,7 +2138,7 @@
         "morron",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_10.jpg",
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2155,7 +2163,7 @@
         "cebolla",
         "aceitunas"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_11.jpg",
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2179,7 +2187,7 @@
         "zapallo",
         "calabaza"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_12.jpg",
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2205,7 +2213,7 @@
         "morron",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_13.jpg",
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2230,7 +2238,7 @@
         "rucula",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_14.jpg",
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2255,7 +2263,7 @@
         "cebolla",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_15.jpg",
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2280,7 +2288,7 @@
         "zanahoria",
         "aceitunas"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_16.jpg",
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
