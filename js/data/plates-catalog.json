@@ -1905,9 +1905,9 @@
         "rucula",
         "oliva"
       ],
+      "imagen_url": "img/platos/plate_cat_01.jpg",
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/platos/plate_cat_01.jpg"
+      "lote_tema": "Clásicos Fundacionales Argentinos"
     },
     {
       "id": "plate_cat_02",
@@ -1930,9 +1930,9 @@
         "brocoli",
         "palta"
       ],
+      "imagen_url": "img/platos/plate_cat_02.jpg",
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/platos/plate_cat_02.jpg"
+      "lote_tema": "Clásicos Fundacionales Argentinos"
     },
     {
       "id": "plate_cat_03",
@@ -1954,9 +1954,9 @@
         "limon",
         "oliva"
       ],
+      "imagen_url": "img/platos/plate_cat_03.jpg",
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/platos/plate_cat_03.jpg"
+      "lote_tema": "Clásicos Fundacionales Argentinos"
     },
     {
       "id": "plate_cat_04",
@@ -1979,9 +1979,9 @@
         "vegetales",
         "semillas"
       ],
+      "imagen_url": "img/platos/plate_cat_04.jpg",
       "lote_id": "lote_01",
-      "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/platos/plate_cat_04.jpg"
+      "lote_tema": "Clásicos Fundacionales Argentinos"
     },
     {
       "id": "plate_cat_05",
@@ -2004,9 +2004,9 @@
         "tomate",
         "oliva"
       ],
+      "imagen_url": "img/platos/plate_cat_05.jpg",
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/platos/plate_cat_05.jpg"
+      "lote_tema": "Milanesas y Comidas Caseras Populares"
     },
     {
       "id": "plate_cat_06",
@@ -2028,9 +2028,9 @@
         "queso",
         "tomate"
       ],
+      "imagen_url": "img/platos/plate_cat_06.jpg",
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/platos/plate_cat_06.jpg"
+      "lote_tema": "Milanesas y Comidas Caseras Populares"
     },
     {
       "id": "plate_cat_07",
@@ -2054,9 +2054,9 @@
         "huevo",
         "aceitunas"
       ],
+      "imagen_url": "img/platos/plate_cat_07.jpg",
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/platos/plate_cat_07.jpg"
+      "lote_tema": "Milanesas y Comidas Caseras Populares"
     },
     {
       "id": "plate_cat_08",
@@ -2078,9 +2078,9 @@
         "horno",
         "oliva"
       ],
+      "imagen_url": "img/platos/plate_cat_08.jpg",
       "lote_id": "lote_02",
-      "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/platos/plate_cat_08.jpg"
+      "lote_tema": "Milanesas y Comidas Caseras Populares"
     },
     {
       "id": "plate_cat_09",
@@ -2104,6 +2104,7 @@
         "tomate",
         "queso"
       ],
+      "imagen_url": null,
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2129,6 +2130,7 @@
         "morron",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2153,6 +2155,7 @@
         "cebolla",
         "aceitunas"
       ],
+      "imagen_url": null,
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2176,6 +2179,7 @@
         "zapallo",
         "calabaza"
       ],
+      "imagen_url": null,
       "lote_id": "lote_03",
       "lote_tema": "Pastas, Guisos y Platos de Olla"
     },
@@ -2201,6 +2205,7 @@
         "morron",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2225,6 +2230,7 @@
         "rucula",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2249,6 +2255,7 @@
         "cebolla",
         "manteca"
       ],
+      "imagen_url": null,
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2273,6 +2280,7 @@
         "zanahoria",
         "aceitunas"
       ],
+      "imagen_url": null,
       "lote_id": "lote_04",
       "lote_tema": "Cortes Vacunos Cotidianos a la Plancha y Olla"
     },
@@ -2295,6 +2303,7 @@
         "espinaca",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2317,6 +2326,7 @@
         "morron",
         "manteca"
       ],
+      "imagen_url": null,
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2341,6 +2351,7 @@
         "zanahoria",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2363,6 +2374,7 @@
         "limon",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2386,6 +2398,7 @@
         "tomate",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2409,6 +2422,7 @@
         "vegetales",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2431,6 +2445,7 @@
         "tomate",
         "aceitunas"
       ],
+      "imagen_url": null,
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2454,6 +2469,7 @@
         "pimenton",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2477,6 +2493,7 @@
         "tomate",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2500,6 +2517,7 @@
         "champinones",
         "palta"
       ],
+      "imagen_url": null,
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2523,6 +2541,7 @@
         "cebolla",
         "manteca"
       ],
+      "imagen_url": null,
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2547,6 +2566,7 @@
         "queso",
         "tomate"
       ],
+      "imagen_url": null,
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2570,6 +2590,7 @@
         "arroz",
         "queso"
       ],
+      "imagen_url": null,
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2592,6 +2613,7 @@
         "choclo",
         "queso"
       ],
+      "imagen_url": null,
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2616,6 +2638,7 @@
         "papa",
         "tomate"
       ],
+      "imagen_url": null,
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2639,6 +2662,7 @@
         "arroz",
         "queso"
       ],
+      "imagen_url": null,
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2662,6 +2686,7 @@
         "vegetales",
         "semillas"
       ],
+      "imagen_url": null,
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2686,6 +2711,7 @@
         "cebolla",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2710,6 +2736,7 @@
         "fideos",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2733,6 +2760,7 @@
         "sesamo",
         "vegetariano"
       ],
+      "imagen_url": null,
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2755,6 +2783,7 @@
         "calabaza",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2779,6 +2808,7 @@
         "puerro",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2801,6 +2831,7 @@
         "zanahoria",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2824,6 +2855,7 @@
         "manteca",
         "queso"
       ],
+      "imagen_url": null,
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2847,6 +2879,7 @@
         "hongos",
         "champinones"
       ],
+      "imagen_url": null,
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2869,6 +2902,7 @@
         "espinaca",
         "nueces"
       ],
+      "imagen_url": null,
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2891,6 +2925,7 @@
         "desayuno-salado",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2912,6 +2947,7 @@
         "crema",
         "verdeo"
       ],
+      "imagen_url": null,
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2936,6 +2972,7 @@
         "vegetariano",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -2960,6 +2997,7 @@
         "queso",
         "vegetariano"
       ],
+      "imagen_url": null,
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -2983,6 +3021,7 @@
         "vegetariano",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -3007,6 +3046,7 @@
         "vegetariano",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -3032,6 +3072,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3056,6 +3097,7 @@
         "manteca",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3080,6 +3122,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3103,6 +3146,7 @@
         "palta",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3127,6 +3171,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3149,6 +3194,7 @@
         "queso",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3172,6 +3218,7 @@
         "semillas",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3195,6 +3242,7 @@
         "frutos-secos",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3220,6 +3268,7 @@
         "aceitunas",
         "low-carb"
       ],
+      "imagen_url": null,
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3245,6 +3294,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3269,6 +3319,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3292,6 +3343,7 @@
         "low-carb",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3316,6 +3368,7 @@
         "ensalada",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3341,6 +3394,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3367,6 +3421,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3391,6 +3446,7 @@
         "bowl",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3416,6 +3472,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3439,6 +3496,7 @@
         "crutones",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3463,6 +3521,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3485,6 +3544,7 @@
         "nueces",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3510,6 +3570,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3535,6 +3596,7 @@
         "aceitunas",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3558,6 +3620,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3580,6 +3643,7 @@
         "palta",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3604,6 +3668,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3628,6 +3693,7 @@
         "nueces",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3651,6 +3717,7 @@
         "aceitunas",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3675,6 +3742,7 @@
         "semillas",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3701,6 +3769,7 @@
         "frio",
         "oliva"
       ],
+      "imagen_url": null,
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3724,6 +3793,7 @@
         "aceitunas",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3749,6 +3819,7 @@
         "frio",
         "vegetariano"
       ],
+      "imagen_url": null,
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3772,6 +3843,7 @@
         "bowl",
         "frio"
       ],
+      "imagen_url": null,
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     }

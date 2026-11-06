@@ -25,6 +25,11 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 | **Cuadrante 3** | Inferior Izquierdo | `inferior_izq` (Bottom-Left) |
 | **Cuadrante 4** | Inferior Derecho | `inferior_der` (Bottom-Right) |
 
+## Regla Fotográfica Obligatoria: Plano Cenital Estricto (90° Top-Down)
+- **Ángulo de cámara:** Plano cenital directo estricto perpendicular a 90 grados (overhead flat lay, vista de pájaro desde arriba).
+- **Prohibido:** Tomas a 45 grados, perspectivas laterales o planos oblicuos con profundidad forzada. Los platos deben verse redondos y completos desde arriba para encajar geométricamente en la interfaz circular táctil de la aplicación.
+- **Vajilla e Iluminación:** Plato de cerámica en fondo neutro limpio, luz difusa cálida sin sombras duras ni reflejos invasivos.
+
 ---
 
 ## Lote 1 (lote_01): Clásicos Fundacionales Argentinos
@@ -72,12 +77,12 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 
 > [!NOTE] Prompt consolidado para generar el Lote 1 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bife de lomo / churrasco jugoso sellado a la plancha con marcas de cocción, acompañado de puré de papas casero dorado y ensalada fresca de hojas de rúcula y tomates cherry con un chorrito de aceite de oliva virgen.
 - Cuadrante Superior Derecho: Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y abanico de láminas de palta fresca.
 - Cuadrante Inferior Izquierdo: Filete de pescado blanco (merluza) a la plancha con perejil fresco y gajo de limón, timbal de arroz blanco esponjoso al vapor, espinacas salteadas al dente con un hilo de aceite de oliva.
 - Cuadrante Inferior Derecho: Huevos revueltos cremosos y esponjosos sobre plato cerámico, acompañados de fideos salteados al wok con tiras finas de morrón rojo, cebolla y zanahoria, terminados con semillas de girasol tostadas.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -127,12 +132,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 2 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Milanesa de carne vacuna dorada y crujiente recién horneada con gajo de limón, porción generosa de puré de papas rústico y ensalada clásica de lechuga criolla y tomate redondo con aceite de oliva.
 - Cuadrante Superior Derecho: Suprema milanesa de pollo dorada al horno, junto a un nido de fideos salteados con manteca fundida y lluvia de queso rallado sardo gratinado, acompañado de rodajas de tomate perita.
 - Cuadrante Inferior Izquierdo: Carne picada salteada bien sazonada con cebolla dorada y morrón rojo en cubitos, corona de arroz blanco esponjoso, rodajas de huevo duro y aceitunas verdes brillantes.
 - Cuadrante Inferior Derecho: Pata-muslo de pollo asado con piel dorada y crocante con romero y limón, acompañado de gajos de batata asada caramelizada y cebolla dorada al horno con aceite de oliva.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -182,12 +187,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 3 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Plato hondo de fideos spaghetti al dente con salsa tuco boloñesa casera con abundante carne picada magra, tomate fresco reducido, hojas de laurel y abundante lluvia de queso parmesano rallado.
 - Cuadrante Superior Derecho: Cazuela de barro humeante con guiso express de lentejas tiernas, carne picada salteada, rodajas de zanahoria naranja, morrón rojo en cubitos y un toque de pimentón dulce con aceite de oliva.
 - Cuadrante Inferior Izquierdo: Porción cuadrada servida de pastel de papas tradicional: base espesa y jugosa de carne molida sazonada con cebolla dorada y aceitunas, coronada por puré de papas con costra gratinada al horno.
 - Cuadrante Inferior Derecho: Plato hondo de guisado criollo con porotos blancos tiernos, trozos dorados y jugosos de bondiola de cerdo, cubos de zapallo anco color naranja intenso y perejil fresco picado.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -237,12 +242,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 4 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bifecitos finos de carne vacuna (tortuguita) dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con timbal de arroz blanco al vapor.
 - Cuadrante Superior Derecho: Bifes delgados de palomita a la plancha con costra dorada, acompañados de puré suave de batata asada y bouquet de hojas frescas de rúcula con aceite de oliva extra virgen.
 - Cuadrante Inferior Izquierdo: Bife de hígado vacuno tierno y jugoso cubierto de abundantes aros de cebolla dorada caramelizada, servido con puré de papas rústico emulsionado con manteca derretida.
 - Cuadrante Inferior Derecho: Tira de asado con hueso bien marcada y dorada a la plancha, servida junto a una porción de clásica ensalada rusa (cubitos de papa y zanahoria) decorada con aceitunas verdes enteras.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -292,12 +297,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 5 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Costillita de cerdo dorada a la plancha con limón, acompañada de rodajas de batata asada dulce y espinacas tiernas salteadas con aceite de oliva extra virgen.
 - Cuadrante Superior Derecho: Medallones gruesos de bondiola de cerdo sellados con costra caramelizada, porción de choclo amarillo desgranado salteado con manteca y tiras de morrón rojo asado dulce.
 - Cuadrante Inferior Izquierdo: Pechuga de pollo a la plancha dorada en filetes, servida con arroz blanco salteado con abundante cebolla de verdeo en rodajitas y bastones de zanahoria brillante al oliva.
 - Cuadrante Inferior Derecho: Pata-muslo de pollo al horno dorado al orégano y limón, acompañado de trozos suaves de mandioca hervida blanca aderezados con aceite de oliva y perejil picado, junto a hojas verdes.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -347,12 +352,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 6 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Filetes de merluza blanca dorados a la plancha con rodajas de limón y perejil, acompañados de puré de papas casero suave y rodajas de tomate fresco condimentadas con aceite de oliva.
 - Cuadrante Superior Derecho: Filete de pescado blanco merluza tierno y dorado, servido sobre un colorido wok de vegetales en juliana (zucchini, morrón rojo y cebolla) con porción de arroz blanco esponjoso.
 - Cuadrante Inferior Izquierdo: Plato de fideos al dente salteados en sartén con trozos de atún en lomo, tomates en cubos dorados, aceitunas negras en rodajas y hojitas de albahaca fresca.
 - Cuadrante Inferior Derecho: Lomos tiernos de caballa salteados en sartén caliente con papas cocidas en cubos, lluvia de cebolla de verdeo en rodajas finas y pizca de pimentón ahumado con aceite de oliva.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -402,12 +407,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 7 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Omelette esponjoso dorado doblado a la mitad con queso fresco derretido en su interior, acompañado de dados de batata asada dorada y tomates cherry con aceite de oliva.
 - Cuadrante Superior Derecho: Bowl tibio con huevos revueltos cremosos montados sobre avena salada cocida, champiñones dorados en rodajas a la sartén y gajos de palta madura con pimienta negra recién molida.
 - Cuadrante Inferior Izquierdo: Plato hondo de clásico Revuelto Gramajo porteño: huevos revueltos húmedos y cremosos combinados con papas en bastones delgados dorados y cebolla salteada a la manteca fundida.
 - Cuadrante Inferior Derecho: Triángulo grueso servido de tortilla de acelga y espinaca verde intenso con papas picadas, cubierta con queso rallado dorado y ensalada de rodajas de tomate con orégano.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -457,12 +462,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 8 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Zapallitos redondos cortados a la mitad y rellenos con carne picada jugosa, arroz blanco y cebollita, cubiertos de queso rallado gratinado dorado burbujeante.
 - Cuadrante Superior Derecho: Media calabaza asada caramelizada ahuecada y rellena de pechuga de pollo desmenuzada, granos de choclo amarillo dulce y queso sardo rallado dorado al horno.
 - Cuadrante Inferior Izquierdo: Láminas gruesas de berenjena asada a la napolitana cubiertas con salsa de tomate casera y abundante queso fresco fundido con orégano, servidas junto a puré de papas casero.
 - Cuadrante Inferior Derecho: Medio morrón rojo grande asado al horno relleno con carne picada bien condimentada, arroz blanco y queso derretido dorado, con cebollita de verdeo fresca encima.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -512,12 +517,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 9 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Wok humeante con tiras doradas de pechuga de pollo mezcladas con fideos al dente, tiras crujientes de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo y chía.
 - Cuadrante Superior Derecho: Salteado en sartén de tiras jugosas de bife vacuno con chauchas verdes enteras tiernas y cebolla dorada, acompañado de una porción de arroz blanco al vapor con aceite de oliva.
 - Cuadrante Inferior Izquierdo: Tiras doradas de carne de cerdo salteadas a fuego vivo con medias lunas de zucchini, láminas de champiñones dorados y fideos cintas con un toque de aceite de oliva.
 - Cuadrante Inferior Derecho: Plato vegetariano con cubos crocantes de tofu dorado a la sartén, arbolitos de brócoli verde brillante al vapor, arroz blanco esponjoso y semillas de sésamo tostadas espolvoreadas.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -567,12 +572,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 10 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Plato hondo de guisado de porotos alubia blancos en salsa suave y espesa, bocados tiernos de carne vacuna sellada y dados anaranjados de calabaza dulce con aceite de oliva.
 - Cuadrante Superior Derecho: Bowl caliente con base de quinoa cocida esponjosa, cubos dorados de pechuga de pollo a la plancha, champiñones salteados en láminas y rodajas finas de puerro pochado con oliva.
 - Cuadrante Inferior Izquierdo: Lentejas estofadas en salsa espesa con rodajas de zanahoria cocida, coronadas con dos mitades de huevo duro con yema dorada y un toque de pimentón dulce con aceite de oliva.
 - Cuadrante Inferior Derecho: Arroz cremoso brillante ligado con manteca y queso sardo rallado, con bocados dorados de pechuga de pollo y cebolla rehogada, decorado con perejil fresco picado.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -622,12 +627,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 11 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Fideos cintas humeantes cubiertos con salsa cremosa de crema de leche, trozos de pechuga de pollo dorada y abundantes champiñones fileteados con pimienta blanca.
 - Cuadrante Superior Derecho: Plato de fideos cortos con hojas de espinaca verde oscuro salteadas, dados de queso fresco blanco semiderretido y trozos de nueces tostadas crujientes.
 - Cuadrante Inferior Izquierdo: Bowl reconfortante de avena arrollada salada cocida y cremosa, coronada con huevo revuelto tierno, hojas de espinaca salteadas y un hilo de aceite de oliva virgen extra.
 - Cuadrante Inferior Derecho: Arroz blanco cremoso salteado en sartén con lomitos de atún claro, suave emulsión de crema de leche y rodajitas verdes brillantes de cebolla de verdeo.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -677,12 +682,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 12 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Láminas gruesas de tofu dorado crujiente a la plancha con hierbas, porción de puré sedoso de calabaza y papa dorada, y ramilletes de brócoli verde brillante con aceite de oliva.
 - Cuadrante Superior Derecho: Nido de fideos al dente cubiertos de salsa boloñesa vegetal de soja texturizada con tomate concentrado, cebolla sofrita y lluvia de queso rallado sardo.
 - Cuadrante Inferior Izquierdo: Bowl tibio de quinoa esponjosa coronada con cubitos de tofu dorado, medias lunas de zucchini salteadas y semillas de girasol tostadas crujientes con oliva.
 - Cuadrante Inferior Derecho: Picadillo vegetal de soja texturizada dorada en sartén con cubitos de morrón rojo dulce y cebolla salteada, acompañado de arroz blanco al vapor con aceite de oliva.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -732,12 +737,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 13 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de una generosa porción de espinacas tiernas salteadas y champiñones dorados al ajillo con aceite de oliva.
 - Cuadrante Superior Derecho: Pechuga de pollo dorada jugosa a la plancha con limón, servida junto a arbolitos de brócoli verde brillante y coliflor blanca al vapor bañados con manteca derretida y pimienta negra.
 - Cuadrante Inferior Izquierdo: Costillita de cerdo marcada a la plancha bien dorada con gajo de limón, acompañada de láminas asadas de berenjena y rodajas de zucchini a la plancha con aceite de oliva extra virgen.
 - Cuadrante Inferior Derecho: Dos medallones gruesos de hamburguesa casera de carne vacuna bien dorados al plato, servidos sobre un colchón de hojas de rúcula fresca con láminas de palta madura y aceite de oliva.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -787,12 +792,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 14 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Filete de merluza blanca cocido a la plancha con perejil fresco y limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza anco asada con aceite de oliva.
 - Cuadrante Superior Derecho: Huevos revueltos esponjosos y cremosos salteados en sartén con dados dorados de zucchini tierno y terminados con abundante queso sardo rallado gratinado.
 - Cuadrante Inferior Izquierdo: Omelette dorado esponjoso con centro de queso fresco derretido, acompañado de tomates en rodajas asados en sartén y espolvoreado con semillas mixtas tostadas.
 - Cuadrante Inferior Derecho: Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -842,12 +847,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 15 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bifes delgados de carne de palomita dorados vuelta y vuelta a la plancha, acompañados de ensalada fresca de repollo blanco en tiras finas, rodajas de rabanito y aceitunas verdes.
 - Cuadrante Superior Derecho: Tira de asado a la plancha bien dorada y jugosa, servida con rodajas de berenjena asada con piel tostada y tiras de morrón rojo asado dulce aderezados con aceite de oliva.
 - Cuadrante Inferior Izquierdo: Pata-muslo asada al horno bien dorada y crujiente, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado al orégano con aceite de oliva.
 - Cuadrante Inferior Derecho: Plato caliente con lomos de atún claro sellados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro, todo bañado con aceite de oliva virgen extra y pimienta.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -897,12 +902,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 16 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bowl fresco de ensalada fría con arroz blanco cocido suelto, trozos generosos de atún al natural, dados de tomate perita maduro, cuartos de huevo duro y aceitunas verdes descarozadas.
 - Cuadrante Superior Derecho: Plato hondo de salpicón frío con cubos firmes de papa hervida, hebras de zanahoria rallada fresca, hojas de lechuga crocante y lomos de atún con hilo de aceite de oliva.
 - Cuadrante Inferior Izquierdo: Ensalada de fideos cortos al dente fríos mezclados con lomos enteros de caballa en conserva, hojas frescas de rúcula verde oscura y tomates cherry cortados al medio con oliva.
 - Cuadrante Inferior Derecho: Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y abanico de palta cremosa rociada con gotas de limón.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -952,12 +957,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 17 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Fuente de ensalada fresca con hebras de pechuga de pollo cocida desmenuzada, dados de papa hervida fría, hojas de lechuga cortada, zanahoria rallada fina y aceite de oliva virgen.
 - Cuadrante Superior Derecho: Ensalada estilo Caesar con hojas de lechuga romana y rúcula, tiras de pechuga de pollo grillada fría, cubitos de crutones tostados dorados y láminas de queso parmesano rallado.
 - Cuadrante Inferior Izquierdo: Bowl fresco con base de quinoa esponjosa fría, cubos de pechuga de pollo a la plancha, rodajitas finas y crocantes de pepino con piel, tomates cherry y aderezo de aceite de oliva.
 - Cuadrante Inferior Derecho: Ensalada multicolor con cubos de pechuga de pollo cocida, granos de choclo amarillo dorado, dados de remolacha cocida de color violeta intenso y trozos de nueces tostadas.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -1007,12 +1012,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 18 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Bowl de ensalada de lentejas cocidas firmes y frías, tomates en cubitos frescos, cebollita de verdeo picada fina y dos huevos duros cortados en mitades con aceite de oliva.
 - Cuadrante Superior Derecho: Ensalada primaveral de fideos cortos con trozos de huevo duro picado, granos de choclo amarillo, hebras de zanahoria fresca y aceitunas negras enteras.
 - Cuadrante Inferior Izquierdo: Plato de ensalada fresca de porotos blancos alubia al dente, lluvia de perejil picado, dados de tomate fresco, cuartos de huevo duro y un chorro generoso de aceite de oliva virgen.
 - Cuadrante Inferior Derecho: Bowl veraniego de arroz blanco frío cocido, chauchas verdes tiernas cortadas al sesgo, trozos de huevo duro con yema firme y dados de palta madura con toque de limón.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -1062,12 +1067,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 19 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Plato plano con clásica ensalada Caprese: rodajas intercaladas de tomate perita maduro y queso fresco cremoso blanco, coronadas por hojas verdes de rúcula y aceite de oliva extra virgen.
 - Cuadrante Superior Derecho: Ensalada gourmet fresca con hojas de rúcula, dados de remolacha cocida dulce de color borravino, porciones suaves de ricota fresca blanca y mitades de nueces crocantes.
 - Cuadrante Inferior Izquierdo: Bowl de ensalada de pasta fría con fideos tirabuzón, cubos firmes de queso semiduro, tomates cherry cortados al medio, aceitunas negras y hojitas de albahaca fresca con aceite de oliva.
 - Cuadrante Inferior Derecho: Bowl saludable con base de quinoa fría suelta, dados blancos de queso port salut fresco, rodajas delgadas de pepino y rabanitos rosados, espolvoreado con semillas de sésamo y chía.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---
@@ -1117,12 +1122,12 @@ Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes f
 
 > [!NOTE] Prompt consolidado para generar el Lote 20 (Grilla 2x2)
 ```text
-Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:
+Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Plato de salpicón criollo tradicional con tiras delgadas de carne vacuna cocida fría, dados de papa cocida al dente, hojas de lechuga fresca y tomate cortado con aceite de oliva virgen.
 - Cuadrante Superior Derecho: Porción de ensalada rusa tradicional con cubitos de papa y zanahoria, coronada con tiras de milanesa dorada crujiente fría cortada al bies y aceitunas verdes brillantes.
 - Cuadrante Inferior Izquierdo: Bowl fresco con base de quinoa suelta, cubos de tofu blanco marinado, repollo colorado cortado en juliana finísima, rodajas de pepino y gajos de palta madura con oliva.
 - Cuadrante Inferior Derecho: Bowl nutritivo de avena arrollada tierna hidratada en frío, cubierta con lomitos de atún claro, hebras de zanahoria fresca y semillas de girasol y sésamo tostadas con oliva.
-Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```
 
 ---

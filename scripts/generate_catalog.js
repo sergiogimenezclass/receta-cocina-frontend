@@ -1421,11 +1421,29 @@ console.log(`Validación exitosa: 20 lotes con 80 platos validados con seed.js`)
 
 // 1. Guardar JSON
 const catalogJsonPath = path.join(rootDir, 'js', 'data', 'plates-catalog.json');
+
+// Preservar imagen_url ya recortadas de lotes anteriores
+let existingImages = new Map();
+if (fs.existsSync(catalogJsonPath)) {
+  try {
+    const existingCat = JSON.parse(fs.readFileSync(catalogJsonPath, 'utf-8'));
+    (existingCat.platos || []).forEach(p => {
+      if (p.imagen_url) existingImages.set(p.id, p.imagen_url);
+    });
+  } catch (e) {
+    console.warn("No se pudo leer imagen_url previas del catálogo:", e.message);
+  }
+}
+
 const flatPlates = [];
 lotes.forEach(l => {
   l.platos.forEach(p => {
+    if (existingImages.has(p.id)) {
+      p.imagen_url = existingImages.get(p.id);
+    }
     flatPlates.push({
       ...p,
+      imagen_url: existingImages.get(p.id) || p.imagen_url || null,
       lote_id: l.lote_id,
       lote_tema: l.tema
     });
@@ -1479,6 +1497,11 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 | **Cuadrante 3** | Inferior Izquierdo | \`inferior_izq\` (Bottom-Left) |
 | **Cuadrante 4** | Inferior Derecho | \`inferior_der\` (Bottom-Right) |
 
+## Regla Fotográfica Obligatoria: Plano Cenital Estricto (90° Top-Down)
+- **Ángulo de cámara:** Plano cenital directo estricto perpendicular a 90 grados (overhead flat lay, vista de pájaro desde arriba).
+- **Prohibido:** Tomas a 45 grados, perspectivas laterales o planos oblicuos con profundidad forzada. Los platos deben verse redondos y completos desde arriba para encajar geométricamente en la interfaz circular táctil de la aplicación.
+- **Vajilla e Iluminación:** Plato de cerámica en fondo neutro limpio, luz difusa cálida sin sombras duras ni reflejos invasivos.
+
 ---
 
 `;
@@ -1512,12 +1535,12 @@ lotes.forEach((lote, idx) => {
 
   mdContent += `> [!NOTE] Prompt consolidado para generar el Lote ${idx + 1} (Grilla 2x2)\n`;
   mdContent += `\`\`\`text\n`;
-  mdContent += `Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida de estudio:\n`;
+  mdContent += `Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:\n`;
   mdContent += `- Cuadrante Superior Izquierdo: ${lote.platos[0].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Superior Derecho: ${lote.platos[1].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Izquierdo: ${lote.platos[2].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Derecho: ${lote.platos[3].prompt_cuadrante}\n`;
-  mdContent += `Estilo: Fotografía editorial cenital a 45 grados, ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros ni texto superpuesto.\n`;
+  mdContent += `Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.\n`;
   mdContent += `\`\`\`\n\n---\n\n`;
 });
 
