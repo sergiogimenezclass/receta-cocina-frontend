@@ -37,7 +37,7 @@
             "rucula",
             "oliva"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_01.jpg"
+          "imagen_url": "img/platos/plate_cat_01.jpg"
         },
         {
           "id": "plate_cat_02",
@@ -60,7 +60,7 @@
             "brocoli",
             "palta"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_02.jpg"
+          "imagen_url": "img/platos/plate_cat_02.jpg"
         },
         {
           "id": "plate_cat_03",
@@ -82,7 +82,7 @@
             "limon",
             "oliva"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_03.jpg"
+          "imagen_url": "img/platos/plate_cat_03.jpg"
         },
         {
           "id": "plate_cat_04",
@@ -105,7 +105,7 @@
             "vegetales",
             "semillas"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_04.jpg"
+          "imagen_url": "img/platos/plate_cat_04.jpg"
         }
       ]
     },
@@ -135,7 +135,7 @@
             "tomate",
             "oliva"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_05.jpg"
+          "imagen_url": "img/platos/plate_cat_05.jpg"
         },
         {
           "id": "plate_cat_06",
@@ -157,7 +157,7 @@
             "queso",
             "tomate"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_06.jpg"
+          "imagen_url": "img/platos/plate_cat_06.jpg"
         },
         {
           "id": "plate_cat_07",
@@ -181,7 +181,7 @@
             "huevo",
             "aceitunas"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_07.jpg"
+          "imagen_url": "img/platos/plate_cat_07.jpg"
         },
         {
           "id": "plate_cat_08",
@@ -203,7 +203,7 @@
             "horno",
             "oliva"
           ],
-          "imagen_url": "img/batch-platos/plate_cat_08.jpg"
+          "imagen_url": "img/platos/plate_cat_08.jpg"
         }
       ]
     },
@@ -1907,7 +1907,7 @@
       ],
       "lote_id": "lote_01",
       "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/batch-platos/plate_cat_01.jpg"
+      "imagen_url": "img/platos/plate_cat_01.jpg"
     },
     {
       "id": "plate_cat_02",
@@ -1932,7 +1932,7 @@
       ],
       "lote_id": "lote_01",
       "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/batch-platos/plate_cat_02.jpg"
+      "imagen_url": "img/platos/plate_cat_02.jpg"
     },
     {
       "id": "plate_cat_03",
@@ -1956,7 +1956,7 @@
       ],
       "lote_id": "lote_01",
       "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/batch-platos/plate_cat_03.jpg"
+      "imagen_url": "img/platos/plate_cat_03.jpg"
     },
     {
       "id": "plate_cat_04",
@@ -1981,7 +1981,7 @@
       ],
       "lote_id": "lote_01",
       "lote_tema": "Clásicos Fundacionales Argentinos",
-      "imagen_url": "img/batch-platos/plate_cat_04.jpg"
+      "imagen_url": "img/platos/plate_cat_04.jpg"
     },
     {
       "id": "plate_cat_05",
@@ -2006,7 +2006,7 @@
       ],
       "lote_id": "lote_02",
       "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/batch-platos/plate_cat_05.jpg"
+      "imagen_url": "img/platos/plate_cat_05.jpg"
     },
     {
       "id": "plate_cat_06",
@@ -2030,7 +2030,7 @@
       ],
       "lote_id": "lote_02",
       "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/batch-platos/plate_cat_06.jpg"
+      "imagen_url": "img/platos/plate_cat_06.jpg"
     },
     {
       "id": "plate_cat_07",
@@ -2056,7 +2056,7 @@
       ],
       "lote_id": "lote_02",
       "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/batch-platos/plate_cat_07.jpg"
+      "imagen_url": "img/platos/plate_cat_07.jpg"
     },
     {
       "id": "plate_cat_08",
@@ -2080,7 +2080,7 @@
       ],
       "lote_id": "lote_02",
       "lote_tema": "Milanesas y Comidas Caseras Populares",
-      "imagen_url": "img/batch-platos/plate_cat_08.jpg"
+      "imagen_url": "img/platos/plate_cat_08.jpg"
     },
     {
       "id": "plate_cat_09",

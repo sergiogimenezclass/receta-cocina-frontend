@@ -29,14 +29,21 @@ if (!lote) {
   process.exit(1);
 }
 
-const outDir = path.join(rootDir, 'img', 'batch-platos');
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir, { recursive: true });
+const masterDir = path.join(rootDir, 'img', 'lotes-master');
+if (!fs.existsSync(masterDir)) {
+  fs.mkdirSync(masterDir, { recursive: true });
 }
 
-// 1. Guardar copia del master 2x2
-const masterDest = path.join(outDir, `${loteId}_master_2x2.jpg`);
-fs.copyFileSync(inputImagePath, masterDest);
+const platesDir = path.join(rootDir, 'img', 'platos');
+if (!fs.existsSync(platesDir)) {
+  fs.mkdirSync(platesDir, { recursive: true });
+}
+
+// 1. Guardar copia del master 2x2 en img/lotes-master/
+const masterDest = path.join(masterDir, `${loteId}_master_2x2.jpg`);
+if (path.resolve(inputImagePath) !== path.resolve(masterDest)) {
+  fs.copyFileSync(inputImagePath, masterDest);
+}
 console.log(`Master 2x2 guardado en: ${masterDest}`);
 
 // 2. Obtener dimensiones de la imagen con ImageMagick identify
@@ -68,12 +75,12 @@ quadrantMap.forEach(q => {
   }
 
   const finalName = `${plate.id}.jpg`;
-  const finalPath = path.join(outDir, finalName);
+  const finalPath = path.join(platesDir, finalName);
   
   // Recortar directamente con el offset de seguridad
   execSync(`convert "${inputImagePath}" -crop ${q.geom} +repage "${finalPath}"`);
   
-  const relUrl = `img/batch-platos/${finalName}`;
+  const relUrl = `img/platos/${finalName}`;
   plate.imagen_url = relUrl;
   
   // Actualizar también en la lista plana de platos
