@@ -113,4 +113,18 @@ test('Contrato DOM PlannerComponent - Diseño limpio y sin selector de actividad
   assert.ok(html.includes('class="planner-day-pill'), 'Debe incluir selector móvil de días');
 });
 
-
+test('Integridad CSS - Todas las hojas de estilo tienen llaves balanceadas', () => {
+  const cssFiles = ['css/main.css', 'css/components.css', 'css/glassmorphism.css'];
+  for (const file of cssFiles) {
+    const fullPath = path.resolve(process.cwd(), file);
+    if (!fs.existsSync(fullPath)) continue;
+    const content = fs.readFileSync(fullPath, 'utf8');
+    let balance = 0;
+    for (let i = 0; i < content.length; i++) {
+      if (content[i] === '{') balance++;
+      if (content[i] === '}') balance--;
+      assert.ok(balance >= 0, `Llave de cierre '}' sin apertura previa en ${file}`);
+    }
+    assert.strictEqual(balance, 0, `Llaves desbalanceadas en ${file} (sobran ${balance} llaves abiertas '{')`);
+  }
+});
