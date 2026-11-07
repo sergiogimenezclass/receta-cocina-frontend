@@ -46,7 +46,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 15,
         descripcion: "Suprema de pechuga dorada con hierbas, cubos de calabaza asada caramelizada, arbolitos de brócoli al vapor y láminas de palta madura.",
-        prompt_cuadrante: "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y abanico de láminas de palta fresca.",
+        prompt_cuadrante: "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y trozos de palta fresca.",
         tags: ["pollo", "suprema", "pechuga", "calabaza", "brocoli", "palta"]
       },
       {
@@ -60,7 +60,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 12,
         descripcion: "Filet de merluza a la plancha con perejil y gajos de limón, acompañado de arroz blanco esponjoso y espinacas tiernas salteadas con oliva.",
-        prompt_cuadrante: "Filete de pescado blanco (merluza) a la plancha con perejil fresco y gajo de limón, timbal de arroz blanco esponjoso al vapor, espinacas salteadas al dente con un hilo de aceite de oliva.",
+        prompt_cuadrante: "Filete de pescado blanco (merluza) a la plancha con limón, porción de arroz blanco servido con cuchara al costado y espinacas salteadas con aceite de oliva.",
         tags: ["pescado", "merluza", "arroz", "espinaca", "limon", "oliva"]
       },
       {
@@ -99,7 +99,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Milanesa clásica de nalga/bola de lomo crujiente al horno con puré de papas casero y ensalada mixta de lechuga y tomate.",
-        prompt_cuadrante: "Milanesa de carne vacuna dorada y crujiente recién horneada con gajo de limón, porción generosa de puré de papas rústico y ensalada clásica de lechuga criolla y tomate redondo con aceite de oliva.",
+        prompt_cuadrante: "Milanesa de carne vacuna dorada recién horneada con gajo de limón al costado, porción de puré de papas casero servido rústicamente con cuchara y ensalada simple de lechuga y tomate mezclada.",
         tags: ["milanesa", "carne", "pure", "papa", "lechuga", "tomate", "oliva"]
       },
       {
@@ -128,7 +128,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 15,
         descripcion: "Carne picada especial salteada con cebolla, morrón rojo y especias criollas, servida con arroz blanco al vapor, cuartos de huevo duro y aceitunas verdes.",
-        prompt_cuadrante: "Carne picada salteada bien sazonada con cebolla dorada y morrón rojo en cubitos, corona de arroz blanco esponjoso, rodajas de huevo duro y aceitunas verdes brillantes.",
+        prompt_cuadrante: "Carne picada salteada casera con cebolla y morrón, servida con porción de arroz blanco al costado con cuchara, mitades de huevo duro y aceitunas verdes.",
         tags: ["picada", "carne", "arroz", "cebolla", "morron", "huevo", "aceitunas"]
       },
       {
@@ -237,7 +237,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Bifecitos finos de tortuguita sellados a la plancha con cebolla y morrón salteados, servidos con arroz blanco al vapor.",
-        prompt_cuadrante: "Bifecitos finos de carne vacuna (tortuguita) dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con timbal de arroz blanco al vapor.",
+        prompt_cuadrante: "Bifecitos finos de carne vacuna dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con porción de arroz blanco casero al costado.",
         tags: ["tortuguita", "carne", "bife", "arroz", "cebolla", "morron", "oliva"]
       },
       {
@@ -251,7 +251,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Bifecitos tiernos de palomita vuelta y vuelta a fuego vivo con puré cremoso de batata y hojas de rúcula.",
-        prompt_cuadrante: "Bifes delgados de palomita a la plancha con costra dorada, acompañados de puré suave de batata asada y bouquet de hojas frescas de rúcula con aceite de oliva extra virgen.",
+        prompt_cuadrante: "Bifes delgados de palomita a la plancha, acompañados de puré casero de batata servido con cuchara y hojas frescas de rúcula con aceite de oliva.",
         tags: ["palomita", "carne", "bife", "batata", "pure", "rucula", "oliva"]
       },
       {
@@ -1101,7 +1101,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 5,
         descripcion: "Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.",
-        prompt_cuadrante: "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y abanico de palta cremosa rociada con gotas de limón.",
+        prompt_cuadrante: "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón.",
         tags: ["atun", "choclo", "arroz", "palta", "tomate", "bowl", "frio"]
       }
     ]
@@ -1280,7 +1280,7 @@ const lotes = [
         grasa_id: "comp_fat_4",
         tiempo_min: 5,
         descripcion: "Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.",
-        prompt_cuadrante: "Ensalada gourmet fresca con hojas de rúcula, dados de remolacha cocida dulce de color borravino, porciones suaves de ricota fresca blanca y mitades de nueces crocantes.",
+        prompt_cuadrante: "Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes.",
         tags: ["ricota", "queso", "remolacha", "rucula", "nueces", "frio"]
       },
       {
@@ -1497,10 +1497,13 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 | **Cuadrante 3** | Inferior Izquierdo | \`inferior_izq\` (Bottom-Left) |
 | **Cuadrante 4** | Inferior Derecho | \`inferior_der\` (Bottom-Right) |
 
-## Regla Fotográfica Obligatoria: Plano Cenital Estricto (90° Top-Down)
-- **Ángulo de cámara:** Plano cenital directo estricto perpendicular a 90 grados (overhead flat lay, vista de pájaro desde arriba).
-- **Prohibido:** Tomas a 45 grados, perspectivas laterales o planos oblicuos con profundidad forzada. Los platos deben verse redondos y completos desde arriba para encajar geométricamente en la interfaz circular táctil de la aplicación.
-- **Vajilla e Iluminación:** Plato de cerámica en fondo neutro limpio, luz difusa cálida sin sombras duras ni reflejos invasivos.
+## Regla Fotográfica Obligatoria: Comida Casera Cotidiana en Plano Cenital (90° Top-Down)
+- **Ángulo de cámara:** Plano cenital directo estricto perpendicular a 90 grados (overhead flat lay, vista de pájaro desde arriba). PROHIBIDO tomas a 45 grados, perspectivas laterales o planos oblicuos. El plato debe verse circular, completo y centrado desde arriba.
+- **Estilo de Emplatado:** Comida casera real de todos los días (15 minutos, comida rápida de casa). Cero pretensiones de restaurante gourmet:
+  - Arroz y puré servidos con cuchara sopera al costado (PROHIBIDO moldear en timbales, cilindros o flores con manteca).
+  - Ensaladas mezcladas de forma natural (PROHIBIDO abanicos milimétricos de lechuga o arreglos florales).
+  - Comida rica, abundante y de casa.
+- **Vajilla y Entorno:** Plato común de loza en fondo neutro limpio. Sin copas de vino, cubiertos posados ni servilletas de hotel.
 
 ---
 
@@ -1535,12 +1538,12 @@ lotes.forEach((lote, idx) => {
 
   mdContent += `> [!NOTE] Prompt consolidado para generar el Lote ${idx + 1} (Grilla 2x2)\n`;
   mdContent += `\`\`\`text\n`;
-  mdContent += `Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:\n`;
+  mdContent += `Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:\n`;
   mdContent += `- Cuadrante Superior Izquierdo: ${lote.platos[0].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Superior Derecho: ${lote.platos[1].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Izquierdo: ${lote.platos[2].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Derecho: ${lote.platos[3].prompt_cuadrante}\n`;
-  mdContent += `Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.\n`;
+  mdContent += `Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz y puré servidos rústicamente con cuchara al costado (PROHIBIDO timbales, moldes o flores de puré), ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet), comida apetitosa, rica y simple, recién servida en la mesa de casa. Iluminación natural suave de cocina, sin copas de vino ni cubiertos gourmet alrededor, sin bordes negros y sin texto superpuesto.\n`;
   mdContent += `\`\`\`\n\n---\n\n`;
 });
 

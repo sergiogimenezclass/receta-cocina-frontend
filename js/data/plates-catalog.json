@@ -51,7 +51,7 @@
           "grasa_id": "comp_fat_2",
           "tiempo_min": 15,
           "descripcion": "Suprema de pechuga dorada con hierbas, cubos de calabaza asada caramelizada, arbolitos de brócoli al vapor y láminas de palta madura.",
-          "prompt_cuadrante": "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y abanico de láminas de palta fresca.",
+          "prompt_cuadrante": "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y trozos de palta fresca.",
           "tags": [
             "pollo",
             "suprema",
@@ -73,7 +73,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 12,
           "descripcion": "Filet de merluza a la plancha con perejil y gajos de limón, acompañado de arroz blanco esponjoso y espinacas tiernas salteadas con oliva.",
-          "prompt_cuadrante": "Filete de pescado blanco (merluza) a la plancha con perejil fresco y gajo de limón, timbal de arroz blanco esponjoso al vapor, espinacas salteadas al dente con un hilo de aceite de oliva.",
+          "prompt_cuadrante": "Filete de pescado blanco (merluza) a la plancha con limón, porción de arroz blanco servido con cuchara al costado y espinacas salteadas con aceite de oliva.",
           "tags": [
             "pescado",
             "merluza",
@@ -125,7 +125,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 15,
           "descripcion": "Milanesa clásica de nalga/bola de lomo crujiente al horno con puré de papas casero y ensalada mixta de lechuga y tomate.",
-          "prompt_cuadrante": "Milanesa de carne vacuna dorada y crujiente recién horneada con gajo de limón, porción generosa de puré de papas rústico y ensalada clásica de lechuga criolla y tomate redondo con aceite de oliva.",
+          "prompt_cuadrante": "Milanesa de carne vacuna dorada recién horneada con gajo de limón al costado, porción de puré de papas casero servido rústicamente con cuchara y ensalada simple de lechuga y tomate mezclada.",
           "tags": [
             "milanesa",
             "carne",
@@ -171,7 +171,7 @@
           "grasa_id": "comp_fat_3",
           "tiempo_min": 15,
           "descripcion": "Carne picada especial salteada con cebolla, morrón rojo y especias criollas, servida con arroz blanco al vapor, cuartos de huevo duro y aceitunas verdes.",
-          "prompt_cuadrante": "Carne picada salteada bien sazonada con cebolla dorada y morrón rojo en cubitos, corona de arroz blanco esponjoso, rodajas de huevo duro y aceitunas verdes brillantes.",
+          "prompt_cuadrante": "Carne picada salteada casera con cebolla y morrón, servida con porción de arroz blanco al costado con cuchara, mitades de huevo duro y aceitunas verdes.",
           "tags": [
             "picada",
             "carne",
@@ -324,7 +324,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 15,
           "descripcion": "Bifecitos finos de tortuguita sellados a la plancha con cebolla y morrón salteados, servidos con arroz blanco al vapor.",
-          "prompt_cuadrante": "Bifecitos finos de carne vacuna (tortuguita) dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con timbal de arroz blanco al vapor.",
+          "prompt_cuadrante": "Bifecitos finos de carne vacuna dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con porción de arroz blanco casero al costado.",
           "tags": [
             "tortuguita",
             "carne",
@@ -347,7 +347,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 15,
           "descripcion": "Bifecitos tiernos de palomita vuelta y vuelta a fuego vivo con puré cremoso de batata y hojas de rúcula.",
-          "prompt_cuadrante": "Bifes delgados de palomita a la plancha con costra dorada, acompañados de puré suave de batata asada y bouquet de hojas frescas de rúcula con aceite de oliva extra virgen.",
+          "prompt_cuadrante": "Bifes delgados de palomita a la plancha, acompañados de puré casero de batata servido con cuchara y hojas frescas de rúcula con aceite de oliva.",
           "tags": [
             "palomita",
             "carne",
@@ -1500,7 +1500,7 @@
           "grasa_id": "comp_fat_2",
           "tiempo_min": 5,
           "descripcion": "Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.",
-          "prompt_cuadrante": "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y abanico de palta cremosa rociada con gotas de limón.",
+          "prompt_cuadrante": "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón.",
           "tags": [
             "atun",
             "choclo",
@@ -1739,7 +1739,7 @@
           "grasa_id": "comp_fat_4",
           "tiempo_min": 5,
           "descripcion": "Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.",
-          "prompt_cuadrante": "Ensalada gourmet fresca con hojas de rúcula, dados de remolacha cocida dulce de color borravino, porciones suaves de ricota fresca blanca y mitades de nueces crocantes.",
+          "prompt_cuadrante": "Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes.",
           "tags": [
             "ricota",
             "queso",
@@ -1929,7 +1929,7 @@
       "grasa_id": "comp_fat_2",
       "tiempo_min": 15,
       "descripcion": "Suprema de pechuga dorada con hierbas, cubos de calabaza asada caramelizada, arbolitos de brócoli al vapor y láminas de palta madura.",
-      "prompt_cuadrante": "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y abanico de láminas de palta fresca.",
+      "prompt_cuadrante": "Suprema de pechuga de pollo dorada y jugosa con hierbas y rodajas de limón, cubos de calabaza anco asada dulce, brócoli verde brillante al vapor y trozos de palta fresca.",
       "tags": [
         "pollo",
         "suprema",
@@ -1953,7 +1953,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 12,
       "descripcion": "Filet de merluza a la plancha con perejil y gajos de limón, acompañado de arroz blanco esponjoso y espinacas tiernas salteadas con oliva.",
-      "prompt_cuadrante": "Filete de pescado blanco (merluza) a la plancha con perejil fresco y gajo de limón, timbal de arroz blanco esponjoso al vapor, espinacas salteadas al dente con un hilo de aceite de oliva.",
+      "prompt_cuadrante": "Filete de pescado blanco (merluza) a la plancha con limón, porción de arroz blanco servido con cuchara al costado y espinacas salteadas con aceite de oliva.",
       "tags": [
         "pescado",
         "merluza",
@@ -2002,7 +2002,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 15,
       "descripcion": "Milanesa clásica de nalga/bola de lomo crujiente al horno con puré de papas casero y ensalada mixta de lechuga y tomate.",
-      "prompt_cuadrante": "Milanesa de carne vacuna dorada y crujiente recién horneada con gajo de limón, porción generosa de puré de papas rústico y ensalada clásica de lechuga criolla y tomate redondo con aceite de oliva.",
+      "prompt_cuadrante": "Milanesa de carne vacuna dorada recién horneada con gajo de limón al costado, porción de puré de papas casero servido rústicamente con cuchara y ensalada simple de lechuga y tomate mezclada.",
       "tags": [
         "milanesa",
         "carne",
@@ -2052,7 +2052,7 @@
       "grasa_id": "comp_fat_3",
       "tiempo_min": 15,
       "descripcion": "Carne picada especial salteada con cebolla, morrón rojo y especias criollas, servida con arroz blanco al vapor, cuartos de huevo duro y aceitunas verdes.",
-      "prompt_cuadrante": "Carne picada salteada bien sazonada con cebolla dorada y morrón rojo en cubitos, corona de arroz blanco esponjoso, rodajas de huevo duro y aceitunas verdes brillantes.",
+      "prompt_cuadrante": "Carne picada salteada casera con cebolla y morrón, servida con porción de arroz blanco al costado con cuchara, mitades de huevo duro y aceitunas verdes.",
       "tags": [
         "picada",
         "carne",
@@ -2203,7 +2203,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 15,
       "descripcion": "Bifecitos finos de tortuguita sellados a la plancha con cebolla y morrón salteados, servidos con arroz blanco al vapor.",
-      "prompt_cuadrante": "Bifecitos finos de carne vacuna (tortuguita) dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con timbal de arroz blanco al vapor.",
+      "prompt_cuadrante": "Bifecitos finos de carne vacuna dorados a la plancha cubiertos de salteado criollo de cebolla en juliana y tiras de morrón rojo, con porción de arroz blanco casero al costado.",
       "tags": [
         "tortuguita",
         "carne",
@@ -2228,7 +2228,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 15,
       "descripcion": "Bifecitos tiernos de palomita vuelta y vuelta a fuego vivo con puré cremoso de batata y hojas de rúcula.",
-      "prompt_cuadrante": "Bifes delgados de palomita a la plancha con costra dorada, acompañados de puré suave de batata asada y bouquet de hojas frescas de rúcula con aceite de oliva extra virgen.",
+      "prompt_cuadrante": "Bifes delgados de palomita a la plancha, acompañados de puré casero de batata servido con cuchara y hojas frescas de rúcula con aceite de oliva.",
       "tags": [
         "palomita",
         "carne",
@@ -3444,7 +3444,7 @@
       "grasa_id": "comp_fat_2",
       "tiempo_min": 5,
       "descripcion": "Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.",
-      "prompt_cuadrante": "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y abanico de palta cremosa rociada con gotas de limón.",
+      "prompt_cuadrante": "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón.",
       "tags": [
         "atun",
         "choclo",
@@ -3692,7 +3692,7 @@
       "grasa_id": "comp_fat_4",
       "tiempo_min": 5,
       "descripcion": "Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.",
-      "prompt_cuadrante": "Ensalada gourmet fresca con hojas de rúcula, dados de remolacha cocida dulce de color borravino, porciones suaves de ricota fresca blanca y mitades de nueces crocantes.",
+      "prompt_cuadrante": "Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes.",
       "tags": [
         "ricota",
         "queso",
