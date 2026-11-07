@@ -538,7 +538,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 15,
           "descripcion": "Filet de pescado blanco tierno servido sobre salteado caliente de wok mixto (zucchini, morrón, cebolla) y arroz blanco.",
-          "prompt_cuadrante": "Filete de pescado blanco merluza tierno y dorado, servido sobre un colorido wok de vegetales en juliana (zucchini, morrón rojo y cebolla) con porción de arroz blanco esponjoso.",
+          "prompt_cuadrante": "Filete de pescado blanco a la plancha tierno y dorado, servido sobre salteado casero de vegetales (zucchini, morrón y cebolla) con arroz blanco suelto y esparcido de forma plana e irregular al costado (granos sueltos, sin forma de bola, domo ni molde).",
           "tags": [
             "merluza",
             "pescado",
@@ -750,7 +750,7 @@
           "grasa_id": "comp_fat_1",
           "tiempo_min": 15,
           "descripcion": "Rodajas gruesas de berenjena a la plancha cubiertas con salsa de tomate, queso cremoso fundido y puré de papas.",
-          "prompt_cuadrante": "Láminas gruesas de berenjena asada a la napolitana cubiertas con salsa de tomate casera y abundante queso fresco fundido con orégano, servidas junto a puré de papas casero.",
+          "prompt_cuadrante": "Láminas gruesas de berenjena a la plancha a la napolitana con salsa de tomate casera y abundante queso derretido con orégano, servidas junto a porción plana y rústica de puré de papas casero aplastado con tenedor (sin flores de manga ni rosetas, solo el plato sin cubiertos al costado).",
           "tags": [
             "berenjena",
             "napolitana",
@@ -2437,7 +2437,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 15,
       "descripcion": "Filet de pescado blanco tierno servido sobre salteado caliente de wok mixto (zucchini, morrón, cebolla) y arroz blanco.",
-      "prompt_cuadrante": "Filete de pescado blanco merluza tierno y dorado, servido sobre un colorido wok de vegetales en juliana (zucchini, morrón rojo y cebolla) con porción de arroz blanco esponjoso.",
+      "prompt_cuadrante": "Filete de pescado blanco a la plancha tierno y dorado, servido sobre salteado casero de vegetales (zucchini, morrón y cebolla) con arroz blanco suelto y esparcido de forma plana e irregular al costado (granos sueltos, sin forma de bola, domo ni molde).",
       "tags": [
         "merluza",
         "pescado",
@@ -2653,7 +2653,7 @@
       "grasa_id": "comp_fat_1",
       "tiempo_min": 15,
       "descripcion": "Rodajas gruesas de berenjena a la plancha cubiertas con salsa de tomate, queso cremoso fundido y puré de papas.",
-      "prompt_cuadrante": "Láminas gruesas de berenjena asada a la napolitana cubiertas con salsa de tomate casera y abundante queso fresco fundido con orégano, servidas junto a puré de papas casero.",
+      "prompt_cuadrante": "Láminas gruesas de berenjena a la plancha a la napolitana con salsa de tomate casera y abundante queso derretido con orégano, servidas junto a porción plana y rústica de puré de papas casero aplastado con tenedor (sin flores de manga ni rosetas, solo el plato sin cubiertos al costado).",
       "tags": [
         "berenjena",
         "napolitana",

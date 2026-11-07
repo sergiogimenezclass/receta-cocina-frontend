@@ -386,7 +386,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Filet de pescado blanco tierno servido sobre salteado caliente de wok mixto (zucchini, morrón, cebolla) y arroz blanco.",
-        prompt_cuadrante: "Filete de pescado blanco merluza tierno y dorado, servido sobre un colorido wok de vegetales en juliana (zucchini, morrón rojo y cebolla) con porción de arroz blanco esponjoso.",
+        prompt_cuadrante: "Filete de pescado blanco a la plancha tierno y dorado, servido sobre salteado casero de vegetales (zucchini, morrón y cebolla) con arroz blanco suelto y esparcido de forma plana e irregular al costado (granos sueltos, sin forma de bola, domo ni molde).",
         tags: ["merluza", "pescado", "arroz", "wok", "vegetales", "oliva"]
       },
       {
@@ -535,7 +535,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Rodajas gruesas de berenjena a la plancha cubiertas con salsa de tomate, queso cremoso fundido y puré de papas.",
-        prompt_cuadrante: "Láminas gruesas de berenjena asada a la napolitana cubiertas con salsa de tomate casera y abundante queso fresco fundido con orégano, servidas junto a puré de papas casero.",
+        prompt_cuadrante: "Láminas gruesas de berenjena a la plancha a la napolitana con salsa de tomate casera y abundante queso derretido con orégano, servidas junto a porción plana y rústica de puré de papas casero aplastado con tenedor (sin flores de manga ni rosetas, solo el plato sin cubiertos al costado).",
         tags: ["berenjena", "napolitana", "queso", "pure", "papa", "tomate"]
       },
       {
@@ -1543,7 +1543,7 @@ lotes.forEach((lote, idx) => {
   mdContent += `- Cuadrante Superior Derecho: ${lote.platos[1].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Izquierdo: ${lote.platos[2].prompt_cuadrante}\n`;
   mdContent += `- Cuadrante Inferior Derecho: ${lote.platos[3].prompt_cuadrante}\n`;
-  mdContent += `Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz y puré servidos rústicamente con cuchara al costado (PROHIBIDO timbales, moldes o flores de puré), ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet), comida apetitosa, rica y simple, recién servida en la mesa de casa. Iluminación natural suave de cocina, sin copas de vino ni cubiertos gourmet alrededor, sin bordes negros y sin texto superpuesto.\n`;
+  mdContent += `Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.\n`;
   mdContent += `\`\`\`\n\n---\n\n`;
 });
 
