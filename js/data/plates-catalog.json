@@ -809,7 +809,8 @@
             "pasta",
             "vegetales",
             "semillas"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_33.jpg"
         },
         {
           "id": "plate_cat_34",
@@ -831,7 +832,8 @@
             "arroz",
             "cebolla",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_34.jpg"
         },
         {
           "id": "plate_cat_35",
@@ -853,7 +855,8 @@
             "champinones",
             "fideos",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_35.jpg"
         },
         {
           "id": "plate_cat_36",
@@ -874,7 +877,8 @@
             "semillas",
             "sesamo",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_36.jpg"
         }
       ]
     },
@@ -901,7 +905,8 @@
             "carne",
             "calabaza",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_37.jpg"
         },
         {
           "id": "plate_cat_38",
@@ -923,7 +928,8 @@
             "champinones",
             "puerro",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_38.jpg"
         },
         {
           "id": "plate_cat_39",
@@ -943,7 +949,8 @@
             "huevo",
             "zanahoria",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_39.jpg"
         },
         {
           "id": "plate_cat_40",
@@ -964,7 +971,8 @@
             "cebolla",
             "manteca",
             "queso"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_40.jpg"
         }
       ]
     },
@@ -2710,7 +2718,7 @@
         "vegetales",
         "semillas"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_33.jpg",
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2735,7 +2743,7 @@
         "cebolla",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_34.jpg",
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2760,7 +2768,7 @@
         "fideos",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_35.jpg",
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2784,7 +2792,7 @@
         "sesamo",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_36.jpg",
       "lote_id": "lote_09",
       "lote_tema": "Woks y Salteados Rápidos al Fuego Fuerte"
     },
@@ -2807,7 +2815,7 @@
         "calabaza",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_37.jpg",
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2832,7 +2840,7 @@
         "puerro",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_38.jpg",
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2855,7 +2863,7 @@
         "zanahoria",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_39.jpg",
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },
@@ -2879,7 +2887,7 @@
         "manteca",
         "queso"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_40.jpg",
       "lote_id": "lote_10",
       "lote_tema": "Legumbres, Quinoa y Risottos Criollos"
     },

@@ -574,7 +574,7 @@ const lotes = [
         grasa_id: "comp_fat_5",
         tiempo_min: 12,
         descripcion: "Tiras de pechuga salteadas a fuego fuerte con fideos secos, morrón, cebolla y zanahoria, coronadas con mix de semillas tostadas.",
-        prompt_cuadrante: "Wok humeante con tiras doradas de pechuga de pollo mezcladas con fideos al dente, tiras crujientes de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo y chía.",
+        prompt_cuadrante: "Plato hondo de fideos salteados en sartén con tiras doradas de pechuga de pollo, tiras de morrón rojo, cebolla y zanahoria salteadas, espolvoreadas con semillas de sésamo.",
         tags: ["wok", "pollo", "fideos", "pasta", "vegetales", "semillas"]
       },
       {
@@ -589,7 +589,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 12,
         descripcion: "Tiras de bife magro salteadas con chauchas verdes tiernas y cebolla en juliana, servidas con arroz blanco.",
-        prompt_cuadrante: "Salteado en sartén de tiras jugosas de bife vacuno con chauchas verdes enteras tiernas y cebolla dorada, acompañado de una porción de arroz blanco al vapor con aceite de oliva.",
+        prompt_cuadrante: "Salteado casero de tiras de bife vacuno dorado con chauchas verdes tiernas y cebolla salteada, servido con arroz blanco suelto y esparcido de forma plana al costado (sin forma de bola ni molde).",
         tags: ["carne", "bife", "chauchas", "arroz", "cebolla", "oliva"]
       },
       {
@@ -604,7 +604,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Tiras de costillita de cerdo doradas con dados de zucchini y champiñones salteados, mezclados con fideos cinta.",
-        prompt_cuadrante: "Tiras doradas de carne de cerdo salteadas a fuego vivo con medias lunas de zucchini, láminas de champiñones dorados y fideos cintas con un toque de aceite de oliva.",
+        prompt_cuadrante: "Tiras doradas de carne de cerdo salteadas en sartén con dados de zucchini, láminas de champiñones dorados y fideos secos mezclados de forma casera y simple.",
         tags: ["cerdo", "zucchini", "hongos", "champinones", "fideos", "oliva"]
       },
       {
@@ -618,7 +618,7 @@ const lotes = [
         grasa_id: "comp_fat_5",
         tiempo_min: 12,
         descripcion: "Cubos de tofu bien dorados a la plancha con arbolitos de brócoli al vapor, arroz blanco o integral y semillas de sésamo.",
-        prompt_cuadrante: "Plato vegetariano con cubos crocantes de tofu dorado a la sartén, arbolitos de brócoli verde brillante al vapor, arroz blanco esponjoso y semillas de sésamo tostadas espolvoreadas.",
+        prompt_cuadrante: "Plato casero con cubos dorados de tofu a la plancha, arbolitos de brócoli cocido al vapor y porción de arroz blanco suelto y esparcido plano al costado con semillas de sésamo.",
         tags: ["tofu", "brocoli", "arroz", "semillas", "sesamo", "vegetariano"]
       }
     ]
@@ -643,7 +643,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 20,
         descripcion: "Estofado criollo de porotos alubia tiernos con cubos de carne vacuna magra y dados de calabaza dulce.",
-        prompt_cuadrante: "Plato hondo de guisado de porotos alubia blancos en salsa suave y espesa, bocados tiernos de carne vacuna sellada y dados anaranjados de calabaza dulce con aceite de oliva.",
+        prompt_cuadrante: "Plato hondo de guiso casero de porotos alubia blancos tiernos con trocitos de carne vacuna sellada y dados de calabaza anaranjada dulce.",
         tags: ["porotos", "legumbres", "carne", "calabaza", "oliva"]
       },
       {
@@ -658,7 +658,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Bowl tibio de quinoa esponjosa con cubos dorados de pechuga de pollo, champiñones salteados y puerro al oliva.",
-        prompt_cuadrante: "Bowl caliente con base de quinoa cocida esponjosa, cubos dorados de pechuga de pollo a la plancha, champiñones salteados en láminas y rodajas finas de puerro pochado con oliva.",
+        prompt_cuadrante: "Plato hondo de quinoa cocida suelta con cubos dorados de pechuga de pollo a la plancha, champiñones salteados y rodajas de puerro con aceite de oliva.",
         tags: ["quinoa", "pollo", "hongos", "champinones", "puerro", "oliva"]
       },
       {
@@ -672,7 +672,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Plato nutritivo de lentejas estofadas con rodajas de zanahoria tierna, coronadas con huevo duro en mitades y oliva.",
-        prompt_cuadrante: "Lentejas estofadas en salsa espesa con rodajas de zanahoria cocida, coronadas con dos mitades de huevo duro con yema dorada y un toque de pimentón dulce con aceite de oliva.",
+        prompt_cuadrante: "Plato hondo de lentejas estofadas caseras con rodajas de zanahoria tierna, coronadas con dos mitades de huevo duro y un toque de pimentón dulce.",
         tags: ["lentejas", "legumbres", "huevo", "zanahoria", "oliva"]
       },
       {
@@ -686,7 +686,7 @@ const lotes = [
         grasa_id: "comp_fat_7",
         tiempo_min: 18,
         descripcion: "Arroz cremoso estilo risotto criollo cocinado con pechuga de pollo desmenuzada, cebolla dorada, manteca y queso rallado.",
-        prompt_cuadrante: "Arroz cremoso brillante ligado con manteca y queso sardo rallado, con bocados dorados de pechuga de pollo y cebolla rehogada, decorado con perejil fresco picado.",
+        prompt_cuadrante: "Plato hondo de arroz cremoso casero ligado con queso rallado, bocados dorados de pechuga de pollo y cebolla rehogada, esparcido de forma rústica y plana.",
         tags: ["arroz", "pollo", "risotto", "cebolla", "manteca", "queso"]
       }
     ]

@@ -520,12 +520,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 9 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Wok humeante con tiras doradas de pechuga de pollo mezcladas con fideos al dente, tiras crujientes de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo y chía.
-- Cuadrante Superior Derecho: Salteado en sartén de tiras jugosas de bife vacuno con chauchas verdes enteras tiernas y cebolla dorada, acompañado de una porción de arroz blanco al vapor con aceite de oliva.
-- Cuadrante Inferior Izquierdo: Tiras doradas de carne de cerdo salteadas a fuego vivo con medias lunas de zucchini, láminas de champiñones dorados y fideos cintas con un toque de aceite de oliva.
-- Cuadrante Inferior Derecho: Plato vegetariano con cubos crocantes de tofu dorado a la sartén, arbolitos de brócoli verde brillante al vapor, arroz blanco esponjoso y semillas de sésamo tostadas espolvoreadas.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Fideos al dente salteados en sartén con tiras doradas de pechuga de pollo, tiras de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo.
+- Cuadrante Superior Derecho: Tiras de bife vacuno doradas salteadas en sartén con chauchas verdes tiernas y cebolla, acompañadas de arroz blanco suelto y esparcido de forma plana e irregular al costado (granos sueltos, sin forma de bola, domo ni molde).
+- Cuadrante Inferior Izquierdo: Tiras doradas de carne de cerdo salteadas en sartén con dados de zucchini, láminas de champiñones dorados y fideos secos mezclados de forma casera y simple.
+- Cuadrante Inferior Derecho: Cubos dorados de tofu crocante a la sartén, arbolitos de brócoli cocido al vapor y porción de arroz blanco suelto y esparcido de forma plana al costado con semillas de sésamo (granos sueltos, sin forma de bola ni molde).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -541,7 +541,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~20 min | **Servido:** Caliente
 - **Descripción Culinaria:** Estofado criollo de porotos alubia tiernos con cubos de carne vacuna magra y dados de calabaza dulce.
-- **Prompt Fotográfico:** *"Plato hondo de guisado de porotos alubia blancos en salsa suave y espesa, bocados tiernos de carne vacuna sellada y dados anaranjados de calabaza dulce con aceite de oliva."*
+- **Prompt Fotográfico:** *"Plato hondo de guiso casero de porotos alubia blancos tiernos con trocitos de carne vacuna sellada y dados de calabaza anaranjada dulce."*
 
 ### ↗️ Superior Derecho — Quinoa Caliente con Pollo, Hongos y Puerro (`plate_cat_38`)
 - **Ingredientes Clave:**
@@ -551,7 +551,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
 - **Descripción Culinaria:** Bowl tibio de quinoa esponjosa con cubos dorados de pechuga de pollo, champiñones salteados y puerro al oliva.
-- **Prompt Fotográfico:** *"Bowl caliente con base de quinoa cocida esponjosa, cubos dorados de pechuga de pollo a la plancha, champiñones salteados en láminas y rodajas finas de puerro pochado con oliva."*
+- **Prompt Fotográfico:** *"Plato hondo de quinoa cocida suelta con cubos dorados de pechuga de pollo a la plancha, champiñones salteados y rodajas de puerro con aceite de oliva."*
 
 ### ↙️ Inferior Izquierdo — Lentejas Estofadas con Huevo Duro y Zanahoria (`plate_cat_39`)
 - **Ingredientes Clave:**
@@ -561,7 +561,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
 - **Descripción Culinaria:** Plato nutritivo de lentejas estofadas con rodajas de zanahoria tierna, coronadas con huevo duro en mitades y oliva.
-- **Prompt Fotográfico:** *"Lentejas estofadas en salsa espesa con rodajas de zanahoria cocida, coronadas con dos mitades de huevo duro con yema dorada y un toque de pimentón dulce con aceite de oliva."*
+- **Prompt Fotográfico:** *"Plato hondo de lentejas estofadas caseras con rodajas de zanahoria tierna, coronadas con dos mitades de huevo duro y un toque de pimentón dulce."*
 
 ### ↘️ Inferior Derecho — Arroz Cremoso con Pollo, Manteca y Queso (`plate_cat_40`)
 - **Ingredientes Clave:**
@@ -571,16 +571,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🧈 Manteca
 - **Tiempo sugerido:** ⏱️ ~18 min | **Servido:** Caliente
 - **Descripción Culinaria:** Arroz cremoso estilo risotto criollo cocinado con pechuga de pollo desmenuzada, cebolla dorada, manteca y queso rallado.
-- **Prompt Fotográfico:** *"Arroz cremoso brillante ligado con manteca y queso sardo rallado, con bocados dorados de pechuga de pollo y cebolla rehogada, decorado con perejil fresco picado."*
+- **Prompt Fotográfico:** *"Plato hondo de arroz cremoso casero ligado con queso rallado, bocados dorados de pechuga de pollo y cebolla rehogada, esparcido de forma rústica y plana."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 10 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Plato hondo de guisado de porotos alubia blancos en salsa suave y espesa, bocados tiernos de carne vacuna sellada y dados anaranjados de calabaza dulce con aceite de oliva.
-- Cuadrante Superior Derecho: Bowl caliente con base de quinoa cocida esponjosa, cubos dorados de pechuga de pollo a la plancha, champiñones salteados en láminas y rodajas finas de puerro pochado con oliva.
-- Cuadrante Inferior Izquierdo: Lentejas estofadas en salsa espesa con rodajas de zanahoria cocida, coronadas con dos mitades de huevo duro con yema dorada y un toque de pimentón dulce con aceite de oliva.
-- Cuadrante Inferior Derecho: Arroz cremoso brillante ligado con manteca y queso sardo rallado, con bocados dorados de pechuga de pollo y cebolla rehogada, decorado con perejil fresco picado.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato hondo de loza común:
+- Cuadrante Superior Izquierdo: Plato hondo de guiso criollo casero de porotos alubia blancos tiernos con trocitos de carne vacuna sellada y dados de calabaza anaranjada dulce.
+- Cuadrante Superior Derecho: Plato hondo de quinoa cocida suelta y esponjosa con cubos dorados de pechuga de pollo a la plancha, champiñones salteados y rodajas de puerro con aceite de oliva.
+- Cuadrante Inferior Izquierdo: Plato hondo de lentejas estofadas caseras con rodajas de zanahoria tierna, coronadas con dos mitades de huevo duro con yema dorada y una pizca de pimentón dulce.
+- Cuadrante Inferior Derecho: Plato hondo de arroz cremoso casero ligado con queso rallado y manteca, bocados dorados de pechuga de pollo y cebolla rehogada, esparcido de forma rústica y plana (sin molde, sin cúpula ni forma cilíndrica).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): guisos y platos reconfortantes servidos rústicamente con cuchara en plato hondo de casa; comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
