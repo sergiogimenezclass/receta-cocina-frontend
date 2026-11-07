@@ -430,7 +430,8 @@
             "batata",
             "espinaca",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_17.jpg"
         },
         {
           "id": "plate_cat_18",
@@ -450,7 +451,8 @@
             "choclo",
             "morron",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_18.jpg"
         },
         {
           "id": "plate_cat_19",
@@ -472,7 +474,8 @@
             "verdeo",
             "zanahoria",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_19.jpg"
         },
         {
           "id": "plate_cat_20",
@@ -492,7 +495,8 @@
             "mandioca",
             "limon",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_20.jpg"
         }
       ]
     },
@@ -520,7 +524,8 @@
             "papa",
             "tomate",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_21.jpg"
         },
         {
           "id": "plate_cat_22",
@@ -541,7 +546,8 @@
             "wok",
             "vegetales",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_22.jpg"
         },
         {
           "id": "plate_cat_23",
@@ -561,7 +567,8 @@
             "pasta",
             "tomate",
             "aceitunas"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_23.jpg"
         },
         {
           "id": "plate_cat_24",
@@ -582,7 +589,8 @@
             "verdeo",
             "pimenton",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_24.jpg"
         }
       ]
     },
@@ -2311,7 +2319,7 @@
         "espinaca",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_17.jpg",
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2334,7 +2342,7 @@
         "morron",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_18.jpg",
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2359,7 +2367,7 @@
         "zanahoria",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_19.jpg",
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2382,7 +2390,7 @@
         "limon",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_20.jpg",
       "lote_id": "lote_05",
       "lote_tema": "Cerdo y Aves con Guarniciones Variadas"
     },
@@ -2406,7 +2414,7 @@
         "tomate",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_21.jpg",
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2430,7 +2438,7 @@
         "vegetales",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_22.jpg",
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2453,7 +2461,7 @@
         "tomate",
         "aceitunas"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_23.jpg",
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
@@ -2477,7 +2485,7 @@
         "pimenton",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_24.jpg",
       "lote_id": "lote_06",
       "lote_tema": "Pescados y Conservas al Plato Caliente"
     },
