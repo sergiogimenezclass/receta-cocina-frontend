@@ -618,7 +618,8 @@
             "batata",
             "tomate",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_25.jpg"
         },
         {
           "id": "plate_cat_26",
@@ -639,7 +640,8 @@
             "hongos",
             "champinones",
             "palta"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_26.jpg"
         },
         {
           "id": "plate_cat_27",
@@ -660,7 +662,8 @@
             "papas",
             "cebolla",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_27.jpg"
         },
         {
           "id": "plate_cat_28",
@@ -682,7 +685,8 @@
             "papa",
             "queso",
             "tomate"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_28.jpg"
         }
       ]
     },
@@ -710,7 +714,8 @@
             "picada",
             "arroz",
             "queso"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_29.jpg"
         },
         {
           "id": "plate_cat_30",
@@ -730,7 +735,8 @@
             "pollo",
             "choclo",
             "queso"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_30.jpg"
         },
         {
           "id": "plate_cat_31",
@@ -752,7 +758,8 @@
             "pure",
             "papa",
             "tomate"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_31.jpg"
         },
         {
           "id": "plate_cat_32",
@@ -773,7 +780,8 @@
             "picada",
             "arroz",
             "queso"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_32.jpg"
         }
       ]
     },
@@ -2509,7 +2517,7 @@
         "tomate",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_25.jpg",
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2533,7 +2541,7 @@
         "champinones",
         "palta"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_26.jpg",
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2557,7 +2565,7 @@
         "cebolla",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_27.jpg",
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2582,7 +2590,7 @@
         "queso",
         "tomate"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_28.jpg",
       "lote_id": "lote_07",
       "lote_tema": "Huevos y Omelettes Rápidos de Almuerzo y Cena"
     },
@@ -2606,7 +2614,7 @@
         "arroz",
         "queso"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_29.jpg",
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2629,7 +2637,7 @@
         "choclo",
         "queso"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_30.jpg",
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2654,7 +2662,7 @@
         "papa",
         "tomate"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_31.jpg",
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
@@ -2678,7 +2686,7 @@
         "arroz",
         "queso"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_32.jpg",
       "lote_id": "lote_08",
       "lote_tema": "Vegetales Rellenos y Platos Gratinados"
     },
