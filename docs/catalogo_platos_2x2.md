@@ -165,15 +165,15 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 
 - **Descripción Culinaria:** Cazuela reconfortante de lentejas cocidas con carne picada salteada, cubos de zanahoria, cebolla y morrón con pimentón dulce.
 - **Prompt Fotográfico:** *"Cazuela de barro humeante con guiso express de lentejas tiernas, carne picada salteada, rodajas de zanahoria naranja, morrón rojo en cubitos y un toque de pimentón dulce con aceite de oliva."*
 
-### ↙️ Inferior Izquierdo — Pastel de Papas Individual Gratinado (`plate_cat_11`)
+### ↙️ Inferior Izquierdo — Salteado Rústico de Carne Picada con Papas (`plate_cat_11`)
 - **Ingredientes Clave:**
   - **Proteína:** 🥘 Carne Picada / Molida
   - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
   - **Vegetales:** 🧅 Cebolla (Salteada / Dorada)
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
-- **Tiempo sugerido:** ⏱️ ~20 min | **Servido:** Caliente
-- **Descripción Culinaria:** Porción de pastel de papas con base jugosa de carne picada con cebolla y aceitunas, cubierta con puré de papas dorado y gratinado.
-- **Prompt Fotográfico:** *"Porción cuadrada servida de pastel de papas tradicional: base espesa y jugosa de carne molida sazonada con cebolla dorada y aceitunas, coronada por puré de papas con costra gratinada al horno."*
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Salteado express a la sartén de carne molida bien dorada con cubos pequeños de papa crujiente dorada, cebolla tierna salteada y aceitunas verdes.
+- **Prompt Fotográfico:** *"Plato hondo de salteado rústico a la sartén de carne picada jugosa y dorada con dados pequeños de papas doradas crujientes, cebolla salteada y rodajas de aceitunas verdes brillantes."*
 
 ### ↘️ Inferior Derecho — Guiso de Porotos con Bondiola y Zapallo (`plate_cat_12`)
 - **Ingredientes Clave:**
@@ -190,7 +190,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 
 Genera una fotografía gastronómica profesional de alta resolución en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato terminado y emplatado con vajilla moderna cerámica e iluminación cálida y difusa de estudio gastronómico:
 - Cuadrante Superior Izquierdo: Plato hondo de fideos spaghetti al dente con salsa tuco boloñesa casera con abundante carne picada magra, tomate fresco reducido, hojas de laurel y abundante lluvia de queso parmesano rallado.
 - Cuadrante Superior Derecho: Cazuela de barro humeante con guiso express de lentejas tiernas, carne picada salteada, rodajas de zanahoria naranja, morrón rojo en cubitos y un toque de pimentón dulce con aceite de oliva.
-- Cuadrante Inferior Izquierdo: Porción cuadrada servida de pastel de papas tradicional: base espesa y jugosa de carne molida sazonada con cebolla dorada y aceitunas, coronada por puré de papas con costra gratinada al horno.
+- Cuadrante Inferior Izquierdo: Plato hondo de salteado rústico a la sartén de carne picada jugosa y dorada con dados pequeños de papas doradas crujientes, cebolla salteada y rodajas de aceitunas verdes brillantes.
 - Cuadrante Inferior Derecho: Plato hondo de guisado criollo con porotos blancos tiernos, trozos dorados y jugosos de bondiola de cerdo, cubos de zapallo anco color naranja intenso y perejil fresco picado.
 Estilo fotográfico obligatorio: Toma cenital directa estricta (plano cenital a 90 grados, vista vertical de pájaro / top-down overhead flat lay shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el centro de cada plato, sin inclinación ni perspectiva lateral a 45 grados. Ultra nítida, ingredientes frescos, presentación limpia y apetitosa sin bordes negros, sin personas y sin texto superpuesto.
 ```

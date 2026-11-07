@@ -189,16 +189,16 @@ const lotes = [
       {
         id: "plate_cat_11",
         cuadrante: "inferior_izq",
-        nombre: "Pastel de Papas Individual Gratinado",
+        nombre: "Salteado Rústico de Carne Picada con Papas",
         modo: "caliente",
         proteina_id: "comp_prot_4",
         carbo_id: "comp_carb_3",
         vegetal_id: "comp_veg_10",
         grasa_id: "comp_fat_3",
-        tiempo_min: 20,
-        descripcion: "Porción de pastel de papas con base jugosa de carne picada con cebolla y aceitunas, cubierta con puré de papas dorado y gratinado.",
-        prompt_cuadrante: "Porción cuadrada servida de pastel de papas tradicional: base espesa y jugosa de carne molida sazonada con cebolla dorada y aceitunas, coronada por puré de papas con costra gratinada al horno.",
-        tags: ["pastel", "papa", "carne", "picada", "pure", "cebolla", "aceitunas"]
+        tiempo_min: 15,
+        descripcion: "Salteado express a la sartén de carne molida bien dorada con cubos pequeños de papa crujiente dorada, cebolla tierna salteada y aceitunas verdes.",
+        prompt_cuadrante: "Plato hondo de salteado rústico a la sartén de carne picada jugosa y dorada con dados pequeños de papas doradas crujientes, cebolla salteada y rodajas de aceitunas verdes brillantes.",
+        tags: ["salteado", "carne", "picada", "papa", "cebolla", "aceitunas", "sarten"]
       },
       {
         id: "plate_cat_12",
