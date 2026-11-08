@@ -926,7 +926,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Pechuga de pollo cocida desmenuzada fría con cubos de papa hervida, lechuga crocante y zanahoria rallada al oliva.
-- **Prompt Fotográfico:** *"Fuente de ensalada fresca con hebras de pechuga de pollo cocida desmenuzada, dados de papa hervida fría, hojas de lechuga cortada, zanahoria rallada fina y aceite de oliva virgen."*
+- **Prompt Fotográfico:** *"Salpicón casero frío servido en plato con desorden natural y entropía: hebras de pechuga de pollo desmenuzada entremezcladas de forma asimétrica y despareja con dados rústicos de papa hervida, hojas de lechuga cortada a mano y zanahoria rallada con aceite de oliva (sin patrones geométricos)."*
 
 ### ↗️ Superior Derecho — Ensalada Caesar Criolla con Pollo y Parmesano (`plate_cat_66`)
 - **Ingredientes Clave:**
@@ -936,7 +936,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🧀 Queso Rallado / Semiduro (Parmesano / Sardo)
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Tiras de pechuga dorada fría sobre colchón abundante de hojas verdes, crutones crocantes y lascas de queso sardo/parmesano.
-- **Prompt Fotográfico:** *"Ensalada estilo Caesar con hojas de lechuga romana y rúcula, tiras de pechuga de pollo grillada fría, cubitos de crutones tostados dorados y láminas de queso parmesano rallado."*
+- **Prompt Fotográfico:** *"Ensalada de pollo casera servida con espontaneidad y asimetría: hojas de lechuga y rúcula mezcladas al desgaire con tiras irregulares de pollo grillado frío volcadas encima, crutones dorados esparcidos al azar y lascas de queso parmesano repartidas de forma despareja."*
 
 ### ↙️ Inferior Izquierdo — Bowl de Quinoa Fría con Pollo y Pepino (`plate_cat_67`)
 - **Ingredientes Clave:**
@@ -946,7 +946,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Quinoa cocida fría con cubos de pollo a la plancha, rodajas finas de pepino refrescante, tomates cherry y oliva.
-- **Prompt Fotográfico:** *"Bowl fresco con base de quinoa esponjosa fría, cubos de pechuga de pollo a la plancha, rodajitas finas y crocantes de pepino con piel, tomates cherry y aderezo de aceite de oliva."*
+- **Prompt Fotográfico:** *"Plato de quinoa fría suelta con entropía orgánica: dados de pollo a la plancha volcados a un costado, rodajas irregulares de pepino fresco y tomates cortados mezclados sin ningún patrón circular ni concéntrico con aceite de oliva."*
 
 ### ↘️ Inferior Derecho — Ensalada de Pollo con Choclo, Remolacha y Nueces (`plate_cat_68`)
 - **Ingredientes Clave:**
@@ -956,16 +956,17 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Pollo cocido desmenuzado con choclo desgranado dulce, remolacha cocida en cubos y mariposas de nueces crujientes.
-- **Prompt Fotográfico:** *"Ensalada multicolor con cubos de pechuga de pollo cocida, granos de choclo amarillo dorado, dados de remolacha cocida de color violeta intenso y trozos de nueces tostadas."*
+- **Prompt Fotográfico:** *"Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados desparejos de remolacha teñidos de violeta y trozos de nueces partidas esparcidos con total asimetría."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 17 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Fuente de ensalada fresca con hebras de pechuga de pollo cocida desmenuzada, dados de papa hervida fría, hojas de lechuga cortada, zanahoria rallada fina y aceite de oliva virgen.
-- Cuadrante Superior Derecho: Ensalada estilo Caesar con hojas de lechuga romana y rúcula, tiras de pechuga de pollo grillada fría, cubitos de crutones tostados dorados y láminas de queso parmesano rallado.
-- Cuadrante Inferior Izquierdo: Bowl fresco con base de quinoa esponjosa fría, cubos de pechuga de pollo a la plancha, rodajitas finas y crocantes de pepino con piel, tomates cherry y aderezo de aceite de oliva.
-- Cuadrante Inferior Derecho: Ensalada multicolor con cubos de pechuga de pollo cocida, granos de choclo amarillo dorado, dados de remolacha cocida de color violeta intenso y trozos de nueces tostadas.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera de ave/pollo terminada, servida de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Salpicón casero frío servido en plato con desorden natural y entropía: hebras de pechuga de pollo desmenuzada entremezcladas de forma asimétrica y despareja con dados rústicos de papa hervida, hojas de lechuga cortada a mano y zanahoria rallada con aceite de oliva (sin patrones geométricos).
+- Cuadrante Superior Derecho: Ensalada de pollo casera servida con espontaneidad y asimetría: hojas de lechuga y rúcula mezcladas al desgaire con tiras irregulares de pollo grillado frío volcadas encima, crutones dorados esparcidos al azar y lascas de queso parmesano repartidas de forma despareja.
+- Cuadrante Inferior Izquierdo: Plato de quinoa fría suelta con entropía orgánica: dados de pollo a la plancha volcados a un costado, rodajas irregulares de pepino fresco y tomates cortados mezclados sin ningún patrón circular ni concéntrico con aceite de oliva.
+- Cuadrante Inferior Derecho: Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados desparejos de remolacha teñidos de violeta y trozos de nueces partidas esparcidos con total asimetría.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier casa.
+PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar trozos de carne, huevos o tomates equidistantes en círculo alrededor del plato). Los ingredientes deben estar mezclados con desorden natural apetitoso o servidos a un costado de forma despareja. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -981,7 +982,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Lentejas cocidas escurridas frías mezcladas con dados de tomate, huevo duro picado y cebolla de verdeo con oliva.
-- **Prompt Fotográfico:** *"Bowl de ensalada de lentejas cocidas firmes y frías, tomates en cubitos frescos, cebollita de verdeo picada fina y dos huevos duros cortados en mitades con aceite de oliva."*
+- **Prompt Fotográfico:** *"Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj, flor o puntos cardinales)."*
 
 ### ↗️ Superior Derecho — Ensalada Primavera de Fideos con Huevo y Choclo (`plate_cat_70`)
 - **Ingredientes Clave:**
@@ -991,7 +992,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Fideos secos fríos con trozos de huevo duro, choclo en grano, zanahoria rallada fresca y aceitunas negras.
-- **Prompt Fotográfico:** *"Ensalada primaveral de fideos cortos con trozos de huevo duro picado, granos de choclo amarillo, hebras de zanahoria fresca y aceitunas negras enteras."*
+- **Prompt Fotográfico:** *"Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico."*
 
 ### ↙️ Inferior Izquierdo — Ensalada de Porotos Alubia Fríos con Huevo y Perejil (`plate_cat_71`)
 - **Ingredientes Clave:**
@@ -1001,7 +1002,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Porotos alubia blancos tiernos fríos con abundante perejil fresco picado, tomate en cubos, huevo duro y aceite de oliva.
-- **Prompt Fotográfico:** *"Plato de ensalada fresca de porotos blancos alubia al dente, lluvia de perejil picado, dados de tomate fresco, cuartos de huevo duro y un chorro generoso de aceite de oliva virgen."*
+- **Prompt Fotográfico:** *"Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico)."*
 
 ### ↘️ Inferior Derecho — Ensalada de Arroz Frío con Huevo, Chauchas y Palta (`plate_cat_72`)
 - **Ingredientes Clave:**
@@ -1011,16 +1012,17 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🥑 Palta / Aguacate
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Arroz blanco frío suelto con chauchas cocidas tiernas en trocitos, huevo duro picado y cubos de palta fresca.
-- **Prompt Fotográfico:** *"Bowl veraniego de arroz blanco frío cocido, chauchas verdes tiernas cortadas al sesgo, trozos de huevo duro con yema firme y dados de palta madura con toque de limón."*
+- **Prompt Fotográfico:** *"Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría)."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 18 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bowl de ensalada de lentejas cocidas firmes y frías, tomates en cubitos frescos, cebollita de verdeo picada fina y dos huevos duros cortados en mitades con aceite de oliva.
-- Cuadrante Superior Derecho: Ensalada primaveral de fideos cortos con trozos de huevo duro picado, granos de choclo amarillo, hebras de zanahoria fresca y aceitunas negras enteras.
-- Cuadrante Inferior Izquierdo: Plato de ensalada fresca de porotos blancos alubia al dente, lluvia de perejil picado, dados de tomate fresco, cuartos de huevo duro y un chorro generoso de aceite de oliva virgen.
-- Cuadrante Inferior Derecho: Bowl veraniego de arroz blanco frío cocido, chauchas verdes tiernas cortadas al sesgo, trozos de huevo duro con yema firme y dados de palta madura con toque de limón.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera fría terminada, servida de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj, flor o puntos cardinales).
+- Cuadrante Superior Derecho: Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico.
+- Cuadrante Inferior Izquierdo: Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico).
+- Cuadrante Inferior Derecho: Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
+PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar huevos, aceitunas o tomates equidistantes en círculo alrededor del plato). Los ingredientes deben estar mezclados con desorden natural apetitoso. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---

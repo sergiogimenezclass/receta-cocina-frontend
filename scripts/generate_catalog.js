@@ -1127,7 +1127,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Pechuga de pollo cocida desmenuzada fría con cubos de papa hervida, lechuga crocante y zanahoria rallada al oliva.",
-        prompt_cuadrante: "Fuente de ensalada fresca con hebras de pechuga de pollo cocida desmenuzada, dados de papa hervida fría, hojas de lechuga cortada, zanahoria rallada fina y aceite de oliva virgen.",
+        prompt_cuadrante: "Salpicón casero frío servido en plato con desorden natural y entropía: hebras de pechuga de pollo desmenuzada entremezcladas de forma asimétrica y despareja con dados rústicos de papa hervida, hojas de lechuga cortada a mano y zanahoria rallada con aceite de oliva (sin patrones geométricos).",
         tags: ["pollo", "salpicon", "papas", "lechuga", "zanahoria", "frio", "oliva"]
       },
       {
@@ -1141,7 +1141,7 @@ const lotes = [
         grasa_id: "comp_fat_6",
         tiempo_min: 8,
         descripcion: "Tiras de pechuga dorada fría sobre colchón abundante de hojas verdes, crutones crocantes y lascas de queso sardo/parmesano.",
-        prompt_cuadrante: "Ensalada estilo Caesar con hojas de lechuga romana y rúcula, tiras de pechuga de pollo grillada fría, cubitos de crutones tostados dorados y láminas de queso parmesano rallado.",
+        prompt_cuadrante: "Ensalada de pollo casera servida con espontaneidad y asimetría: hojas de lechuga y rúcula mezcladas al desgaire con tiras irregulares de pollo grillado frío volcadas encima, crutones dorados esparcidos al azar y lascas de queso parmesano repartidas de forma despareja.",
         tags: ["pollo", "caesar", "lechuga", "queso", "crutones", "frio"]
       },
       {
@@ -1156,7 +1156,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 8,
         descripcion: "Quinoa cocida fría con cubos de pollo a la plancha, rodajas finas de pepino refrescante, tomates cherry y oliva.",
-        prompt_cuadrante: "Bowl fresco con base de quinoa esponjosa fría, cubos de pechuga de pollo a la plancha, rodajitas finas y crocantes de pepino con piel, tomates cherry y aderezo de aceite de oliva.",
+        prompt_cuadrante: "Plato de quinoa fría suelta con entropía orgánica: dados de pollo a la plancha volcados a un costado, rodajas irregulares de pepino fresco y tomates cortados mezclados sin ningún patrón circular ni concéntrico con aceite de oliva.",
         tags: ["quinoa", "pollo", "pepino", "tomate", "frio", "oliva"]
       },
       {
@@ -1170,7 +1170,7 @@ const lotes = [
         grasa_id: "comp_fat_4",
         tiempo_min: 8,
         descripcion: "Pollo cocido desmenuzado con choclo desgranado dulce, remolacha cocida en cubos y mariposas de nueces crujientes.",
-        prompt_cuadrante: "Ensalada multicolor con cubos de pechuga de pollo cocida, granos de choclo amarillo dorado, dados de remolacha cocida de color violeta intenso y trozos de nueces tostadas.",
+        prompt_cuadrante: "Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados desparejos de remolacha teñidos de violeta y trozos de nueces partidas esparcidos con total asimetría.",
         tags: ["pollo", "choclo", "remolacha", "nueces", "frio"]
       }
     ]
@@ -1196,7 +1196,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Lentejas cocidas escurridas frías mezcladas con dados de tomate, huevo duro picado y cebolla de verdeo con oliva.",
-        prompt_cuadrante: "Bowl de ensalada de lentejas cocidas firmes y frías, tomates en cubitos frescos, cebollita de verdeo picada fina y dos huevos duros cortados en mitades con aceite de oliva.",
+        prompt_cuadrante: "Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj o puntos cardinales).",
         tags: ["lentejas", "legumbres", "huevo", "tomate", "verdeo", "frio", "oliva"]
       },
       {
@@ -1211,7 +1211,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 5,
         descripcion: "Fideos secos fríos con trozos de huevo duro, choclo en grano, zanahoria rallada fresca y aceitunas negras.",
-        prompt_cuadrante: "Ensalada primaveral de fideos cortos con trozos de huevo duro picado, granos de choclo amarillo, hebras de zanahoria fresca y aceitunas negras enteras.",
+        prompt_cuadrante: "Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico.",
         tags: ["fideos", "pasta", "huevo", "choclo", "zanahoria", "aceitunas", "frio"]
       },
       {
@@ -1225,7 +1225,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Porotos alubia blancos tiernos fríos con abundante perejil fresco picado, tomate en cubos, huevo duro y aceite de oliva.",
-        prompt_cuadrante: "Plato de ensalada fresca de porotos blancos alubia al dente, lluvia de perejil picado, dados de tomate fresco, cuartos de huevo duro y un chorro generoso de aceite de oliva virgen.",
+        prompt_cuadrante: "Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico).",
         tags: ["porotos", "legumbres", "huevo", "tomate", "frio", "oliva"]
       },
       {
@@ -1239,7 +1239,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 5,
         descripcion: "Arroz blanco frío suelto con chauchas cocidas tiernas en trocitos, huevo duro picado y cubos de palta fresca.",
-        prompt_cuadrante: "Bowl veraniego de arroz blanco frío cocido, chauchas verdes tiernas cortadas al sesgo, trozos de huevo duro con yema firme y dados de palta madura con toque de limón.",
+        prompt_cuadrante: "Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría).",
         tags: ["arroz", "huevo", "chauchas", "palta", "frio"]
       }
     ]
@@ -1265,7 +1265,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Rodajas gruesas de tomate maduro con láminas de queso fresco o port salut, hojas de rúcula y aceite de oliva extra virgen.",
-        prompt_cuadrante: "Plato plano con clásica ensalada Caprese: rodajas intercaladas de tomate perita maduro y queso fresco cremoso blanco, coronadas por hojas verdes de rúcula y aceite de oliva extra virgen.",
+        prompt_cuadrante: "Ensalada Caprese rústica servida de forma informal y casera: trozos desparejos de tomate fresco y dados o cuñas de queso fresco mezclados con hojas verdes de rúcula y aceite de oliva (PROHIBIDO rueda o abanico concéntrico de rodajas alternadas).",
         tags: ["caprese", "queso", "tomate", "rucula", "frio", "oliva"]
       },
       {
@@ -1280,7 +1280,7 @@ const lotes = [
         grasa_id: "comp_fat_4",
         tiempo_min: 5,
         descripcion: "Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.",
-        prompt_cuadrante: "Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes.",
+        prompt_cuadrante: "Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, copos rústicos de ricota fresca y nueces partidas con aceite de oliva (distribución asimétrica natural).",
         tags: ["ricota", "queso", "remolacha", "rucula", "nueces", "frio"]
       },
       {
@@ -1294,7 +1294,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 5,
         descripcion: "Fideos fríos al dente con dados de queso port salut/tybo, tomatitos en cuartos, aceitunas negras y albahaca fresca.",
-        prompt_cuadrante: "Bowl de ensalada de pasta fría con fideos tirabuzón, cubos firmes de queso semiduro, tomates cherry cortados al medio, aceitunas negras y hojitas de albahaca fresca con aceite de oliva.",
+        prompt_cuadrante: "Plato hondo de ensalada de fideos tirabuzón fríos mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva.",
         tags: ["pasta", "fideos", "queso", "tomate", "aceitunas", "frio"]
       },
       {
@@ -1309,7 +1309,7 @@ const lotes = [
         grasa_id: "comp_fat_5",
         tiempo_min: 8,
         descripcion: "Quinoa fría con cubitos de queso port salut, rodajas finas de pepino, rabanitos crocantes y mix de semillas de chía.",
-        prompt_cuadrante: "Bowl saludable con base de quinoa fría suelta, dados blancos de queso port salut fresco, rodajas delgadas de pepino y rabanitos rosados, espolvoreado con semillas de sésamo y chía.",
+        prompt_cuadrante: "Quinoa fría suelta en plato hondo con dados rústicos de queso fresco blanco, rodajitas de pepino y rabanitos volcados de forma asimétrica y espolvoreados con semillas (sin anillos concéntricos).",
         tags: ["quinoa", "queso", "pepino", "rabanitos", "semillas", "frio"]
       }
     ]
@@ -1335,7 +1335,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Tiras frías de bife o carne asada cocida con dados de papa hervida, hojas de lechuga crocante, tomate y oliva.",
-        prompt_cuadrante: "Plato de salpicón criollo tradicional con tiras delgadas de carne vacuna cocida fría, dados de papa cocida al dente, hojas de lechuga fresca y tomate cortado con aceite de oliva virgen.",
+        prompt_cuadrante: "Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares).",
         tags: ["carne", "bife", "salpicon", "papas", "lechuga", "tomate", "frio", "oliva"]
       },
       {
@@ -1349,7 +1349,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 5,
         descripcion: "Clásica ensalada rusa de papa y zanahoria con tiras crujientes de milanesa fría y aceitunas verdes.",
-        prompt_cuadrante: "Porción de ensalada rusa tradicional con cubitos de papa y zanahoria, coronada con tiras de milanesa dorada crujiente fría cortada al bies y aceitunas verdes brillantes.",
+        prompt_cuadrante: "Porción rústica de ensalada rusa servida a un costado con cuchara, acompañada al lado por tiras de milanesa dorada fría dispuestas de forma casual y aceitunas verdes sin alinear.",
         tags: ["milanesa", "ensalada-rusa", "papa", "zanahoria", "aceitunas", "frio"]
       },
       {
@@ -1364,7 +1364,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 8,
         descripcion: "Tofu firme frío marinado en limón sobre quinoa cocida, juliana fina de repollo colorado, pepino y palta.",
-        prompt_cuadrante: "Bowl fresco con base de quinoa suelta, cubos de tofu blanco marinado, repollo colorado cortado en juliana finísima, rodajas de pepino y gajos de palta madura con oliva.",
+        prompt_cuadrante: "Plato frío con base de quinoa cocida suelta, cubos de tofu blanco marinado volcados a un costado, repollo colorado en juliana y trozos de palta madura servidos de forma libre y asimétrica con aceite de oliva.",
         tags: ["tofu", "quinoa", "repollo", "pepino", "palta", "frio", "vegetariano"]
       },
       {
@@ -1378,7 +1378,7 @@ const lotes = [
         grasa_id: "comp_fat_5",
         tiempo_min: 5,
         descripcion: "Base fresca de avena arrollada hidratada con agua o caldo frío, lomitos de atún al natural, zanahoria rallada y semillas.",
-        prompt_cuadrante: "Bowl nutritivo de avena arrollada tierna hidratada en frío, cubierta con lomitos de atún claro, hebras de zanahoria fresca y semillas de girasol y sésamo tostadas con oliva.",
+        prompt_cuadrante: "Ensalada fría casera de avena arrollada hidratada mezclada al desgaire con trozos de atún claro, hebras de zanahoria fresca y semillas tostadas esparcidas con naturalidad sin orden simétrico.",
         tags: ["atun", "avena", "zanahoria", "semillas", "bowl", "frio"]
       }
     ]

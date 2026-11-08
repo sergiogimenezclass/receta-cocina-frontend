@@ -1587,7 +1587,8 @@
             "zanahoria",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_65.jpg"
         },
         {
           "id": "plate_cat_66",
@@ -1608,7 +1609,8 @@
             "queso",
             "crutones",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_66.jpg"
         },
         {
           "id": "plate_cat_67",
@@ -1630,7 +1632,8 @@
             "tomate",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_67.jpg"
         },
         {
           "id": "plate_cat_68",
@@ -1650,7 +1653,8 @@
             "remolacha",
             "nueces",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_68.jpg"
         }
       ]
     },
@@ -1680,7 +1684,8 @@
             "verdeo",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_69.jpg"
         },
         {
           "id": "plate_cat_70",
@@ -1703,7 +1708,8 @@
             "zanahoria",
             "aceitunas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_70.jpg"
         },
         {
           "id": "plate_cat_71",
@@ -1724,7 +1730,8 @@
             "tomate",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_71.jpg"
         },
         {
           "id": "plate_cat_72",
@@ -1744,7 +1751,8 @@
             "chauchas",
             "palta",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_72.jpg"
         }
       ]
     },
@@ -3528,7 +3536,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_65.jpg",
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3552,7 +3560,7 @@
         "crutones",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_66.jpg",
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3577,7 +3585,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_67.jpg",
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3600,7 +3608,7 @@
         "nueces",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_68.jpg",
       "lote_id": "lote_17",
       "lote_tema": "Salpicones de Pollo y Ensaladas de Ave"
     },
@@ -3626,7 +3634,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_69.jpg",
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3652,7 +3660,7 @@
         "aceitunas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_70.jpg",
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3676,7 +3684,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_71.jpg",
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
@@ -3699,7 +3707,7 @@
         "palta",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_72.jpg",
       "lote_id": "lote_18",
       "lote_tema": "Huevos Duros y Ensaladas de Legumbres Frías"
     },
