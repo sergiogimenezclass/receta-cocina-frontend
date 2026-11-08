@@ -740,12 +740,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 13 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de una generosa porción de espinacas tiernas salteadas y champiñones dorados al ajillo con aceite de oliva.
-- Cuadrante Superior Derecho: Pechuga de pollo dorada jugosa a la plancha con limón, servida junto a arbolitos de brócoli verde brillante y coliflor blanca al vapor bañados con manteca derretida y pimienta negra.
-- Cuadrante Inferior Izquierdo: Costillita de cerdo marcada a la plancha bien dorada con gajo de limón, acompañada de láminas asadas de berenjena y rodajas de zucchini a la plancha con aceite de oliva extra virgen.
-- Cuadrante Inferior Derecho: Dos medallones gruesos de hamburguesa casera de carne vacuna bien dorados al plato, servidos sobre un colchón de hojas de rúcula fresca con láminas de palta madura y aceite de oliva.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de espinacas salteadas y champiñones dorados a la sartén con aceite de oliva.
+- Cuadrante Superior Derecho: Pechuga de pollo dorada a la plancha con limón, servida junto a arbolitos de brócoli y coliflor al vapor con manteca derretida y pimienta.
+- Cuadrante Inferior Izquierdo: Costillita de cerdo a la plancha bien dorada con gajo de limón, acompañada de láminas de berenjena y rodajas de zucchini asadas con aceite de oliva.
+- Cuadrante Inferior Derecho: Dos hamburguesas caseras de carne vacuna doradas al plato, servidas junto a hojas frescas de rúcula y trozos de palta madura con aceite de oliva (sin pan ni papas).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): platos simples y reconfortantes de cena rápida. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -791,16 +791,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Cubos de tofu a la plancha salteados con variedad de vegetales (zucchini, morrón, cebolla) y almendras tostadas picadas.
-- **Prompt Fotográfico:** *"Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas."*
+- **Prompt Fotográfico:** *"Cubos de tofu crocante bien dorados salteados con juliana de vegetales mixtos (morrón, cebolla y zucchini) y almendras picadas tostadas (sin fideos ni arroz)."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 14 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Filete de merluza blanca cocido a la plancha con perejil fresco y limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza anco asada con aceite de oliva.
-- Cuadrante Superior Derecho: Huevos revueltos esponjosos y cremosos salteados en sartén con dados dorados de zucchini tierno y terminados con abundante queso sardo rallado gratinado.
-- Cuadrante Inferior Izquierdo: Omelette dorado esponjoso con centro de queso fresco derretido, acompañado de tomates en rodajas asados en sartén y espolvoreado con semillas mixtas tostadas.
-- Cuadrante Inferior Derecho: Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Filete de merluza blanca a la plancha con perejil fresco y gajo de limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza asada con aceite de oliva.
+- Cuadrante Superior Derecho: Huevos revueltos esponjosos y húmedos salteados en sartén con dados dorados de zucchini tierno y lluvia de queso sardo rallado por encima.
+- Cuadrante Inferior Izquierdo: Omelette dorado esponjoso con queso derretido en su interior, acompañado de rodajas de tomate asadas en sartén y mix de semillas tostadas.
+- Cuadrante Inferior Derecho: Cubos de tofu crocante bien dorados salteados con juliana de vegetales mixtos (morrón, cebolla y zucchini) y almendras picadas tostadas (sin fideos ni arroz).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): cenas ligeras y rápidas. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---

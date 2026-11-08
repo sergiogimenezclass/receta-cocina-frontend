@@ -1191,7 +1191,8 @@
             "champinones",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_49.jpg"
         },
         {
           "id": "plate_cat_50",
@@ -1213,7 +1214,8 @@
             "coliflor",
             "manteca",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_50.jpg"
         },
         {
           "id": "plate_cat_51",
@@ -1235,7 +1237,8 @@
             "berenjena",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_51.jpg"
         },
         {
           "id": "plate_cat_52",
@@ -1256,7 +1259,8 @@
             "rucula",
             "palta",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_52.jpg"
         }
       ]
     },
@@ -1285,7 +1289,8 @@
             "calabaza",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_53.jpg"
         },
         {
           "id": "plate_cat_54",
@@ -1305,7 +1310,8 @@
             "zucchini",
             "queso",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_54.jpg"
         },
         {
           "id": "plate_cat_55",
@@ -1326,7 +1332,8 @@
             "tomate",
             "semillas",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_55.jpg"
         },
         {
           "id": "plate_cat_56",
@@ -1347,7 +1354,8 @@
             "almendras",
             "frutos-secos",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_56.jpg"
         }
       ]
     },
@@ -3112,7 +3120,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_49.jpg",
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3137,7 +3145,7 @@
         "manteca",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_50.jpg",
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3162,7 +3170,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_51.jpg",
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3186,7 +3194,7 @@
         "palta",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_52.jpg",
       "lote_id": "lote_13",
       "lote_tema": "Cenas Ligeras Low-Carb: Carnes y Aves"
     },
@@ -3211,7 +3219,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_53.jpg",
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3234,7 +3242,7 @@
         "queso",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_54.jpg",
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3258,7 +3266,7 @@
         "semillas",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_55.jpg",
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
@@ -3282,7 +3290,7 @@
         "frutos-secos",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_56.jpg",
       "lote_id": "lote_14",
       "lote_tema": "Cenas Ligeras Low-Carb: Pescados, Huevos y Tofu"
     },
