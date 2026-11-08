@@ -1038,7 +1038,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Rodajas gruesas de tomate maduro con láminas de queso fresco o port salut, hojas de rúcula y aceite de oliva extra virgen.
-- **Prompt Fotográfico:** *"Plato plano con clásica ensalada Caprese: rodajas intercaladas de tomate perita maduro y queso fresco cremoso blanco, coronadas por hojas verdes de rúcula y aceite de oliva extra virgen."*
+- **Prompt Fotográfico:** *"Ensalada Caprese rústica servida de forma informal y casera: trozos desparejos de tomate fresco y dados o cuñas de queso fresco mezclados con hojas verdes de rúcula y aceite de oliva (PROHIBIDO rueda o abanico concéntrico de rodajas alternadas)."*
 
 ### ↗️ Superior Derecho — Ensalada Fresca de Ricota con Remolacha y Nueces (`plate_cat_74`)
 - **Ingredientes Clave:**
@@ -1048,7 +1048,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.
-- **Prompt Fotográfico:** *"Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes."*
+- **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, copos rústicos de ricota fresca y nueces partidas con aceite de oliva (distribución asimétrica natural)."*
 
 ### ↙️ Inferior Izquierdo — Pasta Fría con Dados de Queso, Tomate y Aceitunas (`plate_cat_75`)
 - **Ingredientes Clave:**
@@ -1058,7 +1058,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Fideos fríos al dente con dados de queso port salut/tybo, tomatitos en cuartos, aceitunas negras y albahaca fresca.
-- **Prompt Fotográfico:** *"Bowl de ensalada de pasta fría con fideos tirabuzón, cubos firmes de queso semiduro, tomates cherry cortados al medio, aceitunas negras y hojitas de albahaca fresca con aceite de oliva."*
+- **Prompt Fotográfico:** *"Plato hondo de ensalada de fideos tirabuzón (fusilli espirales) fríos totalmente mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva (PROHIBIDO fideos con forma de rueda o engranaje)."*
 
 ### ↘️ Inferior Derecho — Bowl de Quinoa con Queso Port Salut, Pepino y Semillas (`plate_cat_76`)
 - **Ingredientes Clave:**
@@ -1068,16 +1068,17 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Quinoa fría con cubitos de queso port salut, rodajas finas de pepino, rabanitos crocantes y mix de semillas de chía.
-- **Prompt Fotográfico:** *"Bowl saludable con base de quinoa fría suelta, dados blancos de queso port salut fresco, rodajas delgadas de pepino y rabanitos rosados, espolvoreado con semillas de sésamo y chía."*
+- **Prompt Fotográfico:** *"Quinoa fría suelta en plato hondo con dados rústicos de queso fresco blanco, rodajitas de pepino y rabanitos volcados de forma asimétrica y espolvoreados con semillas (sin anillos concéntricos)."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 19 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Plato plano con clásica ensalada Caprese: rodajas intercaladas de tomate perita maduro y queso fresco cremoso blanco, coronadas por hojas verdes de rúcula y aceite de oliva extra virgen.
-- Cuadrante Superior Derecho: Ensalada fresca casera con hojas de rúcula, dados de remolacha cocida dulce, porciones suaves de ricota fresca blanca y nueces crocantes.
-- Cuadrante Inferior Izquierdo: Bowl de ensalada de pasta fría con fideos tirabuzón, cubos firmes de queso semiduro, tomates cherry cortados al medio, aceitunas negras y hojitas de albahaca fresca con aceite de oliva.
-- Cuadrante Inferior Derecho: Bowl saludable con base de quinoa fría suelta, dados blancos de queso port salut fresco, rodajas delgadas de pepino y rabanitos rosados, espolvoreado con semillas de sésamo y chía.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero frío terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada Caprese rústica servida de forma informal y casera: trozos desparejos de tomate fresco y dados o cuñas de queso fresco mezclados con hojas verdes de rúcula y aceite de oliva (PROHIBIDO rueda o abanico concéntrico de rodajas alternadas).
+- Cuadrante Superior Derecho: Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, copos rústicos de ricota fresca y nueces partidas con aceite de oliva (distribución asimétrica natural).
+- Cuadrante Inferior Izquierdo: Plato hondo de ensalada de fideos tirabuzón (fusilli espirales) fríos totalmente mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva (PROHIBIDO fideos con forma de rueda o engranaje).
+- Cuadrante Inferior Derecho: Quinoa fría suelta en plato hondo con dados rústicos de queso fresco blanco, rodajitas de pepino y rabanitos volcados de forma asimétrica y espolvoreados con semillas (sin anillos concéntricos).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
+PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar quesos, aceitunas, fideos o tomates equidistantes en círculo alrededor del plato). PROHIBIDO fideos con forma de rueda, manubrio o engranaje (ruote/rotelle), usar fideos tirabuzón (fusilli espirales). Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -1093,7 +1094,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Tiras frías de bife o carne asada cocida con dados de papa hervida, hojas de lechuga crocante, tomate y oliva.
-- **Prompt Fotográfico:** *"Plato de salpicón criollo tradicional con tiras delgadas de carne vacuna cocida fría, dados de papa cocida al dente, hojas de lechuga fresca y tomate cortado con aceite de oliva virgen."*
+- **Prompt Fotográfico:** *"Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares ni flores)."*
 
 ### ↗️ Superior Derecho — Ensalada Rusa con Tiras de Milanesa Fría (`plate_cat_78`)
 - **Ingredientes Clave:**
@@ -1103,7 +1104,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Clásica ensalada rusa de papa y zanahoria con tiras crujientes de milanesa fría y aceitunas verdes.
-- **Prompt Fotográfico:** *"Porción de ensalada rusa tradicional con cubitos de papa y zanahoria, coronada con tiras de milanesa dorada crujiente fría cortada al bies y aceitunas verdes brillantes."*
+- **Prompt Fotográfico:** *"Porción rústica de ensalada rusa servida a un costado con cuchara, acompañada al lado por tiras de milanesa dorada fría dispuestas de forma casual y aceitunas verdes sin alinear."*
 
 ### ↙️ Inferior Izquierdo — Bowl Detox de Tofu Frío con Quinoa y Repollo (`plate_cat_79`)
 - **Ingredientes Clave:**
@@ -1113,7 +1114,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🥑 Palta / Aguacate
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Tofu firme frío marinado en limón sobre quinoa cocida, juliana fina de repollo colorado, pepino y palta.
-- **Prompt Fotográfico:** *"Bowl fresco con base de quinoa suelta, cubos de tofu blanco marinado, repollo colorado cortado en juliana finísima, rodajas de pepino y gajos de palta madura con oliva."*
+- **Prompt Fotográfico:** *"Plato frío con base de quinoa cocida suelta, cubos de tofu blanco marinado volcados a un costado, repollo colorado en juliana y trozos de palta madura servidos de forma libre y asimétrica con aceite de oliva."*
 
 ### ↘️ Inferior Derecho — Ensalada de Avena Remojada con Atún y Zanahoria (`plate_cat_80`)
 - **Ingredientes Clave:**
@@ -1123,16 +1124,17 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Base fresca de avena arrollada hidratada con agua o caldo frío, lomitos de atún al natural, zanahoria rallada y semillas.
-- **Prompt Fotográfico:** *"Bowl nutritivo de avena arrollada tierna hidratada en frío, cubierta con lomitos de atún claro, hebras de zanahoria fresca y semillas de girasol y sésamo tostadas con oliva."*
+- **Prompt Fotográfico:** *"Ensalada fría casera de avena arrollada hidratada mezclada al desgaire con trozos de atún claro, hebras de zanahoria fresca y semillas tostadas esparcidas con naturalidad sin orden simétrico."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 20 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Plato de salpicón criollo tradicional con tiras delgadas de carne vacuna cocida fría, dados de papa cocida al dente, hojas de lechuga fresca y tomate cortado con aceite de oliva virgen.
-- Cuadrante Superior Derecho: Porción de ensalada rusa tradicional con cubitos de papa y zanahoria, coronada con tiras de milanesa dorada crujiente fría cortada al bies y aceitunas verdes brillantes.
-- Cuadrante Inferior Izquierdo: Bowl fresco con base de quinoa suelta, cubos de tofu blanco marinado, repollo colorado cortado en juliana finísima, rodajas de pepino y gajos de palta madura con oliva.
-- Cuadrante Inferior Derecho: Bowl nutritivo de avena arrollada tierna hidratada en frío, cubierta con lomitos de atún claro, hebras de zanahoria fresca y semillas de girasol y sésamo tostadas con oliva.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero frío terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares ni flores).
+- Cuadrante Superior Derecho: Porción rústica de ensalada rusa servida a un costado con cuchara, acompañada al lado por tiras de milanesa dorada fría dispuestas de forma casual y aceitunas verdes sin alinear.
+- Cuadrante Inferior Izquierdo: Plato frío con base de quinoa cocida suelta, cubos de tofu blanco marinado volcados a un costado, repollo colorado en juliana y trozos de palta madura servidos de forma libre y asimétrica con aceite de oliva.
+- Cuadrante Inferior Derecho: Ensalada fría casera de avena arrollada hidratada mezclada al desgaire con trozos de atún claro, hebras de zanahoria fresca y semillas tostadas esparcidas con naturalidad sin orden simétrico.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
+PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar carnes, milanesas, aceitunas o tomates equidistantes en círculo alrededor del plato). Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---

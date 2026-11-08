@@ -1781,7 +1781,8 @@
             "rucula",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_73.jpg"
         },
         {
           "id": "plate_cat_74",
@@ -1803,7 +1804,8 @@
             "rucula",
             "nueces",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_74.jpg"
         },
         {
           "id": "plate_cat_75",
@@ -1824,7 +1826,8 @@
             "tomate",
             "aceitunas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_75.jpg"
         },
         {
           "id": "plate_cat_76",
@@ -1846,7 +1849,8 @@
             "rabanitos",
             "semillas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_76.jpg"
         }
       ]
     },
@@ -1877,7 +1881,8 @@
             "tomate",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_77.jpg"
         },
         {
           "id": "plate_cat_78",
@@ -1898,7 +1903,8 @@
             "zanahoria",
             "aceitunas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_78.jpg"
         },
         {
           "id": "plate_cat_79",
@@ -1921,7 +1927,8 @@
             "palta",
             "frio",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_79.jpg"
         },
         {
           "id": "plate_cat_80",
@@ -1942,7 +1949,8 @@
             "semillas",
             "bowl",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_80.jpg"
         }
       ]
     }
@@ -3732,7 +3740,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_73.jpg",
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3757,7 +3765,7 @@
         "nueces",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_74.jpg",
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3781,7 +3789,7 @@
         "aceitunas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_75.jpg",
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3806,7 +3814,7 @@
         "semillas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_76.jpg",
       "lote_id": "lote_19",
       "lote_tema": "Quesos Frescos, Caprese y Ensaladas Livianas"
     },
@@ -3833,7 +3841,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_77.jpg",
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3857,7 +3865,7 @@
         "aceitunas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_78.jpg",
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3883,7 +3891,7 @@
         "frio",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_79.jpg",
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     },
@@ -3907,7 +3915,7 @@
         "bowl",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_80.jpg",
       "lote_id": "lote_20",
       "lote_tema": "Viandas Prácticas y Bowls Nutritivos de Verano"
     }
