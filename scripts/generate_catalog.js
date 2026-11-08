@@ -1196,7 +1196,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Lentejas cocidas escurridas frías mezcladas con dados de tomate, huevo duro picado y cebolla de verdeo con oliva.",
-        prompt_cuadrante: "Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj o puntos cardinales).",
+        prompt_cuadrante: "Ensalada casera de lentejas totalmente revuelta y mezclada (tossed salad): las lentejas cocidas, daditos de tomate, cebolla de verdeo y huevo duro picado están entremezclados homogéneamente en un solo revuelto rústico con aceite de oliva (PROHIBIDO círculos, anillos perimetrales o ingredientes separados).",
         tags: ["lentejas", "legumbres", "huevo", "tomate", "verdeo", "frio", "oliva"]
       },
       {
@@ -1211,7 +1211,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 5,
         descripcion: "Fideos secos fríos con trozos de huevo duro, choclo en grano, zanahoria rallada fresca y aceitunas negras.",
-        prompt_cuadrante: "Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico.",
+        prompt_cuadrante: "Ensalada de fideos tirabuzón (fusilli) fríos totalmente mezclada y revuelta: fideos espirales entremezclados homogéneamente con granos de choclo amarillo, hebras de zanahoria rallada, huevo duro picado y aceitunas negras picadas en una masa uniforme revuelta de ensalada (PROHIBIDO terminantemente fideos con forma de rueda, manubrio o engranaje; PROHIBIDO colocar cosas en círculo).",
         tags: ["fideos", "pasta", "huevo", "choclo", "zanahoria", "aceitunas", "frio"]
       },
       {
@@ -1225,7 +1225,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Porotos alubia blancos tiernos fríos con abundante perejil fresco picado, tomate en cubos, huevo duro y aceite de oliva.",
-        prompt_cuadrante: "Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico).",
+        prompt_cuadrante: "Ensalada de porotos alubia blancos totalmente revuelta: porotos blancos cocidos mezclados de forma uniforme con trocitos de tomate, huevo duro picado rústico y perejil fresco con aceite de oliva, todo revuelto en un montículo casero.",
         tags: ["porotos", "legumbres", "huevo", "tomate", "frio", "oliva"]
       },
       {
@@ -1239,7 +1239,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 5,
         descripcion: "Arroz blanco frío suelto con chauchas cocidas tiernas en trocitos, huevo duro picado y cubos de palta fresca.",
-        prompt_cuadrante: "Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría).",
+        prompt_cuadrante: "Ensalada de arroz blanco frío totalmente revuelta: arroz suelto mezclado homogéneamente con trocitos de chauchas verdes, dados de palta y huevo picado en un revoltijo apetitoso de casa (sin moldes ni círculos decorativos).",
         tags: ["arroz", "huevo", "chauchas", "palta", "frio"]
       }
     ]
