@@ -988,7 +988,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 10,
         descripcion: "Bifecitos de palomita a la plancha servidos con ensalada crujiente de repollo blanco en juliana, rabanitos y aceitunas.",
-        prompt_cuadrante: "Bifes delgados de carne de palomita dorados vuelta y vuelta a la plancha, acompañados de ensalada fresca de repollo blanco en tiras finas, rodajas de rabanito y aceitunas verdes.",
+        prompt_cuadrante: "Bifes delgados de carne de palomita dorados a la plancha, acompañados de ensalada simple de repollo blanco en tiras, rodajas de rabanito y aceitunas verdes.",
         tags: ["palomita", "carne", "bife", "repollo", "rabanitos", "aceitunas", "low-carb"]
       },
       {
@@ -1003,7 +1003,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 20,
         descripcion: "Costilla de asado crocante a la plancha con berenjena asada ahumada y tiras de morrón quemado al fuego.",
-        prompt_cuadrante: "Tira de asado a la plancha bien dorada y jugosa, servida con rodajas de berenjena asada con piel tostada y tiras de morrón rojo asado dulce aderezados con aceite de oliva.",
+        prompt_cuadrante: "Tira de asado dorada a la plancha, servida con rodajas de berenjena asada y tiras de morrón rojo asado con aceite de oliva.",
         tags: ["asado", "tira", "carne", "berenjena", "morron", "low-carb", "oliva"]
       },
       {
@@ -1018,7 +1018,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 25,
         descripcion: "Presa de pollo asada con piel crujiente, servida con ramilletes de coliflor salteada al orégano y tomates asados.",
-        prompt_cuadrante: "Pata-muslo asada al horno bien dorada y crujiente, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado al orégano con aceite de oliva.",
+        prompt_cuadrante: "Pata-muslo asada al horno bien dorada, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado con orégano y oliva.",
         tags: ["pollo", "pata-muslo", "coliflor", "tomate", "low-carb", "oliva"]
       },
       {
@@ -1032,7 +1032,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 8,
         descripcion: "Lomo de atún escurrido salteado tibio con chauchas al vapor y huevo duro en cuartos con aceite de oliva.",
-        prompt_cuadrante: "Plato caliente con lomos de atún claro sellados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro, todo bañado con aceite de oliva virgen extra y pimienta.",
+        prompt_cuadrante: "Plato caliente con lomos de atún salteados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro con aceite de oliva y pimienta.",
         tags: ["atun", "pescado", "chauchas", "huevo", "low-carb", "oliva"]
       }
     ]
@@ -1057,7 +1057,7 @@ const lotes = [
         grasa_id: "comp_fat_3",
         tiempo_min: 5,
         descripcion: "Clásica ensalada veraniega de arroz blanco frío con atún en lomo, dados de tomate fresco, huevo duro picado y aceitunas verdes.",
-        prompt_cuadrante: "Bowl fresco de ensalada fría con arroz blanco cocido suelto, trozos generosos de atún al natural, dados de tomate perita maduro, cuartos de huevo duro y aceitunas verdes descarozadas.",
+        prompt_cuadrante: "Ensalada fría casera de arroz blanco suelto y desgranado mezclado naturalmente con trozos de atún al natural, dados de tomate fresco, cuartos de huevo duro y aceitunas verdes (arroz suelto mezclado, sin molde ni timbal).",
         tags: ["atun", "arroz", "huevo", "tomate", "aceitunas", "ensalada", "frio"]
       },
       {
@@ -1072,7 +1072,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Salpicón frío con cubos de papa hervida fría, zanahoria rallada fresca, hojas de lechuga y lomos de atún aderezados con oliva.",
-        prompt_cuadrante: "Plato hondo de salpicón frío con cubos firmes de papa hervida, hebras de zanahoria rallada fresca, hojas de lechuga crocante y lomos de atún con hilo de aceite de oliva.",
+        prompt_cuadrante: "Plato hondo de salpicón frío casero con cubos de papa hervida, zanahoria rallada fresca, hojas de lechuga cortada y lomos de atún con un chorrito de aceite de oliva.",
         tags: ["atun", "papas", "zanahoria", "lechuga", "salpicon", "frio", "oliva"]
       },
       {
@@ -1087,7 +1087,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 5,
         descripcion: "Fideos secos fríos (tirabuzón/moñito) con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry.",
-        prompt_cuadrante: "Ensalada de fideos cortos al dente fríos mezclados con lomos enteros de caballa en conserva, hojas frescas de rúcula verde oscura y tomates cherry cortados al medio con oliva.",
+        prompt_cuadrante: "Ensalada fría de fideos cortos al dente mezclados con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry cortados al medio con aceite de oliva.",
         tags: ["caballa", "pescado", "fideos", "pasta", "rucula", "tomate", "frio", "oliva"]
       },
       {
@@ -1101,7 +1101,7 @@ const lotes = [
         grasa_id: "comp_fat_2",
         tiempo_min: 5,
         descripcion: "Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.",
-        prompt_cuadrante: "Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón.",
+        prompt_cuadrante: "Plato de ensalada fría con granos de choclo amarillo dulce, arroz blanco frío suelto y esparcido de forma plana, lomos de atún, daditos de tomate fresco y trozos de palta con limón (sin molde).",
         tags: ["atun", "choclo", "arroz", "palta", "tomate", "bowl", "frio"]
       }
     ]

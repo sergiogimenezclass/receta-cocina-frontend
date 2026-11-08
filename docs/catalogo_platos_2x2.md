@@ -816,7 +816,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
 - **Descripción Culinaria:** Bifecitos de palomita a la plancha servidos con ensalada crujiente de repollo blanco en juliana, rabanitos y aceitunas.
-- **Prompt Fotográfico:** *"Bifes delgados de carne de palomita dorados vuelta y vuelta a la plancha, acompañados de ensalada fresca de repollo blanco en tiras finas, rodajas de rabanito y aceitunas verdes."*
+- **Prompt Fotográfico:** *"Bifes delgados de carne de palomita dorados a la plancha, acompañados de ensalada simple de repollo blanco en tiras, rodajas de rabanito y aceitunas verdes."*
 
 ### ↗️ Superior Derecho — Tira de Asado con Berenjenas y Morrones Asados (`plate_cat_58`)
 - **Ingredientes Clave:**
@@ -826,7 +826,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~20 min | **Servido:** Caliente
 - **Descripción Culinaria:** Costilla de asado crocante a la plancha con berenjena asada ahumada y tiras de morrón quemado al fuego.
-- **Prompt Fotográfico:** *"Tira de asado a la plancha bien dorada y jugosa, servida con rodajas de berenjena asada con piel tostada y tiras de morrón rojo asado dulce aderezados con aceite de oliva."*
+- **Prompt Fotográfico:** *"Tira de asado dorada a la plancha, servida con rodajas de berenjena asada y tiras de morrón rojo asado con aceite de oliva."*
 
 ### ↙️ Inferior Izquierdo — Pata-Muslo al Horno con Coliflor y Tomates Asados (`plate_cat_59`)
 - **Ingredientes Clave:**
@@ -836,7 +836,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~25 min | **Servido:** Caliente
 - **Descripción Culinaria:** Presa de pollo asada con piel crujiente, servida con ramilletes de coliflor salteada al orégano y tomates asados.
-- **Prompt Fotográfico:** *"Pata-muslo asada al horno bien dorada y crujiente, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado al orégano con aceite de oliva."*
+- **Prompt Fotográfico:** *"Pata-muslo asada al horno bien dorada, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado con orégano y oliva."*
 
 ### ↘️ Inferior Derecho — Atún Caliente con Chauchas al Vapor y Huevo Duro (`plate_cat_60`)
 - **Ingredientes Clave:**
@@ -846,16 +846,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Caliente
 - **Descripción Culinaria:** Lomo de atún escurrido salteado tibio con chauchas al vapor y huevo duro en cuartos con aceite de oliva.
-- **Prompt Fotográfico:** *"Plato caliente con lomos de atún claro sellados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro, todo bañado con aceite de oliva virgen extra y pimienta."*
+- **Prompt Fotográfico:** *"Plato caliente con lomos de atún salteados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro con aceite de oliva y pimienta."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 15 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bifes delgados de carne de palomita dorados vuelta y vuelta a la plancha, acompañados de ensalada fresca de repollo blanco en tiras finas, rodajas de rabanito y aceitunas verdes.
-- Cuadrante Superior Derecho: Tira de asado a la plancha bien dorada y jugosa, servida con rodajas de berenjena asada con piel tostada y tiras de morrón rojo asado dulce aderezados con aceite de oliva.
-- Cuadrante Inferior Izquierdo: Pata-muslo asada al horno bien dorada y crujiente, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado al orégano con aceite de oliva.
-- Cuadrante Inferior Derecho: Plato caliente con lomos de atún claro sellados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro, todo bañado con aceite de oliva virgen extra y pimienta.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Bifes delgados de carne vacuna (palomita) dorados a la plancha, acompañados de ensalada simple de repollo blanco en tiras, rodajas de rabanito y aceitunas verdes.
+- Cuadrante Superior Derecho: Tira de asado con hueso dorada a la plancha, servida con rodajas de berenjena asada y tiras de morrón rojo asado con aceite de oliva.
+- Cuadrante Inferior Izquierdo: Pata-muslo de pollo asada al horno bien dorada y crocante, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado con orégano y oliva.
+- Cuadrante Inferior Derecho: Plato caliente con lomos de atún salteados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro con aceite de oliva y pimienta.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): cenas simples y sabrosas. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -871,7 +871,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Clásica ensalada veraniega de arroz blanco frío con atún en lomo, dados de tomate fresco, huevo duro picado y aceitunas verdes.
-- **Prompt Fotográfico:** *"Bowl fresco de ensalada fría con arroz blanco cocido suelto, trozos generosos de atún al natural, dados de tomate perita maduro, cuartos de huevo duro y aceitunas verdes descarozadas."*
+- **Prompt Fotográfico:** *"Ensalada fría casera de arroz blanco suelto y desgranado mezclado naturalmente con trozos de atún al natural, dados de tomate fresco, cuartos de huevo duro y aceitunas verdes (arroz suelto mezclado, sin molde ni timbal)."*
 
 ### ↗️ Superior Derecho — Salpicón de Atún con Papas, Zanahoria y Oliva (`plate_cat_62`)
 - **Ingredientes Clave:**
@@ -881,7 +881,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Salpicón frío con cubos de papa hervida fría, zanahoria rallada fresca, hojas de lechuga y lomos de atún aderezados con oliva.
-- **Prompt Fotográfico:** *"Plato hondo de salpicón frío con cubos firmes de papa hervida, hebras de zanahoria rallada fresca, hojas de lechuga crocante y lomos de atún con hilo de aceite de oliva."*
+- **Prompt Fotográfico:** *"Plato hondo de salpicón frío casero con cubos de papa hervida, zanahoria rallada fresca, hojas de lechuga cortada y lomos de atún con un chorrito de aceite de oliva."*
 
 ### ↙️ Inferior Izquierdo — Ensalada de Caballa con Fideos Fríos y Rúcula (`plate_cat_63`)
 - **Ingredientes Clave:**
@@ -891,7 +891,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Fideos secos fríos (tirabuzón/moñito) con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry.
-- **Prompt Fotográfico:** *"Ensalada de fideos cortos al dente fríos mezclados con lomos enteros de caballa en conserva, hojas frescas de rúcula verde oscura y tomates cherry cortados al medio con oliva."*
+- **Prompt Fotográfico:** *"Ensalada fría de fideos cortos al dente mezclados con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry cortados al medio con aceite de oliva."*
 
 ### ↘️ Inferior Derecho — Bowl Frío de Arroz con Atún, Choclo y Palta (`plate_cat_64`)
 - **Ingredientes Clave:**
@@ -901,16 +901,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🥑 Palta / Aguacate
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Bowl fresco con base de choclo amarillo desgranado, arroz blanco frío, atún en trozos y abanico de palta con limón.
-- **Prompt Fotográfico:** *"Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón."*
+- **Prompt Fotográfico:** *"Plato de ensalada fría con granos de choclo amarillo dulce, arroz blanco frío suelto y esparcido de forma plana, lomos de atún, daditos de tomate fresco y trozos de palta con limón (sin molde)."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 16 (Grilla 2x2)
 ```text
-Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bowl fresco de ensalada fría con arroz blanco cocido suelto, trozos generosos de atún al natural, dados de tomate perita maduro, cuartos de huevo duro y aceitunas verdes descarozadas.
-- Cuadrante Superior Derecho: Plato hondo de salpicón frío con cubos firmes de papa hervida, hebras de zanahoria rallada fresca, hojas de lechuga crocante y lomos de atún con hilo de aceite de oliva.
-- Cuadrante Inferior Izquierdo: Ensalada de fideos cortos al dente fríos mezclados con lomos enteros de caballa en conserva, hojas frescas de rúcula verde oscura y tomates cherry cortados al medio con oliva.
-- Cuadrante Inferior Derecho: Bowl frío moderno con granos de choclo amarillo dulce, lomitos de atún claro, daditos de tomate fresco y cubos de palta fresca con unas gotas de limón.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera fría terminada, servida de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada fría casera de arroz blanco cocido suelto y desgranado mezclado naturalmente con trozos de atún al natural, dados de tomate fresco, cuartos de huevo duro y aceitunas verdes (arroz suelto esparcido y mezclado, PROHIBIDO molde o timbal).
+- Cuadrante Superior Derecho: Plato hondo de salpicón frío casero con cubos de papa hervida, zanahoria rallada fresca, hojas de lechuga fresca cortada y trozos de atún con hilo de aceite de oliva.
+- Cuadrante Inferior Izquierdo: Ensalada fría casera de fideos secos cortos al dente mezclados con trozos de caballa en conserva, hojas de rúcula verde y tomates cherry cortados al medio con aceite de oliva.
+- Cuadrante Inferior Derecho: Ensalada fresca servida en plato con granos de choclo amarillo desgranado, arroz blanco frío suelto y esparcido de forma plana, lomos de atún, daditos de tomate y trozos de palta madura con limón (arroz suelto plano, sin molde ni domo).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): ensaladas de casa servidas con cuchara; arroz servido suelto y esparcido de forma plana e irregular (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---

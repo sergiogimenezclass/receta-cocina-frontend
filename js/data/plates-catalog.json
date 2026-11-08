@@ -1385,7 +1385,8 @@
             "rabanitos",
             "aceitunas",
             "low-carb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_57.jpg"
         },
         {
           "id": "plate_cat_58",
@@ -1408,7 +1409,8 @@
             "morron",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_58.jpg"
         },
         {
           "id": "plate_cat_59",
@@ -1430,7 +1432,8 @@
             "tomate",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_59.jpg"
         },
         {
           "id": "plate_cat_60",
@@ -1451,7 +1454,8 @@
             "huevo",
             "low-carb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_60.jpg"
         }
       ]
     },
@@ -1480,7 +1484,8 @@
             "aceitunas",
             "ensalada",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_61.jpg"
         },
         {
           "id": "plate_cat_62",
@@ -1503,7 +1508,8 @@
             "salpicon",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_62.jpg"
         },
         {
           "id": "plate_cat_63",
@@ -1527,7 +1533,8 @@
             "tomate",
             "frio",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_63.jpg"
         },
         {
           "id": "plate_cat_64",
@@ -1549,7 +1556,8 @@
             "tomate",
             "bowl",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_64.jpg"
         }
       ]
     },
@@ -3316,7 +3324,7 @@
         "aceitunas",
         "low-carb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_57.jpg",
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3342,7 +3350,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_58.jpg",
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3367,7 +3375,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_59.jpg",
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3391,7 +3399,7 @@
         "low-carb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_60.jpg",
       "lote_id": "lote_15",
       "lote_tema": "Cenas Express Low-Carb Cotidianas"
     },
@@ -3416,7 +3424,7 @@
         "ensalada",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_61.jpg",
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3442,7 +3450,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_62.jpg",
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3469,7 +3477,7 @@
         "frio",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_63.jpg",
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
@@ -3494,7 +3502,7 @@
         "bowl",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_64.jpg",
       "lote_id": "lote_16",
       "lote_tema": "Ensaladas y Platos Fríos de Atún y Pescado"
     },
