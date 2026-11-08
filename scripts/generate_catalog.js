@@ -711,7 +711,7 @@ const lotes = [
         grasa_id: "comp_fat_8",
         tiempo_min: 15,
         descripcion: "Fideos al dente bañados en salsa suave de crema de leche con dados de pollo dorado y champiñones laminados.",
-        prompt_cuadrante: "Fideos cintas humeantes cubiertos con salsa cremosa de crema de leche, trozos de pechuga de pollo dorada y abundantes champiñones fileteados con pimienta blanca.",
+        prompt_cuadrante: "Plato hondo de fideos al dente salteados con tiras de pollo a la plancha, salsa suave de crema de leche y láminas de champiñones salteados.",
         tags: ["fideos", "pasta", "pollo", "crema", "hongos", "champinones"]
       },
       {
@@ -725,7 +725,7 @@ const lotes = [
         grasa_id: "comp_fat_4",
         tiempo_min: 12,
         descripcion: "Pasta salteada con hojas de espinaca tierna, cubos de queso cremoso que se funden al servir y nueces picadas crujientes.",
-        prompt_cuadrante: "Plato de fideos cortos con hojas de espinaca verde oscuro salteadas, dados de queso fresco blanco semiderretido y trozos de nueces tostadas crujientes.",
+        prompt_cuadrante: "Plato hondo de fideos cortos con hojas de espinaca salteadas, dados de queso fresco derretido y nueces picadas tostadas.",
         tags: ["fideos", "pasta", "queso", "espinaca", "nueces"]
       },
       {
@@ -738,8 +738,8 @@ const lotes = [
         vegetal_id: "comp_veg_7",
         grasa_id: "comp_fat_1",
         tiempo_min: 8,
-        descripcion: "Porridge o avena salada caliente cocida con caldo, coronada con huevo revuelto o poché y espinacas al oliva.",
-        prompt_cuadrante: "Bowl reconfortante de avena arrollada salada cocida y cremosa, coronada con huevo revuelto tierno, hojas de espinaca salteadas y un hilo de aceite de oliva virgen extra.",
+        descripcion: "Avena salada caliente cocida con caldo, coronada con huevo revuelto o poché y espinacas al oliva.",
+        prompt_cuadrante: "Plato hondo de avena salada caliente casera y cremosa, coronada con huevo revuelto tierno, espinacas salteadas y un hilo de aceite de oliva.",
         tags: ["avena", "huevo", "espinaca", "desayuno-salado", "oliva"]
       },
       {
@@ -753,7 +753,7 @@ const lotes = [
         grasa_id: "comp_fat_8",
         tiempo_min: 10,
         descripcion: "Arroz blanco caliente salteado con atún desmenuzado, un chorrito de crema de leche y aros verdes de cebollita de verdeo.",
-        prompt_cuadrante: "Arroz blanco cremoso salteado en sartén con lomitos de atún claro, suave emulsión de crema de leche y rodajitas verdes brillantes de cebolla de verdeo.",
+        prompt_cuadrante: "Plato casero de arroz blanco suelto y cremoso salteado en sartén con trozos de atún, crema de leche y cebollita de verdeo picada, esparcido plano en el plato (sin bola ni molde).",
         tags: ["arroz", "atun", "crema", "verdeo"]
       }
     ]
@@ -779,7 +779,7 @@ const lotes = [
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
         descripcion: "Láminas gruesas de tofu bien doradas y crocantes con puré mixto de papa y calabaza, más brócoli al vapor.",
-        prompt_cuadrante: "Láminas gruesas de tofu dorado crujiente a la plancha con hierbas, porción de puré sedoso de calabaza y papa dorada, y ramilletes de brócoli verde brillante con aceite de oliva.",
+        prompt_cuadrante: "Láminas gruesas de tofu dorado a la plancha, porción plana y rústica de puré casero de calabaza aplastado con tenedor (sin flores de manga ni rosetas), y arbolitos de brócoli cocido con aceite de oliva.",
         tags: ["tofu", "pure", "calabaza", "brocoli", "vegetariano", "oliva"]
       },
       {
@@ -794,7 +794,7 @@ const lotes = [
         grasa_id: "comp_fat_6",
         tiempo_min: 15,
         descripcion: "Fideos al dente con salsa de tomate criolla y soja texturizada sofrita con cebolla y orégano, con queso rallado.",
-        prompt_cuadrante: "Nido de fideos al dente cubiertos de salsa boloñesa vegetal de soja texturizada con tomate concentrado, cebolla sofrita y lluvia de queso rallado sardo.",
+        prompt_cuadrante: "Plato hondo de fideos al dente con salsa boloñesa casera de soja texturizada con tomate, cebolla dorada y lluvia de queso rallado.",
         tags: ["fideos", "pasta", "soja-texturizada", "tomate", "queso", "vegetariano"]
       },
       {
@@ -808,7 +808,7 @@ const lotes = [
         grasa_id: "comp_fat_5",
         tiempo_min: 12,
         descripcion: "Bowl caliente de quinoa cocida con dados de tofu sellado, rodajas de zucchini a la plancha y semillas de girasol tostadas.",
-        prompt_cuadrante: "Bowl tibio de quinoa esponjosa coronada con cubitos de tofu dorado, medias lunas de zucchini salteadas y semillas de girasol tostadas crujientes con oliva.",
+        prompt_cuadrante: "Plato hondo de quinoa cocida suelta con cubos dorados de tofu a la sartén, rodajitas de zucchini salteadas y semillas de girasol tostadas.",
         tags: ["quinoa", "tofu", "zucchini", "semillas", "vegetariano", "oliva"]
       },
       {
@@ -822,8 +822,8 @@ const lotes = [
         vegetal_secundario_id: "comp_veg_10",
         grasa_id: "comp_fat_1",
         tiempo_min: 15,
-        descripcion: "Salteado criollo de soja texturizada hidratada con morrón rojo y cebolla, servida con timbal de arroz blanco.",
-        prompt_cuadrante: "Picadillo vegetal de soja texturizada dorada en sartén con cubitos de morrón rojo dulce y cebolla salteada, acompañado de arroz blanco al vapor con aceite de oliva.",
+        descripcion: "Salteado criollo de soja texturizada hidratada con morrón rojo y cebolla, servida con arroz blanco suelto.",
+        prompt_cuadrante: "Salteado criollo casero de soja texturizada dorada con cubitos de morrón rojo y cebolla, acompañado de arroz blanco suelto y esparcido de forma plana al costado (sin forma de bola ni molde).",
         tags: ["soja-texturizada", "arroz", "morron", "cebolla", "vegetariano", "oliva"]
       }
     ]

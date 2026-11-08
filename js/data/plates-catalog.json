@@ -1000,7 +1000,8 @@
             "crema",
             "hongos",
             "champinones"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_41.jpg"
         },
         {
           "id": "plate_cat_42",
@@ -1020,7 +1021,8 @@
             "queso",
             "espinaca",
             "nueces"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_42.jpg"
         },
         {
           "id": "plate_cat_43",
@@ -1040,7 +1042,8 @@
             "espinaca",
             "desayuno-salado",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_43.jpg"
         },
         {
           "id": "plate_cat_44",
@@ -1059,7 +1062,8 @@
             "atun",
             "crema",
             "verdeo"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_44.jpg"
         }
       ]
     },
@@ -1088,7 +1092,8 @@
             "brocoli",
             "vegetariano",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_45.jpg"
         },
         {
           "id": "plate_cat_46",
@@ -1110,7 +1115,8 @@
             "tomate",
             "queso",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_46.jpg"
         },
         {
           "id": "plate_cat_47",
@@ -1131,7 +1137,8 @@
             "semillas",
             "vegetariano",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_47.jpg"
         },
         {
           "id": "plate_cat_48",
@@ -1153,7 +1160,8 @@
             "cebolla",
             "vegetariano",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_48.jpg"
         }
       ]
     },
@@ -2911,7 +2919,7 @@
         "hongos",
         "champinones"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_41.jpg",
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2934,7 +2942,7 @@
         "espinaca",
         "nueces"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_42.jpg",
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2957,7 +2965,7 @@
         "desayuno-salado",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_43.jpg",
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -2979,7 +2987,7 @@
         "crema",
         "verdeo"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_44.jpg",
       "lote_id": "lote_11",
       "lote_tema": "Pastas y Cereales con Salsas Ligeras"
     },
@@ -3004,7 +3012,7 @@
         "vegetariano",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_45.jpg",
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -3029,7 +3037,7 @@
         "queso",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_46.jpg",
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -3053,7 +3061,7 @@
         "vegetariano",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_47.jpg",
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
@@ -3078,7 +3086,7 @@
         "vegetariano",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_48.jpg",
       "lote_id": "lote_12",
       "lote_tema": "Opciones Vegetarianas y Proteínas Vegetales"
     },
