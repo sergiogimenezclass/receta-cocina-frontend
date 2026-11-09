@@ -1978,7 +1978,8 @@
             "tomate",
             "clasico",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_81.jpg"
         },
         {
           "id": "plate_cat_82",
@@ -2000,7 +2001,8 @@
             "pure",
             "manteca",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_82.jpg"
         },
         {
           "id": "plate_cat_83",
@@ -2022,7 +2024,8 @@
             "papa",
             "manteca",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_83.jpg"
         },
         {
           "id": "plate_cat_84",
@@ -2043,7 +2046,8 @@
             "repollo",
             "oliva",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_84.jpg"
         }
       ]
     },
@@ -2072,7 +2076,8 @@
             "tomate",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_85.jpg"
         },
         {
           "id": "plate_cat_86",
@@ -2093,7 +2098,8 @@
             "hojas-verdes",
             "oliva",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_86.jpg"
         },
         {
           "id": "plate_cat_87",
@@ -2114,7 +2120,8 @@
             "pure",
             "papa",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_87.jpg"
         },
         {
           "id": "plate_cat_88",
@@ -2134,7 +2141,8 @@
             "arroz",
             "salteado",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_88.jpg"
         }
       ]
     },
@@ -5785,7 +5793,7 @@
         "clasico",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_81.jpg",
       "lote_id": "lote_21",
       "lote_tema": "Milanesas y Cortes Tradicionales Argentinos"
     },
@@ -5810,7 +5818,7 @@
         "manteca",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_82.jpg",
       "lote_id": "lote_21",
       "lote_tema": "Milanesas y Cortes Tradicionales Argentinos"
     },
@@ -5835,7 +5843,7 @@
         "manteca",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_83.jpg",
       "lote_id": "lote_21",
       "lote_tema": "Milanesas y Cortes Tradicionales Argentinos"
     },
@@ -5859,7 +5867,7 @@
         "oliva",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_84.jpg",
       "lote_id": "lote_21",
       "lote_tema": "Milanesas y Cortes Tradicionales Argentinos"
     },
@@ -5884,7 +5892,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_85.jpg",
       "lote_id": "lote_22",
       "lote_tema": "Cortes Vacunos al Fuego y Hígado Encebollado"
     },
@@ -5908,7 +5916,7 @@
         "oliva",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_86.jpg",
       "lote_id": "lote_22",
       "lote_tema": "Cortes Vacunos al Fuego y Hígado Encebollado"
     },
@@ -5932,7 +5940,7 @@
         "papa",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_87.jpg",
       "lote_id": "lote_22",
       "lote_tema": "Cortes Vacunos al Fuego y Hígado Encebollado"
     },
@@ -5955,7 +5963,7 @@
         "salteado",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_88.jpg",
       "lote_id": "lote_22",
       "lote_tema": "Cortes Vacunos al Fuego y Hígado Encebollado"
     },
