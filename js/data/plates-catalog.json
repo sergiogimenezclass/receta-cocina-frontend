@@ -2361,7 +2361,8 @@
             "puerro",
             "oliva",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_97.jpg"
         },
         {
           "id": "plate_cat_98",
@@ -2381,7 +2382,8 @@
             "fideos",
             "tomate",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_98.jpg"
         },
         {
           "id": "plate_cat_99",
@@ -2402,7 +2404,8 @@
             "fideos",
             "crema",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_99.jpg"
         },
         {
           "id": "plate_cat_100",
@@ -2424,7 +2427,8 @@
             "zanahoria",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_100.jpg"
         }
       ]
     },
@@ -2452,7 +2456,8 @@
             "guiso",
             "vegetariano",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_101.jpg"
         },
         {
           "id": "plate_cat_102",
@@ -2473,7 +2478,8 @@
             "papa",
             "vegetariano",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_102.jpg"
         },
         {
           "id": "plate_cat_103",
@@ -2496,7 +2502,8 @@
             "queso",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_103.jpg"
         },
         {
           "id": "plate_cat_104",
@@ -2517,7 +2524,8 @@
             "sesamo",
             "vegetariano",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_104.jpg"
         }
       ]
     },
@@ -6188,7 +6196,7 @@
         "oliva",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_97.jpg",
       "lote_id": "lote_25",
       "lote_tema": "Pollo y Aves con Salsas Ligeras y Vegetales de Estación"
     },
@@ -6211,7 +6219,7 @@
         "tomate",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_98.jpg",
       "lote_id": "lote_25",
       "lote_tema": "Pollo y Aves con Salsas Ligeras y Vegetales de Estación"
     },
@@ -6235,7 +6243,7 @@
         "crema",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_99.jpg",
       "lote_id": "lote_25",
       "lote_tema": "Pollo y Aves con Salsas Ligeras y Vegetales de Estación"
     },
@@ -6260,7 +6268,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_100.jpg",
       "lote_id": "lote_25",
       "lote_tema": "Pollo y Aves con Salsas Ligeras y Vegetales de Estación"
     },
@@ -6284,7 +6292,7 @@
         "vegetariano",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_101.jpg",
       "lote_id": "lote_26",
       "lote_tema": "Plant-Based, Soja Texturizada y Omelettes"
     },
@@ -6308,7 +6316,7 @@
         "vegetariano",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_102.jpg",
       "lote_id": "lote_26",
       "lote_tema": "Plant-Based, Soja Texturizada y Omelettes"
     },
@@ -6334,7 +6342,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_103.jpg",
       "lote_id": "lote_26",
       "lote_tema": "Plant-Based, Soja Texturizada y Omelettes"
     },
@@ -6358,7 +6366,7 @@
         "vegetariano",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_104.jpg",
       "lote_id": "lote_26",
       "lote_tema": "Plant-Based, Soja Texturizada y Omelettes"
     },
