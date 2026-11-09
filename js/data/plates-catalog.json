@@ -2170,7 +2170,8 @@
             "brocoli",
             "manteca",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_89.jpg"
         },
         {
           "id": "plate_cat_90",
@@ -2191,7 +2192,8 @@
             "verdeo",
             "manteca",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_90.jpg"
         },
         {
           "id": "plate_cat_91",
@@ -2213,7 +2215,8 @@
             "zanahoria",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_91.jpg"
         },
         {
           "id": "plate_cat_92",
@@ -2234,7 +2237,8 @@
             "chauchas",
             "oliva",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_92.jpg"
         }
       ]
     },
@@ -2262,7 +2266,8 @@
             "calabaza",
             "batata",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_93.jpg"
         },
         {
           "id": "plate_cat_94",
@@ -2283,7 +2288,8 @@
             "tomate",
             "aceitunas",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_94.jpg"
         },
         {
           "id": "plate_cat_95",
@@ -2304,7 +2310,8 @@
             "cebolla",
             "cazuela",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_95.jpg"
         },
         {
           "id": "plate_cat_96",
@@ -2325,7 +2332,8 @@
             "arroz",
             "oliva",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_96.jpg"
         }
       ]
     },
@@ -5987,7 +5995,7 @@
         "manteca",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_89.jpg",
       "lote_id": "lote_23",
       "lote_tema": "Bondiola y Costillitas de Cerdo con Batata y Choclo"
     },
@@ -6011,7 +6019,7 @@
         "manteca",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_90.jpg",
       "lote_id": "lote_23",
       "lote_tema": "Bondiola y Costillitas de Cerdo con Batata y Choclo"
     },
@@ -6036,7 +6044,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_91.jpg",
       "lote_id": "lote_23",
       "lote_tema": "Bondiola y Costillitas de Cerdo con Batata y Choclo"
     },
@@ -6060,7 +6068,7 @@
         "oliva",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_92.jpg",
       "lote_id": "lote_23",
       "lote_tema": "Bondiola y Costillitas de Cerdo con Batata y Choclo"
     },
@@ -6084,7 +6092,7 @@
         "batata",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_93.jpg",
       "lote_id": "lote_24",
       "lote_tema": "Pescados y Caballa en Sartén y Cacerola"
     },
@@ -6108,7 +6116,7 @@
         "aceitunas",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_94.jpg",
       "lote_id": "lote_24",
       "lote_tema": "Pescados y Caballa en Sartén y Cacerola"
     },
@@ -6132,7 +6140,7 @@
         "cazuela",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_95.jpg",
       "lote_id": "lote_24",
       "lote_tema": "Pescados y Caballa en Sartén y Cacerola"
     },
@@ -6156,7 +6164,7 @@
         "oliva",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_96.jpg",
       "lote_id": "lote_24",
       "lote_tema": "Pescados y Caballa en Sartén y Cacerola"
     },
