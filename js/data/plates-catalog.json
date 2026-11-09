@@ -2554,7 +2554,8 @@
             "tomate",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_105.jpg"
         },
         {
           "id": "plate_cat_106",
@@ -2577,7 +2578,8 @@
             "queso",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_106.jpg"
         },
         {
           "id": "plate_cat_107",
@@ -2599,7 +2601,8 @@
             "champinones",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_107.jpg"
         },
         {
           "id": "plate_cat_108",
@@ -2621,7 +2624,8 @@
             "vegetariano",
             "lowcarb",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_108.jpg"
         }
       ]
     },
@@ -2649,7 +2653,8 @@
             "crema",
             "queso-rallado",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_109.jpg"
         },
         {
           "id": "plate_cat_110",
@@ -2669,7 +2674,8 @@
             "cebolla",
             "queso",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_110.jpg"
         },
         {
           "id": "plate_cat_111",
@@ -2689,7 +2695,8 @@
             "queso-rallado",
             "rucula",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_111.jpg"
         },
         {
           "id": "plate_cat_112",
@@ -2709,7 +2716,8 @@
             "espinaca",
             "manteca",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_112.jpg"
         }
       ]
     },
@@ -6391,7 +6399,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_105.jpg",
       "lote_id": "lote_27",
       "lote_tema": "Cenas Ligeras Low-Carb sin Almidón"
     },
@@ -6417,7 +6425,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_106.jpg",
       "lote_id": "lote_27",
       "lote_tema": "Cenas Ligeras Low-Carb sin Almidón"
     },
@@ -6442,7 +6450,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_107.jpg",
       "lote_id": "lote_27",
       "lote_tema": "Cenas Ligeras Low-Carb sin Almidón"
     },
@@ -6467,7 +6475,7 @@
         "lowcarb",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_108.jpg",
       "lote_id": "lote_27",
       "lote_tema": "Cenas Ligeras Low-Carb sin Almidón"
     },
@@ -6491,7 +6499,7 @@
         "queso-rallado",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_109.jpg",
       "lote_id": "lote_28",
       "lote_tema": "Pastas, Gratinados y Avena Salada Caliente"
     },
@@ -6514,7 +6522,7 @@
         "queso",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_110.jpg",
       "lote_id": "lote_28",
       "lote_tema": "Pastas, Gratinados y Avena Salada Caliente"
     },
@@ -6537,7 +6545,7 @@
         "rucula",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_111.jpg",
       "lote_id": "lote_28",
       "lote_tema": "Pastas, Gratinados y Avena Salada Caliente"
     },
@@ -6560,7 +6568,7 @@
         "manteca",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_112.jpg",
       "lote_id": "lote_28",
       "lote_tema": "Pastas, Gratinados y Avena Salada Caliente"
     },
