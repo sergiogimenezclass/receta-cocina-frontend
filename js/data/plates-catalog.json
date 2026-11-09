@@ -1,7 +1,13 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "total_lotes": 40,
   "total_platos": 160,
+  "checkpoint": {
+    "ultimo_lote_generado": "lote_31",
+    "proximo_lote_a_generar": "lote_32",
+    "total_platos_generados": 124,
+    "total_platos_pendientes": 36
+  },
   "resumen_modos": {
     "caliente": 124,
     "frio": 36

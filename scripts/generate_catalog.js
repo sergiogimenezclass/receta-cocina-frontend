@@ -2786,9 +2786,15 @@ lotes.forEach(l => {
 });
 
 const jsonOutput = {
-  version: "1.0.0",
+  version: "1.1.0",
   total_lotes: lotes.length,
   total_platos: flatPlates.length,
+  checkpoint: {
+    ultimo_lote_generado: "lote_31",
+    proximo_lote_a_generar: "lote_32",
+    total_platos_generados: 124,
+    total_platos_pendientes: 36
+  },
   resumen_modos: {
     caliente: flatPlates.filter(p => p.modo === 'caliente').length,
     frio: flatPlates.filter(p => p.modo === 'frio').length
@@ -2809,16 +2815,24 @@ let mdContent = `# Catálogo Maestro de Platos 2x2 (Cobertura $\\ge 80\\%$)
 
 Este documento contiene la biblioteca oficial de **${flatPlates.length} combinaciones gastronómicas cotidianas argentinas**, organizadas en **${lotes.length} lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
 
+> [!IMPORTANT]
+> ### 📌 Estado de Generación Fotográfica y Checkpoint de Retoma
+> - **Total de platos definidos:** ${flatPlates.length} platos en ${lotes.length} lotes 2x2.
+> - **Platos generados y activos en la app:** **124 platos (77.5%)** — Lotes 01 al 31 (\`plate_cat_01.jpg\` a \`plate_cat_124.jpg\`).
+> - **Último lote completado:** \`lote_31\` (\`plate_cat_121\` al \`plate_cat_124\`).
+> - **👉 PUNTO EXACTO DE RETOMA:** **Lote 32** (\`plate_cat_125\` al \`plate_cat_128\` — *Milanesas Porteñas y Variaciones al Horno*).
+> - **Lotes pendientes:** Lotes 32 al 40 (36 platos restantes).
+
 ---
 
 ## Métricas del Catálogo
 - **Total de Lotes (Imágenes 2x2 a generar):** ${lotes.length}
 - **Total de Platos resultantes (recortados 1:1):** ${flatPlates.length}
 - **Estructura por Fases de Cobertura:**
-  - 🥇 **Fase 1 (Lotes 01 al 10 / Platos 01 al 40):** Núcleo esencial caliente (100% generado y activo en la app).
-  - 🥈 **Fase 2 (Lotes 11 al 20 / Platos 41 al 80):** Ensaladas frías, pastas y cenas low-carb (100% generado y activo en la app).
-  - 🥉 **Fase 3 (Lotes 21 al 30 / Platos 81 al 120):** Cortes tradicionales, estacionalidad y variantes de cobertura secundaria (Definido en catálogo).
-  - 🏅 **Fase 4 (Lotes 31 al 40 / Platos 121 al 160):** Olla criolla, wok variado, pescados en cazuela y ensaladas de legumbres/quinoa (Definido en catálogo).
+  - 🥇 **Fase 1 (Lotes 01 al 10 / Platos 01 al 40):** Núcleo esencial caliente (**100% generado y activo**).
+  - 🥈 **Fase 2 (Lotes 11 al 20 / Platos 41 al 80):** Ensaladas frías, pastas y cenas low-carb (**100% generado y activo**).
+  - 🥉 **Fase 3 (Lotes 21 al 30 / Platos 81 al 120):** Cortes tradicionales, estacionalidad y variantes (**100% generado y activo**).
+  - 🏅 **Fase 4 (Lotes 31 al 40 / Platos 121 al 160):** Olla criolla, wok variado, pescados y ensaladas (En progreso: Lote 31 generado, **Lote 32 a 40 pendientes**).
 - **Distribución por Estilo de Servicio:**
   - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** ${flatPlates.filter(p => p.modo === 'caliente').length} platos (${((flatPlates.filter(p => p.modo === 'caliente').length / flatPlates.length) * 100).toFixed(1)}%)
   - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** ${flatPlates.filter(p => p.modo === 'frio').length} platos (${((flatPlates.filter(p => p.modo === 'frio').length / flatPlates.length) * 100).toFixed(1)}%)
@@ -2850,7 +2864,18 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 `;
 
 lotes.forEach((lote, idx) => {
+  const masterPath = path.join(rootDir, 'img', 'lotes-master', `${lote.lote_id}_master_2x2.jpg`);
+  const isGenerated = fs.existsSync(masterPath);
+  const isNextToResume = (idx === 31); // Lote 32
+
   mdContent += `## Lote ${idx + 1} (${lote.lote_id}): ${lote.tema}\n`;
+  if (isGenerated) {
+    mdContent += `- **Estado:** ✅ Generado y recortado (\`img/lotes-master/${lote.lote_id}_master_2x2.jpg\`)\n`;
+  } else if (isNextToResume) {
+    mdContent += `> [!WARNING]\n> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (\`plate_cat_125\` al \`plate_cat_128\`)\n\n`;
+  } else {
+    mdContent += `- **Estado:** ⏳ Pendiente de generación\n`;
+  }
   mdContent += `- **Modo general:** ${lote.tipo === 'caliente' ? '🍲 Caliente' : '🥗 Frío'}\n\n`;
 
   lote.platos.forEach(p => {
