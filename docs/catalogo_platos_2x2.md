@@ -1,18 +1,22 @@
-# Catálogo Maestro de Platos 2x2 (Cobertura $ge 80%$)
+# Catálogo Maestro de Platos 2x2 (Cobertura $\ge 80\%$)
 
-Este documento contiene la biblioteca oficial de **80 combinaciones gastronómicas cotidianas argentinas**, organizadas en **20 lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
+Este documento contiene la biblioteca oficial de **120 combinaciones gastronómicas cotidianas argentinas**, organizadas en **30 lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
 
 ---
 
 ## Métricas del Catálogo
-- **Total de Lotes (Imágenes 2x2 a generar):** 20
-- **Total de Platos resultantes (recortados 1:1):** 80
+- **Total de Lotes (Imágenes 2x2 a generar):** 30
+- **Total de Platos resultantes (recortados 1:1):** 120
+- **Estructura por Fases de Cobertura:**
+  - 🥇 **Fase 1 (Lotes 01 al 10 / Platos 01 al 40):** Núcleo esencial caliente (100% generado y activo en la app).
+  - 🥈 **Fase 2 (Lotes 11 al 20 / Platos 41 al 80):** Ensaladas frías, pastas y cenas low-carb (100% generado y activo en la app).
+  - 🥉 **Fase 3 (Lotes 21 al 30 / Platos 81 al 120):** Cortes tradicionales, estacionalidad y variantes de cobertura secundaria (Definido en catálogo).
 - **Distribución por Estilo de Servicio:**
-  - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** 60 platos (75%)
-  - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** 20 platos (25%)
+  - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** 92 platos (76.7%)
+  - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** 28 platos (23.3%)
 - **Distribución por Macronutrientes:**
-  - 🥔 **Platos con Carbohidrato almidonado:** 65 platos (81.25%)
-  - 🥩 **Platos Low-Carb / Cenas Ligeras (Doble vegetal + grasa):** 15 platos (18.75%)
+  - 🥔 **Platos con Carbohidrato almidonado:** 95 platos (79.2%)
+  - 🥩 **Platos Low-Carb / Cenas Ligeras (Doble vegetal + grasa):** 25 platos (20.8%)
 
 ---
 
@@ -486,7 +490,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Tiras de pechuga salteadas a fuego fuerte con fideos secos, morrón, cebolla y zanahoria, coronadas con mix de semillas tostadas.
-- **Prompt Fotográfico:** *"Wok humeante con tiras doradas de pechuga de pollo mezcladas con fideos al dente, tiras crujientes de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo y chía."*
+- **Prompt Fotográfico:** *"Plato hondo de fideos salteados en sartén con tiras doradas de pechuga de pollo, tiras de morrón rojo, cebolla y zanahoria salteadas, espolvoreadas con semillas de sésamo."*
 
 ### ↗️ Superior Derecho — Salteado de Carne con Chauchas y Arroz Blanco (`plate_cat_34`)
 - **Ingredientes Clave:**
@@ -496,7 +500,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Tiras de bife magro salteadas con chauchas verdes tiernas y cebolla en juliana, servidas con arroz blanco.
-- **Prompt Fotográfico:** *"Salteado en sartén de tiras jugosas de bife vacuno con chauchas verdes enteras tiernas y cebolla dorada, acompañado de una porción de arroz blanco al vapor con aceite de oliva."*
+- **Prompt Fotográfico:** *"Salteado casero de tiras de bife vacuno dorado con chauchas verdes tiernas y cebolla salteada, servido con arroz blanco suelto y esparcido de forma plana al costado (sin forma de bola ni molde)."*
 
 ### ↙️ Inferior Izquierdo — Cerdo Salteado con Zucchini, Hongos y Fideos (`plate_cat_35`)
 - **Ingredientes Clave:**
@@ -506,7 +510,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
 - **Descripción Culinaria:** Tiras de costillita de cerdo doradas con dados de zucchini y champiñones salteados, mezclados con fideos cinta.
-- **Prompt Fotográfico:** *"Tiras doradas de carne de cerdo salteadas a fuego vivo con medias lunas de zucchini, láminas de champiñones dorados y fideos cintas con un toque de aceite de oliva."*
+- **Prompt Fotográfico:** *"Tiras doradas de carne de cerdo salteadas en sartén con dados de zucchini, láminas de champiñones dorados y fideos secos mezclados de forma casera y simple."*
 
 ### ↘️ Inferior Derecho — Wok de Tofu con Brócoli, Arroz y Sésamo (`plate_cat_36`)
 - **Ingredientes Clave:**
@@ -516,16 +520,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Cubos de tofu bien dorados a la plancha con arbolitos de brócoli al vapor, arroz blanco o integral y semillas de sésamo.
-- **Prompt Fotográfico:** *"Plato vegetariano con cubos crocantes de tofu dorado a la sartén, arbolitos de brócoli verde brillante al vapor, arroz blanco esponjoso y semillas de sésamo tostadas espolvoreadas."*
+- **Prompt Fotográfico:** *"Plato casero con cubos dorados de tofu a la plancha, arbolitos de brócoli cocido al vapor y porción de arroz blanco suelto y esparcido plano al costado con semillas de sésamo."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 9 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Fideos al dente salteados en sartén con tiras doradas de pechuga de pollo, tiras de morrón rojo, cebolla y zanahoria, espolvoreadas con semillas de sésamo.
-- Cuadrante Superior Derecho: Tiras de bife vacuno doradas salteadas en sartén con chauchas verdes tiernas y cebolla, acompañadas de arroz blanco suelto y esparcido de forma plana e irregular al costado (granos sueltos, sin forma de bola, domo ni molde).
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Plato hondo de fideos salteados en sartén con tiras doradas de pechuga de pollo, tiras de morrón rojo, cebolla y zanahoria salteadas, espolvoreadas con semillas de sésamo.
+- Cuadrante Superior Derecho: Salteado casero de tiras de bife vacuno dorado con chauchas verdes tiernas y cebolla salteada, servido con arroz blanco suelto y esparcido de forma plana al costado (sin forma de bola ni molde).
 - Cuadrante Inferior Izquierdo: Tiras doradas de carne de cerdo salteadas en sartén con dados de zucchini, láminas de champiñones dorados y fideos secos mezclados de forma casera y simple.
-- Cuadrante Inferior Derecho: Cubos dorados de tofu crocante a la sartén, arbolitos de brócoli cocido al vapor y porción de arroz blanco suelto y esparcido de forma plana al costado con semillas de sésamo (granos sueltos, sin forma de bola ni molde).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+- Cuadrante Inferior Derecho: Plato casero con cubos dorados de tofu a la plancha, arbolitos de brócoli cocido al vapor y porción de arroz blanco suelto y esparcido plano al costado con semillas de sésamo.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -575,12 +579,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 10 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato hondo de loza común:
-- Cuadrante Superior Izquierdo: Plato hondo de guiso criollo casero de porotos alubia blancos tiernos con trocitos de carne vacuna sellada y dados de calabaza anaranjada dulce.
-- Cuadrante Superior Derecho: Plato hondo de quinoa cocida suelta y esponjosa con cubos dorados de pechuga de pollo a la plancha, champiñones salteados y rodajas de puerro con aceite de oliva.
-- Cuadrante Inferior Izquierdo: Plato hondo de lentejas estofadas caseras con rodajas de zanahoria tierna, coronadas con dos mitades de huevo duro con yema dorada y una pizca de pimentón dulce.
-- Cuadrante Inferior Derecho: Plato hondo de arroz cremoso casero ligado con queso rallado y manteca, bocados dorados de pechuga de pollo y cebolla rehogada, esparcido de forma rústica y plana (sin molde, sin cúpula ni forma cilíndrica).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): guisos y platos reconfortantes servidos rústicamente con cuchara en plato hondo de casa; comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Plato hondo de guiso casero de porotos alubia blancos tiernos con trocitos de carne vacuna sellada y dados de calabaza anaranjada dulce.
+- Cuadrante Superior Derecho: Plato hondo de quinoa cocida suelta con cubos dorados de pechuga de pollo a la plancha, champiñones salteados y rodajas de puerro con aceite de oliva.
+- Cuadrante Inferior Izquierdo: Plato hondo de lentejas estofadas caseras con rodajas de zanahoria tierna, coronadas con dos mitades de huevo duro y un toque de pimentón dulce.
+- Cuadrante Inferior Derecho: Plato hondo de arroz cremoso casero ligado con queso rallado, bocados dorados de pechuga de pollo y cebolla rehogada, esparcido de forma rústica y plana.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -630,12 +634,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 11 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Fideos al dente salteados en sartén con tiras doradas de pechuga de pollo, salsa suave de crema de leche y láminas de champiñones salteados con pimienta.
-- Cuadrante Superior Derecho: Fideos cortos caseros salteados con hojas de espinaca tierna, dados de queso fresco derretido y nueces picadas tostadas.
-- Cuadrante Inferior Izquierdo: Avena salada caliente casera y cremosa servida en plato hondo, coronada con huevo revuelto tierno, espinacas salteadas y un hilo de aceite de oliva.
-- Cuadrante Inferior Derecho: Arroz blanco casero suelto salteado en sartén con trozos de atún, crema de leche y cebollita de verdeo picada, esparcido plano en el plato (sin forma de bola, domo ni molde).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Plato hondo de fideos al dente salteados con tiras de pollo a la plancha, salsa suave de crema de leche y láminas de champiñones salteados.
+- Cuadrante Superior Derecho: Plato hondo de fideos cortos con hojas de espinaca salteadas, dados de queso fresco derretido y nueces picadas tostadas.
+- Cuadrante Inferior Izquierdo: Plato hondo de avena salada caliente casera y cremosa, coronada con huevo revuelto tierno, espinacas salteadas y un hilo de aceite de oliva.
+- Cuadrante Inferior Derecho: Plato casero de arroz blanco suelto y cremoso salteado en sartén con trozos de atún, crema de leche y cebollita de verdeo picada, esparcido plano en el plato (sin bola ni molde).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -685,12 +689,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 12 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
 - Cuadrante Superior Izquierdo: Láminas gruesas de tofu dorado a la plancha, porción plana y rústica de puré casero de calabaza aplastado con tenedor (sin flores de manga ni rosetas), y arbolitos de brócoli cocido con aceite de oliva.
 - Cuadrante Superior Derecho: Plato hondo de fideos al dente con salsa boloñesa casera de soja texturizada con tomate, cebolla dorada y lluvia de queso rallado.
 - Cuadrante Inferior Izquierdo: Plato hondo de quinoa cocida suelta con cubos dorados de tofu a la sartén, rodajitas de zucchini salteadas y semillas de girasol tostadas.
 - Cuadrante Inferior Derecho: Salteado criollo casero de soja texturizada dorada con cubitos de morrón rojo y cebolla, acompañado de arroz blanco suelto y esparcido de forma plana al costado (sin forma de bola ni molde).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de calabaza casero rústico aplastado plano con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -740,12 +744,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 13 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de espinacas salteadas y champiñones dorados a la sartén con aceite de oliva.
-- Cuadrante Superior Derecho: Pechuga de pollo dorada a la plancha con limón, servida junto a arbolitos de brócoli y coliflor al vapor con manteca derretida y pimienta.
-- Cuadrante Inferior Izquierdo: Costillita de cerdo a la plancha bien dorada con gajo de limón, acompañada de láminas de berenjena y rodajas de zucchini asadas con aceite de oliva.
-- Cuadrante Inferior Derecho: Dos hamburguesas caseras de carne vacuna doradas al plato, servidas junto a hojas frescas de rúcula y trozos de palta madura con aceite de oliva (sin pan ni papas).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): platos simples y reconfortantes de cena rápida. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Bife de carne vacuna a la plancha jugoso con costra dorada, acompañado exclusivamente de una generosa porción de espinacas tiernas salteadas y champiñones dorados al ajillo con aceite de oliva.
+- Cuadrante Superior Derecho: Pechuga de pollo dorada jugosa a la plancha con limón, servida junto a arbolitos de brócoli verde brillante y coliflor blanca al vapor bañados con manteca derretida y pimienta negra.
+- Cuadrante Inferior Izquierdo: Costillita de cerdo marcada a la plancha bien dorada con gajo de limón, acompañada de láminas asadas de berenjena y rodajas de zucchini a la plancha con aceite de oliva extra virgen.
+- Cuadrante Inferior Derecho: Dos medallones gruesos de hamburguesa casera de carne vacuna bien dorados al plato, servidos sobre un colchón de hojas de rúcula fresca con láminas de palta madura y aceite de oliva.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -791,16 +795,16 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Cubos de tofu a la plancha salteados con variedad de vegetales (zucchini, morrón, cebolla) y almendras tostadas picadas.
-- **Prompt Fotográfico:** *"Cubos de tofu crocante bien dorados salteados con juliana de vegetales mixtos (morrón, cebolla y zucchini) y almendras picadas tostadas (sin fideos ni arroz)."*
+- **Prompt Fotográfico:** *"Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 14 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Filete de merluza blanca a la plancha con perejil fresco y gajo de limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza asada con aceite de oliva.
-- Cuadrante Superior Derecho: Huevos revueltos esponjosos y húmedos salteados en sartén con dados dorados de zucchini tierno y lluvia de queso sardo rallado por encima.
-- Cuadrante Inferior Izquierdo: Omelette dorado esponjoso con queso derretido en su interior, acompañado de rodajas de tomate asadas en sartén y mix de semillas tostadas.
-- Cuadrante Inferior Derecho: Cubos de tofu crocante bien dorados salteados con juliana de vegetales mixtos (morrón, cebolla y zucchini) y almendras picadas tostadas (sin fideos ni arroz).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): cenas ligeras y rápidas. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Filete de merluza blanca cocido a la plancha con perejil fresco y limón, acompañado de chauchas verdes tiernas salteadas y dados de calabaza anco asada con aceite de oliva.
+- Cuadrante Superior Derecho: Huevos revueltos esponjosos y cremosos salteados en sartén con dados dorados de zucchini tierno y terminados con abundante queso sardo rallado gratinado.
+- Cuadrante Inferior Izquierdo: Omelette dorado esponjoso con centro de queso fresco derretido, acompañado de tomates en rodajas asados en sartén y espolvoreado con semillas mixtas tostadas.
+- Cuadrante Inferior Derecho: Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -850,12 +854,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 15 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado sin carbohidratos/almidón, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Bifes delgados de carne vacuna (palomita) dorados a la plancha, acompañados de ensalada simple de repollo blanco en tiras, rodajas de rabanito y aceitunas verdes.
-- Cuadrante Superior Derecho: Tira de asado con hueso dorada a la plancha, servida con rodajas de berenjena asada y tiras de morrón rojo asado con aceite de oliva.
-- Cuadrante Inferior Izquierdo: Pata-muslo de pollo asada al horno bien dorada y crocante, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado con orégano y oliva.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Bifes delgados de carne de palomita dorados a la plancha, acompañados de ensalada simple de repollo blanco en tiras, rodajas de rabanito y aceitunas verdes.
+- Cuadrante Superior Derecho: Tira de asado dorada a la plancha, servida con rodajas de berenjena asada y tiras de morrón rojo asado con aceite de oliva.
+- Cuadrante Inferior Izquierdo: Pata-muslo asada al horno bien dorada, acompañada de ramilletes de coliflor salteada dorada a la sartén y mitades de tomate asado con orégano y oliva.
 - Cuadrante Inferior Derecho: Plato caliente con lomos de atún salteados en sartén, chauchas verdes tiernas al vapor y cuartos de huevo duro con aceite de oliva y pimienta.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): cenas simples y sabrosas. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -905,12 +909,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 16 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera fría terminada, servida de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Ensalada fría casera de arroz blanco cocido suelto y desgranado mezclado naturalmente con trozos de atún al natural, dados de tomate fresco, cuartos de huevo duro y aceitunas verdes (arroz suelto esparcido y mezclado, PROHIBIDO molde o timbal).
-- Cuadrante Superior Derecho: Plato hondo de salpicón frío casero con cubos de papa hervida, zanahoria rallada fresca, hojas de lechuga fresca cortada y trozos de atún con hilo de aceite de oliva.
-- Cuadrante Inferior Izquierdo: Ensalada fría casera de fideos secos cortos al dente mezclados con trozos de caballa en conserva, hojas de rúcula verde y tomates cherry cortados al medio con aceite de oliva.
-- Cuadrante Inferior Derecho: Ensalada fresca servida en plato con granos de choclo amarillo desgranado, arroz blanco frío suelto y esparcido de forma plana, lomos de atún, daditos de tomate y trozos de palta madura con limón (arroz suelto plano, sin molde ni domo).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): ensaladas de casa servidas con cuchara; arroz servido suelto y esparcido de forma plana e irregular (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada fría casera de arroz blanco suelto y desgranado mezclado naturalmente con trozos de atún al natural, dados de tomate fresco, cuartos de huevo duro y aceitunas verdes (arroz suelto mezclado, sin molde ni timbal).
+- Cuadrante Superior Derecho: Plato hondo de salpicón frío casero con cubos de papa hervida, zanahoria rallada fresca, hojas de lechuga cortada y lomos de atún con un chorrito de aceite de oliva.
+- Cuadrante Inferior Izquierdo: Ensalada fría de fideos cortos al dente mezclados con lomos de caballa en conserva, hojas de rúcula fresca y tomates cherry cortados al medio con aceite de oliva.
+- Cuadrante Inferior Derecho: Plato de ensalada fría con granos de choclo amarillo dulce, arroz blanco frío suelto y esparcido de forma plana, lomos de atún, daditos de tomate fresco y trozos de palta con limón (sin molde).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -960,13 +964,12 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 > [!NOTE] Prompt consolidado para generar el Lote 17 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera de ave/pollo terminada, servida de forma casual y sin pretensiones en plato de loza común:
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
 - Cuadrante Superior Izquierdo: Salpicón casero frío servido en plato con desorden natural y entropía: hebras de pechuga de pollo desmenuzada entremezcladas de forma asimétrica y despareja con dados rústicos de papa hervida, hojas de lechuga cortada a mano y zanahoria rallada con aceite de oliva (sin patrones geométricos).
 - Cuadrante Superior Derecho: Ensalada de pollo casera servida con espontaneidad y asimetría: hojas de lechuga y rúcula mezcladas al desgaire con tiras irregulares de pollo grillado frío volcadas encima, crutones dorados esparcidos al azar y lascas de queso parmesano repartidas de forma despareja.
 - Cuadrante Inferior Izquierdo: Plato de quinoa fría suelta con entropía orgánica: dados de pollo a la plancha volcados a un costado, rodajas irregulares de pepino fresco y tomates cortados mezclados sin ningún patrón circular ni concéntrico con aceite de oliva.
 - Cuadrante Inferior Derecho: Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados desparejos de remolacha teñidos de violeta y trozos de nueces partidas esparcidos con total asimetría.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier casa.
-PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar trozos de carne, huevos o tomates equidistantes en círculo alrededor del plato). Los ingredientes deben estar mezclados con desorden natural apetitoso o servidos a un costado de forma despareja. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -982,7 +985,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Lentejas cocidas escurridas frías mezcladas con dados de tomate, huevo duro picado y cebolla de verdeo con oliva.
-- **Prompt Fotográfico:** *"Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj, flor o puntos cardinales)."*
+- **Prompt Fotográfico:** *"Ensalada casera de lentejas totalmente revuelta y mezclada (tossed salad): las lentejas cocidas, daditos de tomate, cebolla de verdeo y huevo duro picado están entremezclados homogéneamente en un solo revuelto rústico con aceite de oliva (PROHIBIDO círculos, anillos perimetrales o ingredientes separados)."*
 
 ### ↗️ Superior Derecho — Ensalada Primavera de Fideos con Huevo y Choclo (`plate_cat_70`)
 - **Ingredientes Clave:**
@@ -992,7 +995,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Fideos secos fríos con trozos de huevo duro, choclo en grano, zanahoria rallada fresca y aceitunas negras.
-- **Prompt Fotográfico:** *"Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico."*
+- **Prompt Fotográfico:** *"Ensalada de fideos tirabuzón (fusilli) fríos totalmente mezclada y revuelta: fideos espirales entremezclados homogéneamente con granos de choclo amarillo, hebras de zanahoria rallada, huevo duro picado y aceitunas negras picadas en una masa uniforme revuelta de ensalada (PROHIBIDO terminantemente fideos con forma de rueda, manubrio o engranaje; PROHIBIDO colocar cosas en círculo)."*
 
 ### ↙️ Inferior Izquierdo — Ensalada de Porotos Alubia Fríos con Huevo y Perejil (`plate_cat_71`)
 - **Ingredientes Clave:**
@@ -1002,7 +1005,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Porotos alubia blancos tiernos fríos con abundante perejil fresco picado, tomate en cubos, huevo duro y aceite de oliva.
-- **Prompt Fotográfico:** *"Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico)."*
+- **Prompt Fotográfico:** *"Ensalada de porotos alubia blancos totalmente revuelta: porotos blancos cocidos mezclados de forma uniforme con trocitos de tomate, huevo duro picado rústico y perejil fresco con aceite de oliva, todo revuelto en un montículo casero."*
 
 ### ↘️ Inferior Derecho — Ensalada de Arroz Frío con Huevo, Chauchas y Palta (`plate_cat_72`)
 - **Ingredientes Clave:**
@@ -1012,17 +1015,16 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🥑 Palta / Aguacate
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Arroz blanco frío suelto con chauchas cocidas tiernas en trocitos, huevo duro picado y cubos de palta fresca.
-- **Prompt Fotográfico:** *"Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría)."*
+- **Prompt Fotográfico:** *"Ensalada de arroz blanco frío totalmente revuelta: arroz suelto mezclado homogéneamente con trocitos de chauchas verdes, dados de palta y huevo picado en un revoltijo apetitoso de casa (sin moldes ni círculos decorativos)."*
 
 > [!NOTE] Prompt consolidado para generar el Lote 18 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra una ensalada casera fría terminada, servida de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Ensalada casera de lentejas cocidas firmes mezcladas de manera descontracturada y asimétrica con daditos de tomate, cebollita de verdeo y huevo duro picado rústicamente integrado en el revoltijo (PROHIBIDO mitades de huevo formando reloj, flor o puntos cardinales).
-- Cuadrante Superior Derecho: Ensalada primaveral de fideos cortos fríos mezclados al descuido casero con trocitos de huevo duro picado, choclo en grano, zanahoria rallada y algunas aceitunas negras dispersas sin orden geométrico.
-- Cuadrante Inferior Izquierdo: Plato de porotos alubia blancos fríos mezclados espontáneamente con dados de tomate, perejil picado y huevo duro troceado rústicamente esparcido de forma totalmente asimétrica con aceite de oliva (sin orden concéntrico).
-- Cuadrante Inferior Derecho: Ensalada de arroz blanco cocido suelto y esparcido de forma irregular en el plato, entremezclado naturalmente con trocitos de chauchas verdes, huevo duro picado desparejo y cubos de palta (sin molde, sin bola y sin simetría).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
-PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar huevos, aceitunas o tomates equidistantes en círculo alrededor del plato). Los ingredientes deben estar mezclados con desorden natural apetitoso. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada casera de lentejas totalmente revuelta y mezclada (tossed salad): las lentejas cocidas, daditos de tomate, cebolla de verdeo y huevo duro picado están entremezclados homogéneamente en un solo revuelto rústico con aceite de oliva (PROHIBIDO círculos, anillos perimetrales o ingredientes separados).
+- Cuadrante Superior Derecho: Ensalada de fideos tirabuzón (fusilli) fríos totalmente mezclada y revuelta: fideos espirales entremezclados homogéneamente con granos de choclo amarillo, hebras de zanahoria rallada, huevo duro picado y aceitunas negras picadas en una masa uniforme revuelta de ensalada (PROHIBIDO terminantemente fideos con forma de rueda, manubrio o engranaje; PROHIBIDO colocar cosas en círculo).
+- Cuadrante Inferior Izquierdo: Ensalada de porotos alubia blancos totalmente revuelta: porotos blancos cocidos mezclados de forma uniforme con trocitos de tomate, huevo duro picado rústico y perejil fresco con aceite de oliva, todo revuelto en un montículo casero.
+- Cuadrante Inferior Derecho: Ensalada de arroz blanco frío totalmente revuelta: arroz suelto mezclado homogéneamente con trocitos de chauchas verdes, dados de palta y huevo picado en un revoltijo apetitoso de casa (sin moldes ni círculos decorativos).
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -1058,7 +1060,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Fideos fríos al dente con dados de queso port salut/tybo, tomatitos en cuartos, aceitunas negras y albahaca fresca.
-- **Prompt Fotográfico:** *"Plato hondo de ensalada de fideos tirabuzón (fusilli espirales) fríos totalmente mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva (PROHIBIDO fideos con forma de rueda o engranaje)."*
+- **Prompt Fotográfico:** *"Plato hondo de ensalada de fideos tirabuzón fríos mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva."*
 
 ### ↘️ Inferior Derecho — Bowl de Quinoa con Queso Port Salut, Pepino y Semillas (`plate_cat_76`)
 - **Ingredientes Clave:**
@@ -1072,13 +1074,12 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
 
 > [!NOTE] Prompt consolidado para generar el Lote 19 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero frío terminado, servido de forma casual y sin pretensiones en plato de loza común:
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
 - Cuadrante Superior Izquierdo: Ensalada Caprese rústica servida de forma informal y casera: trozos desparejos de tomate fresco y dados o cuñas de queso fresco mezclados con hojas verdes de rúcula y aceite de oliva (PROHIBIDO rueda o abanico concéntrico de rodajas alternadas).
 - Cuadrante Superior Derecho: Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, copos rústicos de ricota fresca y nueces partidas con aceite de oliva (distribución asimétrica natural).
-- Cuadrante Inferior Izquierdo: Plato hondo de ensalada de fideos tirabuzón (fusilli espirales) fríos totalmente mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva (PROHIBIDO fideos con forma de rueda o engranaje).
+- Cuadrante Inferior Izquierdo: Plato hondo de ensalada de fideos tirabuzón fríos mezclados al descuido casero con cubos irregulares de queso fresco, tomates cherry cortados al azar, aceitunas negras dispersas y albahaca con aceite de oliva.
 - Cuadrante Inferior Derecho: Quinoa fría suelta en plato hondo con dados rústicos de queso fresco blanco, rodajitas de pepino y rabanitos volcados de forma asimétrica y espolvoreados con semillas (sin anillos concéntricos).
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
-PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar quesos, aceitunas, fideos o tomates equidistantes en círculo alrededor del plato). PROHIBIDO fideos con forma de rueda, manubrio o engranaje (ruote/rotelle), usar fideos tirabuzón (fusilli espirales). Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
@@ -1094,7 +1095,7 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
   - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Tiras frías de bife o carne asada cocida con dados de papa hervida, hojas de lechuga crocante, tomate y oliva.
-- **Prompt Fotográfico:** *"Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares ni flores)."*
+- **Prompt Fotográfico:** *"Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares)."*
 
 ### ↗️ Superior Derecho — Ensalada Rusa con Tiras de Milanesa Fría (`plate_cat_78`)
 - **Ingredientes Clave:**
@@ -1128,13 +1129,562 @@ PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, c
 
 > [!NOTE] Prompt consolidado para generar el Lote 20 (Grilla 2x2)
 ```text
-Generá una imagen fotográfica en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero frío terminado, servido de forma casual y sin pretensiones en plato de loza común:
-- Cuadrante Superior Izquierdo: Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares ni flores).
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Salpicón criollo de carne vacuna cocida desmenuzada fría, mezclada espontáneamente con dados de papa hervida rústica, hojas de lechuga troceadas y tomate fresco con aceite de oliva (sin patrones circulares).
 - Cuadrante Superior Derecho: Porción rústica de ensalada rusa servida a un costado con cuchara, acompañada al lado por tiras de milanesa dorada fría dispuestas de forma casual y aceitunas verdes sin alinear.
 - Cuadrante Inferior Izquierdo: Plato frío con base de quinoa cocida suelta, cubos de tofu blanco marinado volcados a un costado, repollo colorado en juliana y trozos de palta madura servidos de forma libre y asimétrica con aceite de oliva.
 - Cuadrante Inferior Derecho: Ensalada fría casera de avena arrollada hidratada mezclada al desgaire con trozos de atún claro, hebras de zanahoria fresca y semillas tostadas esparcidas con naturalidad sin orden simétrico.
-Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días con entropía y asimetría natural (unpretentious homemade food with authentic organic entropy and natural disorder): la comida debe verse servida con cuchara o mezclada de forma descontracturada, espontánea y asimétrica, como en cualquier mesa de casa.
-PROHIBIDO TERMINANTEMENTE: simetría radial, patrones concéntricos, mandalas, círculos decorativos, distribución en forma de estrella, pétalos de flor, rayos de sol o puntos cardinales de reloj (PROHIBIDO colocar carnes, milanesas, aceitunas o tomates equidistantes en círculo alrededor del plato). Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 21 (lote_21): Milanesas y Cortes Tradicionales Argentinos
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Milanesa de Carne al Horno con Papas y Tomate (`plate_cat_81`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Milanesa (Carne o Pollo)
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Milanesa de nalga o bola de lomo dorada y crujiente al horno, acompañada de papas doradas en cubos y rodajas de tomate fresco.
+- **Prompt Fotográfico:** *"Milanesa de carne dorada y crujiente servida en el plato con gajo de limón, acompañada de papas en cubos doradas al horno y rodajas frescas de tomate con orégano y aceite de oliva."*
+
+### ↗️ Superior Derecho — Milanesa de Pollo con Puré Mixto de Calabaza y Batata (`plate_cat_82`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Milanesa (Carne o Pollo)
+  - **Carbohidrato:** 🍠 Batata / Camote Asado
+  - **Vegetales:** 🎃 Zapallo / Calabaza / Anco
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Suprema milanesa dorada al horno, servida junto a un puré mixto rústico de calabaza y batata aplastado con tenedor y manteca.
+- **Prompt Fotográfico:** *"Milanesa de pollo dorada y crocante con limón, servida al lado de una porción rústica y plana de puré mixto de calabaza y batata anaranjado brillante con manteca (sin moldes ni flores)."*
+
+### ↙️ Inferior Izquierdo — Tortuguita en Bifes a la Plancha con Puré de Papas y Cebolla (`plate_cat_83`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Tortuguita en Bifes
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🧅 Cebolla (Salteada / Dorada)
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Bifecitos finos de tortuguita sellados a la plancha muy caliente, con cebolla caramelizada suave por encima y puré de papas casero.
+- **Prompt Fotográfico:** *"Bifecitos delgados de carne vacuna dorados a la plancha cubiertos con hebras de cebolla rehogada dorada, servidos junto a puré de papas casero suave y plano con manteca."*
+
+### ↘️ Inferior Derecho — Palomita en Bifes con Arroz Blanco y Repollo Salteado (`plate_cat_84`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Palomita en Bifes
+  - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
+  - **Vegetales:** 🥬 Repollo (Blanco o Colorado)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Bifes tiernos de palomita a la sartén con pimienta, acompañados de arroz blanco desgranado y juliana de repollo blanco salteado al dente.
+- **Prompt Fotográfico:** *"Bifes finos de carne vacuna sellados al fuego, acompañados de porción de arroz blanco suelto y esparcido de forma plana al costado y repollo blanco tierno salteado a la sartén con oliva."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 21 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Milanesa de carne dorada y crujiente servida en el plato con gajo de limón, acompañada de papas en cubos doradas al horno y rodajas frescas de tomate con orégano y aceite de oliva.
+- Cuadrante Superior Derecho: Milanesa de pollo dorada y crocante con limón, servida al lado de una porción rústica y plana de puré mixto de calabaza y batata anaranjado brillante con manteca (sin moldes ni flores).
+- Cuadrante Inferior Izquierdo: Bifecitos delgados de carne vacuna dorados a la plancha cubiertos con hebras de cebolla rehogada dorada, servidos junto a puré de papas casero suave y plano con manteca.
+- Cuadrante Inferior Derecho: Bifes finos de carne vacuna sellados al fuego, acompañados de porción de arroz blanco suelto y esparcido de forma plana al costado y repollo blanco tierno salteado a la sartén con oliva.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 22 (lote_22): Cortes Vacunos al Fuego y Hígado Encebollado
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Tira de Asado a la Plancha con Ensalada Criolla Caliente (`plate_cat_85`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Tira de Asado
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🫑 Morrón / Pimiento (Rojo o Verde) + 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~20 min | **Servido:** Caliente
+- **Descripción Culinaria:** Tira de asado con costra dorada a la plancha de hierro, acompañada de sofrito criollo de morrón rojo, tomate en dados y cebolla con oliva.
+- **Prompt Fotográfico:** *"Corte de tira de asado vacuno dorado a la plancha de hierro con marcas de cocción, acompañado de salteado criollo de morrones rojos en tiras y dados de tomate jugoso con aceite de oliva."*
+
+### ↗️ Superior Derecho — Tira de Asado Dorada con Mandioca Hervida y Hojas Verdes (`plate_cat_86`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Tira de Asado
+  - **Carbohidrato:** 🪵 Mandioca / Yuca Hervida
+  - **Vegetales:** 🥗 Hojas Verdes (Lechuga / Rúcula)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~20 min | **Servido:** Caliente
+- **Descripción Culinaria:** Asado a la plancha tierno y sabroso, servido junto a trozos de mandioca hervida blanca con aceite de oliva virgen y hojas frescas.
+- **Prompt Fotográfico:** *"Tira de asado jugosa dorada a la plancha, servida con trozos rústicos de mandioca hervida blanca tierna bañada en aceite de oliva y hojas frescas verdes al costado."*
+
+### ↙️ Inferior Izquierdo — Bife de Hígado Encebollado con Puré de Papas (`plate_cat_87`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Bife de Hígado Encebollado
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🧅 Cebolla (Salteada / Dorada)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Clásico bife de hígado vacuno tierno sellado a fuego vivo, cubierto de abundante cebolla dorada dulce y puré de papas casero.
+- **Prompt Fotográfico:** *"Bife de hígado vacuno sellado a la sartén cubierto con abundante cebolla caramelizada dorada, acompañado de puré de papas casero rústico aplastado con tenedor."*
+
+### ↘️ Inferior Derecho — Bife de Hígado Salteado con Morrón y Arroz Blanco (`plate_cat_88`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Bife de Hígado Encebollado
+  - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
+  - **Vegetales:** 🫑 Morrón / Pimiento (Rojo o Verde)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Tiras jugosas de hígado vacuno salteadas rápidamente en sartén con tiras de morrón rojo, cebolla y servidas con arroz blanco suelto.
+- **Prompt Fotográfico:** *"Salteado casero de tiras de hígado vacuno selladas con tiras de morrón rojo brillante, acompañado de porción plana de arroz blanco desgranado con cuchara."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 22 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Corte de tira de asado vacuno dorado a la plancha de hierro con marcas de cocción, acompañado de salteado criollo de morrones rojos en tiras y dados de tomate jugoso con aceite de oliva.
+- Cuadrante Superior Derecho: Tira de asado jugosa dorada a la plancha, servida con trozos rústicos de mandioca hervida blanca tierna bañada en aceite de oliva y hojas frescas verdes al costado.
+- Cuadrante Inferior Izquierdo: Bife de hígado vacuno sellado a la sartén cubierto con abundante cebolla caramelizada dorada, acompañado de puré de papas casero rústico aplastado con tenedor.
+- Cuadrante Inferior Derecho: Salteado casero de tiras de hígado vacuno selladas con tiras de morrón rojo brillante, acompañado de porción plana de arroz blanco desgranado con cuchara.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 23 (lote_23): Bondiola y Costillitas de Cerdo con Batata y Choclo
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Bondiola a la Plancha con Batata Asada y Brócoli (`plate_cat_89`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Bondiola o Solomillo de Cerdo
+  - **Carbohidrato:** 🍠 Batata / Camote Asado
+  - **Vegetales:** 🥦 Brócoli al Vapor
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Medallones tiernos de bondiola de cerdo dorados a la plancha, acompañados de rodajas de batata asada dulce y arbolitos de brócoli al vapor con manteca.
+- **Prompt Fotográfico:** *"Medallones de bondiola de cerdo bien dorados a la plancha, acompañados de rodajas de batata asada con piel caramelizada y arbolitos de brócoli al vapor con manteca derretida."*
+
+### ↗️ Superior Derecho — Bondiola Sellada con Salteado de Choclo y Verdeo (`plate_cat_90`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Bondiola o Solomillo de Cerdo
+  - **Carbohidrato:** 🌽 Choclo / Maíz Desgranado
+  - **Vegetales:** 🧅 Cebolla de Verdeo y Puerro
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Trozos de bondiola de cerdo salteados en sartén con granos de choclo amarillo dulce, cebollita de verdeo picada y un toque de manteca.
+- **Prompt Fotográfico:** *"Tiras de bondiola de cerdo bien selladas en sartén caliente, acompañadas de salteado de choclo amarillo desgranado con cebolla de verdeo picada y manteca."*
+
+### ↙️ Inferior Izquierdo — Costillita de Cerdo con Salteado de Repollo y Zanahoria (`plate_cat_91`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Costillita / Bife de Cerdo
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥬 Repollo (Blanco o Colorado) + 🥕 Zanahoria Rallada / Cocida
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Costillita de cerdo jugosa con limón, servida con un abundante salteado caliente de repollo blanco en tiras y zanahoria con aceite de oliva.
+- **Prompt Fotográfico:** *"Costillita de cerdo dorada a la plancha con limón, servida junto a un salteado casero caliente de finas tiras de repollo blanco y zanahoria con aceite de oliva."*
+
+### ↘️ Inferior Derecho — Costillita de Cerdo al Limón con Papas y Chauchas al Vapor (`plate_cat_92`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Costillita / Bife de Cerdo
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🫛 Chauchas al Vapor o Salteadas
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Costillita de cerdo dorada a la plancha con limón, servida con papas cocidas al vapor doradas y chauchas verdes tiernas con oliva.
+- **Prompt Fotográfico:** *"Costillita de cerdo a la plancha con gajo de limón, acompañada de cubos de papa cocida dorada y chauchas verdes tiernas salteadas con aceite de oliva."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 23 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Medallones de bondiola de cerdo bien dorados a la plancha, acompañados de rodajas de batata asada con piel caramelizada y arbolitos de brócoli al vapor con manteca derretida.
+- Cuadrante Superior Derecho: Tiras de bondiola de cerdo bien selladas en sartén caliente, acompañadas de salteado de choclo amarillo desgranado con cebolla de verdeo picada y manteca.
+- Cuadrante Inferior Izquierdo: Costillita de cerdo dorada a la plancha con limón, servida junto a un salteado casero caliente de finas tiras de repollo blanco y zanahoria con aceite de oliva.
+- Cuadrante Inferior Derecho: Costillita de cerdo a la plancha con gajo de limón, acompañada de cubos de papa cocida dorada y chauchas verdes tiernas salteadas con aceite de oliva.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 24 (lote_24): Pescados y Caballa en Sartén y Cacerola
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Merluza al Horno con Costra de Queso y Puré de Calabaza (`plate_cat_93`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🐟 Filete de Pescado Blanco (Merluza / Tilapia)
+  - **Carbohidrato:** 🍠 Batata / Camote Asado
+  - **Vegetales:** 🎃 Zapallo / Calabaza / Anco
+  - **Grasa:** 🧀 Queso Rallado / Semiduro (Parmesano / Sardo)
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Filete de merluza horneado con costra dorada de queso rallado sardo, acompañado de puré rústico de calabaza y rodajas de batata dulce.
+- **Prompt Fotográfico:** *"Filete de merluza horneado con queso sardo dorado por encima y limón, servido con puré rústico de calabaza anaranjada dulce y rodajas de batata asada."*
+
+### ↗️ Superior Derecho — Caballa Salteada con Fideos Secos, Tomate y Aceitunas (`plate_cat_94`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥫 Caballa en Lata (al Natural o Aceite)
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Lomos de caballa salteados en sartén caliente con fideos secos al dente, cubos de tomate fresco y rodajitas de aceitunas negras.
+- **Prompt Fotográfico:** *"Plato de fideos tirabuzón al dente salteados en sartén con trozos de caballa en conserva, daditos de tomate fresco salteado y aceitunas negras en rodajas."*
+
+### ↙️ Inferior Izquierdo — Cazuela Rápida de Merluza con Papas, Cebolla y Pimentón (`plate_cat_95`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🐟 Filete de Pescado Blanco (Merluza / Tilapia)
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🧅 Cebolla (Salteada / Dorada)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Trozos tiernos de merluza cocidos en cacerola con rodajas de papa hervida, cebolla rehogada dulce, pimentón dulce y oliva.
+- **Prompt Fotográfico:** *"Cazuela casera de trozos de merluza blanca cocidos con rodajas de papa tierna, abundante cebolla rehogada y un toque de pimentón dulce con aceite de oliva."*
+
+### ↘️ Inferior Derecho — Caballa a la Sartén con Chauchas y Arroz Blanco (`plate_cat_96`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥫 Caballa en Lata (al Natural o Aceite)
+  - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
+  - **Vegetales:** 🫛 Chauchas al Vapor o Salteadas
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Lomos de caballa sellados rápidamente en sartén con chauchas verdes salteadas y una porción de arroz blanco desgranado.
+- **Prompt Fotográfico:** *"Lomos dorados de caballa a la sartén servidos junto a chauchas verdes salteadas al dente y una porción plana de arroz blanco desgranado con cuchara."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 24 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Filete de merluza horneado con queso sardo dorado por encima y limón, servido con puré rústico de calabaza anaranjada dulce y rodajas de batata asada.
+- Cuadrante Superior Derecho: Plato de fideos tirabuzón al dente salteados en sartén con trozos de caballa en conserva, daditos de tomate fresco salteado y aceitunas negras en rodajas.
+- Cuadrante Inferior Izquierdo: Cazuela casera de trozos de merluza blanca cocidos con rodajas de papa tierna, abundante cebolla rehogada y un toque de pimentón dulce con aceite de oliva.
+- Cuadrante Inferior Derecho: Lomos dorados de caballa a la sartén servidos junto a chauchas verdes salteadas al dente y una porción plana de arroz blanco desgranado con cuchara.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 25 (lote_25): Pollo y Aves con Salsas Ligeras y Vegetales de Estación
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Pata-Muslo al Horno con Batatas Asadas y Puerro (`plate_cat_97`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pata-Muslo de Pollo
+  - **Carbohidrato:** 🍠 Batata / Camote Asado
+  - **Vegetales:** 🧅 Cebolla de Verdeo y Puerro
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~25 min | **Servido:** Caliente
+- **Descripción Culinaria:** Pata-muslo dorada y crocante cocida al horno sobre rodajas de batata dulce caramelizada y rodajitas tiernas de puerro.
+- **Prompt Fotográfico:** *"Pata-muslo de pollo al horno bien dorada con piel crocante, acompañada de rodajas de batata asada dulce y puerro tierno cocido con aceite de oliva."*
+
+### ↗️ Superior Derecho — Pata-Muslo a la Cacerola con Fideos y Salsa de Tomate (`plate_cat_98`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pata-Muslo de Pollo
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~25 min | **Servido:** Caliente
+- **Descripción Culinaria:** Pollo tierno cocinado a la cacerola en salsa casera de tomate, servido con fideos al dente y lluvia de orégano.
+- **Prompt Fotográfico:** *"Pata-muslo de pollo cocinada a fuego lento en salsa casera de tomate con trocitos de cebolla, servida junto a fideos secos al dente con perejil."*
+
+### ↙️ Inferior Izquierdo — Suprema con Crema Ligera, Champiñones y Fideos (`plate_cat_99`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pechuga / Suprema de Pollo
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🍄 Hongos / Champiñones Salteados
+  - **Grasa:** 🥛 Crema de Leche
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Tiras doradas de pechuga de pollo salteadas con champiñones en láminas, fideos y un toque de crema de leche suave con pimienta.
+- **Prompt Fotográfico:** *"Tiras doradas de pechuga de pollo y láminas de champiñones salteados en salsa suave de crema de leche, servidos con fideos al dente en plato de loza."*
+
+### ↘️ Inferior Derecho — Pechuga de Pollo Salteada con Coliflor y Zanahoria (`plate_cat_100`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pechuga / Suprema de Pollo
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥦 Coliflor al Vapor o Salteada + 🥕 Zanahoria Rallada / Cocida
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Bocados de pechuga de pollo dorados al fuego con ramilletes de coliflor salteada tierna y bastones de zanahoria con oliva.
+- **Prompt Fotográfico:** *"Salteado casero de cubos de pechuga de pollo dorada con ramilletes de coliflor dorada a la sartén y bastoncitos de zanahoria tierna con aceite de oliva."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 25 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Pata-muslo de pollo al horno bien dorada con piel crocante, acompañada de rodajas de batata asada dulce y puerro tierno cocido con aceite de oliva.
+- Cuadrante Superior Derecho: Pata-muslo de pollo cocinada a fuego lento en salsa casera de tomate con trocitos de cebolla, servida junto a fideos secos al dente con perejil.
+- Cuadrante Inferior Izquierdo: Tiras doradas de pechuga de pollo y láminas de champiñones salteados en salsa suave de crema de leche, servidos con fideos al dente en plato de loza.
+- Cuadrante Inferior Derecho: Salteado casero de cubos de pechuga de pollo dorada con ramilletes de coliflor dorada a la sartén y bastoncitos de zanahoria tierna con aceite de oliva.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 26 (lote_26): Plant-Based, Soja Texturizada y Omelettes
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Guiso Express de Lentejas con Soja Sofrita y Zanahoria (`plate_cat_101`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🫘 Soja Texturizada Salteada
+  - **Carbohidrato:** 🫘 Legumbres (Lentejas o Porotos cocidos)
+  - **Vegetales:** 🥕 Zanahoria Rallada / Cocida
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Guiso rápido y sustancioso de lentejas cocidas con soja texturizada sofrita, dados de zanahoria dulce, cebolla y pimentón.
+- **Prompt Fotográfico:** *"Plato hondo de guiso casero de lentejas tiernas con soja texturizada sofrita bien dorada, rodajas de zanahoria y cebollita con pimentón dulce."*
+
+### ↗️ Superior Derecho — Soja Sofrita a la Criolla con Puré de Papas y Morrón (`plate_cat_102`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🫘 Soja Texturizada Salteada
+  - **Carbohidrato:** 🥔 Papa (Hervida o al Horno)
+  - **Vegetales:** 🫑 Morrón / Pimiento (Rojo o Verde)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Picadillo criollo vegetariano de soja texturizada sofrita con morrón rojo y cebolla, servido junto a puré de papas casero suave.
+- **Prompt Fotográfico:** *"Picadillo casero de soja texturizada dorada en sartén con cubitos de morrón rojo y cebolla, servido al lado de puré de papas casero rústico aplastado plano."*
+
+### ↙️ Inferior Izquierdo — Omelette con Queso Port Salut, Champiñones y Espinaca (`plate_cat_103`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍳 Huevos Revueltos
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥬 Espinaca o Acelga Salteada + 🍄 Hongos / Champiñones Salteados
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Caliente
+- **Descripción Culinaria:** Omelette esponjoso casero relleno de queso fresco fundido, acompañado de láminas doradas de champiñón y espinacas salteadas.
+- **Prompt Fotográfico:** *"Omelette casero esponjoso y dorado doblado al medio con queso fresco fundido en su interior, servido junto a champiñones dorados y espinacas salteadas con manteca."*
+
+### ↘️ Inferior Derecho — Tofu a la Plancha con Fideos, Coliflor y Sésamo (`plate_cat_104`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🧈 Tofu a la Plancha
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🥦 Coliflor al Vapor o Salteada
+  - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Láminas firmes de tofu dorado a la sartén con fideos secos salteados, ramilletes tiernos de coliflor y lluvia de semillas de sésamo.
+- **Prompt Fotográfico:** *"Láminas doradas y crocantes de tofu a la plancha, servidas con fideos al dente salteados, ramilletes de coliflor al vapor y semillas de sésamo tostadas."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 26 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Plato hondo de guiso casero de lentejas tiernas con soja texturizada sofrita bien dorada, rodajas de zanahoria y cebollita con pimentón dulce.
+- Cuadrante Superior Derecho: Picadillo casero de soja texturizada dorada en sartén con cubitos de morrón rojo y cebolla, servido al lado de puré de papas casero rústico aplastado plano.
+- Cuadrante Inferior Izquierdo: Omelette casero esponjoso y dorado doblado al medio con queso fresco fundido en su interior, servido junto a champiñones dorados y espinacas salteadas con manteca.
+- Cuadrante Inferior Derecho: Láminas doradas y crocantes de tofu a la plancha, servidas con fideos al dente salteados, ramilletes de coliflor al vapor y semillas de sésamo tostadas.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 27 (lote_27): Cenas Ligeras Low-Carb sin Almidón
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Bife a la Plancha con Berenjenas Asadas y Tomates Cherry (`plate_cat_105`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥩 Bife / Churrasco Magro
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🍆 Berenjena a la Plancha o Asada + 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Churrasco jugoso sellado a fuego vivo, acompañado de rodajas de berenjena asada tierna y tomatitos cherry salteados con orégano y oliva.
+- **Prompt Fotográfico:** *"Bife jugoso de carne vacuna a la plancha con costra dorada, acompañado exclusivamente de rodajas gruesas de berenjena asada y tomates cherry salteados con aceite de oliva."*
+
+### ↗️ Superior Derecho — Hamburguesa con Queso Fundido, Chauchas y Cebolla (`plate_cat_106`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥘 Carne Picada / Molida
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🫛 Chauchas al Vapor o Salteadas + 🧅 Cebolla (Salteada / Dorada)
+  - **Grasa:** 🧀 Queso Rallado / Semiduro (Parmesano / Sardo)
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Hamburguesa casera de carne vacuna con queso semiduro fundido por encima, servida con chauchas salteadas y cebolla dorada.
+- **Prompt Fotográfico:** *"Hamburguesa casera de carne vacuna dorada al plato cubierta con queso fundido dorado, acompañada de chauchas verdes salteadas y cebolla rehogada (sin pan ni papas)."*
+
+### ↙️ Inferior Izquierdo — Merluza Sellada con Salteado de Zucchini y Champiñones (`plate_cat_107`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🐟 Filete de Pescado Blanco (Merluza / Tilapia)
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥒 Zucchini / Zapallito a la Plancha + 🍄 Hongos / Champiñones Salteados
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Filete de pescado blanco a la plancha con limón, acompañado de salteado de dados de zucchini y láminas de champiñones dorados.
+- **Prompt Fotográfico:** *"Filete de merluza blanca dorado a la plancha con limón y perejil, acompañado de dados de zucchini tierno y champiñones salteados a la sartén con oliva."*
+
+### ↘️ Inferior Derecho — Tofu Crocante con Salteado de Berenjenas y Pimientos (`plate_cat_108`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🧈 Tofu a la Plancha
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🍆 Berenjena a la Plancha o Asada + 🫑 Morrón / Pimiento (Rojo o Verde)
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Cubos de tofu bien dorados y crujientes a la sartén, acompañados de salteado mediterráneo de berenjena en dados y morrón rojo con oliva.
+- **Prompt Fotográfico:** *"Cubos dorados y crocantes de tofu a la sartén, servidos sobre salteado caliente de berenjenas en cubos y tiras de morrón rojo dulce con aceite de oliva virgen."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 27 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Bife jugoso de carne vacuna a la plancha con costra dorada, acompañado exclusivamente de rodajas gruesas de berenjena asada y tomates cherry salteados con aceite de oliva.
+- Cuadrante Superior Derecho: Hamburguesa casera de carne vacuna dorada al plato cubierta con queso fundido dorado, acompañada de chauchas verdes salteadas y cebolla rehogada (sin pan ni papas).
+- Cuadrante Inferior Izquierdo: Filete de merluza blanca dorado a la plancha con limón y perejil, acompañado de dados de zucchini tierno y champiñones salteados a la sartén con oliva.
+- Cuadrante Inferior Derecho: Cubos dorados y crocantes de tofu a la sartén, servidos sobre salteado caliente de berenjenas en cubos y tiras de morrón rojo dulce con aceite de oliva virgen.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 28 (lote_28): Pastas, Gratinados y Avena Salada Caliente
+- **Modo general:** 🍲 Caliente
+
+### ↖️ Superior Izquierdo — Fideos a la Crema con Pollo, Espinaca y Queso Rallado (`plate_cat_109`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pechuga / Suprema de Pollo
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🥬 Espinaca o Acelga Salteada
+  - **Grasa:** 🥛 Crema de Leche
+- **Tiempo sugerido:** ⏱️ ~15 min | **Servido:** Caliente
+- **Descripción Culinaria:** Fideos secos al dente salteados con trocitos de pechuga dorada, hojas de espinaca tierna, crema de leche suave y queso sardo rallado.
+- **Prompt Fotográfico:** *"Fideos al dente salteados en sartén con tiras de pollo dorado, espinacas tiernas, salsa suave de crema de leche y lluvia de queso rallado."*
+
+### ↗️ Superior Derecho — Arroz Gratinado con Carne Picada, Cebolla y Queso (`plate_cat_110`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥘 Carne Picada / Molida
+  - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
+  - **Vegetales:** 🧅 Cebolla (Salteada / Dorada)
+  - **Grasa:** 🧀 Queso Rallado / Semiduro (Parmesano / Sardo)
+- **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
+- **Descripción Culinaria:** Arroz blanco casero suelto con sofrito de carne molida, cebolla dorada y abundante queso cremoso fundido por encima.
+- **Prompt Fotográfico:** *"Porción plana de arroz blanco casero salteado con carne picada dorada, cebolla caramelizada y cubierto con queso derretido gratinado dorado."*
+
+### ↙️ Inferior Izquierdo — Huevos Revueltos con Queso sobre Batata Asada (`plate_cat_111`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍳 Huevos Revueltos
+  - **Carbohidrato:** 🍠 Batata / Camote Asado
+  - **Vegetales:** 🥗 Hojas Verdes (Lechuga / Rúcula)
+  - **Grasa:** 🧀 Queso Rallado / Semiduro (Parmesano / Sardo)
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Huevos revueltos húmedos y cremosos con queso parmesano rallado, servidos sobre rodajas doradas de batata asada y rúcula.
+- **Prompt Fotográfico:** *"Huevos revueltos tiernos y cremosos con queso rallado, servidos sobre rodajas gruesas de batata asada dulce y hojas frescas de rúcula con aceite de oliva."*
+
+### ↘️ Inferior Derecho — Avena Salada Caliente con Pollo, Espinaca y Manteca (`plate_cat_112`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pechuga / Suprema de Pollo
+  - **Carbohidrato:** 🥣 Avena (Arrollada)
+  - **Vegetales:** 🥬 Espinaca o Acelga Salteada
+  - **Grasa:** 🧈 Manteca
+- **Tiempo sugerido:** ⏱️ ~10 min | **Servido:** Caliente
+- **Descripción Culinaria:** Avena arrollada cocida en caldo suave y cremosa con manteca, coronada con dados de pechuga dorada y hojas de espinaca salteadas.
+- **Prompt Fotográfico:** *"Plato hondo de avena salada casera caliente y cremosa ligada con manteca, acompañada de bocados de pechuga de pollo dorada y espinaca salteada."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 28 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Fideos al dente salteados en sartén con tiras de pollo dorado, espinacas tiernas, salsa suave de crema de leche y lluvia de queso rallado.
+- Cuadrante Superior Derecho: Porción plana de arroz blanco casero salteado con carne picada dorada, cebolla caramelizada y cubierto con queso derretido gratinado dorado.
+- Cuadrante Inferior Izquierdo: Huevos revueltos tiernos y cremosos con queso rallado, servidos sobre rodajas gruesas de batata asada dulce y hojas frescas de rúcula con aceite de oliva.
+- Cuadrante Inferior Derecho: Plato hondo de avena salada casera caliente y cremosa ligada con manteca, acompañada de bocados de pechuga de pollo dorada y espinaca salteada.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 29 (lote_29): Ensaladas y Salpicones de Estación
+- **Modo general:** 🥗 Frío
+
+### ↖️ Superior Izquierdo — Salpicón de Pollo con Remolacha, Choclo y Nueces (`plate_cat_113`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🍗 Pechuga / Suprema de Pollo
+  - **Carbohidrato:** 🌽 Choclo / Maíz Desgranado
+  - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
+  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Salpicón fresco con hebras de pechuga de pollo cocida, dados de remolacha dulce, granos de choclo amarillo y nueces partidas crujientes.
+- **Prompt Fotográfico:** *"Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados de remolacha teñidos de violeta y nueces partidas con aceite de oliva."*
+
+### ↗️ Superior Derecho — Ensalada Fría de Lentejas con Caballa, Rabanitos y Tomate (`plate_cat_114`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥫 Caballa en Lata (al Natural o Aceite)
+  - **Carbohidrato:** 🫘 Legumbres (Lentejas o Porotos cocidos)
+  - **Vegetales:** 🥗 Rabanitos en Rodajas + 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🫒 Aceite de Oliva Extra Virgen
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Lentejas cocidas firmes mezcladas al descuido con trozos de caballa en conserva, rodajitas crocantes de rabanito, tomate y oliva.
+- **Prompt Fotográfico:** *"Ensalada fría totalmente mezclada de lentejas cocidas firmes con lomos de caballa desmenuzada, rodajitas finas de rabanito rosado y daditos de tomate fresco con aceite de oliva."*
+
+### ↙️ Inferior Izquierdo — Ensalada de Fideos con Atún, Pepino y Aceitunas (`plate_cat_115`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥫 Atún al Natural (Lata)
+  - **Carbohidrato:** 🍝 Fideos / Pasta
+  - **Vegetales:** 🥒 Pepino en Rodajas
+  - **Grasa:** 🫒 Aceitunas (Verdes o Negras)
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Fideos tirabuzón fríos al dente mezclados con lomitos de atún al natural, dados de pepino fresco y aceitunas negras.
+- **Prompt Fotográfico:** *"Ensalada de pasta fría casera totalmente revuelta: fideos tirabuzón mezclados con trozos de atún al natural, dados crocantes de pepino fresco y rodajitas de aceitunas negras con oliva."*
+
+### ↘️ Inferior Derecho — Bowl Fresco de Quinoa con Huevo Duro, Rabanito y Palta (`plate_cat_116`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥚 Huevo Duro / Cocido
+  - **Carbohidrato:** 🌾 Quinoa
+  - **Vegetales:** 🥗 Rabanitos en Rodajas
+  - **Grasa:** 🥑 Palta / Aguacate
+- **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
+- **Descripción Culinaria:** Quinoa cocida fría suelta servida con huevo duro picado rústico, rodajitas finas de rabanitos crocantes y gajos de palta con oliva.
+- **Prompt Fotográfico:** *"Plato hondo de quinoa fría suelta servida con trozos desparejos de huevo duro picado, rodajitas de rabanitos frescos y dados de palta madura con aceite de oliva virgen."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 29 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados de remolacha teñidos de violeta y nueces partidas con aceite de oliva.
+- Cuadrante Superior Derecho: Ensalada fría totalmente mezclada de lentejas cocidas firmes con lomos de caballa desmenuzada, rodajitas finas de rabanito rosado y daditos de tomate fresco con aceite de oliva.
+- Cuadrante Inferior Izquierdo: Ensalada de pasta fría casera totalmente revuelta: fideos tirabuzón mezclados con trozos de atún al natural, dados crocantes de pepino fresco y rodajitas de aceitunas negras con oliva.
+- Cuadrante Inferior Derecho: Plato hondo de quinoa fría suelta servida con trozos desparejos de huevo duro picado, rodajitas de rabanitos frescos y dados de palta madura con aceite de oliva virgen.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
+```
+
+---
+
+## Lote 30 (lote_30): Bowls Frescos, Quesos y Viandas de Verano
+- **Modo general:** 🥗 Frío
+
+### ↖️ Superior Izquierdo — Ensalada de Remolacha con Queso Port Salut, Rúcula y Nueces (`plate_cat_117`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥗 Remolacha (Rallada o Hervida) + 🥗 Hojas Verdes (Lechuga / Rúcula)
+  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Dados de remolacha cocida dulce con cubos de queso port salut fresco, hojas de rúcula y nueces picadas con aceite de oliva.
+- **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, cubos rústicos de queso fresco y nueces partidas con aceite de oliva."*
+
+### ↗️ Superior Derecho — Ensalada de Repollo con Atún, Pepino y Palta (`plate_cat_118`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥫 Atún al Natural (Lata)
+  - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
+  - **Vegetales:** 🥬 Repollo (Blanco o Colorado) + 🥒 Pepino en Rodajas
+  - **Grasa:** 🥑 Palta / Aguacate
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Juliana fina de repollo blanco y colorado mezclada con lomitos de atún, dados de pepino crujiente y palta madura con limón.
+- **Prompt Fotográfico:** *"Ensalada fría casera de repollo cortado en juliana fina mezclado con trozos de atún al natural, dados de pepino fresco y gajos de palta madura con un hilo de aceite de oliva."*
+
+### ↙️ Inferior Izquierdo — Bowl de Arroz Frío con Queso Fresco, Pepino, Choclo y Semillas (`plate_cat_119`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
+  - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
+  - **Vegetales:** 🥒 Pepino en Rodajas + 🥦 Brócoli al Vapor
+  - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Arroz blanco cocido suelto y frío con cubos de queso fresco, rodajas de pepino, granos de choclo amarillo y mix de semillas tostadas.
+- **Prompt Fotográfico:** *"Bowl de ensalada de arroz blanco frío suelto y plano, mezclado con dados de queso blanco fresco, rodajitas de pepino, choclo amarillo y semillas de girasol tostadas."*
+
+### ↘️ Inferior Derecho — Bowl de Avena Remojada con Huevo Duro, Tomate y Semillas (`plate_cat_120`)
+- **Ingredientes Clave:**
+  - **Proteína:** 🥚 Huevo Duro / Cocido
+  - **Carbohidrato:** 🥣 Avena (Arrollada)
+  - **Vegetales:** 🍅 Tomate en Rodajas / Cubos
+  - **Grasa:** 🌻 Semillas (Chía, Girasol o Sésamo)
+- **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
+- **Descripción Culinaria:** Base fresca de avena arrollada hidratada en frío con agua o caldo ligero, huevo duro picado rústico, cubos de tomate y semillas.
+- **Prompt Fotográfico:** *"Bowl nutritivo de avena arrollada tierna hidratada en frío, servida con trozos rústicos de huevo duro, daditos de tomate fresco y mix de semillas de chía y sésamo con oliva."*
+
+> [!NOTE] Prompt consolidado para generar el Lote 30 (Grilla 2x2)
+```text
+Genera una fotografía cenital de comida casera cotidiana real (authentic homemade weeknight food) en formato cuadrado 1:1, dividida estrictamente en una grilla simétrica de 4 CUADRANTES (2x2). Cada cuadrante muestra un plato casero terminado, servido de forma casual y sin pretensiones en plato de loza común:
+- Cuadrante Superior Izquierdo: Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, cubos rústicos de queso fresco y nueces partidas con aceite de oliva.
+- Cuadrante Superior Derecho: Ensalada fría casera de repollo cortado en juliana fina mezclado con trozos de atún al natural, dados de pepino fresco y gajos de palta madura con un hilo de aceite de oliva.
+- Cuadrante Inferior Izquierdo: Bowl de ensalada de arroz blanco frío suelto y plano, mezclado con dados de queso blanco fresco, rodajitas de pepino, choclo amarillo y semillas de girasol tostadas.
+- Cuadrante Inferior Derecho: Bowl nutritivo de avena arrollada tierna hidratada en frío, servida con trozos rústicos de huevo duro, daditos de tomate fresco y mix de semillas de chía y sésamo con oliva.
+Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-down 90° flat lay overhead shot), cámara completamente perpendicular mirando directamente hacia abajo sobre el plato entero, sin inclinación ni perspectiva a 45 grados. Estilo de comida casera real de todos los días (unpretentious homemade food): arroz servido suelto y esparcido de forma plana e irregular con cuchara (PROHIBIDO terminantemente: forma de bola, domo, cilindro, molde o bocha de helado); puré de papas casero rústico aplastado de forma despareja y plana con tenedor (PROHIBIDO terminantemente: flores de puré, rosetas, espirales concéntricas, manga pastelera o copetes redondos); ensaladas simples mezcladas naturalmente (PROHIBIDO abanicos de lechuga o arreglos de restaurante gourmet); comida apetitosa, rica y simple, recién servida en la mesa de casa. Solo el plato redondo centrado sobre la mesa, sin tenedores, cuchillos ni servilletas en los costados del plato, sin bordes negros y sin texto superpuesto.
 ```
 
 ---
