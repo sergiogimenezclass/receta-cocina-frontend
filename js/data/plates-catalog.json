@@ -2941,7 +2941,8 @@
             "calabaza",
             "puerro",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_121.jpg"
         },
         {
           "id": "plate_cat_122",
@@ -2962,7 +2963,8 @@
             "zanahoria",
             "cazuela",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_122.jpg"
         },
         {
           "id": "plate_cat_123",
@@ -2983,7 +2985,8 @@
             "morron",
             "estofado",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_123.jpg"
         },
         {
           "id": "plate_cat_124",
@@ -3004,7 +3007,8 @@
             "verdeo",
             "cazuela",
             "caliente"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_124.jpg"
         }
       ]
     },
@@ -6798,7 +6802,7 @@
         "puerro",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_121.jpg",
       "lote_id": "lote_31",
       "lote_tema": "Clásicos de Olla y Cacerola Caseros"
     },
@@ -6822,7 +6826,7 @@
         "cazuela",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_122.jpg",
       "lote_id": "lote_31",
       "lote_tema": "Clásicos de Olla y Cacerola Caseros"
     },
@@ -6846,7 +6850,7 @@
         "estofado",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_123.jpg",
       "lote_id": "lote_31",
       "lote_tema": "Clásicos de Olla y Cacerola Caseros"
     },
@@ -6870,7 +6874,7 @@
         "cazuela",
         "caliente"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_124.jpg",
       "lote_id": "lote_31",
       "lote_tema": "Clásicos de Olla y Cacerola Caseros"
     },
