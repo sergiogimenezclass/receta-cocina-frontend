@@ -2745,7 +2745,8 @@
             "nueces",
             "salpicon",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_113.jpg"
         },
         {
           "id": "plate_cat_114",
@@ -2767,7 +2768,8 @@
             "tomate",
             "oliva",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_114.jpg"
         },
         {
           "id": "plate_cat_115",
@@ -2788,7 +2790,8 @@
             "aceitunas",
             "ensalada-fria",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_115.jpg"
         },
         {
           "id": "plate_cat_116",
@@ -2809,7 +2812,8 @@
             "palta",
             "bowl",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_116.jpg"
         }
       ]
     },
@@ -2838,7 +2842,8 @@
             "nueces",
             "lowcarb",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_117.jpg"
         },
         {
           "id": "plate_cat_118",
@@ -2860,7 +2865,8 @@
             "palta",
             "lowcarb",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_118.jpg"
         },
         {
           "id": "plate_cat_119",
@@ -2882,7 +2888,8 @@
             "choclo",
             "semillas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_119.jpg"
         },
         {
           "id": "plate_cat_120",
@@ -2903,7 +2910,8 @@
             "semillas",
             "bowl",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_120.jpg"
         }
       ]
     },
@@ -6592,7 +6600,7 @@
         "salpicon",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_113.jpg",
       "lote_id": "lote_29",
       "lote_tema": "Ensaladas y Salpicones de Estación"
     },
@@ -6617,7 +6625,7 @@
         "oliva",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_114.jpg",
       "lote_id": "lote_29",
       "lote_tema": "Ensaladas y Salpicones de Estación"
     },
@@ -6641,7 +6649,7 @@
         "ensalada-fria",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_115.jpg",
       "lote_id": "lote_29",
       "lote_tema": "Ensaladas y Salpicones de Estación"
     },
@@ -6665,7 +6673,7 @@
         "bowl",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_116.jpg",
       "lote_id": "lote_29",
       "lote_tema": "Ensaladas y Salpicones de Estación"
     },
@@ -6690,7 +6698,7 @@
         "lowcarb",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_117.jpg",
       "lote_id": "lote_30",
       "lote_tema": "Bowls Frescos, Quesos y Viandas de Verano"
     },
@@ -6715,7 +6723,7 @@
         "lowcarb",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_118.jpg",
       "lote_id": "lote_30",
       "lote_tema": "Bowls Frescos, Quesos y Viandas de Verano"
     },
@@ -6740,7 +6748,7 @@
         "semillas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_119.jpg",
       "lote_id": "lote_30",
       "lote_tema": "Bowls Frescos, Quesos y Viandas de Verano"
     },
@@ -6764,7 +6772,7 @@
         "bowl",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_120.jpg",
       "lote_id": "lote_30",
       "lote_tema": "Bowls Frescos, Quesos y Viandas de Verano"
     },
