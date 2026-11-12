@@ -181,4 +181,60 @@ test('AssemblerComponent - deterministicAutoSelect detecta correctamente Avena c
   assert.strictEqual(assembler.selected.Carbohidrato[0], 'comp_carb_9', 'Debe detectar Avena como Carbohidrato');
 });
 
+test('AssemblerComponent - formatCallout renderiza <strong> de forma segura y previene XSS', () => {
+  const assembler = new AssemblerComponent('testContainer');
+
+  // Caso 1: Sugerencia con strong permitido
+  const result1 = assembler.formatCallout('💡 <strong>Sugerencia:</strong> No detectamos proteína.');
+  assert.strictEqual(result1, '💡 <strong>Sugerencia:</strong> No detectamos proteína.');
+
+  // Caso 2: Intento de inyección XSS con script y strong
+  const result2 = assembler.formatCallout('<script>bad()</script><strong>Alerta</strong>');
+  assert.strictEqual(result2, '&lt;script&gt;bad()&lt;/script&gt;<strong>Alerta</strong>');
+
+  // Caso 3: String vacío o nulo
+  assert.strictEqual(assembler.formatCallout(''), '');
+  assert.strictEqual(assembler.formatCallout(null), '');
+});
+
+test('AssemblerComponent - cleanRepeatedPhrases elimina repeticiones consecutivas de palabras y frases', () => {
+  const assembler = new AssemblerComponent('testContainer');
+
+  // Palabras individuales repetidas (caso clásico bug móvil)
+  assert.strictEqual(assembler.cleanRepeatedPhrases('palta palta palta palta'), 'palta');
+  assert.strictEqual(assembler.cleanRepeatedPhrases('huevo huevo duro'), 'huevo duro');
+
+  // Frases de varias palabras repetidas
+  assert.strictEqual(assembler.cleanRepeatedPhrases('tengo palta tengo palta'), 'tengo palta');
+  assert.strictEqual(assembler.cleanRepeatedPhrases('puré de papas puré de papas'), 'puré de papas');
+
+  // Texto legítimo sin repeticiones consecutivas
+  assert.strictEqual(assembler.cleanRepeatedPhrases('tengo palta, huevo y tomate'), 'tengo palta, huevo y tomate');
+});
+
+test('AssemblerComponent - deterministicAutoSelect maneja palabras repetidas y formatea categorías faltantes en español', async () => {
+  const assembler = new AssemblerComponent('testContainer');
+  const components = await storage.getComponents();
+
+  // Caso reportado por el usuario: decir "tengo palta" repetido
+  assembler.deterministicAutoSelect('tengo palta palta palta palta', components);
+
+  assert.strictEqual(assembler.selected.Grasa[0], 'comp_fat_2', 'Debe detectar Palta como Grasa');
+  assert.strictEqual(assembler.selected.Proteina.length, 0, 'No debe tener proteína asignada');
+  assert.strictEqual(assembler.selected.Vegetal.length, 0, 'No debe tener vegetal asignado');
+  assert.strictEqual(assembler.selected.Carbohidrato.length, 0, 'No debe tener carbohidrato asignado');
+
+  // Comprobar que la notificación tiene formato legible en español y etiquetas strong
+  assert.ok(assembler.autoMatchNotification.includes('💡 <strong>Sugerencia:</strong>'));
+  assert.ok(assembler.autoMatchNotification.includes('proteína'));
+  assert.ok(assembler.autoMatchNotification.includes('vegetales'));
+  assert.ok(assembler.autoMatchNotification.includes('carbohidratos'));
+
+  // Comprobar que al pasar por formatCallout no se ven las etiquetas escapadas
+  const formattedCallout = assembler.formatCallout(assembler.autoMatchNotification);
+  assert.ok(!formattedCallout.includes('&lt;strong&gt;'), 'No debe mostrar &lt;strong&gt;');
+  assert.ok(formattedCallout.includes('<strong>Sugerencia:</strong>'), 'Debe renderizar <strong>');
+});
+
+
 
