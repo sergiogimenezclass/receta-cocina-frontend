@@ -11,6 +11,8 @@ const seedModule = await import('../js/data/seed.js');
 const validComponentIds = new Set(seedModule.INITIAL_SEED.components.map(c => c.id));
 const compMap = new Map(seedModule.INITIAL_SEED.components.map(c => [c.id, c]));
 
+import { allNewLotes } from './append_lotes_41_70.js';
+
 const lotes = [
   // -------------------------------------------------------------
   // LOTE 1: Clásicos Fundacionales Argentinos (Calientes)
@@ -2720,6 +2722,8 @@ const lotes = [
   }
 ];
 
+lotes.push(...allNewLotes);
+
 // Validar que todos los IDs existan en seed.js
 let errorCount = 0;
 lotes.forEach(l => {
@@ -2785,15 +2789,18 @@ lotes.forEach(l => {
   });
 });
 
+const totalLotesGenerados = lotes.filter(l => fs.existsSync(path.join(rootDir, 'img', 'lotes-master', `${l.lote_id}_master_2x2.jpg`))).length;
+const totalPlatosGenerados = totalLotesGenerados * 4;
+
 const jsonOutput = {
-  version: "2.0.0",
+  version: "2.1.0",
   total_lotes: lotes.length,
   total_platos: flatPlates.length,
   checkpoint: {
-    estado: "completado_100%",
-    total_lotes_generados: lotes.length,
-    total_platos_generados: flatPlates.length,
-    total_platos_pendientes: 0
+    estado: totalLotesGenerados === lotes.length ? "completado_100%" : "en_progreso",
+    total_lotes_generados: totalLotesGenerados,
+    total_platos_generados: totalPlatosGenerados,
+    total_platos_pendientes: flatPlates.length - totalPlatosGenerados
   },
   resumen_modos: {
     caliente: flatPlates.filter(p => p.modo === 'caliente').length,
@@ -2811,27 +2818,28 @@ fs.writeFileSync(catalogJsonPath, JSON.stringify(jsonOutput, null, 2), 'utf-8');
 console.log(`JSON generado en: ${catalogJsonPath}`);
 
 // 2. Guardar Markdown de documentación con prompts listos para 2x2
-let mdContent = `# Catálogo Maestro de Platos 2x2 (Cobertura $\\ge 80\\%$)
+let mdContent = `# Catálogo Maestro de Platos 2x2 (Cobertura $\\ge 90\\%$)
 
 Este documento contiene la biblioteca oficial de **${flatPlates.length} combinaciones gastronómicas cotidianas argentinas**, organizadas en **${lotes.length} lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
 
 > [!IMPORTANT]
-> ### 🏆 Catálogo 100% Generado y Activo en la App
-> - **Total de platos definidos:** ${flatPlates.length} platos en ${lotes.length} lotes 2x2.
-> - **Platos generados y activos en la app:** **${flatPlates.length} platos (100%)** — Lotes 01 al 40 (\`plate_cat_01.jpg\` a \`plate_cat_160.jpg\`).
-> - **Masters 2x2 conservados:** 40 imágenes en \`img/lotes-master/\`.
-> - **Cobertura fotográfica:** Totalmente completa para todas las fases (núcleo caliente, ensaladas frías, cortes tradicionales y olla/wok).
+> ### 📊 Estado de Cobertura y Generación
+> - **Total de platos definidos:** ${flatPlates.length} platos en ${lotes.length} lotes 2x2 (Cobertura ampliada al 90%).
+> - **Platos generados y activos en la app:** **${totalPlatosGenerados} platos** (${totalLotesGenerados} lotes).
+> - **Platos pendientes:** **${flatPlates.length - totalPlatosGenerados} platos** (${lotes.length - totalLotesGenerados} lotes).
+> - **Masters 2x2 conservados:** ${totalLotesGenerados} imágenes en \`img/lotes-master/\`.
 
 ---
 
 ## Métricas del Catálogo
-- **Total de Lotes (Imágenes 2x2 generadas):** ${lotes.length}
+- **Total de Lotes (Imágenes 2x2 a generar):** ${lotes.length}
 - **Total de Platos resultantes (recortados 1:1):** ${flatPlates.length}
 - **Estructura por Fases de Cobertura:**
   - 🥇 **Fase 1 (Lotes 01 al 10 / Platos 01 al 40):** Núcleo esencial caliente (**100% generado y activo**).
   - 🥈 **Fase 2 (Lotes 11 al 20 / Platos 41 al 80):** Ensaladas frías, pastas y cenas low-carb (**100% generado y activo**).
   - 🥉 **Fase 3 (Lotes 21 al 30 / Platos 81 al 120):** Cortes tradicionales, estacionalidad y variantes (**100% generado y activo**).
   - 🏅 **Fase 4 (Lotes 31 al 40 / Platos 121 al 160):** Olla criolla, wok variado, pescados y ensaladas (**100% generado y activo**).
+  - 🚀 **Fase 5 (Lotes 41 al 70 / Platos 161 al 280):** Expansión al 90% de cobertura — más clásicos, variantes rápidas y ensaladas complejas.
 - **Distribución por Estilo de Servicio:**
   - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** ${flatPlates.filter(p => p.modo === 'caliente').length} platos (${((flatPlates.filter(p => p.modo === 'caliente').length / flatPlates.length) * 100).toFixed(1)}%)
   - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** ${flatPlates.filter(p => p.modo === 'frio').length} platos (${((flatPlates.filter(p => p.modo === 'frio').length / flatPlates.length) * 100).toFixed(1)}%)
@@ -2862,16 +2870,18 @@ Cada imagen generada por la IA debe ser cuadrada (proporción 1:1) y dividirse s
 
 `;
 
+let firstPendingFound = false;
+
 lotes.forEach((lote, idx) => {
   const masterPath = path.join(rootDir, 'img', 'lotes-master', `${lote.lote_id}_master_2x2.jpg`);
   const isGenerated = fs.existsSync(masterPath);
-  const isNextToResume = (idx === 31); // Lote 32
 
   mdContent += `## Lote ${idx + 1} (${lote.lote_id}): ${lote.tema}\n`;
   if (isGenerated) {
     mdContent += `- **Estado:** ✅ Generado y recortado (\`img/lotes-master/${lote.lote_id}_master_2x2.jpg\`)\n`;
-  } else if (isNextToResume) {
-    mdContent += `> [!WARNING]\n> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (\`plate_cat_125\` al \`plate_cat_128\`)\n\n`;
+  } else if (!firstPendingFound) {
+    firstPendingFound = true;
+    mdContent += `> [!WARNING]\n> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (\`${lote.platos[0].id}\` al \`${lote.platos[3].id}\`)\n\n`;
   } else {
     mdContent += `- **Estado:** ⏳ Pendiente de generación\n`;
   }
