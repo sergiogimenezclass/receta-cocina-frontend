@@ -3,23 +3,22 @@
 Este documento contiene la biblioteca oficial de **160 combinaciones gastronómicas cotidianas argentinas**, organizadas en **40 lotes de 4 platos cada uno** para su generación fotográfica en grillas simétricas de 2x2 mediante Inteligencia Artificial.
 
 > [!IMPORTANT]
-> ### 📌 Estado de Generación Fotográfica y Checkpoint de Retoma
+> ### 🏆 Catálogo 100% Generado y Activo en la App
 > - **Total de platos definidos:** 160 platos en 40 lotes 2x2.
-> - **Platos generados y activos en la app:** **124 platos (77.5%)** — Lotes 01 al 31 (`plate_cat_01.jpg` a `plate_cat_124.jpg`).
-> - **Último lote completado:** `lote_31` (`plate_cat_121` al `plate_cat_124`).
-> - **👉 PUNTO EXACTO DE RETOMA:** **Lote 32** (`plate_cat_125` al `plate_cat_128` — *Milanesas Porteñas y Variaciones al Horno*).
-> - **Lotes pendientes:** Lotes 32 al 40 (36 platos restantes).
+> - **Platos generados y activos en la app:** **160 platos (100%)** — Lotes 01 al 40 (`plate_cat_01.jpg` a `plate_cat_160.jpg`).
+> - **Masters 2x2 conservados:** 40 imágenes en `img/lotes-master/`.
+> - **Cobertura fotográfica:** Totalmente completa para todas las fases (núcleo caliente, ensaladas frías, cortes tradicionales y olla/wok).
 
 ---
 
 ## Métricas del Catálogo
-- **Total de Lotes (Imágenes 2x2 a generar):** 40
+- **Total de Lotes (Imágenes 2x2 generadas):** 40
 - **Total de Platos resultantes (recortados 1:1):** 160
 - **Estructura por Fases de Cobertura:**
   - 🥇 **Fase 1 (Lotes 01 al 10 / Platos 01 al 40):** Núcleo esencial caliente (**100% generado y activo**).
   - 🥈 **Fase 2 (Lotes 11 al 20 / Platos 41 al 80):** Ensaladas frías, pastas y cenas low-carb (**100% generado y activo**).
   - 🥉 **Fase 3 (Lotes 21 al 30 / Platos 81 al 120):** Cortes tradicionales, estacionalidad y variantes (**100% generado y activo**).
-  - 🏅 **Fase 4 (Lotes 31 al 40 / Platos 121 al 160):** Olla criolla, wok variado, pescados y ensaladas (En progreso: Lote 31 generado, **Lote 32 a 40 pendientes**).
+  - 🏅 **Fase 4 (Lotes 31 al 40 / Platos 121 al 160):** Olla criolla, wok variado, pescados y ensaladas (**100% generado y activo**).
 - **Distribución por Estilo de Servicio:**
   - 🍲 **Platos Calientes (horno, plancha, wok, guisados):** 124 platos (77.5%)
   - 🥗 **Platos Fríos (ensaladas, bowls, viandas de verano):** 36 platos (22.5%)
@@ -1785,9 +1784,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 32 (lote_32): Milanesas Porteñas y Variaciones al Horno
-> [!WARNING]
-> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (`plate_cat_125` al `plate_cat_128`)
-
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_32_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Milanesa de Carne con Fideos al Dente, Manteca y Queso (`plate_cat_125`)
@@ -1843,7 +1840,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 33 (lote_33): Asados y Planchas de Fuego Rápido
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_33_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Tira de Asado a la Plancha con Batatas y Chimichurri de Verdeo (`plate_cat_129`)
@@ -1899,7 +1896,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 34 (lote_34): Sartén de Pescados, Caballa y Mariscos Caseros
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_34_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Merluza al Limón con Puré Mixto de Calabaza y Papas (`plate_cat_133`)
@@ -1955,7 +1952,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 35 (lote_35): Salteados al Wok y Wok de Vegetales Mixtos
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_35_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Wok de Bife Vacuno con Vegetales Mixtos y Fideos (`plate_cat_137`)
@@ -2011,7 +2008,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 36 (lote_36): Platos Vegetarianos, Soja Texturizada y Tofu
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_36_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Cazuela de Soja Sofrita con Batatas y Cebolla Dorada (`plate_cat_141`)
@@ -2067,7 +2064,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 37 (lote_37): Cenas Ligeras Low-Carb sin Almidón
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_37_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Pata-Muslo al Horno con Coliflor y Champiñones Salteados (`plate_cat_145`)
@@ -2123,7 +2120,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 38 (lote_38): Pastas, Salsas Cremosas y Gratinados
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_38_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Fideos a la Crema con Cerdo Dorado y Champiñones (`plate_cat_149`)
@@ -2179,7 +2176,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 39 (lote_39): Ensaladas Proteicas de Legumbres y Quinoa
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_39_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Ensalada Fría de Porotos con Tiras de Bife y Rabanitos (`plate_cat_153`)
@@ -2235,7 +2232,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 40 (lote_40): Bowls de Verano, Quesos Frescos y Frutos Secos
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_40_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Ensalada de Queso Port Salut con Pepino, Hojas Verdes y Nueces (`plate_cat_157`)
