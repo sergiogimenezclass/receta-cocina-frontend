@@ -5,9 +5,9 @@ Este documento contiene la biblioteca oficial de **280 combinaciones gastronómi
 > [!IMPORTANT]
 > ### 📊 Estado de Cobertura y Generación
 > - **Total de platos definidos:** 280 platos en 70 lotes 2x2 (Cobertura ampliada al 90%).
-> - **Platos generados y activos en la app:** **176 platos** (44 lotes).
-> - **Platos pendientes:** **104 platos** (26 lotes).
-> - **Masters 2x2 conservados:** 44 imágenes en `img/lotes-master/`.
+> - **Platos generados y activos en la app:** **220 platos** (55 lotes).
+> - **Platos pendientes:** **60 platos** (15 lotes).
+> - **Masters 2x2 conservados:** 55 imágenes en `img/lotes-master/`.
 
 ---
 
@@ -2513,9 +2513,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 45 (lote_45): Platos de Cerdo Dorados
-> [!WARNING]
-> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (`plate_cat_177` al `plate_cat_180`)
-
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_45_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Bondiola de Cerdo a la Mostaza con Papas Doradas (`plate_cat_177`)
@@ -2571,7 +2569,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 46 (lote_46): Olla Reconfortante y Guisados Secos
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_46_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Guisito de Lentejas con Carne Picada y Calabaza (`plate_cat_181`)
@@ -2627,7 +2625,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 47 (lote_47): Pastas Simples y Gratinadas
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_47_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Fideos con Salsa Bolognesa Casera y Queso Sardo (`plate_cat_185`)
@@ -2683,7 +2681,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 48 (lote_48): Cenas Livianas de Sartén Low-Carb
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_48_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Bife de Cuadril con Salteado de Hongos y Zucchini (`plate_cat_189`)
@@ -2739,7 +2737,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 49 (lote_49): Vegetarianos y Proteína Vegetal Caliente
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_49_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Tofu Marinado Crocante con Arroz Blanco y Brócoli (`plate_cat_193`)
@@ -2795,7 +2793,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 50 (lote_50): Platos Rápidos con Choclo y Mandioca
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_50_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Picadillo de Carne con Choclo Cremoso y Puré de Calabaza (`plate_cat_197`)
@@ -2851,7 +2849,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 51 (lote_51): Ensaladas Frías de Legumbres
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_51_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Ensalada de Lentejas con Huevo Duro, Tomate y Cebollita (`plate_cat_201`)
@@ -2907,7 +2905,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 52 (lote_52): Bowls de Quinoa y Granos Fríos
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_52_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Quinoa Fría con Palta Madura, Pepino y Semillas (`plate_cat_205`)
@@ -2963,7 +2961,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 53 (lote_53): Ensaladas de Pasta Fría
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_53_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Pasta Fría con Pollo Grillado, Hojas Verdes y Tomate (`plate_cat_209`)
@@ -3019,7 +3017,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 54 (lote_54): Bowls de Arroz Frío y Viandas
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_54_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Arroz Primavera Frío con Pollo Desmenuzado y Zanahoria (`plate_cat_213`)
@@ -3075,7 +3073,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 55 (lote_55): Ensaladas de Raíces y Verano
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_55_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Ensalada Colorida de Remolacha y Zanahoria con Huevo Duro (`plate_cat_217`)
@@ -3131,7 +3129,9 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 56 (lote_56): Platos Rápidos con Quesos y Huevos
-- **Estado:** ⏳ Pendiente de generación
+> [!WARNING]
+> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (`plate_cat_221` al `plate_cat_224`)
+
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Revuelto de Zucchini con Queso Port Salut y Arroz (`plate_cat_221`)
