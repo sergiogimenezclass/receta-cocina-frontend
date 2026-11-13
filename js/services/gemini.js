@@ -13,9 +13,16 @@ class GeminiService {
    * Consulta dinámicamente los modelos autorizados para la clave actual y prioriza los más rápidos.
    */
   async _getAvailableModels(apiKey) {
-    if (this._activeModel && !this._activeModel.includes('2.5')) return [this._activeModel];
+    if (this._activeModel) {
+      if (this._activeModel.includes('2.5') || this._activeModel.includes('omni') || this._activeModel.includes('preview')) {
+        this._activeModel = null;
+        try { localStorage.removeItem('mpb_verified_gemini_model'); } catch (_) {}
+      } else {
+        return [this._activeModel];
+      }
+    }
 
-    const DEFAULT_MODELS = ['gemini-3.5-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite'];
+    const DEFAULT_MODELS = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.5-flash', 'gemini-3.8-flash'];
 
     try {
       const listResp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`, {
@@ -31,7 +38,7 @@ class GeminiService {
           .filter(m => !m.includes('image') && !m.includes('tts') && !m.includes('audio') && !m.includes('embed') && !m.includes('omni') && !m.includes('preview') && !m.includes('2.5'));
 
         const preferred = [];
-        for (const m of ['gemini-3.5-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite', 'gemini-3.6-flash', 'gemini-2.0-flash']) {
+        for (const m of ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.5-flash', 'gemini-3.8-flash']) {
           if (available.includes(m)) preferred.push(m);
         }
 
@@ -95,15 +102,17 @@ class GeminiService {
         const errMsg = errData.error?.message || `HTTP ${status}`;
         lastError = new Error(errMsg);
 
-        // Si es 429 (límite de cuota) o 401/403 (autenticación), frenar de inmediato
-        if (status === 429 || status === 401 || status === 403) {
-          throw lastError;
-        }
-
+        // Si falló este modelo, limpiarlo de la caché inmediatamente
         if (this._activeModel === model) {
           this._activeModel = null;
           try { localStorage.removeItem('mpb_verified_gemini_model'); } catch (_) {}
         }
+
+        // Si es 401 o 403 (clave inválida o prohibida), frenar de inmediato
+        if (status === 401 || status === 403) {
+          throw lastError;
+        }
+
         continue;
       }
 
