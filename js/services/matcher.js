@@ -72,9 +72,10 @@ export class CatalogMatcherService {
       }
 
       // 2. Vegetal (20%)
-      const vegMatch = (plate.vegetal_id && selVegs.includes(plate.vegetal_id)) ||
-                       (plate.vegetal_secundario_id && selVegs.includes(plate.vegetal_secundario_id));
-      if (vegMatch) {
+      const hasPrimaryVeg = Boolean(plate.vegetal_id && selVegs.includes(plate.vegetal_id));
+      const hasSecondaryVeg = Boolean(plate.vegetal_secundario_id && selVegs.includes(plate.vegetal_secundario_id));
+
+      if (hasPrimaryVeg || hasSecondaryVeg) {
         score += 20;
         matchedCriteria.push('vegetal');
       }
@@ -90,7 +91,8 @@ export class CatalogMatcherService {
         if (selCarbs.length === 0) {
           score += 20;
           matchedCriteria.push('carbohidrato_lowcarb');
-        } else if (plate.vegetal_secundario_id && selVegs.includes(plate.vegetal_secundario_id)) {
+        } else if (hasPrimaryVeg && hasSecondaryVeg) {
+          // Solo si el usuario seleccionó ambos vegetales distintos del plato doble-veg
           score += 20;
           matchedCriteria.push('carbohidrato_doble_veg');
         }
