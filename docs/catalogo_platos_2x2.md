@@ -4,10 +4,7 @@ Este documento contiene la biblioteca oficial de **280 combinaciones gastronómi
 
 > [!IMPORTANT]
 > ### 📊 Estado de Cobertura y Generación
-> - **Total de platos definidos:** 280 platos en 70 lotes 2x2 (Cobertura ampliada al 90%).
-> - **Platos generados y activos en la app:** **220 platos** (55 lotes).
-> - **Platos pendientes:** **60 platos** (15 lotes).
-> - **Masters 2x2 conservados:** 55 imágenes en `img/lotes-master/`.
+undefined
 
 ---
 
@@ -3129,9 +3126,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 56 (lote_56): Platos Rápidos con Quesos y Huevos
-> [!WARNING]
-> **Estado:** 📌 **PRÓXIMO LOTE A GENERAR / RETOMA TRAS REINICIO DE CUOTA** (`plate_cat_221` al `plate_cat_224`)
-
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_56_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Revuelto de Zucchini con Queso Port Salut y Arroz (`plate_cat_221`)
@@ -3187,7 +3182,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 57 (lote_57): Pescados y Conservas al Plato
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_57_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Caballa Salteada con Fideos al Verdeo y Aceitunas (`plate_cat_225`)
@@ -3243,7 +3238,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 58 (lote_58): Cortes Tradicionales a la Plancha
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_58_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Bife de Cuadril con Calabaza Asada y Choclo (`plate_cat_229`)
@@ -3299,7 +3294,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 59 (lote_59): Salteados y Woks Proteicos
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_59_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Wok de Pollo con Chauchas Tiernas y Semillas de Sésamo (`plate_cat_233`)
@@ -3355,7 +3350,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 60 (lote_60): Bowls Nutritivos de Avena Fría
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_60_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Avena Fría con Atún al Natural, Tomate y Huevo Duro (`plate_cat_237`)
@@ -3411,7 +3406,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 61 (lote_61): Cenas Low-Carb de Fuego Vivo
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_61_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Suprema con Salteado de Repollo Blanco y Champiñones (`plate_cat_241`)
@@ -3467,7 +3462,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 62 (lote_62): Pastas Caseras y Salsas Livianas
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_62_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Fideos al Verdeo con Bocados de Pollo Dorado (`plate_cat_245`)
@@ -3523,7 +3518,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 63 (lote_63): Olla Criolla y Cacerolas Calientes
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_63_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Guisito de Arroz con Carne Picada, Zanahoria y Morrón (`plate_cat_249`)
@@ -3579,7 +3574,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 64 (lote_64): Bowls de Pollo y Aves Frías
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_64_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Salpicón de Pollo con Lechuga, Tomate y Palta Madura (`plate_cat_253`)
@@ -3635,7 +3630,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 65 (lote_65): Platos Rápidos de Soja y Tofu
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_65_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Medallón de Soja Sofrita con Puré de Calabaza (`plate_cat_257`)
@@ -3691,7 +3686,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 66 (lote_66): Clásicos Porteños al Horno
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_66_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Suprema Napolitana con Ensalada de Rúcula y Tomate (`plate_cat_261`)
@@ -3747,7 +3742,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 67 (lote_67): Ensaladas Verdes Completas
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_67_master_2x2.jpg`)
 - **Modo general:** 🥗 Frío
 
 ### ↖️ Superior Izquierdo — Ensalada Completa de Hojas Verdes con Pollo, Queso y Nueces (`plate_cat_265`)
@@ -3803,7 +3798,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 68 (lote_68): Guarniciones de Mandioca y Raíces
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_68_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Mandioca Hervida con Bife Criollo Encebollado (`plate_cat_269`)
@@ -3859,7 +3854,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 69 (lote_69): Cenas Ligeras Rápidas sin Harinas
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_69_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Merluza al Vapor con Brócoli y Aceite de Oliva (Low-Carb) (`plate_cat_273`)
@@ -3915,7 +3910,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 ---
 
 ## Lote 70 (lote_70): Menú Balanceado Final
-- **Estado:** ⏳ Pendiente de generación
+- **Estado:** ✅ Generado y recortado (`img/lotes-master/lote_70_master_2x2.jpg`)
 - **Modo general:** 🍲 Caliente
 
 ### ↖️ Superior Izquierdo — Milanesa de Carne con Puré Mixto de Calabaza y Batata (`plate_cat_277`)
@@ -3970,3 +3965,6 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
 
 ---
 
+
+
+---

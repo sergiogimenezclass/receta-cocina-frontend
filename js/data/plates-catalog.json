@@ -3,10 +3,10 @@
   "total_lotes": 70,
   "total_platos": 280,
   "checkpoint": {
-    "estado": "en_progreso",
-    "total_lotes_generados": 55,
-    "total_platos_generados": 220,
-    "total_platos_pendientes": 60
+    "estado": "completado",
+    "total_lotes_generados": 70,
+    "total_platos_generados": 280,
+    "total_platos_pendientes": 0
   },
   "resumen_modos": {
     "caliente": 211,
@@ -5308,7 +5308,8 @@
             "zucchini",
             "queso",
             "arroz"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_221.jpg"
         },
         {
           "id": "plate_cat_222",
@@ -5330,7 +5331,8 @@
             "tomate",
             "rucula",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_222.jpg"
         },
         {
           "id": "plate_cat_223",
@@ -5350,7 +5352,8 @@
             "espinaca",
             "huevo",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_223.jpg"
         },
         {
           "id": "plate_cat_224",
@@ -5370,7 +5373,8 @@
             "pure",
             "papa",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_224.jpg"
         }
       ]
     },
@@ -5397,7 +5401,8 @@
             "verdeo",
             "aceitunas",
             "pescado"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_225.jpg"
         },
         {
           "id": "plate_cat_226",
@@ -5416,7 +5421,8 @@
             "arroz",
             "morron",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_226.jpg"
         },
         {
           "id": "plate_cat_227",
@@ -5436,7 +5442,8 @@
             "cebolla",
             "horno",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_227.jpg"
         },
         {
           "id": "plate_cat_228",
@@ -5456,7 +5463,8 @@
             "morron",
             "cazuela",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_228.jpg"
         }
       ]
     },
@@ -5483,7 +5491,8 @@
             "calabaza",
             "choclo",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_229.jpg"
         },
         {
           "id": "plate_cat_230",
@@ -5503,7 +5512,8 @@
             "pure",
             "rucula",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_230.jpg"
         },
         {
           "id": "plate_cat_231",
@@ -5524,7 +5534,8 @@
             "lechuga",
             "tomate",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_231.jpg"
         },
         {
           "id": "plate_cat_232",
@@ -5544,7 +5555,8 @@
             "rucula",
             "queso",
             "carne"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_232.jpg"
         }
       ]
     },
@@ -5573,7 +5585,8 @@
             "sesamo",
             "wok",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_233.jpg"
         },
         {
           "id": "plate_cat_234",
@@ -5592,7 +5605,8 @@
             "berenjena",
             "arroz",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_234.jpg"
         },
         {
           "id": "plate_cat_235",
@@ -5612,7 +5626,8 @@
             "verdeo",
             "wok",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_235.jpg"
         },
         {
           "id": "plate_cat_236",
@@ -5633,7 +5648,8 @@
             "zanahoria",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_236.jpg"
         }
       ]
     },
@@ -5661,7 +5677,8 @@
             "huevo",
             "bowl",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_237.jpg"
         },
         {
           "id": "plate_cat_238",
@@ -5681,7 +5698,8 @@
             "rucula",
             "semillas",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_238.jpg"
         },
         {
           "id": "plate_cat_239",
@@ -5700,7 +5718,8 @@
             "pollo",
             "pepino",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_239.jpg"
         },
         {
           "id": "plate_cat_240",
@@ -5720,7 +5739,8 @@
             "remolacha",
             "nueces",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_240.jpg"
         }
       ]
     },
@@ -5748,7 +5768,8 @@
             "champinon",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_241.jpg"
         },
         {
           "id": "plate_cat_242",
@@ -5769,7 +5790,8 @@
             "rabanito",
             "huevo",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_242.jpg"
         },
         {
           "id": "plate_cat_243",
@@ -5790,7 +5812,8 @@
             "rucula",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_243.jpg"
         },
         {
           "id": "plate_cat_244",
@@ -5811,7 +5834,8 @@
             "morron",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_244.jpg"
         }
       ]
     },
@@ -5838,7 +5862,8 @@
             "verdeo",
             "crema",
             "pasta"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_245.jpg"
         },
         {
           "id": "plate_cat_246",
@@ -5858,7 +5883,8 @@
             "queso",
             "espinaca",
             "pasta"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_246.jpg"
         },
         {
           "id": "plate_cat_247",
@@ -5878,7 +5904,8 @@
             "morron",
             "pasta",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_247.jpg"
         },
         {
           "id": "plate_cat_248",
@@ -5897,7 +5924,8 @@
             "champinon",
             "crema",
             "pasta"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_248.jpg"
         }
       ]
     },
@@ -5925,7 +5953,8 @@
             "carne picada",
             "zanahoria",
             "morron"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_249.jpg"
         },
         {
           "id": "plate_cat_250",
@@ -5945,7 +5974,8 @@
             "choclo",
             "cazuela",
             "estofado"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_250.jpg"
         },
         {
           "id": "plate_cat_251",
@@ -5964,7 +5994,8 @@
             "papas",
             "cebolla",
             "estofado"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_251.jpg"
         },
         {
           "id": "plate_cat_252",
@@ -5984,7 +6015,8 @@
             "calabaza",
             "guiso",
             "carne"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_252.jpg"
         }
       ]
     },
@@ -6013,7 +6045,8 @@
             "palta",
             "frio",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_253.jpg"
         },
         {
           "id": "plate_cat_254",
@@ -6033,7 +6066,8 @@
             "tomate",
             "cherry",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_254.jpg"
         },
         {
           "id": "plate_cat_255",
@@ -6053,7 +6087,8 @@
             "nueces",
             "frio",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_255.jpg"
         },
         {
           "id": "plate_cat_256",
@@ -6072,7 +6107,8 @@
             "quinoa",
             "pepino",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_256.jpg"
         }
       ]
     },
@@ -6100,7 +6136,8 @@
             "cebolla",
             "vegetariano",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_257.jpg"
         },
         {
           "id": "plate_cat_258",
@@ -6120,7 +6157,8 @@
             "morron",
             "sesamo",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_258.jpg"
         },
         {
           "id": "plate_cat_259",
@@ -6140,7 +6178,8 @@
             "choclo",
             "cebolla",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_259.jpg"
         },
         {
           "id": "plate_cat_260",
@@ -6160,7 +6199,8 @@
             "batata",
             "vegetariano",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_260.jpg"
         }
       ]
     },
@@ -6189,7 +6229,8 @@
             "rucula",
             "tomate",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_261.jpg"
         },
         {
           "id": "plate_cat_262",
@@ -6210,7 +6251,8 @@
             "cebolla",
             "morron",
             "horno"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_262.jpg"
         },
         {
           "id": "plate_cat_263",
@@ -6230,7 +6272,8 @@
             "papas",
             "queso",
             "horno"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_263.jpg"
         },
         {
           "id": "plate_cat_264",
@@ -6250,7 +6293,8 @@
             "horno",
             "romero",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_264.jpg"
         }
       ]
     },
@@ -6279,7 +6323,8 @@
             "nueces",
             "frio",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_265.jpg"
         },
         {
           "id": "plate_cat_266",
@@ -6299,7 +6344,8 @@
             "huevo",
             "ensalada",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_266.jpg"
         },
         {
           "id": "plate_cat_267",
@@ -6320,7 +6366,8 @@
             "queso",
             "frio",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_267.jpg"
         },
         {
           "id": "plate_cat_268",
@@ -6341,7 +6388,8 @@
             "atun",
             "frio",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_268.jpg"
         }
       ]
     },
@@ -6368,7 +6416,8 @@
             "cebolla",
             "carne",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_269.jpg"
         },
         {
           "id": "plate_cat_270",
@@ -6389,7 +6438,8 @@
             "calabaza",
             "pure",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_270.jpg"
         },
         {
           "id": "plate_cat_271",
@@ -6409,7 +6459,8 @@
             "puerro",
             "cazuela",
             "carne"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_271.jpg"
         },
         {
           "id": "plate_cat_272",
@@ -6429,7 +6480,8 @@
             "brocoli",
             "oliva",
             "limon"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_272.jpg"
         }
       ]
     },
@@ -6457,7 +6509,8 @@
             "tomate",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_273.jpg"
         },
         {
           "id": "plate_cat_274",
@@ -6477,7 +6530,8 @@
             "tomate",
             "queso",
             "lowcarb"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_274.jpg"
         },
         {
           "id": "plate_cat_275",
@@ -6498,7 +6552,8 @@
             "rucula",
             "lowcarb",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_275.jpg"
         },
         {
           "id": "plate_cat_276",
@@ -6518,7 +6573,8 @@
             "semillas",
             "lowcarb",
             "vegetariano"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_276.jpg"
         }
       ]
     },
@@ -6546,7 +6602,8 @@
             "calabaza",
             "pure",
             "manteca"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_277.jpg"
         },
         {
           "id": "plate_cat_278",
@@ -6566,7 +6623,8 @@
             "tomate",
             "pasta",
             "oliva"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_278.jpg"
         },
         {
           "id": "plate_cat_279",
@@ -6587,7 +6645,8 @@
             "morron",
             "verdeo",
             "cazuela"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_279.jpg"
         },
         {
           "id": "plate_cat_280",
@@ -6608,7 +6667,8 @@
             "tomate",
             "ensalada",
             "frio"
-          ]
+          ],
+          "imagen_url": "img/platos/plate_cat_280.jpg"
         }
       ]
     }
@@ -11956,7 +12016,7 @@
         "queso",
         "arroz"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_221.jpg",
       "lote_id": "lote_56",
       "lote_tema": "Platos Rápidos con Quesos y Huevos"
     },
@@ -11981,7 +12041,7 @@
         "rucula",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_222.jpg",
       "lote_id": "lote_56",
       "lote_tema": "Platos Rápidos con Quesos y Huevos"
     },
@@ -12004,7 +12064,7 @@
         "huevo",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_223.jpg",
       "lote_id": "lote_56",
       "lote_tema": "Platos Rápidos con Quesos y Huevos"
     },
@@ -12027,7 +12087,7 @@
         "papa",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_224.jpg",
       "lote_id": "lote_56",
       "lote_tema": "Platos Rápidos con Quesos y Huevos"
     },
@@ -12050,7 +12110,7 @@
         "aceitunas",
         "pescado"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_225.jpg",
       "lote_id": "lote_57",
       "lote_tema": "Pescados y Conservas al Plato"
     },
@@ -12072,7 +12132,7 @@
         "morron",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_226.jpg",
       "lote_id": "lote_57",
       "lote_tema": "Pescados y Conservas al Plato"
     },
@@ -12095,7 +12155,7 @@
         "horno",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_227.jpg",
       "lote_id": "lote_57",
       "lote_tema": "Pescados y Conservas al Plato"
     },
@@ -12118,7 +12178,7 @@
         "cazuela",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_228.jpg",
       "lote_id": "lote_57",
       "lote_tema": "Pescados y Conservas al Plato"
     },
@@ -12141,7 +12201,7 @@
         "choclo",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_229.jpg",
       "lote_id": "lote_58",
       "lote_tema": "Cortes Tradicionales a la Plancha"
     },
@@ -12164,7 +12224,7 @@
         "rucula",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_230.jpg",
       "lote_id": "lote_58",
       "lote_tema": "Cortes Tradicionales a la Plancha"
     },
@@ -12188,7 +12248,7 @@
         "tomate",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_231.jpg",
       "lote_id": "lote_58",
       "lote_tema": "Cortes Tradicionales a la Plancha"
     },
@@ -12211,7 +12271,7 @@
         "queso",
         "carne"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_232.jpg",
       "lote_id": "lote_58",
       "lote_tema": "Cortes Tradicionales a la Plancha"
     },
@@ -12236,7 +12296,7 @@
         "wok",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_233.jpg",
       "lote_id": "lote_59",
       "lote_tema": "Salteados y Woks Proteicos"
     },
@@ -12258,7 +12318,7 @@
         "arroz",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_234.jpg",
       "lote_id": "lote_59",
       "lote_tema": "Salteados y Woks Proteicos"
     },
@@ -12281,7 +12341,7 @@
         "wok",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_235.jpg",
       "lote_id": "lote_59",
       "lote_tema": "Salteados y Woks Proteicos"
     },
@@ -12305,7 +12365,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_236.jpg",
       "lote_id": "lote_59",
       "lote_tema": "Salteados y Woks Proteicos"
     },
@@ -12329,7 +12389,7 @@
         "bowl",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_237.jpg",
       "lote_id": "lote_60",
       "lote_tema": "Bowls Nutritivos de Avena Fría"
     },
@@ -12352,7 +12412,7 @@
         "semillas",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_238.jpg",
       "lote_id": "lote_60",
       "lote_tema": "Bowls Nutritivos de Avena Fría"
     },
@@ -12374,7 +12434,7 @@
         "pepino",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_239.jpg",
       "lote_id": "lote_60",
       "lote_tema": "Bowls Nutritivos de Avena Fría"
     },
@@ -12397,7 +12457,7 @@
         "nueces",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_240.jpg",
       "lote_id": "lote_60",
       "lote_tema": "Bowls Nutritivos de Avena Fría"
     },
@@ -12421,7 +12481,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_241.jpg",
       "lote_id": "lote_61",
       "lote_tema": "Cenas Low-Carb de Fuego Vivo"
     },
@@ -12445,7 +12505,7 @@
         "huevo",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_242.jpg",
       "lote_id": "lote_61",
       "lote_tema": "Cenas Low-Carb de Fuego Vivo"
     },
@@ -12469,7 +12529,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_243.jpg",
       "lote_id": "lote_61",
       "lote_tema": "Cenas Low-Carb de Fuego Vivo"
     },
@@ -12493,7 +12553,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_244.jpg",
       "lote_id": "lote_61",
       "lote_tema": "Cenas Low-Carb de Fuego Vivo"
     },
@@ -12516,7 +12576,7 @@
         "crema",
         "pasta"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_245.jpg",
       "lote_id": "lote_62",
       "lote_tema": "Pastas Caseras y Salsas Livianas"
     },
@@ -12539,7 +12599,7 @@
         "espinaca",
         "pasta"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_246.jpg",
       "lote_id": "lote_62",
       "lote_tema": "Pastas Caseras y Salsas Livianas"
     },
@@ -12562,7 +12622,7 @@
         "pasta",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_247.jpg",
       "lote_id": "lote_62",
       "lote_tema": "Pastas Caseras y Salsas Livianas"
     },
@@ -12584,7 +12644,7 @@
         "crema",
         "pasta"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_248.jpg",
       "lote_id": "lote_62",
       "lote_tema": "Pastas Caseras y Salsas Livianas"
     },
@@ -12608,7 +12668,7 @@
         "zanahoria",
         "morron"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_249.jpg",
       "lote_id": "lote_63",
       "lote_tema": "Olla Criolla y Cacerolas Calientes"
     },
@@ -12631,7 +12691,7 @@
         "cazuela",
         "estofado"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_250.jpg",
       "lote_id": "lote_63",
       "lote_tema": "Olla Criolla y Cacerolas Calientes"
     },
@@ -12653,7 +12713,7 @@
         "cebolla",
         "estofado"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_251.jpg",
       "lote_id": "lote_63",
       "lote_tema": "Olla Criolla y Cacerolas Calientes"
     },
@@ -12676,7 +12736,7 @@
         "guiso",
         "carne"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_252.jpg",
       "lote_id": "lote_63",
       "lote_tema": "Olla Criolla y Cacerolas Calientes"
     },
@@ -12701,7 +12761,7 @@
         "frio",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_253.jpg",
       "lote_id": "lote_64",
       "lote_tema": "Bowls de Pollo y Aves Frías"
     },
@@ -12724,7 +12784,7 @@
         "cherry",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_254.jpg",
       "lote_id": "lote_64",
       "lote_tema": "Bowls de Pollo y Aves Frías"
     },
@@ -12747,7 +12807,7 @@
         "frio",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_255.jpg",
       "lote_id": "lote_64",
       "lote_tema": "Bowls de Pollo y Aves Frías"
     },
@@ -12769,7 +12829,7 @@
         "pepino",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_256.jpg",
       "lote_id": "lote_64",
       "lote_tema": "Bowls de Pollo y Aves Frías"
     },
@@ -12793,7 +12853,7 @@
         "vegetariano",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_257.jpg",
       "lote_id": "lote_65",
       "lote_tema": "Platos Rápidos de Soja y Tofu"
     },
@@ -12816,7 +12876,7 @@
         "sesamo",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_258.jpg",
       "lote_id": "lote_65",
       "lote_tema": "Platos Rápidos de Soja y Tofu"
     },
@@ -12839,7 +12899,7 @@
         "cebolla",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_259.jpg",
       "lote_id": "lote_65",
       "lote_tema": "Platos Rápidos de Soja y Tofu"
     },
@@ -12862,7 +12922,7 @@
         "vegetariano",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_260.jpg",
       "lote_id": "lote_65",
       "lote_tema": "Platos Rápidos de Soja y Tofu"
     },
@@ -12887,7 +12947,7 @@
         "tomate",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_261.jpg",
       "lote_id": "lote_66",
       "lote_tema": "Clásicos Porteños al Horno"
     },
@@ -12911,7 +12971,7 @@
         "morron",
         "horno"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_262.jpg",
       "lote_id": "lote_66",
       "lote_tema": "Clásicos Porteños al Horno"
     },
@@ -12934,7 +12994,7 @@
         "queso",
         "horno"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_263.jpg",
       "lote_id": "lote_66",
       "lote_tema": "Clásicos Porteños al Horno"
     },
@@ -12957,7 +13017,7 @@
         "romero",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_264.jpg",
       "lote_id": "lote_66",
       "lote_tema": "Clásicos Porteños al Horno"
     },
@@ -12982,7 +13042,7 @@
         "frio",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_265.jpg",
       "lote_id": "lote_67",
       "lote_tema": "Ensaladas Verdes Completas"
     },
@@ -13005,7 +13065,7 @@
         "ensalada",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_266.jpg",
       "lote_id": "lote_67",
       "lote_tema": "Ensaladas Verdes Completas"
     },
@@ -13029,7 +13089,7 @@
         "frio",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_267.jpg",
       "lote_id": "lote_67",
       "lote_tema": "Ensaladas Verdes Completas"
     },
@@ -13053,7 +13113,7 @@
         "frio",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_268.jpg",
       "lote_id": "lote_67",
       "lote_tema": "Ensaladas Verdes Completas"
     },
@@ -13076,7 +13136,7 @@
         "carne",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_269.jpg",
       "lote_id": "lote_68",
       "lote_tema": "Guarniciones de Mandioca y Raíces"
     },
@@ -13100,7 +13160,7 @@
         "pure",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_270.jpg",
       "lote_id": "lote_68",
       "lote_tema": "Guarniciones de Mandioca y Raíces"
     },
@@ -13123,7 +13183,7 @@
         "cazuela",
         "carne"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_271.jpg",
       "lote_id": "lote_68",
       "lote_tema": "Guarniciones de Mandioca y Raíces"
     },
@@ -13146,7 +13206,7 @@
         "oliva",
         "limon"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_272.jpg",
       "lote_id": "lote_68",
       "lote_tema": "Guarniciones de Mandioca y Raíces"
     },
@@ -13170,7 +13230,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_273.jpg",
       "lote_id": "lote_69",
       "lote_tema": "Cenas Ligeras Rápidas sin Harinas"
     },
@@ -13193,7 +13253,7 @@
         "queso",
         "lowcarb"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_274.jpg",
       "lote_id": "lote_69",
       "lote_tema": "Cenas Ligeras Rápidas sin Harinas"
     },
@@ -13217,7 +13277,7 @@
         "lowcarb",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_275.jpg",
       "lote_id": "lote_69",
       "lote_tema": "Cenas Ligeras Rápidas sin Harinas"
     },
@@ -13240,7 +13300,7 @@
         "lowcarb",
         "vegetariano"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_276.jpg",
       "lote_id": "lote_69",
       "lote_tema": "Cenas Ligeras Rápidas sin Harinas"
     },
@@ -13264,7 +13324,7 @@
         "pure",
         "manteca"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_277.jpg",
       "lote_id": "lote_70",
       "lote_tema": "Menú Balanceado Final"
     },
@@ -13287,7 +13347,7 @@
         "pasta",
         "oliva"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_278.jpg",
       "lote_id": "lote_70",
       "lote_tema": "Menú Balanceado Final"
     },
@@ -13311,7 +13371,7 @@
         "verdeo",
         "cazuela"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_279.jpg",
       "lote_id": "lote_70",
       "lote_tema": "Menú Balanceado Final"
     },
@@ -13335,7 +13395,7 @@
         "ensalada",
         "frio"
       ],
-      "imagen_url": null,
+      "imagen_url": "img/platos/plate_cat_280.jpg",
       "lote_id": "lote_70",
       "lote_tema": "Menú Balanceado Final"
     }
