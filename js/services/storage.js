@@ -73,7 +73,7 @@ class StorageService {
 
   // --- CONFIGURACIÓN & API KEYS ---
   async getApiKey() {
-    return localStorage.getItem(KEYS.API_KEY) || '';
+    return localStorage.getItem(KEYS.API_KEY) || (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY) || '';
   }
 
   async saveApiKey(key) {
