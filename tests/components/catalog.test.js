@@ -15,10 +15,10 @@ test('Catálogo Maestro de Platos 2x2 - Estructura y Consistencia', async () => 
   const seedModule = await import('../../js/data/seed.js');
   const validCompIds = new Set(seedModule.INITIAL_SEED.components.map(c => c.id));
 
-  assert.equal(content.total_lotes, 70, 'Debe haber exactamente 70 lotes');
-  assert.equal(content.total_platos, 280, 'Debe haber exactamente 280 platos en el catálogo');
-  assert.equal(content.resumen_modos.caliente, 211, 'Debe haber 211 platos calientes');
-  assert.equal(content.resumen_modos.frio, 69, 'Debe haber 69 platos fríos');
+  assert.equal(content.total_lotes, 77, 'Debe haber exactamente 77 lotes');
+  assert.equal(content.total_platos, 308, 'Debe haber exactamente 308 platos en el catálogo');
+  assert.equal(content.resumen_modos.caliente, 236, 'Debe haber 236 platos calientes');
+  assert.equal(content.resumen_modos.frio, 72, 'Debe haber 72 platos fríos');
   assert.equal(content.resumen_carbo.sin_carbohidrato_low_carb, 67, 'Debe haber 67 platos sin carbohidrato (low-carb)');
 
   content.platos.forEach(p => {

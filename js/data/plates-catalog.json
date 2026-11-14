@@ -1,19 +1,19 @@
 {
-  "version": "2.1.0",
-  "total_lotes": 70,
-  "total_platos": 280,
+  "version": "2.2.0",
+  "total_lotes": 77,
+  "total_platos": 308,
   "checkpoint": {
     "estado": "completado",
-    "total_lotes_generados": 70,
-    "total_platos_generados": 280,
+    "total_lotes_generados": 77,
+    "total_platos_generados": 308,
     "total_platos_pendientes": 0
   },
   "resumen_modos": {
-    "caliente": 211,
-    "frio": 69
+    "caliente": 236,
+    "frio": 72
   },
   "resumen_carbo": {
-    "con_carbohidrato": 213,
+    "con_carbohidrato": 241,
     "sin_carbohidrato_low_carb": 67
   },
   "lotes": [
@@ -6669,6 +6669,644 @@
             "frio"
           ],
           "imagen_url": "img/platos/plate_cat_280.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_71",
+      "tema": "Cortes Vacunos y Batatas Asadas",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_281",
+          "cuadrante": "superior_izq",
+          "nombre": "Bife Magro a la Plancha con Batatas Caramelizadas y Rúcula",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_3",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_1",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 15,
+          "descripcion": "Bife sellado jugoso con marcas de plancha, servido con rodajas de batata dorada al horno con manteca y rúcula fresca con oliva.",
+          "prompt_cuadrante": "Bife vacuno sellado a la plancha bien jugoso con marcas doradas, acompañado de rodajas de batata asada dulce doradas con manteca y hojas de rúcula fresca.",
+          "tags": [
+            "bife",
+            "churrasco",
+            "carne",
+            "batata",
+            "camote",
+            "rucula",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_281.jpg"
+        },
+        {
+          "id": "plate_cat_282",
+          "cuadrante": "superior_der",
+          "nombre": "Pastel Invertido de Carne Picada con Cubierta de Batata",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_4",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_10",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 25,
+          "descripcion": "Picadillo sabroso de carne magra sofrita con cebolla dulce, gratinado bajo una capa suave y dorada de puré de batata con manteca.",
+          "prompt_cuadrante": "Porción de pastel casero de carne picada sofrita con cebolla dorada, cubierto con puré suave y dorado de batata dulce ligado con manteca.",
+          "tags": [
+            "pastel",
+            "carne picada",
+            "batata",
+            "cebolla",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_282.jpg"
+        },
+        {
+          "id": "plate_cat_283",
+          "cuadrante": "inferior_izq",
+          "nombre": "Bifes de Tortuguita a la Sartén con Batatas y Verdeo",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_6",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_13",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 18,
+          "descripcion": "Bifecitos tiernos de tortuguita sellados a fuego vivo con aros de cebollita de verdeo y rodajas delgadas de batata asada dulce.",
+          "prompt_cuadrante": "Bifecitos delgados de tortuguita vacuna sellados a la sartén con rodajitas de cebolla de verdeo fresca, acompañados de batatas asadas dulces al oliva.",
+          "tags": [
+            "tortuguita",
+            "carne",
+            "batata",
+            "verdeo",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_283.jpg"
+        },
+        {
+          "id": "plate_cat_284",
+          "cuadrante": "inferior_der",
+          "nombre": "Bife de Chorizo a la Plancha con Choclo Salteado y Tomate",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_3",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Bife a la plancha de hierro bien dorado con salteado de granos tiernos de choclo amarillo y rodajas de tomate aderezadas con oliva.",
+          "prompt_cuadrante": "Bife de chorizo grueso dorado a la plancha, servido al lado de choclo amarillo desgranado salteado y rodajas de tomate fresco con aceite de oliva.",
+          "tags": [
+            "bife",
+            "carne",
+            "choclo",
+            "tomate",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_284.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_72",
+      "tema": "Carne Picada Criolla, Mandioca y Quinoa",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_285",
+          "cuadrante": "superior_izq",
+          "nombre": "Salteado Campero de Carne Picada con Mandioca y Puerro",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_4",
+          "carbo_id": "comp_carb_7",
+          "vegetal_id": "comp_veg_13",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 18,
+          "descripcion": "Dados de mandioca tierna dorados a la sartén con carne picada sofrita, rodajas de puerro tierno y aceite de oliva virgen.",
+          "prompt_cuadrante": "Plato hondo de carne picada dorada a la sartén con trozos rústicos de mandioca hervida blanda y rodajitas de puerro salteado con oliva.",
+          "tags": [
+            "carne picada",
+            "mandioca",
+            "puerro",
+            "verdeo",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_285.jpg"
+        },
+        {
+          "id": "plate_cat_286",
+          "cuadrante": "superior_der",
+          "nombre": "Wok Rápido de Carne Molida con Quinoa y Zanahoria",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_4",
+          "carbo_id": "comp_carb_8",
+          "vegetal_id": "comp_veg_4",
+          "grasa_id": "comp_fat_5",
+          "tiempo_min": 15,
+          "descripcion": "Quinoa graneada esponjosa salteada al wok con carne molida dorada, tiritas de zanahoria crocante y toque de semillas tostadas.",
+          "prompt_cuadrante": "Salteado en plato de quinoa graneada suelta con carne picada magra dorada, finas tiras de zanahoria naranja y semillas de sésamo espolvoreadas.",
+          "tags": [
+            "carne picada",
+            "quinoa",
+            "zanahoria",
+            "semillas",
+            "wok"
+          ],
+          "imagen_url": "img/platos/plate_cat_286.jpg"
+        },
+        {
+          "id": "plate_cat_287",
+          "cuadrante": "inferior_izq",
+          "nombre": "Guisito Criollo de Tortuguita Estofada con Lentejas y Calabaza",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_6",
+          "carbo_id": "comp_carb_6",
+          "vegetal_id": "comp_veg_9",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 25,
+          "descripcion": "Dados tiernos de carne estofada en cazuela con lentejas pardinas cocidas, dados blandos de calabaza anco y fondo criollo de oliva.",
+          "prompt_cuadrante": "Cazuela casera servida en plato hondo de lentejas tiernas estofadas con trozos de carne vacuna suave y cubos dulces de calabaza anaranjada.",
+          "tags": [
+            "tortuguita",
+            "lentejas",
+            "calabaza",
+            "estofado",
+            "guiso"
+          ],
+          "imagen_url": "img/platos/plate_cat_287.jpg"
+        },
+        {
+          "id": "plate_cat_288",
+          "cuadrante": "inferior_der",
+          "nombre": "Pastel Criollo de Papas con Carne Picada, Aceitunas y Cebolla",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_4",
+          "carbo_id": "comp_carb_3",
+          "vegetal_id": "comp_veg_10",
+          "grasa_id": "comp_fat_3",
+          "tiempo_min": 25,
+          "descripcion": "Porción de pastel de papas tradicional con carne molida especiada, cebolla rehogada, trocitos de aceitunas verdes y puré gratinado.",
+          "prompt_cuadrante": "Porción casera de pastel de papas dorado al horno con costra rústica, relleno jugoso de carne picada con cebolla y rodajitas de aceitunas verdes.",
+          "tags": [
+            "pastel de papas",
+            "carne picada",
+            "aceitunas",
+            "cebolla"
+          ],
+          "imagen_url": "img/platos/plate_cat_288.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_73",
+      "tema": "Asado, Milanesas y Aves",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_289",
+          "cuadrante": "superior_izq",
+          "nombre": "Tira de Asado a la Plancha con Choclo Asado y Tomates",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_5",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 20,
+          "descripcion": "Costilla de asado dorada y crujiente a la plancha de hierro, acompañada de granos dorados de choclo dulce y gajos de tomate fresco con oliva.",
+          "prompt_cuadrante": "Tira de asado crujiente con hueso a la plancha de hierro, servida al lado de choclo amarillo desgranado asado y gajos de tomate fresco con oliva.",
+          "tags": [
+            "asado",
+            "carne",
+            "choclo",
+            "tomate",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_289.jpg"
+        },
+        {
+          "id": "plate_cat_290",
+          "cuadrante": "superior_der",
+          "nombre": "Cazuelita de Pata-Muslo al Horno con Choclo y Morrones",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_2",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_11",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 25,
+          "descripcion": "Pata-muslo dorada con hierbas servida junto a salteado casero de choclo dulce desgranado con tiras de morrón rojo y oliva.",
+          "prompt_cuadrante": "Pata-muslo de pollo asada dorada y crujiente con gajo de limón, acompañada de granos de choclo amarillo salteados con tiras de morrón rojo.",
+          "tags": [
+            "pollo",
+            "pata muslo",
+            "choclo",
+            "morron",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_290.jpg"
+        },
+        {
+          "id": "plate_cat_291",
+          "cuadrante": "inferior_izq",
+          "nombre": "Milanesa Crujiente de Carne con Arroz Blanco y Tomate",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_14",
+          "carbo_id": "comp_carb_1",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Clásica milanesa frita o al horno bien dorada con gajo de limón, acompañada de arroz blanco plano y rodajas de tomate aderezadas con oliva.",
+          "prompt_cuadrante": "Milanesa de carne dorada crocante con gajo de limón, servida con arroz blanco suelto y esparcido de forma plana con cuchara y rodajas de tomate con oliva.",
+          "tags": [
+            "milanesa",
+            "carne",
+            "arroz",
+            "tomate",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_291.jpg"
+        },
+        {
+          "id": "plate_cat_292",
+          "cuadrante": "inferior_der",
+          "nombre": "Milanesa de Pollo al Horno con Puré de Batata y Rúcula",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_14",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_1",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 20,
+          "descripcion": "Suprema empanada dorada al horno con limón, servida junto a puré dulce de batatas ligado con manteca y hojas de rúcula silvestre.",
+          "prompt_cuadrante": "Milanesa de pollo dorada crocante con limón, servida al lado de puré plano casero de batata dulce anaranjado con manteca y hojas verdes de rúcula.",
+          "tags": [
+            "milanesa",
+            "pollo",
+            "batata",
+            "rucula",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_292.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_74",
+      "tema": "Cerdo al Plato: Bondiola y Costillitas",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_293",
+          "cuadrante": "superior_izq",
+          "nombre": "Costillitas de Cerdo a la Plancha con Choclo y Morrón",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_12",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_11",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Costillita de cerdo jugosa con hueso dorada a la plancha, servida con choclo desgranado salteado con morrón rojo y pimentón dulce.",
+          "prompt_cuadrante": "Costillita de cerdo dorada a la plancha con limón, acompañada de choclo dulce salteado en sartén con tiras de morrón rojo y oliva.",
+          "tags": [
+            "cerdo",
+            "costillita",
+            "choclo",
+            "morron",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_293.jpg"
+        },
+        {
+          "id": "plate_cat_294",
+          "cuadrante": "superior_der",
+          "nombre": "Costillita de Cerdo con Mandioca Caliente y Cebolla Dorada",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_12",
+          "carbo_id": "comp_carb_7",
+          "vegetal_id": "comp_veg_10",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 18,
+          "descripcion": "Costillita de cerdo con gajos de limón, acompañada de trozos de mandioca hervida bien caliente salteados con manteca y cebolla dorada.",
+          "prompt_cuadrante": "Costillita de cerdo jugosa sellada a la plancha, servida con trozos de mandioca hervida caliente salteada con cebolla dorada dulce y manteca.",
+          "tags": [
+            "cerdo",
+            "costillita",
+            "mandioca",
+            "cebolla",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_294.jpg"
+        },
+        {
+          "id": "plate_cat_295",
+          "cuadrante": "inferior_izq",
+          "nombre": "Bondiola Grillada con Arroz Blanco y Zanahorias Salteadas",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_15",
+          "carbo_id": "comp_carb_1",
+          "vegetal_id": "comp_veg_4",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Medallones de bondiola tiernos sellados a la plancha con limón, servidos junto a porción plana de arroz blanco y finas ruedas de zanahoria al oliva.",
+          "prompt_cuadrante": "Medallón de bondiola de cerdo dorado a la plancha con hierbas, acompañado de arroz blanco plano suelto y rodajas finas de zanahoria cocida con oliva.",
+          "tags": [
+            "bondiola",
+            "cerdo",
+            "arroz",
+            "zanahoria",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_295.jpg"
+        },
+        {
+          "id": "plate_cat_296",
+          "cuadrante": "inferior_der",
+          "nombre": "Fideos Salteados con Tiras de Bondiola y Verdeo a la Manteca",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_15",
+          "carbo_id": "comp_carb_2",
+          "vegetal_id": "comp_veg_13",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 15,
+          "descripcion": "Pasta al dente salteada con manteca y abundante cebollita de verdeo fresca, acompañada de hebras doradas de bondiola de cerdo a la sartén.",
+          "prompt_cuadrante": "Plato de fideos al dente salteados a la manteca con abundante cebollita de verdeo picada y tiras doradas de bondiola de cerdo jugosa.",
+          "tags": [
+            "bondiola",
+            "cerdo",
+            "fideos",
+            "pasta",
+            "verdeo",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_296.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_75",
+      "tema": "Pescados y Cazuelas de Legumbres",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_297",
+          "cuadrante": "superior_izq",
+          "nombre": "Filete de Merluza a la Plancha con Salteado de Choclo y Zucchini",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_10",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_6",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 12,
+          "descripcion": "Pescado blanco dorado a la plancha con perejil y gajo de limón, acompañado de salteado de granos de choclo y rodajas tiernas de zucchini con oliva.",
+          "prompt_cuadrante": "Filete de merluza dorada a la plancha con perejil y limón, servido junto a salteado de granos de choclo dulce y rodajitas de zucchini con oliva.",
+          "tags": [
+            "merluza",
+            "pescado",
+            "choclo",
+            "zucchini",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_297.jpg"
+        },
+        {
+          "id": "plate_cat_298",
+          "cuadrante": "superior_der",
+          "nombre": "Merluza al Vapor sobre Quinoa Esponjosa y Brócoli",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_10",
+          "carbo_id": "comp_carb_8",
+          "vegetal_id": "comp_veg_5",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Filete de merluza suave al vapor perfumado con limón y oliva, servido sobre base de quinoa graneada y arbolitos verdes de brócoli al vapor.",
+          "prompt_cuadrante": "Filete de merluza blanca al vapor con gajo de limón, servido sobre porción plana de quinoa graneada suelta y ramilletes de brócoli al vapor verde brillante.",
+          "tags": [
+            "merluza",
+            "pescado",
+            "quinoa",
+            "brocoli",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_298.jpg"
+        },
+        {
+          "id": "plate_cat_299",
+          "cuadrante": "inferior_izq",
+          "nombre": "Merluza al Horno con Batatas Doradas, Cebolla y Oliva",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_10",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_10",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 18,
+          "descripcion": "Pescado blanco al horno sobre rodajas doradas de batata dulce asada y colchón de cebollas tiernas caramelizadas con aceite de oliva.",
+          "prompt_cuadrante": "Filete de merluza horneada con limón sobre rodajas doradas de batata dulce asada y cebolla rehogada dulce con aceite de oliva.",
+          "tags": [
+            "merluza",
+            "pescado",
+            "batata",
+            "cebolla",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_299.jpg"
+        },
+        {
+          "id": "plate_cat_300",
+          "cuadrante": "inferior_der",
+          "nombre": "Cazuela Rápida de Lentejas con Dados de Tofu y Zanahoria",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_13",
+          "carbo_id": "comp_carb_6",
+          "vegetal_id": "comp_veg_4",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Lentejas cocidas al pimentón con daditos de zanahoria tierna, coronadas con cubos crocantes de tofu sellado a la plancha con oliva.",
+          "prompt_cuadrante": "Plato hondo de lentejas cocidas en caldo sabroso con dados de zanahoria tierna, coronadas con cubos dorados y crocantes de tofu a la plancha.",
+          "tags": [
+            "tofu",
+            "lentejas",
+            "zanahoria",
+            "cazuela",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_300.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_76",
+      "tema": "Huevos, Bowls y Ensaladas de Choclo",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_301",
+          "cuadrante": "superior_izq",
+          "nombre": "Revuelto Criollo de Choclo Dulce, Huevos y Tomate Asado",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_8",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 10,
+          "descripcion": "Huevos revueltos tiernos ligados en sartén con granos de choclo dulce y gajos de tomate apenas dorados al oliva.",
+          "prompt_cuadrante": "Huevos revueltos esponjosos y cremosos salteados en sartén con granos de choclo amarillo y rodajas de tomate asado con orégano y oliva.",
+          "tags": [
+            "huevo",
+            "revuelto",
+            "choclo",
+            "tomate",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_301.jpg"
+        },
+        {
+          "id": "plate_cat_302",
+          "cuadrante": "superior_der",
+          "nombre": "Bowl Tibio de Quinoa con Huevos Revueltos y Espinacas a la Manteca",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_8",
+          "carbo_id": "comp_carb_8",
+          "vegetal_id": "comp_veg_7",
+          "grasa_id": "comp_fat_7",
+          "tiempo_min": 12,
+          "descripcion": "Plato hondo con quinoa caliente desgranada, huevos cremosos revueltos a la manteca y hojas de espinaca fresca salteadas.",
+          "prompt_cuadrante": "Plato hondo con base plana de quinoa caliente, acompañado de huevos revueltos suaves a la manteca y hojas verdes de espinaca salteada.",
+          "tags": [
+            "huevo",
+            "revuelto",
+            "quinoa",
+            "espinaca",
+            "manteca"
+          ],
+          "imagen_url": "img/platos/plate_cat_302.jpg"
+        },
+        {
+          "id": "plate_cat_303",
+          "cuadrante": "inferior_izq",
+          "nombre": "Ensalada Tibia de Batatas con Huevo Duro y Hojas Verdes",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_9",
+          "carbo_id": "comp_carb_4",
+          "vegetal_id": "comp_veg_1",
+          "grasa_id": "comp_fat_1",
+          "tiempo_min": 15,
+          "descripcion": "Cuartos de huevo duro casero sobre colchón de rúcula fresca, acompañados de dados de batata asada tibia con aceite de oliva extra virgen.",
+          "prompt_cuadrante": "Cuartos de huevo duro con yema cremosa sobre hojas verdes de rúcula y lechuga, acompañados de dados dorados de batata asada tibia con oliva.",
+          "tags": [
+            "huevo duro",
+            "batata",
+            "rucula",
+            "ensalada",
+            "oliva"
+          ],
+          "imagen_url": "img/platos/plate_cat_303.jpg"
+        },
+        {
+          "id": "plate_cat_304",
+          "cuadrante": "inferior_der",
+          "nombre": "Ensalada Fresca de Choclo Desgranado, Huevo Duro, Tomate y Aceitunas",
+          "modo": "frio",
+          "proteina_id": "comp_prot_9",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_3",
+          "tiempo_min": 10,
+          "descripcion": "Ensalada veraniega servida en plato de loza con granos de choclo tierno, mitades de huevo duro, cubos de tomate fresco y aceitunas negras fileteadas.",
+          "prompt_cuadrante": "Plato de ensalada fresca y colorida con granos de choclo amarillo dulce, cuartos de huevo duro, dados de tomate fresco y aceitunas negras con oliva.",
+          "tags": [
+            "huevo duro",
+            "choclo",
+            "tomate",
+            "aceitunas",
+            "frio"
+          ],
+          "imagen_url": "img/platos/plate_cat_304.jpg"
+        }
+      ]
+    },
+    {
+      "lote_id": "lote_77",
+      "tema": "Proteínas Vegetales: Tofu, Soja y Quesos",
+      "tipo": "caliente",
+      "platos": [
+        {
+          "id": "plate_cat_305",
+          "cuadrante": "superior_izq",
+          "nombre": "Wok de Tofu Dorado con Choclo Dulce, Morrón y Sésamo",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_13",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_11",
+          "grasa_id": "comp_fat_5",
+          "tiempo_min": 12,
+          "descripcion": "Cubos de tofu bien dorados y crocantes salteados al wok con choclo desgranado, tiras de pimiento rojo y lluvia de semillas de sésamo tostadas.",
+          "prompt_cuadrante": "Cubos dorados y crocantes de tofu salteados al wok con choclo amarillo dulce, tiras brillantes de morrón rojo y semillas de sésamo tostadas.",
+          "tags": [
+            "tofu",
+            "choclo",
+            "morron",
+            "semillas",
+            "wok"
+          ],
+          "imagen_url": "img/platos/plate_cat_305.jpg"
+        },
+        {
+          "id": "plate_cat_306",
+          "cuadrante": "superior_der",
+          "nombre": "Bowl de Avena Fría con Tofu Marinado, Pepino y Palta",
+          "modo": "frio",
+          "proteina_id": "comp_prot_13",
+          "carbo_id": "comp_carb_9",
+          "vegetal_id": "comp_veg_16",
+          "grasa_id": "comp_fat_2",
+          "tiempo_min": 8,
+          "descripcion": "Base de avena arrollada hidratada en frío con dados de tofu marinado, finas láminas de pepino crujiente y abanico de palta madura con limón.",
+          "prompt_cuadrante": "Bowl fresco con base de avena arrollada hidratada fría, dados de tofu dorado, finas rodajitas de pepino fresco y gajos de palta con oliva.",
+          "tags": [
+            "tofu",
+            "avena",
+            "pepino",
+            "palta",
+            "frio"
+          ],
+          "imagen_url": "img/platos/plate_cat_306.jpg"
+        },
+        {
+          "id": "plate_cat_307",
+          "cuadrante": "inferior_izq",
+          "nombre": "Salpicón Frío de Queso Port Salut, Choclo, Tomate y Aceitunas",
+          "modo": "frio",
+          "proteina_id": "comp_prot_16",
+          "carbo_id": "comp_carb_5",
+          "vegetal_id": "comp_veg_2",
+          "grasa_id": "comp_fat_3",
+          "tiempo_min": 8,
+          "descripcion": "Cubos frescos de queso port salut entremezclados con choclo dulce hervido, tomates cherry partidos al medio y aceitunas verdes con oliva.",
+          "prompt_cuadrante": "Plato de ensalada fría con dados blancos de queso port salut fresco, granos de choclo amarillo dulce, tomates cherry y aceitunas verdes con oliva.",
+          "tags": [
+            "queso port salut",
+            "choclo",
+            "tomate",
+            "aceitunas",
+            "frio"
+          ],
+          "imagen_url": "img/platos/plate_cat_307.jpg"
+        },
+        {
+          "id": "plate_cat_308",
+          "cuadrante": "inferior_der",
+          "nombre": "Bowl de Quinoa con Soja Texturizada, Zucchini y Semillas",
+          "modo": "caliente",
+          "proteina_id": "comp_prot_18",
+          "carbo_id": "comp_carb_8",
+          "vegetal_id": "comp_veg_6",
+          "grasa_id": "comp_fat_5",
+          "tiempo_min": 15,
+          "descripcion": "Quinoa graneada caliente servida con soja texturizada crocante, medias lunas de zucchini selladas a la plancha y mix de semillas de girasol.",
+          "prompt_cuadrante": "Bowl caliente con base plana de quinoa esponjosa, soja texturizada sofrita dorada crocante, rodajas de zucchini salteado y semillas de girasol.",
+          "tags": [
+            "soja texturizada",
+            "quinoa",
+            "zucchini",
+            "semillas"
+          ],
+          "imagen_url": "img/platos/plate_cat_308.jpg"
         }
       ]
     }
@@ -13398,6 +14036,651 @@
       "imagen_url": "img/platos/plate_cat_280.jpg",
       "lote_id": "lote_70",
       "lote_tema": "Menú Balanceado Final"
+    },
+    {
+      "id": "plate_cat_281",
+      "cuadrante": "superior_izq",
+      "nombre": "Bife Magro a la Plancha con Batatas Caramelizadas y Rúcula",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_3",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_1",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 15,
+      "descripcion": "Bife sellado jugoso con marcas de plancha, servido con rodajas de batata dorada al horno con manteca y rúcula fresca con oliva.",
+      "prompt_cuadrante": "Bife vacuno sellado a la plancha bien jugoso con marcas doradas, acompañado de rodajas de batata asada dulce doradas con manteca y hojas de rúcula fresca.",
+      "tags": [
+        "bife",
+        "churrasco",
+        "carne",
+        "batata",
+        "camote",
+        "rucula",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_281.jpg",
+      "lote_id": "lote_71",
+      "lote_tema": "Cortes Vacunos y Batatas Asadas"
+    },
+    {
+      "id": "plate_cat_282",
+      "cuadrante": "superior_der",
+      "nombre": "Pastel Invertido de Carne Picada con Cubierta de Batata",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_4",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_10",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 25,
+      "descripcion": "Picadillo sabroso de carne magra sofrita con cebolla dulce, gratinado bajo una capa suave y dorada de puré de batata con manteca.",
+      "prompt_cuadrante": "Porción de pastel casero de carne picada sofrita con cebolla dorada, cubierto con puré suave y dorado de batata dulce ligado con manteca.",
+      "tags": [
+        "pastel",
+        "carne picada",
+        "batata",
+        "cebolla",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_282.jpg",
+      "lote_id": "lote_71",
+      "lote_tema": "Cortes Vacunos y Batatas Asadas"
+    },
+    {
+      "id": "plate_cat_283",
+      "cuadrante": "inferior_izq",
+      "nombre": "Bifes de Tortuguita a la Sartén con Batatas y Verdeo",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_6",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_13",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 18,
+      "descripcion": "Bifecitos tiernos de tortuguita sellados a fuego vivo con aros de cebollita de verdeo y rodajas delgadas de batata asada dulce.",
+      "prompt_cuadrante": "Bifecitos delgados de tortuguita vacuna sellados a la sartén con rodajitas de cebolla de verdeo fresca, acompañados de batatas asadas dulces al oliva.",
+      "tags": [
+        "tortuguita",
+        "carne",
+        "batata",
+        "verdeo",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_283.jpg",
+      "lote_id": "lote_71",
+      "lote_tema": "Cortes Vacunos y Batatas Asadas"
+    },
+    {
+      "id": "plate_cat_284",
+      "cuadrante": "inferior_der",
+      "nombre": "Bife de Chorizo a la Plancha con Choclo Salteado y Tomate",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_3",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Bife a la plancha de hierro bien dorado con salteado de granos tiernos de choclo amarillo y rodajas de tomate aderezadas con oliva.",
+      "prompt_cuadrante": "Bife de chorizo grueso dorado a la plancha, servido al lado de choclo amarillo desgranado salteado y rodajas de tomate fresco con aceite de oliva.",
+      "tags": [
+        "bife",
+        "carne",
+        "choclo",
+        "tomate",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_284.jpg",
+      "lote_id": "lote_71",
+      "lote_tema": "Cortes Vacunos y Batatas Asadas"
+    },
+    {
+      "id": "plate_cat_285",
+      "cuadrante": "superior_izq",
+      "nombre": "Salteado Campero de Carne Picada con Mandioca y Puerro",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_4",
+      "carbo_id": "comp_carb_7",
+      "vegetal_id": "comp_veg_13",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 18,
+      "descripcion": "Dados de mandioca tierna dorados a la sartén con carne picada sofrita, rodajas de puerro tierno y aceite de oliva virgen.",
+      "prompt_cuadrante": "Plato hondo de carne picada dorada a la sartén con trozos rústicos de mandioca hervida blanda y rodajitas de puerro salteado con oliva.",
+      "tags": [
+        "carne picada",
+        "mandioca",
+        "puerro",
+        "verdeo",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_285.jpg",
+      "lote_id": "lote_72",
+      "lote_tema": "Carne Picada Criolla, Mandioca y Quinoa"
+    },
+    {
+      "id": "plate_cat_286",
+      "cuadrante": "superior_der",
+      "nombre": "Wok Rápido de Carne Molida con Quinoa y Zanahoria",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_4",
+      "carbo_id": "comp_carb_8",
+      "vegetal_id": "comp_veg_4",
+      "grasa_id": "comp_fat_5",
+      "tiempo_min": 15,
+      "descripcion": "Quinoa graneada esponjosa salteada al wok con carne molida dorada, tiritas de zanahoria crocante y toque de semillas tostadas.",
+      "prompt_cuadrante": "Salteado en plato de quinoa graneada suelta con carne picada magra dorada, finas tiras de zanahoria naranja y semillas de sésamo espolvoreadas.",
+      "tags": [
+        "carne picada",
+        "quinoa",
+        "zanahoria",
+        "semillas",
+        "wok"
+      ],
+      "imagen_url": "img/platos/plate_cat_286.jpg",
+      "lote_id": "lote_72",
+      "lote_tema": "Carne Picada Criolla, Mandioca y Quinoa"
+    },
+    {
+      "id": "plate_cat_287",
+      "cuadrante": "inferior_izq",
+      "nombre": "Guisito Criollo de Tortuguita Estofada con Lentejas y Calabaza",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_6",
+      "carbo_id": "comp_carb_6",
+      "vegetal_id": "comp_veg_9",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 25,
+      "descripcion": "Dados tiernos de carne estofada en cazuela con lentejas pardinas cocidas, dados blandos de calabaza anco y fondo criollo de oliva.",
+      "prompt_cuadrante": "Cazuela casera servida en plato hondo de lentejas tiernas estofadas con trozos de carne vacuna suave y cubos dulces de calabaza anaranjada.",
+      "tags": [
+        "tortuguita",
+        "lentejas",
+        "calabaza",
+        "estofado",
+        "guiso"
+      ],
+      "imagen_url": "img/platos/plate_cat_287.jpg",
+      "lote_id": "lote_72",
+      "lote_tema": "Carne Picada Criolla, Mandioca y Quinoa"
+    },
+    {
+      "id": "plate_cat_288",
+      "cuadrante": "inferior_der",
+      "nombre": "Pastel Criollo de Papas con Carne Picada, Aceitunas y Cebolla",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_4",
+      "carbo_id": "comp_carb_3",
+      "vegetal_id": "comp_veg_10",
+      "grasa_id": "comp_fat_3",
+      "tiempo_min": 25,
+      "descripcion": "Porción de pastel de papas tradicional con carne molida especiada, cebolla rehogada, trocitos de aceitunas verdes y puré gratinado.",
+      "prompt_cuadrante": "Porción casera de pastel de papas dorado al horno con costra rústica, relleno jugoso de carne picada con cebolla y rodajitas de aceitunas verdes.",
+      "tags": [
+        "pastel de papas",
+        "carne picada",
+        "aceitunas",
+        "cebolla"
+      ],
+      "imagen_url": "img/platos/plate_cat_288.jpg",
+      "lote_id": "lote_72",
+      "lote_tema": "Carne Picada Criolla, Mandioca y Quinoa"
+    },
+    {
+      "id": "plate_cat_289",
+      "cuadrante": "superior_izq",
+      "nombre": "Tira de Asado a la Plancha con Choclo Asado y Tomates",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_5",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 20,
+      "descripcion": "Costilla de asado dorada y crujiente a la plancha de hierro, acompañada de granos dorados de choclo dulce y gajos de tomate fresco con oliva.",
+      "prompt_cuadrante": "Tira de asado crujiente con hueso a la plancha de hierro, servida al lado de choclo amarillo desgranado asado y gajos de tomate fresco con oliva.",
+      "tags": [
+        "asado",
+        "carne",
+        "choclo",
+        "tomate",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_289.jpg",
+      "lote_id": "lote_73",
+      "lote_tema": "Asado, Milanesas y Aves"
+    },
+    {
+      "id": "plate_cat_290",
+      "cuadrante": "superior_der",
+      "nombre": "Cazuelita de Pata-Muslo al Horno con Choclo y Morrones",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_2",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_11",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 25,
+      "descripcion": "Pata-muslo dorada con hierbas servida junto a salteado casero de choclo dulce desgranado con tiras de morrón rojo y oliva.",
+      "prompt_cuadrante": "Pata-muslo de pollo asada dorada y crujiente con gajo de limón, acompañada de granos de choclo amarillo salteados con tiras de morrón rojo.",
+      "tags": [
+        "pollo",
+        "pata muslo",
+        "choclo",
+        "morron",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_290.jpg",
+      "lote_id": "lote_73",
+      "lote_tema": "Asado, Milanesas y Aves"
+    },
+    {
+      "id": "plate_cat_291",
+      "cuadrante": "inferior_izq",
+      "nombre": "Milanesa Crujiente de Carne con Arroz Blanco y Tomate",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_14",
+      "carbo_id": "comp_carb_1",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Clásica milanesa frita o al horno bien dorada con gajo de limón, acompañada de arroz blanco plano y rodajas de tomate aderezadas con oliva.",
+      "prompt_cuadrante": "Milanesa de carne dorada crocante con gajo de limón, servida con arroz blanco suelto y esparcido de forma plana con cuchara y rodajas de tomate con oliva.",
+      "tags": [
+        "milanesa",
+        "carne",
+        "arroz",
+        "tomate",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_291.jpg",
+      "lote_id": "lote_73",
+      "lote_tema": "Asado, Milanesas y Aves"
+    },
+    {
+      "id": "plate_cat_292",
+      "cuadrante": "inferior_der",
+      "nombre": "Milanesa de Pollo al Horno con Puré de Batata y Rúcula",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_14",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_1",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 20,
+      "descripcion": "Suprema empanada dorada al horno con limón, servida junto a puré dulce de batatas ligado con manteca y hojas de rúcula silvestre.",
+      "prompt_cuadrante": "Milanesa de pollo dorada crocante con limón, servida al lado de puré plano casero de batata dulce anaranjado con manteca y hojas verdes de rúcula.",
+      "tags": [
+        "milanesa",
+        "pollo",
+        "batata",
+        "rucula",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_292.jpg",
+      "lote_id": "lote_73",
+      "lote_tema": "Asado, Milanesas y Aves"
+    },
+    {
+      "id": "plate_cat_293",
+      "cuadrante": "superior_izq",
+      "nombre": "Costillitas de Cerdo a la Plancha con Choclo y Morrón",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_12",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_11",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Costillita de cerdo jugosa con hueso dorada a la plancha, servida con choclo desgranado salteado con morrón rojo y pimentón dulce.",
+      "prompt_cuadrante": "Costillita de cerdo dorada a la plancha con limón, acompañada de choclo dulce salteado en sartén con tiras de morrón rojo y oliva.",
+      "tags": [
+        "cerdo",
+        "costillita",
+        "choclo",
+        "morron",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_293.jpg",
+      "lote_id": "lote_74",
+      "lote_tema": "Cerdo al Plato: Bondiola y Costillitas"
+    },
+    {
+      "id": "plate_cat_294",
+      "cuadrante": "superior_der",
+      "nombre": "Costillita de Cerdo con Mandioca Caliente y Cebolla Dorada",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_12",
+      "carbo_id": "comp_carb_7",
+      "vegetal_id": "comp_veg_10",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 18,
+      "descripcion": "Costillita de cerdo con gajos de limón, acompañada de trozos de mandioca hervida bien caliente salteados con manteca y cebolla dorada.",
+      "prompt_cuadrante": "Costillita de cerdo jugosa sellada a la plancha, servida con trozos de mandioca hervida caliente salteada con cebolla dorada dulce y manteca.",
+      "tags": [
+        "cerdo",
+        "costillita",
+        "mandioca",
+        "cebolla",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_294.jpg",
+      "lote_id": "lote_74",
+      "lote_tema": "Cerdo al Plato: Bondiola y Costillitas"
+    },
+    {
+      "id": "plate_cat_295",
+      "cuadrante": "inferior_izq",
+      "nombre": "Bondiola Grillada con Arroz Blanco y Zanahorias Salteadas",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_15",
+      "carbo_id": "comp_carb_1",
+      "vegetal_id": "comp_veg_4",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Medallones de bondiola tiernos sellados a la plancha con limón, servidos junto a porción plana de arroz blanco y finas ruedas de zanahoria al oliva.",
+      "prompt_cuadrante": "Medallón de bondiola de cerdo dorado a la plancha con hierbas, acompañado de arroz blanco plano suelto y rodajas finas de zanahoria cocida con oliva.",
+      "tags": [
+        "bondiola",
+        "cerdo",
+        "arroz",
+        "zanahoria",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_295.jpg",
+      "lote_id": "lote_74",
+      "lote_tema": "Cerdo al Plato: Bondiola y Costillitas"
+    },
+    {
+      "id": "plate_cat_296",
+      "cuadrante": "inferior_der",
+      "nombre": "Fideos Salteados con Tiras de Bondiola y Verdeo a la Manteca",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_15",
+      "carbo_id": "comp_carb_2",
+      "vegetal_id": "comp_veg_13",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 15,
+      "descripcion": "Pasta al dente salteada con manteca y abundante cebollita de verdeo fresca, acompañada de hebras doradas de bondiola de cerdo a la sartén.",
+      "prompt_cuadrante": "Plato de fideos al dente salteados a la manteca con abundante cebollita de verdeo picada y tiras doradas de bondiola de cerdo jugosa.",
+      "tags": [
+        "bondiola",
+        "cerdo",
+        "fideos",
+        "pasta",
+        "verdeo",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_296.jpg",
+      "lote_id": "lote_74",
+      "lote_tema": "Cerdo al Plato: Bondiola y Costillitas"
+    },
+    {
+      "id": "plate_cat_297",
+      "cuadrante": "superior_izq",
+      "nombre": "Filete de Merluza a la Plancha con Salteado de Choclo y Zucchini",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_10",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_6",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 12,
+      "descripcion": "Pescado blanco dorado a la plancha con perejil y gajo de limón, acompañado de salteado de granos de choclo y rodajas tiernas de zucchini con oliva.",
+      "prompt_cuadrante": "Filete de merluza dorada a la plancha con perejil y limón, servido junto a salteado de granos de choclo dulce y rodajitas de zucchini con oliva.",
+      "tags": [
+        "merluza",
+        "pescado",
+        "choclo",
+        "zucchini",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_297.jpg",
+      "lote_id": "lote_75",
+      "lote_tema": "Pescados y Cazuelas de Legumbres"
+    },
+    {
+      "id": "plate_cat_298",
+      "cuadrante": "superior_der",
+      "nombre": "Merluza al Vapor sobre Quinoa Esponjosa y Brócoli",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_10",
+      "carbo_id": "comp_carb_8",
+      "vegetal_id": "comp_veg_5",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Filete de merluza suave al vapor perfumado con limón y oliva, servido sobre base de quinoa graneada y arbolitos verdes de brócoli al vapor.",
+      "prompt_cuadrante": "Filete de merluza blanca al vapor con gajo de limón, servido sobre porción plana de quinoa graneada suelta y ramilletes de brócoli al vapor verde brillante.",
+      "tags": [
+        "merluza",
+        "pescado",
+        "quinoa",
+        "brocoli",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_298.jpg",
+      "lote_id": "lote_75",
+      "lote_tema": "Pescados y Cazuelas de Legumbres"
+    },
+    {
+      "id": "plate_cat_299",
+      "cuadrante": "inferior_izq",
+      "nombre": "Merluza al Horno con Batatas Doradas, Cebolla y Oliva",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_10",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_10",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 18,
+      "descripcion": "Pescado blanco al horno sobre rodajas doradas de batata dulce asada y colchón de cebollas tiernas caramelizadas con aceite de oliva.",
+      "prompt_cuadrante": "Filete de merluza horneada con limón sobre rodajas doradas de batata dulce asada y cebolla rehogada dulce con aceite de oliva.",
+      "tags": [
+        "merluza",
+        "pescado",
+        "batata",
+        "cebolla",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_299.jpg",
+      "lote_id": "lote_75",
+      "lote_tema": "Pescados y Cazuelas de Legumbres"
+    },
+    {
+      "id": "plate_cat_300",
+      "cuadrante": "inferior_der",
+      "nombre": "Cazuela Rápida de Lentejas con Dados de Tofu y Zanahoria",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_13",
+      "carbo_id": "comp_carb_6",
+      "vegetal_id": "comp_veg_4",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Lentejas cocidas al pimentón con daditos de zanahoria tierna, coronadas con cubos crocantes de tofu sellado a la plancha con oliva.",
+      "prompt_cuadrante": "Plato hondo de lentejas cocidas en caldo sabroso con dados de zanahoria tierna, coronadas con cubos dorados y crocantes de tofu a la plancha.",
+      "tags": [
+        "tofu",
+        "lentejas",
+        "zanahoria",
+        "cazuela",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_300.jpg",
+      "lote_id": "lote_75",
+      "lote_tema": "Pescados y Cazuelas de Legumbres"
+    },
+    {
+      "id": "plate_cat_301",
+      "cuadrante": "superior_izq",
+      "nombre": "Revuelto Criollo de Choclo Dulce, Huevos y Tomate Asado",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_8",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 10,
+      "descripcion": "Huevos revueltos tiernos ligados en sartén con granos de choclo dulce y gajos de tomate apenas dorados al oliva.",
+      "prompt_cuadrante": "Huevos revueltos esponjosos y cremosos salteados en sartén con granos de choclo amarillo y rodajas de tomate asado con orégano y oliva.",
+      "tags": [
+        "huevo",
+        "revuelto",
+        "choclo",
+        "tomate",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_301.jpg",
+      "lote_id": "lote_76",
+      "lote_tema": "Huevos, Bowls y Ensaladas de Choclo"
+    },
+    {
+      "id": "plate_cat_302",
+      "cuadrante": "superior_der",
+      "nombre": "Bowl Tibio de Quinoa con Huevos Revueltos y Espinacas a la Manteca",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_8",
+      "carbo_id": "comp_carb_8",
+      "vegetal_id": "comp_veg_7",
+      "grasa_id": "comp_fat_7",
+      "tiempo_min": 12,
+      "descripcion": "Plato hondo con quinoa caliente desgranada, huevos cremosos revueltos a la manteca y hojas de espinaca fresca salteadas.",
+      "prompt_cuadrante": "Plato hondo con base plana de quinoa caliente, acompañado de huevos revueltos suaves a la manteca y hojas verdes de espinaca salteada.",
+      "tags": [
+        "huevo",
+        "revuelto",
+        "quinoa",
+        "espinaca",
+        "manteca"
+      ],
+      "imagen_url": "img/platos/plate_cat_302.jpg",
+      "lote_id": "lote_76",
+      "lote_tema": "Huevos, Bowls y Ensaladas de Choclo"
+    },
+    {
+      "id": "plate_cat_303",
+      "cuadrante": "inferior_izq",
+      "nombre": "Ensalada Tibia de Batatas con Huevo Duro y Hojas Verdes",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_9",
+      "carbo_id": "comp_carb_4",
+      "vegetal_id": "comp_veg_1",
+      "grasa_id": "comp_fat_1",
+      "tiempo_min": 15,
+      "descripcion": "Cuartos de huevo duro casero sobre colchón de rúcula fresca, acompañados de dados de batata asada tibia con aceite de oliva extra virgen.",
+      "prompt_cuadrante": "Cuartos de huevo duro con yema cremosa sobre hojas verdes de rúcula y lechuga, acompañados de dados dorados de batata asada tibia con oliva.",
+      "tags": [
+        "huevo duro",
+        "batata",
+        "rucula",
+        "ensalada",
+        "oliva"
+      ],
+      "imagen_url": "img/platos/plate_cat_303.jpg",
+      "lote_id": "lote_76",
+      "lote_tema": "Huevos, Bowls y Ensaladas de Choclo"
+    },
+    {
+      "id": "plate_cat_304",
+      "cuadrante": "inferior_der",
+      "nombre": "Ensalada Fresca de Choclo Desgranado, Huevo Duro, Tomate y Aceitunas",
+      "modo": "frio",
+      "proteina_id": "comp_prot_9",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_3",
+      "tiempo_min": 10,
+      "descripcion": "Ensalada veraniega servida en plato de loza con granos de choclo tierno, mitades de huevo duro, cubos de tomate fresco y aceitunas negras fileteadas.",
+      "prompt_cuadrante": "Plato de ensalada fresca y colorida con granos de choclo amarillo dulce, cuartos de huevo duro, dados de tomate fresco y aceitunas negras con oliva.",
+      "tags": [
+        "huevo duro",
+        "choclo",
+        "tomate",
+        "aceitunas",
+        "frio"
+      ],
+      "imagen_url": "img/platos/plate_cat_304.jpg",
+      "lote_id": "lote_76",
+      "lote_tema": "Huevos, Bowls y Ensaladas de Choclo"
+    },
+    {
+      "id": "plate_cat_305",
+      "cuadrante": "superior_izq",
+      "nombre": "Wok de Tofu Dorado con Choclo Dulce, Morrón y Sésamo",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_13",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_11",
+      "grasa_id": "comp_fat_5",
+      "tiempo_min": 12,
+      "descripcion": "Cubos de tofu bien dorados y crocantes salteados al wok con choclo desgranado, tiras de pimiento rojo y lluvia de semillas de sésamo tostadas.",
+      "prompt_cuadrante": "Cubos dorados y crocantes de tofu salteados al wok con choclo amarillo dulce, tiras brillantes de morrón rojo y semillas de sésamo tostadas.",
+      "tags": [
+        "tofu",
+        "choclo",
+        "morron",
+        "semillas",
+        "wok"
+      ],
+      "imagen_url": "img/platos/plate_cat_305.jpg",
+      "lote_id": "lote_77",
+      "lote_tema": "Proteínas Vegetales: Tofu, Soja y Quesos"
+    },
+    {
+      "id": "plate_cat_306",
+      "cuadrante": "superior_der",
+      "nombre": "Bowl de Avena Fría con Tofu Marinado, Pepino y Palta",
+      "modo": "frio",
+      "proteina_id": "comp_prot_13",
+      "carbo_id": "comp_carb_9",
+      "vegetal_id": "comp_veg_16",
+      "grasa_id": "comp_fat_2",
+      "tiempo_min": 8,
+      "descripcion": "Base de avena arrollada hidratada en frío con dados de tofu marinado, finas láminas de pepino crujiente y abanico de palta madura con limón.",
+      "prompt_cuadrante": "Bowl fresco con base de avena arrollada hidratada fría, dados de tofu dorado, finas rodajitas de pepino fresco y gajos de palta con oliva.",
+      "tags": [
+        "tofu",
+        "avena",
+        "pepino",
+        "palta",
+        "frio"
+      ],
+      "imagen_url": "img/platos/plate_cat_306.jpg",
+      "lote_id": "lote_77",
+      "lote_tema": "Proteínas Vegetales: Tofu, Soja y Quesos"
+    },
+    {
+      "id": "plate_cat_307",
+      "cuadrante": "inferior_izq",
+      "nombre": "Salpicón Frío de Queso Port Salut, Choclo, Tomate y Aceitunas",
+      "modo": "frio",
+      "proteina_id": "comp_prot_16",
+      "carbo_id": "comp_carb_5",
+      "vegetal_id": "comp_veg_2",
+      "grasa_id": "comp_fat_3",
+      "tiempo_min": 8,
+      "descripcion": "Cubos frescos de queso port salut entremezclados con choclo dulce hervido, tomates cherry partidos al medio y aceitunas verdes con oliva.",
+      "prompt_cuadrante": "Plato de ensalada fría con dados blancos de queso port salut fresco, granos de choclo amarillo dulce, tomates cherry y aceitunas verdes con oliva.",
+      "tags": [
+        "queso port salut",
+        "choclo",
+        "tomate",
+        "aceitunas",
+        "frio"
+      ],
+      "imagen_url": "img/platos/plate_cat_307.jpg",
+      "lote_id": "lote_77",
+      "lote_tema": "Proteínas Vegetales: Tofu, Soja y Quesos"
+    },
+    {
+      "id": "plate_cat_308",
+      "cuadrante": "inferior_der",
+      "nombre": "Bowl de Quinoa con Soja Texturizada, Zucchini y Semillas",
+      "modo": "caliente",
+      "proteina_id": "comp_prot_18",
+      "carbo_id": "comp_carb_8",
+      "vegetal_id": "comp_veg_6",
+      "grasa_id": "comp_fat_5",
+      "tiempo_min": 15,
+      "descripcion": "Quinoa graneada caliente servida con soja texturizada crocante, medias lunas de zucchini selladas a la plancha y mix de semillas de girasol.",
+      "prompt_cuadrante": "Bowl caliente con base plana de quinoa esponjosa, soja texturizada sofrita dorada crocante, rodajas de zucchini salteado y semillas de girasol.",
+      "tags": [
+        "soja texturizada",
+        "quinoa",
+        "zucchini",
+        "semillas"
+      ],
+      "imagen_url": "img/platos/plate_cat_308.jpg",
+      "lote_id": "lote_77",
+      "lote_tema": "Proteínas Vegetales: Tofu, Soja y Quesos"
     }
   ]
 }
