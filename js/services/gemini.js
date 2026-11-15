@@ -155,11 +155,41 @@ class GeminiService {
    * Selecciona 1 id de cada bloque de la biblioteca y genera 3 pasos rápidos.
    */
   async assembleFromText(queryText, allComponents, currentContext = null) {
+    // 1. Intentar delegar al backend FastAPI si está activo
+    try {
+      if (typeof fetch !== 'undefined') {
+        const backendResp = await fetch('/api/gemini/assemble', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: queryText })
+        });
+        if (backendResp.ok) {
+          const result = await backendResp.json();
+          if (result && result.success) {
+            return {
+              proteina_ids: result.quadrants.Proteina,
+              vegetal_ids: result.quadrants.Vegetal,
+              carbo_ids: result.quadrants.Carbohidrato,
+              grasa_ids: result.quadrants.Grasa,
+              modo: result.modo,
+              titulo: result.recipe.nombre_sugerido,
+              pasos: result.recipe.pasos,
+              sugerencia_opcional: null,
+              match: result.match
+            };
+          }
+        }
+      }
+    } catch (_) {
+      // Si el backend no está disponible, continúa con el fallback directo a la API de Gemini
+    }
+
     const componentsSummary = allComponents.map(c => ({
       id: c.id,
       nombre: c.nombre,
       categoria: c.categoria
     }));
+
 
     let contextSnippet = '';
     if (currentContext && (currentContext.proteina || currentContext.vegetal || currentContext.carbohidrato || currentContext.grasa)) {
