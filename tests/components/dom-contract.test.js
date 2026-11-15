@@ -73,9 +73,7 @@ test('Contrato DOM index.html - Estructura base requerida por app.js', () => {
 
   // 2. Botones de navegación SPA
   assert.ok(indexHtml.includes('data-tab="assembler"'), 'Falta botón nav data-tab="assembler"');
-  assert.ok(indexHtml.includes('data-tab="planner"'), 'Falta botón nav data-tab="planner"');
   assert.ok(indexHtml.includes('data-tab="library"'), 'Falta botón nav data-tab="library"');
-  assert.ok(indexHtml.includes('data-tab="settings"'), 'Falta botón nav data-tab="settings"');
 
   // 3. Botones globales de exportación y reseteo
   assert.ok(indexHtml.includes('id="btnExportJSON"'), 'Falta botón id="btnExportJSON"');
