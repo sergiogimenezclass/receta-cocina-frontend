@@ -55,9 +55,15 @@ export class PwaInstallComponent {
     // Si hay un prompt diferido disponible (Android / Chrome / Edge)
     if (this.deferredPrompt) {
       container.innerHTML = `
-        <button id="btnPwaInstall" class="btn-pwa-install" aria-label="Instalar Antirecetario">
-          <span class="pwa-icon">📲</span>
-          <span class="pwa-text">Instalar App</span>
+        <button id="btnPwaInstall" class="btn-pwa-install" aria-label="Instalar Antirecetario" title="Instalar Antirecetario como aplicación">
+          <span class="pwa-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" x1="12" y1="15" y2="3"/>
+            </svg>
+          </span>
+          <span class="pwa-text">Instalar</span>
         </button>
       `;
 
@@ -79,9 +85,15 @@ export class PwaInstallComponent {
     // Si es iOS Safari y no está instalada, mostrar opción con guía
     if (this.isIos && !this.isInstalled) {
       container.innerHTML = `
-        <button id="btnIosInstallGuide" class="btn-pwa-install btn-pwa-ios" aria-label="Cómo instalar en iPhone">
-          <span class="pwa-icon">📲</span>
-          <span class="pwa-text">Instalar en iPhone</span>
+        <button id="btnIosInstallGuide" class="btn-pwa-install btn-pwa-ios" aria-label="Cómo instalar en iPhone" title="Instalar en iPhone">
+          <span class="pwa-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" x1="12" y1="15" y2="3"/>
+            </svg>
+          </span>
+          <span class="pwa-text">Instalar</span>
         </button>
       `;
 

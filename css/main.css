@@ -147,6 +147,13 @@ header.app-header {
   font-weight: 600;
 }
 
+/* Right Header Actions (Install + Nav) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 /* Main Nav Tabs */
 nav.app-nav {
   display: flex;
@@ -336,6 +343,10 @@ footer.app-footer {
   .brand span.tag,
   .brand div div:nth-child(2) {
     display: none !important;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
   }
 
   nav.app-nav {
