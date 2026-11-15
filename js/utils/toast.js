@@ -5,11 +5,16 @@
 
 // Asegura que el contenedor de toasts exista en el DOM
 function getToastContainer() {
+  const openDialog = typeof document !== 'undefined' ? document.querySelector('dialog[open]') : null;
+  const targetParent = openDialog || document.body;
+
   let container = document.getElementById('toast-container');
   if (!container) {
     container = document.createElement('div');
     container.id = 'toast-container';
-    document.body.appendChild(container);
+    targetParent.appendChild(container);
+  } else if (container.parentElement !== targetParent) {
+    targetParent.appendChild(container);
   }
   return container;
 }

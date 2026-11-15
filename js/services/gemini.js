@@ -264,6 +264,42 @@ Lo que el usuario tiene en casa / pide:
    * Refina los 3 pasos de cocina rápida según los 4 componentes elegidos y el modo.
    */
   async refineSteps(selectedComponents, mode = 'caliente') {
+    // 1. Intentar delegar al backend FastAPI (/api/gemini/refine)
+    try {
+      if (typeof fetch !== 'undefined') {
+        const backendResp = await fetch('/api/gemini/refine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            components: selectedComponents.map(c => ({
+              id: c.id,
+              nombre: c.nombre,
+              categoria: c.categoria,
+              metodo_coccion: c.metodo_coccion,
+              tiempo_preparacion_min: c.tiempo_preparacion_min
+            })),
+            modo: mode
+          })
+        });
+
+        if (backendResp.ok) {
+          const result = await backendResp.json();
+          if (result && result.success && Array.isArray(result.pasos) && result.pasos.length >= 3) {
+            return {
+              titulo: result.titulo,
+              pasos: result.pasos
+            };
+          } else if (result && result.error) {
+            console.warn('⚠️ Error del servidor IA al reoptimizar:', result.error);
+            showToast(`Error IA: ${result.error}`, 'warning');
+          }
+        }
+      }
+    } catch (fetchErr) {
+      console.warn('No se pudo conectar con el endpoint /api/gemini/refine:', fetchErr);
+    }
+
+    // 2. Fallback a llamada directa en cliente si tiene API Key propia
     const names = selectedComponents.map(c => `${c.categoria}: ${c.nombre}`).join(', ');
 
     const systemInstruction = `Sos el asistente minimalista de cocina rápida de "Antirecetario".

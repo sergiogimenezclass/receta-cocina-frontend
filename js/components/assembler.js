@@ -1415,13 +1415,12 @@ export class AssemblerComponent {
           }
           await this.updateVisualPlateAndSteps(components);
           showToast('✨ Pasos optimizados con IA', 'success');
+        } else {
+          showToast('No se obtuvieron nuevos pasos del servidor IA', 'warning');
         }
       } catch (err) {
-        if (err.message === 'API_KEY_MISSING') {
-          showToast('Ingresá tu API Key de Gemini en Ajustes (⚙️) para usar la IA', 'warning');
-        } else {
-          showToast('No se pudo conectar con la IA. Usando pasos locales.', 'info');
-        }
+        console.warn('Error al reoptimizar pasos:', err);
+        showToast(err.message === 'API_KEY_MISSING' ? 'No hay conexión con el servidor de IA' : 'No se pudo reoptimizar con la IA', 'warning');
       } finally {
         btnEl.disabled = false;
         btnEl.innerHTML = prevText;

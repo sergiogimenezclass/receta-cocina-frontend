@@ -11,7 +11,9 @@ from app.schemas.gemini import (
     Quadrants,
     RecipeSteps,
     MatchResult,
-    MatchedPlate
+    MatchedPlate,
+    RefineRequest,
+    RefineResponse
 )
 
 router = APIRouter(prefix="/gemini", tags=["Gemini AI / DeepSeek"])
@@ -121,3 +123,26 @@ async def assemble_plate(
         recipe=recipe,
         match=match_schema
     )
+
+@router.post("/refine", response_model=RefineResponse)
+async def refine_steps(
+    req: RefineRequest,
+    session: Session = Depends(get_session)
+):
+    """
+    Endpoint para reoptimizar los 3 pasos de cocinado de un conjunto de ingredientes
+    utilizando IA (DeepSeek / Gemini con fallback).
+    """
+    try:
+        res = await ai_service.refine_steps(req.components, req.modo)
+        return RefineResponse(
+            success=True,
+            titulo=res.get("titulo", "Plato Sugerido"),
+            pasos=res.get("pasos", [])
+        )
+    except Exception as err:
+        return RefineResponse(
+            success=False,
+            error=str(err)
+        )
+

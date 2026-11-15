@@ -77,3 +77,33 @@ def test_user_plates_crud(client):
     del_res = client.delete(f"/api/user-plates/{plate_id}")
     assert del_res.status_code == 200
     assert del_res.json()["ok"] is True
+
+def test_gemini_refine_endpoint(client, monkeypatch):
+    async def mock_refine_steps(components, mode):
+        return {
+            "titulo": "Plato de Prueba Reoptimizado",
+            "pasos": [
+                "Paso 1: Dorar proteína en sartén caliente.",
+                "Paso 2: Sumar vegetales y base de carbohidratos.",
+                "Paso 3: Servir con un toque de oliva."
+            ]
+        }
+
+    from app.services.ai_service import ai_service
+    monkeypatch.setattr(ai_service, "refine_steps", mock_refine_steps)
+
+    payload = {
+        "components": [
+            {"id": "comp_prot_1", "nombre": "Pechuga de Pollo", "categoria": "Proteina"},
+            {"id": "comp_veg_1", "nombre": "Rúcula", "categoria": "Vegetal"}
+        ],
+        "modo": "caliente"
+    }
+
+    res = client.post("/api/gemini/refine", json=payload)
+    assert res.status_code == 200
+    data = res.json()
+    assert data["success"] is True
+    assert data["titulo"] == "Plato de Prueba Reoptimizado"
+    assert len(data["pasos"]) == 3
+

@@ -39,4 +39,32 @@ class UnifiedAIService:
                 query_text, components_summary, current_context
             )
 
+    async def refine_steps(
+        self,
+        components_summary: List[Dict[str, Any]],
+        mode: str = "caliente"
+    ) -> Dict[str, Any]:
+        use_deepseek = (
+            settings.AI_PROVIDER.lower() == "deepseek" or
+            (bool(settings.DEEPSEEK_API_KEY) and not settings.GEMINI_API_KEY)
+        )
+
+        if use_deepseek and settings.DEEPSEEK_API_KEY:
+            try:
+                return await deepseek_backend_service.refine_steps(
+                    components_summary, mode
+                )
+            except Exception as ds_err:
+                if settings.GEMINI_API_KEY and len(settings.GEMINI_API_KEY) > 5:
+                    print(f"⚠️ DeepSeek falló ({ds_err}). Ejecutando fallback a Gemini para refine...")
+                    return await gemini_backend_service.refine_steps(
+                        components_summary, mode
+                    )
+                raise ds_err
+        else:
+            return await gemini_backend_service.refine_steps(
+                components_summary, mode
+            )
+
 ai_service = UnifiedAIService()
+

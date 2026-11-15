@@ -157,4 +157,28 @@ Lo que el usuario tiene en casa / pide:
 """
         return await self._call_gemini_api(prompt_text, system_instruction)
 
+    async def refine_steps(
+        self,
+        components_summary: List[Dict[str, Any]],
+        mode: str = "caliente"
+    ) -> Dict[str, Any]:
+        names = ", ".join([f"{c.get('categoria', '')}: {c.get('nombre', '')}" for c in components_summary])
+
+        system_instruction = f"""Sos el asistente minimalista de cocina rápida de "Antirecetario".
+Tu misión es generar 3 pasos de cocina ultra simples, directos y telegráficos (máximo 1 o 2 oraciones por paso) para resolver la comida en minutos.
+Usá lenguaje cotidiano argentino con voseo (cortá, salteá, dorá, serví). Cero tecnicismos gastronómicos: no uses "filetear" para vegetales/palta (usá rodajas o láminas), ni "en cuñas" (usá gajos) ni "en pluma" (usá tiritas).
+Modo de preparación: {mode.upper()}.
+
+FORMATO DE RESPUESTA EXCLUSIVO EN JSON:
+{{
+  "titulo": "Nombre simple y descriptivo del plato",
+  "pasos": [
+    "Paso 1: Cocinar o preparar la proteína (indicar minutos mínimos de sartén/plancha/olla)",
+    "Paso 2: Sumar o saltear vegetales y carbohidratos",
+    "Paso 3: Condimentar con la grasa elegida y servir"
+  ]
+}}"""
+        prompt_text = f"Ingredientes elegidos: {names}. Generá las instrucciones ejecutivas en 3 pasos."
+        return await self._call_gemini_api(prompt_text, system_instruction)
+
 gemini_backend_service = GeminiBackendService()

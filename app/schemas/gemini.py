@@ -36,3 +36,14 @@ class AssembleResponse(BaseModel):
     recipe: RecipeSteps = Field(default_factory=RecipeSteps)
     match: Optional[MatchResult] = None
     error: Optional[str] = None
+
+class RefineRequest(BaseModel):
+    components: List[Dict[str, Any]]
+    modo: str = "caliente"
+
+class RefineResponse(BaseModel):
+    success: bool = True
+    titulo: Optional[str] = "Plato Sugerido"
+    pasos: List[str] = []
+    error: Optional[str] = None
+
