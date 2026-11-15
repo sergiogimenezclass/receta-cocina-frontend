@@ -1,4 +1,5 @@
 import { storage } from './storage.js';
+import { showToast } from '../utils/toast.js';
 
 /**
  * Servicio minimalista para interactuar con Google Gemini API.
@@ -177,11 +178,18 @@ class GeminiService {
               sugerencia_opcional: null,
               match: result.match
             };
+          } else if (result && result.error) {
+            console.warn('⚠️ Error del servidor IA:', result.error);
+            showToast(`Error IA: ${result.error}`, 'warning');
           }
+        } else {
+          console.warn(`⚠️ Error HTTP al conectar con /api/gemini/assemble: ${backendResp.status}`);
+          showToast(`Servidor no disponible (HTTP ${backendResp.status})`, 'warning');
         }
       }
-    } catch (_) {
-      // Si el backend no está disponible, continúa con el fallback directo a la API de Gemini
+    } catch (fetchErr) {
+      console.warn('No se pudo conectar con el backend:', fetchErr);
+      showToast('Sin conexión con el backend FastAPI', 'warning');
     }
 
     const componentsSummary = allComponents.map(c => ({
