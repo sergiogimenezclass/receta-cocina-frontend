@@ -2579,3 +2579,62 @@ button.filter-cat-btn.active,
     flex: 1 1 100%;
   }
 }
+
+/* --- PWA INSTALLATION UI --- */
+.btn-pwa-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-card);
+  color: var(--color-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.btn-pwa-install:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.btn-pwa-install .pwa-icon {
+  font-size: 1rem;
+}
+
+.pwa-ios-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 12, 10, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.pwa-ios-dialog {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.pwa-ios-steps ol {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.pwa-ios-steps li {
+  margin-bottom: 0.75rem;
+}
