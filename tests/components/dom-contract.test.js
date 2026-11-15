@@ -45,10 +45,9 @@ test('Contrato DOM Assembler - Renderizado de elementos obligatorios para evento
   assert.ok(html.includes('id="categoryPickerTitle"'), 'Falta id="categoryPickerTitle"');
   assert.ok(html.includes('id="categoryPickerGrid"'), 'Falta id="categoryPickerGrid"');
 
-  // 7. Barra de Chat y Dictado por Voz (IA / Gemini)
+  // 7. Barra de Chat (IA / DeepSeek / Gemini)
   assert.ok(html.includes('id="formAutoSelectIngredients"'), 'Falta formulario id="formAutoSelectIngredients"');
   assert.ok(html.includes('id="autoIngredientsInput"'), 'Falta input de chat id="autoIngredientsInput"');
-  assert.ok(html.includes('id="btnVoiceInput"'), 'Falta botón de micrófono id="btnVoiceInput"');
 
   // 8. Colapso reactivo de plato
   assert.ok(html.includes('id="plateCompactBar"'), 'Falta contenedor de chips compactos id="plateCompactBar"');

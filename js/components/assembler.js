@@ -169,9 +169,6 @@ export class AssemblerComponent {
               ` : ''}
 
               <form id="formAutoSelectIngredients" class="v2-chat-form">
-                <button type="button" id="btnVoiceInput" class="btn-mic" title="Dictar ingredientes por voz">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
-                </button>
                 <textarea id="autoIngredientsInput" class="v2-chat-input" rows="1" placeholder="Decime qué tenés en la heladera..." autocomplete="off">${this.escapeHtml(this.autoQueryText)}</textarea>
                 <button type="submit" class="btn btn-chat-submit" aria-label="Enviar ingredientes">
                   <svg viewBox="0 0 24 24" fill="none" width="20" height="20" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 3.5 21 12 4 20.5l2.1-7.1L15 12l-8.9-1.4L4 3.5Z"/></svg>
@@ -1208,127 +1205,7 @@ export class AssemblerComponent {
       });
     }
 
-    // 2. Entrada por Voz con Web Speech API (🎙️ Micrófono nativo)
-    const btnVoice = this.container.querySelector('#btnVoiceInput');
-    if (btnVoice && autoInput) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        btnVoice.addEventListener('click', () => {
-          showToast('Tu navegador no soporta dictado directo por voz. Podés usar el micrófono de tu teclado.', 'info', 4000);
-        });
-      } else {
-        let recognition = null;
-        let isListening = false;
-        let silenceTimer = null;
-        const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent || '');
-
-        const stopListening = () => {
-          if (silenceTimer) clearTimeout(silenceTimer);
-          if (recognition) {
-            try { recognition.stop(); } catch (_) {}
-          }
-          isListening = false;
-          btnVoice.classList.remove('listening');
-          btnVoice.title = 'Dictar ingredientes por voz';
-        };
-
-        btnVoice.addEventListener('click', async () => {
-          if (isListening) {
-            stopListening();
-            return;
-          }
-
-          try {
-            recognition = new SpeechRecognition();
-            const voiceLang = await storage.getVoiceLanguage();
-            const silenceTimeoutMs = await storage.getVoiceSilenceTimeout();
-            recognition.lang = voiceLang || 'es-ES';
-            // En Android Chrome, continuous = true causa el bug conocido de duplicación y re-emisión infinita
-            recognition.continuous = !isAndroid;
-            recognition.interimResults = true;
-            recognition.maxAlternatives = 1;
-
-            recognition.onstart = () => {
-              isListening = true;
-              btnVoice.classList.add('listening');
-              btnVoice.title = 'Escuchando... Tocá para detener';
-              showToast('🎙️ Escuchando... decí tus ingredientes', 'info', 2500);
-            };
-
-            recognition.onresult = (event) => {
-              let finalStr = '';
-              let interimStr = '';
-
-              for (let i = 0; i < event.results.length; i++) {
-                const res = event.results[i];
-                if (!res || !res[0]) continue;
-                const chunk = res[0].transcript ? res[0].transcript.trim() : '';
-                if (!chunk) continue;
-
-                if (res.isFinal) {
-                  const words = chunk.split(/\s+/);
-                  const lastWordInFinal = finalStr.trim().split(/\s+/).pop()?.toLowerCase();
-                  const firstWordInChunk = words[0]?.toLowerCase();
-
-                  if (lastWordInFinal && firstWordInChunk && lastWordInFinal === firstWordInChunk) {
-                    words.shift();
-                  }
-                  const cleanChunk = words.join(' ');
-                  if (cleanChunk && !finalStr.endsWith(cleanChunk)) {
-                    finalStr += (finalStr ? ' ' : '') + cleanChunk;
-                  }
-                } else {
-                  interimStr += (interimStr ? ' ' : '') + chunk;
-                }
-              }
-
-              const liveRaw = (finalStr + (interimStr ? ' ' + interimStr : '')).trim();
-              const liveText = this.cleanRepeatedPhrases(liveRaw);
-
-              if (liveText) {
-                autoInput.value = liveText;
-                autoInput.dispatchEvent(new Event('input'));
-              }
-
-              // Si hay silencio por el tiempo configurado, cerrar el micrófono pero NO enviar el formulario
-              if (silenceTimer) clearTimeout(silenceTimer);
-              const timeout = typeof silenceTimeoutMs === 'number' ? silenceTimeoutMs : 8000;
-              if (timeout > 0) {
-                silenceTimer = setTimeout(() => {
-                  stopListening();
-                  showToast('🎙️ Dictado listo. Tocá "Armar" para buscar', 'info', 2500);
-                }, timeout);
-              }
-            };
-
-            recognition.onerror = (event) => {
-              console.warn('Reconocimiento de voz:', event.error);
-              if (silenceTimer) clearTimeout(silenceTimer);
-              if (event.error === 'not-allowed') {
-                showToast('Permiso de micrófono denegado o bloqueado (requiere HTTPS o permiso en el navegador).', 'warning', 4500);
-              } else if (event.error !== 'no-speech') {
-                showToast(`Error de micrófono: ${event.error}`, 'warning', 3000);
-              }
-              stopListening();
-            };
-
-            recognition.onend = () => {
-              if (isListening && isAndroid && autoInput.value && autoInput.value.trim().length > 0) {
-                showToast('🎙️ Dictado listo. Tocá "Armar" para buscar', 'info', 2500);
-              }
-              stopListening();
-            };
-
-            recognition.start();
-          } catch (err) {
-            console.error('Error al inicializar SpeechRecognition:', err);
-            stopListening();
-          }
-        });
-      }
-    }
-
-    // 3. Formulario de Chat / Asistente de Cocina Rápida
+    // 2. Formulario de Chat / Asistente de Cocina Rápida
     const formAuto = this.container.querySelector('#formAutoSelectIngredients');
     if (formAuto) {
       formAuto.addEventListener('submit', async (e) => {
