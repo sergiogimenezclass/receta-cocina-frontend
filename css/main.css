@@ -127,7 +127,6 @@ header.app-header {
 
 .brand-icon svg {
   display: block;
-  stroke: var(--text-primary);
 }
 
 .brand h1 {
