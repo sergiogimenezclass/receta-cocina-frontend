@@ -1,4 +1,4 @@
-const SHELL_CACHE = 'antirecetario-shell-v1';
+const SHELL_CACHE = 'antirecetario-shell-v2';
 const IMAGE_CACHE = 'antirecetario-images-v1';
 
 // Recursos esenciales para carga inmediata en 0 ms
