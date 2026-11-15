@@ -9,7 +9,7 @@ const FOOD_EMOJIS = [
   // Carbohidratos
   '🍚', '🥔', '🍠', '🍝', '🌽', '🫘', '🪵', '🌾', '🍞', '🫓',
   // Grasas
-  '🥑', '🫒', '🌰', '🌻', '🥜'
+  '🥑', '🫒', '🥜', '🌻', '🧈', '🧀'
 ];
 
 export class LibraryComponent {

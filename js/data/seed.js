@@ -417,7 +417,7 @@ export const INITIAL_SEED = {
       categoria: "Grasa",
       tiempo_preparacion_min: 0,
       metodo_coccion: "Servir crudos o apenas tostados para crocancia",
-      icono: "🌰"
+      icono: "🥜"
     },
     {
       id: "comp_fat_5",

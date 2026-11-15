@@ -125,8 +125,8 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 3: Carbohidrato (abajo-izquierda) -->
                 <div class="plate-quadrant quad-carb ${this.hasCategorySelected('Carbohidrato') ? 'has-ingredient' : ''}" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
-                  <div class="quad-emoji" id="quadEmojiCarb">${this.getQuadrantEmoji('Carbohidrato', components, '🥔')}</div>
                   <div class="quadrant-badge-title">Carbohidrato</div>
+                  <div class="quad-emoji" id="quadEmojiCarb">${this.getQuadrantEmoji('Carbohidrato', components, '🥔')}</div>
                   <div class="quadrant-content" id="quadContentCarb">
                     ${this.renderQuadrantContent('Carbohidrato', components, '')}
                   </div>
@@ -134,8 +134,8 @@ export class AssemblerComponent {
 
                 <!-- Cuadrante 4: Grasas Saludables (abajo-derecha) -->
                 <div class="plate-quadrant quad-fat ${this.hasCategorySelected('Grasa') ? 'has-ingredient' : ''}" data-category="Grasa" title="Tocar para editar Grasas Saludables">
-                  <div class="quad-emoji" id="quadEmojiFat">${this.getQuadrantEmoji('Grasa', components, '🥑')}</div>
                   <div class="quadrant-badge-title">Grasas</div>
+                  <div class="quad-emoji" id="quadEmojiFat">${this.getQuadrantEmoji('Grasa', components, '🥑')}</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '')}
                   </div>

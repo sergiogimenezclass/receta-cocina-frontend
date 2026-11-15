@@ -1745,12 +1745,14 @@
   border-radius: 10px 10px 10px 100%;
   background: linear-gradient(135deg, #fbf4ea 0%, #f3e5d4 100%);
   color: #854d0e;
-  padding: 0.6rem 0.5rem 0.75rem 0.75rem;
+  padding: 0.7rem 0.5rem 0.65rem 0.75rem;
 }
 
 .plate-quadrant.quad-carb .quad-emoji {
   font-size: clamp(2.4rem, 6.2vw, 3.6rem);
   transform: rotate(8deg);
+  margin-top: 2px;
+  margin-bottom: 0;
 }
 
 .plate-quadrant.quad-fat {
@@ -1759,11 +1761,20 @@
   border-radius: 10px 10px 100% 10px;
   background: linear-gradient(135deg, #fef8db 0%, #f8edb3 100%);
   color: #9a3412;
-  padding: 0.6rem 0.75rem 0.75rem 0.5rem;
+  padding: 0.7rem 0.75rem 0.65rem 0.5rem;
 }
 
 .plate-quadrant.quad-fat .quad-emoji {
+  font-size: clamp(2.4rem, 6.2vw, 3.6rem);
   transform: rotate(-12deg);
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.plate-quadrant.quad-carb .quadrant-badge-title,
+.plate-quadrant.quad-fat .quadrant-badge-title {
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 /* ========================================================

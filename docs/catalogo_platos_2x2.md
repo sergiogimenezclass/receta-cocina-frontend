@@ -627,7 +627,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** 🍝 Fideos / Pasta
   - **Vegetales:** 🥬 Espinaca o Acelga Salteada
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Pasta salteada con hojas de espinaca tierna, cubos de queso cremoso que se funden al servir y nueces picadas crujientes.
 - **Prompt Fotográfico:** *"Plato hondo de fideos cortos con hojas de espinaca salteadas, dados de queso fresco derretido y nueces picadas tostadas."*
@@ -815,7 +815,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧈 Tofu a la Plancha
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥘 Wok de Vegetales Mixtos
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Cubos de tofu a la plancha salteados con variedad de vegetales (zucchini, morrón, cebolla) y almendras tostadas picadas.
 - **Prompt Fotográfico:** *"Wok colorido sin fideos ni arroz: cubos de tofu dorado crocante salteados con juliana de vegetales mixtos crocantes y almendras fileteadas tostadas."*
@@ -983,7 +983,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🍗 Pechuga / Suprema de Pollo
   - **Carbohidrato:** 🌽 Choclo / Maíz Desgranado
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~8 min | **Servido:** Frío
 - **Descripción Culinaria:** Pollo cocido desmenuzado con choclo desgranado dulce, remolacha cocida en cubos y mariposas de nueces crujientes.
 - **Prompt Fotográfico:** *"Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados desparejos de remolacha teñidos de violeta y trozos de nueces partidas esparcidos con total asimetría."*
@@ -1075,7 +1075,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida) + 🥗 Hojas Verdes (Lechuga / Rúcula)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Copos de ricota fresca sobre colchón de rúcula, dados de remolacha cocida dulce y nueces picadas crujientes.
 - **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, copos rústicos de ricota fresca y nueces partidas con aceite de oliva (distribución asimétrica natural)."*
@@ -1625,7 +1625,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🍗 Pechuga / Suprema de Pollo
   - **Carbohidrato:** 🌽 Choclo / Maíz Desgranado
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Salpicón fresco con hebras de pechuga de pollo cocida, dados de remolacha dulce, granos de choclo amarillo y nueces partidas crujientes.
 - **Prompt Fotográfico:** *"Ensalada casera servida rústicamente: pollo desmenuzado mezclado naturalmente con granos sueltos de choclo amarillo, dados de remolacha teñidos de violeta y nueces partidas con aceite de oliva."*
@@ -1681,7 +1681,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida) + 🥗 Hojas Verdes (Lechuga / Rúcula)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Dados de remolacha cocida dulce con cubos de queso port salut fresco, hojas de rúcula y nueces picadas con aceite de oliva.
 - **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas de rúcula dispuestas libremente, dados de remolacha cocida esparcidos de forma despareja, cubos rústicos de queso fresco y nueces partidas con aceite de oliva."*
@@ -1991,7 +1991,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧈 Tofu a la Plancha
   - **Carbohidrato:** 🌾 Quinoa
   - **Vegetales:** 🥘 Wok de Vegetales Mixtos
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~12 min | **Servido:** Caliente
 - **Descripción Culinaria:** Cubos crocantes de tofu sellados al wok con vegetales mixtos, quinoa cocida salteada y nueces o almendras picadas tostadas.
 - **Prompt Fotográfico:** *"Bowl caliente con base de quinoa suelta salteada, cubos dorados y crocantes de tofu al wok con vegetales mixtos y trozos crujientes de nueces partidas."*
@@ -2241,7 +2241,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥒 Pepino en Rodajas + 🥗 Hojas Verdes (Lechuga / Rúcula)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Ensalada fresca y crocante con cubos de queso port salut, rodajas finas de pepino, mix de lechuga y rúcula y nueces partidas tostadas.
 - **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas verdes variadas dispuestas libremente, cubos blancos de queso port salut fresco, rodajas delgadas de pepino y mitades de nueces partidas con oliva."*
@@ -2271,7 +2271,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧈 Tofu a la Plancha
   - **Carbohidrato:** 🍚 Arroz (Blanco o Integral)
   - **Vegetales:** 🥦 Brócoli al Vapor
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Arroz blanco cocido frío suelto y desgranado con cubitos de tofu marinado en limón, arbolitos tiernos de brócoli y almendras tostadas.
 - **Prompt Fotográfico:** *"Bowl de ensalada fresca con arroz blanco desgranado plano, cubos de tofu blanco marinado, arbolitos de brócoli al dente cocido al vapor y almendras picadas crocantes con oliva."*
@@ -2943,7 +2943,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** 🌾 Quinoa
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida) + 🥗 Hojas Verdes (Lechuga / Rúcula)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Quinoa teñida con dados de remolacha cocida dulce, hojas frescas de rúcula, cubitos de queso fresco y nueces partidas.
 - **Prompt Fotográfico:** *"Bowl colorido con base de quinoa suelta, cubos de remolacha cocida teñida de morado, hojas de rúcula y nueces picadas con queso fresco."*
@@ -3101,7 +3101,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Dados de remolacha cocida dulce con cubos tiernos de queso port salut blanco y mitades de nueces crocantes tostadas con oliva.
 - **Prompt Fotográfico:** *"Plato hondo con dados de remolacha cocida dulce, cubos blancos de queso port salut fresco y trozos de nueces partidas crujientes."*
@@ -3391,7 +3391,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🧀 Queso Fresco / Port Salut / Ricota
   - **Carbohidrato:** 🥣 Avena (Arrollada)
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Avena arrollada hidratada con cubitos de queso fresco blanco, dados de remolacha cocida dulce y nueces partidas tostadas.
 - **Prompt Fotográfico:** *"Bowl fresco con base de avena arrollada fría, dados de remolacha cocida dulce, cubos de queso port salut y nueces partidas con oliva."*
@@ -3605,7 +3605,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🍗 Pechuga / Suprema de Pollo
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥗 Remolacha (Rallada o Hervida)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Hebras de pollo frío con dados dulces de remolacha cocida y mitades de nueces crocantes partidas con aceite de oliva virgen.
 - **Prompt Fotográfico:** *"Plato hondo de pollo desmenuzado frío mezclado naturalmente con cubos morados de remolacha cocida y trozos de nueces crujientes."*
@@ -3753,7 +3753,7 @@ Estilo fotográfico obligatorio: Toma cenital directa estricta a 90 grados (top-
   - **Proteína:** 🍗 Pechuga / Suprema de Pollo
   - **Carbohidrato:** *(Sin carbohidrato / Low-Carb)*
   - **Vegetales:** 🥗 Hojas Verdes (Lechuga / Rúcula)
-  - **Grasa:** 🌰 Frutos Secos (Nueces / Almendras)
+  - **Grasa:** 🥜 Frutos Secos (Nueces / Almendras)
 - **Tiempo sugerido:** ⏱️ ~5 min | **Servido:** Frío
 - **Descripción Culinaria:** Mix abundante de hojas verdes frescas con tiras de pechuga grillada fría, lascas de queso sardo y nueces tostadas.
 - **Prompt Fotográfico:** *"Plato de ensalada fresca con hojas de lechuga y rúcula, tiras de pollo grillado frío al desgaire, queso sardo y mitades de nueces con oliva."*
