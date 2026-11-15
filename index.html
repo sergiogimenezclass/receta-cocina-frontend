@@ -4,10 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
   <title>Antirecetario | Construcción Modular de Platos</title>
+
+  <!-- PWA Manifest & Mobile Metadata -->
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#493b31">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Antirecetario">
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="./img/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=84">
-  <link rel="stylesheet" href="css/components.css?v=87">
+  <link rel="stylesheet" href="css/main.css?v=85">
+  <link rel="stylesheet" href="css/components.css?v=88">
   <link rel="stylesheet" href="css/glassmorphism.css?v=84">
 </head>
 <body>
@@ -26,11 +39,14 @@
         <div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <h1>Antirecetario</h1>
-            <span class="tag">v1.0 LocalStorage</span>
+            <span class="tag">PWA v2.0</span>
           </div>
           <div style="font-size: 0.78rem; color: var(--text-secondary);">Platos simples con lo que hay en casa</div>
         </div>
       </div>
+
+      <!-- PWA Install Button Container -->
+      <div id="pwa-install-container"></div>
 
       <!-- SPA Navigation Tabs -->
       <nav class="app-nav">

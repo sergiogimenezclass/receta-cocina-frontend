@@ -3,6 +3,7 @@ import { AssemblerComponent } from './components/assembler.js?v=64';
 import { LibraryComponent } from './components/library.js';
 import { PlannerComponent } from './components/planner.js';
 import { SettingsComponent } from './components/settings.js';
+import { PwaInstallComponent } from './components/pwa-install.js';
 
 class App {
   constructor() {
@@ -10,6 +11,7 @@ class App {
     this.library = new LibraryComponent('library');
     this.planner = new PlannerComponent('planner');
     this.settings = new SettingsComponent('settings');
+    this.pwaInstall = new PwaInstallComponent('pwa-install-container');
     
     this.currentTab = 'assembler';
   }
@@ -20,9 +22,26 @@ class App {
     await this.library.init();
     await this.planner.init();
     await this.settings.init();
+    this.pwaInstall.render();
 
     this.bindEvents();
+    this.initServiceWorker();
   }
+
+  initServiceWorker() {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => {
+            console.log('✅ [PWA]: Service Worker registrado con éxito en scope:', reg.scope);
+          })
+          .catch((err) => {
+            console.warn('⚠️ [PWA]: Error al registrar Service Worker:', err);
+          });
+      });
+    }
+  }
+
 
   bindEvents() {
     // Navegación por pestañas SPA

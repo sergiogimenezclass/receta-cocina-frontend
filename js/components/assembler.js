@@ -2,6 +2,8 @@ import { storage } from '../services/storage.js';
 import { showToast } from '../utils/toast.js';
 import { geminiService } from '../services/gemini.js?v=5';
 import { catalogMatcher } from '../services/matcher.js';
+import { wakeLockService } from '../services/wake-lock.js';
+import { hapticsService } from '../services/haptics.js';
 
 export class AssemblerComponent {
   constructor(containerId) {
@@ -213,6 +215,9 @@ export class AssemblerComponent {
 
             <!-- Botones de Acción en Desktop -->
             <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+              <button id="btnSharePlateLive" type="button" class="btn btn-secondary btn-sm" title="Compartir receta por WhatsApp o apps">
+                📤 Compartir
+              </button>
               <button id="btnAiRefineStepsLive" type="button" class="btn btn-secondary btn-sm" title="Reoptimizar 3 pasos con IA">
                 ✨ Reoptimizar Pasos
               </button>
@@ -264,6 +269,9 @@ export class AssemblerComponent {
           </div>
 
           <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem; flex-wrap: wrap;">
+            <button id="btnSharePlateInModal" type="button" class="btn btn-secondary btn-sm" title="Compartir receta por WhatsApp o apps">
+              📤 Compartir
+            </button>
             <button id="btnAiRefineInModal" type="button" class="btn btn-secondary btn-sm">
               ✨ Reoptimizar Pasos
             </button>
@@ -803,10 +811,12 @@ export class AssemblerComponent {
     this.matchScore = result.score;
 
     if (result.matched && result.hasImage) {
+      try { hapticsService.success(); } catch (_) {}
       this.matchedPlateImage = result.imageUrl;
       this.generatedImageSrc = result.imageUrl;
       this.showPhotoView = true;
       this.matchNotification = `📸 Foto de catálogo: "${result.plate.nombre}"`;
+
     } else if (result.matched && !result.hasImage) {
       this.matchedPlateImage = null;
       this.showPhotoView = false;
@@ -1438,12 +1448,14 @@ export class AssemblerComponent {
 
     if (btnOpenCooking && modalCooking) {
       btnOpenCooking.addEventListener('click', () => {
+        try { wakeLockService.requestWakeLock(); } catch (_) {}
         modalCooking.showModal();
       });
     }
 
     if (btnCloseCooking && modalCooking) {
       btnCloseCooking.addEventListener('click', () => {
+        try { wakeLockService.releaseWakeLock(); } catch (_) {}
         modalCooking.close();
       });
     }
@@ -1451,10 +1463,15 @@ export class AssemblerComponent {
     if (modalCooking) {
       modalCooking.addEventListener('click', (e) => {
         if (e.target === modalCooking) {
+          try { wakeLockService.releaseWakeLock(); } catch (_) {}
           modalCooking.close();
         }
       });
+      modalCooking.addEventListener('close', () => {
+        try { wakeLockService.releaseWakeLock(); } catch (_) {}
+      });
     }
+
 
     // 7. Modal Selector de Categoría (HTML5 <dialog>)
     const modalPicker = this.container.querySelector('#modalCategoryPicker');
@@ -1567,7 +1584,17 @@ export class AssemblerComponent {
       });
     }
 
-    // 12. Guardar Plato (Desktop y Modal)
+    // 12. Guardar y Compartir Plato (Desktop y Modal)
+    const btnSharePlateLive = this.container.querySelector('#btnSharePlateLive');
+    if (btnSharePlateLive) {
+      btnSharePlateLive.addEventListener('click', () => this.shareCurrentPlate());
+    }
+
+    const btnSharePlateInModal = this.container.querySelector('#btnSharePlateInModal');
+    if (btnSharePlateInModal) {
+      btnSharePlateInModal.addEventListener('click', () => this.shareCurrentPlate());
+    }
+
     const btnSavePlateLive = this.container.querySelector('#btnSavePlateLive');
     if (btnSavePlateLive) {
       btnSavePlateLive.addEventListener('click', () => this.saveCurrentPlate());
@@ -1618,6 +1645,41 @@ export class AssemblerComponent {
         }
       });
     }
+  }
+
+  async shareCurrentPlate() {
+    const name = this.plateName || (this.matchedPlate ? this.matchedPlate.nombre : 'Plato Equilibrado');
+    const style = this.plateMode === 'frio' ? '🥗 Estilo Frío' : '🍲 Estilo Caliente';
+    const steps = (this.customSteps || []).filter(s => s && s.trim().length > 0);
+
+    let shareText = `🍽️ ${name} (${style})\n\n`;
+    if (steps.length > 0) {
+      shareText += `Pasos de Preparación:\n` + steps.map((s, idx) => `${idx + 1}. ${s}`).join('\n') + `\n\n`;
+    }
+    shareText += `Armado con Antirecetario 🍳`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: name,
+          text: shareText,
+          url: window.location.href
+        });
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(shareText);
+        showToast('📋 Receta copiada al portapapeles', 'info');
+        return;
+      } catch (_) {}
+    }
+
+    showToast('No se pudo compartir la receta en este dispositivo.', 'warning');
   }
 
   async saveCurrentPlate() {
