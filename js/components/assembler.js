@@ -114,17 +114,17 @@ export class AssemblerComponent {
                   </div>
                 </div>
 
-                <!-- Cuadrante 2: Vegetales (arriba-derecha) -->
-                <div class="plate-quadrant quad-veg ${this.hasCategorySelected('Vegetal') ? 'has-ingredient' : ''}" data-category="Vegetal" title="Tocar para editar Vegetales">
+                <!-- Cuadrante 2: Vegetal (arriba-derecha) -->
+                <div class="plate-quadrant quad-veg ${this.hasCategorySelected('Vegetal') ? 'has-ingredient' : ''}" data-category="Vegetal" title="Tocar para editar Vegetal">
                   <div class="quad-emoji" id="quadEmojiVeg">${this.getQuadrantEmoji('Vegetal', components, '🥦')}</div>
-                  <div class="quadrant-badge-title">Vegetales</div>
+                  <div class="quadrant-badge-title">Vegetal</div>
                   <div class="quadrant-content" id="quadContentVeg">
                     ${this.renderQuadrantContent('Vegetal', components, '')}
                   </div>
                 </div>
 
                 <!-- Cuadrante 3: Carbohidrato (abajo-izquierda) -->
-                <div class="plate-quadrant quad-carb ${this.hasCategorySelected('Carbohidrato') ? 'has-ingredient' : ''}" data-category="Carbohidrato" title="Tocar para editar Carbohidratos">
+                <div class="plate-quadrant quad-carb ${this.hasCategorySelected('Carbohidrato') ? 'has-ingredient' : ''}" data-category="Carbohidrato" title="Tocar para editar Carbohidrato">
                   <div class="quadrant-badge-title">Carbohidrato</div>
                   <div class="quad-emoji" id="quadEmojiCarb">${this.getQuadrantEmoji('Carbohidrato', components, '🥔')}</div>
                   <div class="quadrant-content" id="quadContentCarb">
@@ -132,9 +132,9 @@ export class AssemblerComponent {
                   </div>
                 </div>
 
-                <!-- Cuadrante 4: Grasas Saludables (abajo-derecha) -->
-                <div class="plate-quadrant quad-fat ${this.hasCategorySelected('Grasa') ? 'has-ingredient' : ''}" data-category="Grasa" title="Tocar para editar Grasas Saludables">
-                  <div class="quadrant-badge-title">Grasas</div>
+                <!-- Cuadrante 4: Grasa Saludable (abajo-derecha) -->
+                <div class="plate-quadrant quad-fat ${this.hasCategorySelected('Grasa') ? 'has-ingredient' : ''}" data-category="Grasa" title="Tocar para editar Grasa">
+                  <div class="quadrant-badge-title">Grasa</div>
                   <div class="quad-emoji" id="quadEmojiFat">${this.getQuadrantEmoji('Grasa', components, '🥑')}</div>
                   <div class="quadrant-content" id="quadContentFat">
                     ${this.renderQuadrantContent('Grasa', components, '')}
@@ -365,13 +365,13 @@ export class AssemblerComponent {
       <div class="plate-compact-chip prot" data-category="Proteina" title="Tocar para cambiar proteína">
         🥩 ${this.escapeHtml(getNames('Proteina', '+ Proteína'))}
       </div>
-      <div class="plate-compact-chip veg" data-category="Vegetal" title="Tocar para cambiar vegetales">
-        🥦 ${this.escapeHtml(getNames('Vegetal', '+ Vegetales'))}
+      <div class="plate-compact-chip veg" data-category="Vegetal" title="Tocar para cambiar vegetal">
+        🥦 ${this.escapeHtml(getNames('Vegetal', '+ Vegetal'))}
       </div>
-      <div class="plate-compact-chip carb" data-category="Carbohidrato" title="Tocar para cambiar carbohidratos">
+      <div class="plate-compact-chip carb" data-category="Carbohidrato" title="Tocar para cambiar carbohidrato">
         🥔 ${this.escapeHtml(getNames('Carbohidrato', '+ Carbo'))}
       </div>
-      <div class="plate-compact-chip fat" data-category="Grasa" title="Tocar para cambiar grasas">
+      <div class="plate-compact-chip fat" data-category="Grasa" title="Tocar para cambiar grasa">
         🥑 ${this.escapeHtml(getNames('Grasa', '+ Grasa'))}
       </div>
     `;
@@ -383,9 +383,9 @@ export class AssemblerComponent {
 
     const catLabels = {
       Proteina: { icon: '🥩', title: 'Elegir Proteína' },
-      Vegetal: { icon: '🥦', title: 'Elegir Vegetales' },
-      Carbohidrato: { icon: '🥔', title: 'Elegir Carbohidratos' },
-      Grasa: { icon: '🥑', title: 'Elegir Grasas Saludables' }
+      Vegetal: { icon: '🥦', title: 'Elegir Vegetal' },
+      Carbohidrato: { icon: '🥔', title: 'Elegir Carbohidrato' },
+      Grasa: { icon: '🥑', title: 'Elegir Grasa' }
     };
     const catInfo = catLabels[category] || { icon: '🥗', title: `Elegir ${category}` };
 
@@ -573,9 +573,9 @@ export class AssemblerComponent {
   getMissingCategories() {
     const categories = [
       { key: 'Proteina', label: 'Proteína', icon: '🥩' },
-      { key: 'Vegetal', label: 'Vegetales', icon: '🥦' },
-      { key: 'Carbohidrato', label: 'Carbohidratos', icon: '🥔' },
-      { key: 'Grasa', label: 'Grasas', icon: '🥑' }
+      { key: 'Vegetal', label: 'Vegetal', icon: '🥦' },
+      { key: 'Carbohidrato', label: 'Carbohidrato', icon: '🥔' },
+      { key: 'Grasa', label: 'Grasa', icon: '🥑' }
     ];
 
     return categories.filter(cat => {

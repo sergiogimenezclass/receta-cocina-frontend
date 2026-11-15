@@ -46,10 +46,10 @@ export class LibraryComponent {
       <!-- Filtros por categoría de bloque -->
       <div class="library-filter-bar">
         <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'ALL' ? 'active' : ''}" data-cat="ALL">Todos los Bloques</button>
-        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Proteina' ? 'active' : ''}" data-cat="Proteina">🥩 Proteínas</button>
-        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Vegetal' ? 'active' : ''}" data-cat="Vegetal">🥦 Vegetales</button>
-        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Carbohidrato' ? 'active' : ''}" data-cat="Carbohidrato">🥔 Carbohidratos</button>
-        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Grasa' ? 'active' : ''}" data-cat="Grasa">🥑 Grasas</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Proteina' ? 'active' : ''}" data-cat="Proteina">🥩 Proteína</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Vegetal' ? 'active' : ''}" data-cat="Vegetal">🥦 Vegetal</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Carbohidrato' ? 'active' : ''}" data-cat="Carbohidrato">🥔 Carbohidrato</button>
+        <button type="button" class="btn filter-cat-btn ${this.activeFilterCategory === 'Grasa' ? 'active' : ''}" data-cat="Grasa">🥑 Grasa</button>
       </div>
 
       <!-- Grilla de Componentes -->
